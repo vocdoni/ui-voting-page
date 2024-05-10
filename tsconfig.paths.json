@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "~components/*": ["components/*"],
+      "~constants": ["util/constants.ts"],
+      "~i18n/*": ["i18n/*"],
+      "~util/*": ["util/*"],
+      "~elements/*": ["elements/*"],
+      "~hooks/*": ["hooks/*"],
+      "~src/*": ["./*"]
+    }
+  }
+}

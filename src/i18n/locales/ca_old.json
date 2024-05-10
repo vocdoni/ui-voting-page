@@ -1,0 +1,389 @@
+{
+  "banner": {
+    "start_now": "Crea una votació!",
+    "subtitle": "Utilitza adreces web3, vota amb un token ERC20 o amb NFTs!",
+    "subtitle1": "Augmenta la participació electoral un 30%",
+    "title": "Vot digital segur, verificable i flexible"
+  },
+  "banner_voting_types": {
+    "anonymous_description": "La identitat dels votants serà completament confidencial, gràcies a la tecnologia zk-SNARKS.",
+    "anonymous_title": "100% Anònim",
+    "flexible_description": "Personalitza el teu procés de votació i la llista de participants per adaptar-los als requisits únics de la teva comunitat.",
+    "flexible_title": "Votació Flexible",
+    "token_description": "Vota amb tokens ERC20/ERC721 (NFT) o afegeix els teus propis tokens i vota sense pagar.",
+    "token_title": "Votació amb Tokens"
+  },
+  "census": {
+    "chain_required": "Necessites seleccionar una xarxa",
+    "description": "Selecciona com s'autenticaran i identificaran els votants.",
+    "gitcoin_description": "Amb aquest cens, només els votants amb Gitcoin Passport podran votar, proporcionant un mètode de resistència contra atacs sybil. Pots definir la puntuació general (GPS) i diferents stamps que el votant ha de tenir.",
+    "gitcoin_read_more": "<a>Llegeix més sobre Scorer & Thresholds de Gitcoin</a>",
+    "gitcoin_title": "Gitcoin Passport",
+    "pro": "",
+    "request_custom_token": "Sol·licitar Tokens Personalitzats",
+    "social_address_title": "Usuaris de Github",
+    "spreadsheet_title": "Dades personalitzades",
+    "title": "Trieu el cens",
+    "token_description": "Seleccioneu la xarxa i el token per crear un cens on els titulars del token votaran amb el seu poder de vot. Pots <link1>sol·licitar un token</link1> si ho necessites.",
+    "token_required": "Necessites seleccionar un token",
+    "token_title": "Cens basat en tokens",
+    "wallet_address_title": "Adreces de cartera"
+  },
+  "claim": {
+    "error_title": "Error",
+    "loading_description": "Si us plau, espera mentre els tokens s'estan reclamant",
+    "loading_title": "Reclamant",
+    "success_description": "Èxit",
+    "success_faucetPackage_title": "El Faucet Package s'ha obtingut correctament",
+    "success_title": "Els tokens s'han reclamat amb èxit"
+  },
+  "close": "Tanca",
+  "copy": {
+    "address": "Copia l'adreça"
+  },
+  "cost_preview": {
+    "balance": "<span>Disposes de:</span><span2> {{ balance }} tokens</span2>",
+    "button": "Obtenir més Tokens",
+    "census_total_one": "<span>Votants:</span><span>{{ count }} votant</span>",
+    "census_total_many": "",
+    "census_total_other": "<span>Votants:</span><span>{{ count }} votants</span>",
+    "duration": "<span>Durada:</span> <span>{{ date, duration }}</span>",
+    "not_enough_tokens": "No tens prou tokens per crear aquest procés.",
+    "result": "<span>Després de crear la votació:</span><span2>{{ remainTokens }} tokens</span2>",
+    "subtitle": "El teu procés de votació",
+    "total": "<span>Total:</span> <span>{{ cost }} tokens</span>"
+  },
+  "csp_census": {
+    "github": {
+      "error_fetching_users": "S'ha produït un error en recuperar els usuaris",
+      "selected_users": "Usuaris seleccionats:"
+    }
+  },
+  "error": {
+    "go_back": "Torna enrere",
+    "invalid_cell_data": "Algunes fileres no contenen adreces correctes: {{rows, list}}",
+    "invalid_row_length": "Corregeix les línies {{rows, list}} del document i torna a carregar-lo",
+    "invalid_weight_type": "S'esperava trobar el pes a la primera col·lumna a les línies {{rows, list}}, però s'han trobat dades inesperades",
+    "loading_page": "Càrrega de pàgina errònia",
+    "not_found": "Ho sentim, no s'ha trobat la pàgina que estaves buscant.",
+    "return_to_home": "Ves a l'inici"
+  },
+  "error_text": "Ho sentim, no s'ha trobat la pàgina que busqueu",
+  "faucet": {
+    "advanced_settings": "Avançat...",
+    "connect": "Si us plau, connecteu la vostra cartera",
+    "copy_package": "Copiar Paquet de Faucet",
+    "copy_package_done": "Copiat!",
+    "description": "Per desenvolupar amb Vocdoni, necessites tokens per a certes accions (crear una elecció, canviar l'estat d'una elecció, etc.). El nombre de diferents factors com la mida del cens, la durada de l'elecció, els paràmetres de l'elecció, etc.",
+    "general_information": {
+      "description": "Quan sol·licites tokens de desenvolupament, rebràs {{ amount }} tokens. Pots reclamar des del faucet una vegada cada {{ waitHours }} hores.",
+      "description2": "Si necessites més tokens per desenvolupar sobre la plataforma de Vocdoni, pots posar-te en contacte amb nosaltres a tokens (at) vocdoni.io",
+      "title": "Informació General"
+    },
+    "package_success": "Felicitats! Aquí tens el teu Paquet de Faucet:",
+    "recipient_address": "Introduïu l'adreça del destinatari on voleu rebre els tokens.",
+    "request_description": "Per aconseguir més tokens de Vocdoni, has d'iniciar la sessió amb un compte de xarxes socials (per evitar-ne l'abús). Només demanem accés de lectura.",
+    "request_tokens": {
+      "title": "Sol·licita Tokens"
+    },
+    "title": "Faucet de Tokens Vocdoni",
+    "tokens_you_own": "Tens {{ balance }} tokens."
+  },
+  "footer": {
+    "follow_us": "Segueix-nos",
+    "text": "<p1>El futur</p1><p2>de la votació en Web3 comença aquí</p2>"
+  },
+  "form": {
+    "account_create": {
+      "delete_image": "Eliminar imatge",
+      "description_helper": "Una breu descripció de la teva organització",
+      "description_placeholder": "Descripció (opcional)",
+      "title_helper": "El nom de l'organització",
+      "title_placeholder": "El nom de l'organització"
+    },
+    "edit_profile": {
+      "avatar_helper": "Imatge/logotip de la teva organització",
+      "avatar_placeholder": "URL de la imatge",
+      "btn": "Desar",
+      "footer": "Modificar la teva organització generarà una sol·licitud de signatura, amb un cost de 1 token",
+      "title": "Editar Orgnaització"
+    },
+    "error": {
+      "address_already_in_use": "Aquesta adreça ja és al cens",
+      "address_pattern": "Només s'admeten adreces hexadecimals (p. ex. 0x031101A...)",
+      "avatar_error": "URL no vàlida",
+      "field_is_required": "Aquest camp és obligatori",
+      "min_address": "Si us plau, proporciona com a mínim una adreça",
+      "min_users_address": "Si us plau, proporciona com a mínim una adreça",
+      "recipient_address_invalid": "L'adreça especificada no sembla vàlida"
+    },
+    "process_create": {
+      "behavior": {
+        "anonymous": {
+          "description": "La identitat dels votants serà completament anonimitzada, incloent per a l'organitzador. Cada votant haurà d'establir una contrasenya per garantir la confidencialitat de la seva identitat.",
+          "title": "Anònim"
+        },
+        "customization": {
+          "description": "Selecciona el teu tema desitjat, colors, textos i afegeix la teva marca a la pàgina de votació. També hi ha opcions més complexes disponibles.",
+          "title": "Personalització"
+        },
+        "overwrite": {
+          "description": "Si està marcat, els votants tindran l'opció de corregir el seu vot un cop.",
+          "title": "Sobreescriure"
+        },
+        "secret": {
+          "description": "Els resultats estaran disponibles quan el procés acabi en lloc d'estar disponibles en temps real.",
+          "title": "Secret fins al final"
+        },
+        "title": "Opcions"
+      },
+      "calendar": {
+        "date_format": "PPPPpppp",
+        "end_date": "Data de finalització",
+        "end_date_description": "Aquesta votació començarà el {{ date.begin, format }} i finalitzarà el {{ date.end, format }}, amb una durada d'aproximadament {{ date, duration }}",
+        "end_date_title_helper": "Definir la data i l'hora exactes de la conclusió.",
+        "now": "Ara",
+        "start_date": "Hora d'inici",
+        "start_date_description": "Especifica el període actiu per rebre vots. Selecciona 'Ara' per activar la votació immediatament després de la publicació.",
+        "start_on_a_date": "Començar en una data",
+        "title": "Calendari",
+        "title_description": "Especificar el període actiu per rebre vots."
+      },
+      "census": {
+        "add_button": "Afegir",
+        "add_new_address": "Afageix una nova adreça",
+        "delete_web3_address": "Eliminar adreça amb index {{ index }}",
+        "gitcoin_description": "Construeix un cens resistents a Sybil (resistent a la falsificació d'identitat) amb Gitcoin Passport i els seus segells de verificació per a una seguretat reforçada",
+        "gitcoin_passport_score": "Puntuació del Gitcoin Passport",
+        "gitcoin_stamps": "Stamps",
+        "gitcoin_strategy_description_AND": "Els usuaris votants han de ser propietaris de tots els segells seleccionats i tenir un GPS igual o superior.",
+        "gitcoin_strategy_description_OR": "Els votants han de ser propietaris d'almenys un segell i tenir un GPS igual o superior.",
+        "gitcoin_title": "Gitcoin Passport",
+        "holders": "{{ holders }} titulars",
+        "max_census_resum": "Tens un grup de {{ uniTokenHolders }} possibles votants de {{ symbol }}. Per reduir el cost del procés de votació, pots optar per limitar el nombre total de participants en el procés de votació (ara mateix {{ titulars }}, {{ percentatge }}% del total de votants potencials). Això no afectarà a votants específics ni reduirà el cens; simplement reduirà el nombre màxim de vots que es poden emetre.",
+        "max_census_slider_arialabel": "Selector de participació màxima esperada",
+        "max_census_slider_label": "Participació max. esperada:",
+        "max_census_slider_tooltip": "{{ voters }} votants({{ percent }}% votants elegibles)",
+        "network": "Xarxa",
+        "network_placeholder": "Selecciona una xarxa",
+        "social_description": "Creeu un cens d'electors elegibles proporcionant una llista d'usuaris de Github.",
+        "social_title": "Cens de Github",
+        "spreadsheet_description": "Dades personalitzades, com ara noms d'usuari i contrasenyes, o informació personal dels votants, es poden utilitzar per a l'autenticació amb un formulari.",
+        "spreadsheet_title": "Dades personalitzades",
+        "token_base_description": "Utilitza un token (basat en EVM) per permetre als usuaris votar en funció de la quantitat de tokens que posseeixin.",
+        "token_base_title": "Basat en token",
+        "tokens_placeholder": "Cerca o enganxa la direcció del token",
+        "wallet_address_description": "Identifica els teus votants per les seves adreces de cartera.",
+        "wallet_address_title": "Adreces de cartera",
+        "weight": "(Pes)",
+        "weighted_voting_description": "Quan s'activa, el teu poder de vot s'alinea amb la teva puntuació GPS. Si es desactiva, el vot de cada usuari té el mateix pes, establert en 1 punt.",
+        "weighted_voting_title": "Pes del Vot Basat en GPS"
+      },
+      "confirm": {
+        "anonymous": "Anònim",
+        "census": "Cens",
+        "census_preview_is_shortened": "(la llista prèvia està limitada a {{ limit }} resultats)",
+        "census_total_people_one": "Una persona podrà votar en aquesta votació",
+        "census_total_people_many": "{{ count }} persones podran votar en aquesta votació",
+        "census_total_people_other": "{{ count }} persones podran votar en aquesta votació",
+        "configuration": "Configuració",
+        "confirmation": "Confirmació",
+        "confirmation_terms_and_conditions": "Accepto els <customLink>termes i condicions</customLink> de Vocdoni",
+        "confirmation_valid_info": "Confirmo que aquesta informació és correcta i vàlida",
+        "cost_description": "En funció de diferents paràmetres, com la grandària del cens, la durada de les eleccions i el seu comportament, aquí veureu el preu de les vostres eleccions.",
+        "cost_title": "Previsió de cost",
+        "create_button": "Crear",
+        "dates": "Data",
+        "description": "En aquesta pàgina, podeu revisar que tota la informació sigui correcta i editar-la en cas que hi hagi algun error. També podeu comprovar el cost del procés de votació i comprar més crèdits en cas que no n'hi tingueu prou.",
+        "description_election": "Descripció",
+        "edit": "Editar",
+        "election_info": "Informació de la Votació",
+        "questions_one": "Pregunta",
+        "questions_many": "Preguntes",
+        "questions_other": "Preguntes",
+        "secret_until_the_end": "Secret fins el final",
+        "title": "Vista prèvia i costos de votació",
+        "title_election": "Títol",
+        "vote_overwrite": "Sobreescriure vot"
+      },
+      "confirm_spreadsheet_removal": "Estàs segur que vols canviar-ho? Fent-ho s'esborrarà el fitxer que has carregat actualment.",
+      "creating_process": "Creant Procés de Votació...",
+      "meta": {
+        "description": "Proporciona un títol i una descripció clars. Això ajudarà als votants a entendre el propòsit del procés de votació.",
+        "description_helper": "Una breu descripció de la teva votació",
+        "description_label": "Descripció",
+        "description_placeholder": "Descripció (opcional)",
+        "title": "Informació de la votació",
+        "title_helper": "El títol / propòsit de la votació",
+        "title_label": "Títol",
+        "title_placeholder": "El títol de la votació"
+      },
+      "navbar": {
+        "close_form_btn": "Tanca el formulari"
+      },
+      "next_step": "Següent",
+      "previous_step": "Anterior",
+      "question": {
+        "add_new_option": "Afegeix opció",
+        "add_question": "Afegeix pregunta",
+        "delete_option": "Eliminar opció número {{ option }} de la pregunta {{ question }}",
+        "description": "Afegeix les preguntes juntament amb les opcions que els teus votants hauran de triar. Tens la flexibilitat d'afegir diverses preguntes, cadascuna amb un nombre personalitzat d'opcions seleccionables.",
+        "description_placeholder": "Escriu aquí una descripció de la pregunta (opcional)",
+        "option_placeholder": "Opció",
+        "question_delete": "Elimina pregunta {{ num }}",
+        "title": "Preguntes",
+        "title_placeholder": "El títol de la teva pregunta..."
+      },
+      "question_identifier": "Pregunta {{ num }}",
+      "question_placeholder": "Títol de la pregunta {{ num }}",
+      "question_title": "Títol",
+      "running_checks": "Executant les comprovacions necessàries, espera...",
+      "spreadsheet": {
+        "download_template_btn": "Descarregar plantilla",
+        "download_template_description": "Descarrega la plantilla original per completar la teva llista de votants",
+        "preview": {
+          "description": "Els membres hauran de completar aquest formulari per accedir a la votació",
+          "title": "Vista prèvia del formulari",
+          "upload_new_list": "Pujar una nova llista de votants"
+        },
+        "requirements": {
+          "list_one": "La primera fila s'utilitzarà com el nom dels camps que els votants hauran de omplir.",
+          "list_two": "Els camps no distingeixen entre majúscules i minúscules, els espais en blanc s'ignoraran i els signes diacrítics es transformaran en lletres simples.",
+          "list_three": "Si es selecciona 'Vot ponderat', la primera columna ha de ser un enter amb el pes del vot del votant.",
+          "title": "Requisits"
+        },
+        "template": {
+          "email": "Email",
+          "firstname": "Nom",
+          "lastname": "Cognoms",
+          "weight": "Pes"
+        }
+      },
+      "spreadsheet_total_rows_one": "El cens té un sol registre",
+      "spreadsheet_total_rows_many": "",
+      "spreadsheet_total_rows_other": "El cens té {{ count }} registres",
+      "steps": {
+        "census": "Cens",
+        "checks": "Organització",
+        "confirm": "Confirmar",
+        "info": "Informació",
+        "questions": "Preguntes"
+      },
+      "success_description": "Redirigint-te a la pàgina del procés de votació...",
+      "success_title": "Procés de votació creat amb èxit",
+      "web3": {
+        "census_members_one": "<span>1 membre</span> <text>al cens</text>",
+        "census_members_many": "",
+        "census_members_other": "<span>{{ count }} membres</span> <text>al cens</text>",
+        "your_wallet_is_added": "La teva adreça de cartera s'ha afegit automàticament al cens. La pots eliminar si ho desitges."
+      },
+      "weighted": "Vot ponderat"
+    }
+  },
+  "get_voc_tokens": {
+    "authentification_method": "Seleccioneu el vostre mètode d'autenticació preferit:",
+    "authentification_method_helper": "Podeu obtenir {{ faucetAmount }} tokens per mètode d'autenticació per setmana",
+    "button": "Sol·licitar Tokens",
+    "description": "<text>Per afegir més tokens, heu d'<strong>iniciar sessió</strong> amb un compte social (per evitar l'ús indegut del faucet).</text><text><strong>Només sol·licitem accés de lectura.</strong></text>",
+    "info": "<text>Si en necessiteu més, poseu-vos en contacte amb <mailto>info@onvote.app</mailto></text>",
+    "title": "Obtenir VOC Tokens"
+  },
+  "gitcoin": {
+    "effective": "20: Efectiu",
+    "more_effective": "25: Més efectiu",
+    "most_effective": "30: Molt efectiu"
+  },
+  "home": {
+    "contactus": {
+      "header": "Contacta'ns"
+    },
+    "features": {
+      "header": "Solucions capacitant"
+    },
+    "process": {
+      "header": "Procés"
+    },
+    "solutions": {
+      "header": "Abraça el canvi amb Vocdoni"
+    }
+  },
+  "loading": "Carregant...",
+  "login": {
+    "facebook": "Inicia sessió amb Facebook",
+    "github": "Inicia sessió amb Github",
+    "google": "Inicia sessió amb Google"
+  },
+  "menu": {
+    "create": "Crear Procés",
+    "create_process": "Nou procés"
+  },
+  "meta": {
+    "length": "{{ length }} / {{ maxLength }} caràcters.",
+    "maxLength": "Longitud màxima assolida"
+  },
+  "new_organization": {
+    "create_organization_btn": "Crear Organització",
+    "description1": "Abans de començar a crear el vostre procés de votació, <span>heu de crear una organització</span>, és gratuït. Amb una organització, podreu crear una àmplia gamma d'eleccions i donar veu als membres de la vostra comunitat.",
+    "description2": "Com a <span>paquet de benvinguda</span>, rebràs {{ faucetAmount }} tokens gratuïts per començar a utilitzar la nostra plataforma.",
+    "name": "Nom de l'organització",
+    "title": "Nova Organització"
+  },
+  "open_in_explorer": "Obre a l'explorador",
+  "organization": {
+    "avatar_alt": "Imatge d'avatar de l'organització {{ name }}",
+    "elections": "Votacions",
+    "elections_list_empty": {
+      "alt": "Imatge il·lustrant que l'organització és buida",
+      "description": "Com a organitzador, tens la capacitat de crear processos de votació personalitzats per a la teva comunitat. Aquests procediments de votació ofereixen una àmplia gamma de flexibilitat, incloent opcions com un cens on els votants han d'autenticar-se utilitzant dades personalitzades (com ara nom d'usuari, contrasenya i data de naixement), un sistema basat en tokens que permet la participació de tots els titulars de tokens o una llista blanca que utilitza adreces de cartera per a l'eligibilitat.",
+      "not_owner": "Aquesta organització encara no té votacions.",
+      "title": "Crea la teva primera elecció"
+    },
+    "title": {
+      "edit": "Editar organització",
+      "read_more": "Expandir títol"
+    }
+  },
+  "rainbow": {
+    "group": {
+      "recovery": "Recuperació"
+    },
+    "recovery": "Recuperar compte"
+  },
+  "retry": "Reintenta",
+  "uploader": {
+    "click_or_drag_and_drop": "<p1>Puja o arrossega i deixa anar aquí la llista de votants</p1><p2>(Formats permesos: CSV, XLSX i ODS)</p2>",
+    "drop_here": "Deixa anar aquí"
+  },
+  "web3cards": {
+    "farcaster": {
+      "btn": "Ves a Farcaster.vote",
+      "description": "Amb <b>\"Farcaster.vote\"</b> permetem una manera simple i social de votar. Els teus membres només han de votar a través de Farcaster en 2 simples clics. Prova a crear una votació amb Farcaster frame",
+      "title": "Farcaster"
+    },
+    "onvote": {
+      "btn": "Crear",
+      "description": "Sistema Web3 de votació <b>segur</b>, <b>sense taxes</b> i <b>transparent</b>. Permet crear <b>cens de tokens, cens multichain, votació anònima</b> i cens sybil-resistant amb un tipus de votació flexible.",
+      "title": "Onvote"
+    },
+    "others": {
+      "btn": "Contacta'ns",
+      "description": "Hem construït un conjunt de votacions que permet una integració fàcil amb la nostra Blockchain dedicada a votacions a través del nostre SDK &; Components UI.<br/><br/>Comença a integrar-ho ara!",
+      "title": "Altres"
+    },
+    "plugins": {
+      "btn": "Prova la Aragon App",
+      "description": "Hem implementat una <b>solució de votació sense taxes personalitzada per a la DAO</b> d'Aragon, i podem fer el mateix per a tu!<br/><br/>Comença amb votació sense taxes!",
+      "title": "DAO Plugins"
+    },
+    "title": "Les nostres solucions de governança Web3"
+  },
+  "welcome": {
+    "description": "Per començar, has de registrar el teu compte i el teu SIK (clau d'identitat segura) firmant dues transaccions (és segur i gratuït).",
+    "intro": "Amb aquesta dApp pots crear votacions anònimes, segures i verificables.",
+    "step": {
+      "register": "Registrar compte",
+      "sik": "Crear SIK"
+    },
+    "title": "Benvingut a {{ sitename }}"
+  }
+}

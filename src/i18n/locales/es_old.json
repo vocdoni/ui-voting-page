@@ -1,0 +1,389 @@
+{
+  "banner": {
+    "start_now": "¡Crea una votación ahora!",
+    "subtitle": "Usa direcciones de cartera, vota con un token ERC20 o con NFTs!",
+    "subtitle1": "Aumenta la participación electoral un 30%",
+    "title": "Voto digital seguro, verificable y flexible"
+  },
+  "banner_voting_types": {
+    "anonymous_description": "La identidad de los votantes permanece completamente confidencial, gracias a la tecnología zk-SNARKS.",
+    "anonymous_title": "100% Anónimo",
+    "flexible_description": "Personaliza tu proceso de votación y censo para satisfacer los requisitos únicos de tu comunidad.",
+    "flexible_title": "Votación Flexible",
+    "token_description": "Vota con tokens ERC20/ERC721 (NFT) o agrega tus propios tokens y vota sin coste de gas con ellos.",
+    "token_title": "Votación con Tokens"
+  },
+  "census": {
+    "chain_required": "Necesitas seleccionar una red",
+    "description": "Selecciona cómo los votantes se autenticarán e identificarán.",
+    "gitcoin_description": "Con este censo, solo los votantes con Gitcoin Passport podrán votar, proporcionando un método de resistencia contra sybil-attack. Puedes definir la puntuación general (GPS) y diferentes stamps que el votante debe tener.",
+    "gitcoin_read_more": "<a>Lee más sobre Scorer & Thresholds de Gitcoin</a>",
+    "gitcoin_title": "Gitcoin Passport",
+    "pro": "",
+    "request_custom_token": "Solicitar Tokens Personalizados",
+    "social_address_title": "Usuarios de Github",
+    "spreadsheet_title": "Datos personalizados",
+    "title": "Censo",
+    "token_description": "Selecciona la red y el token para crear un censo donde los titulares de token votarán con su poder de voto. Puedes <link1>solicitar un token</link1> si lo necesitas.",
+    "token_required": "Necesitas seleccionar un token",
+    "token_title": "Censo basado en tokens",
+    "wallet_address_title": "Direcciones de billetera"
+  },
+  "claim": {
+    "error_title": "Error",
+    "loading_description": "Por favor espera mientras se reclaman los tokens",
+    "loading_title": "Reclamando",
+    "success_description": "Éxito",
+    "success_faucetPackage_title": "El Faucet Package se obtuvo con éxito",
+    "success_title": "Los tokens han sido reclamados correctamente"
+  },
+  "close": "Cerrar",
+  "copy": {
+    "address": "Copiar dirección"
+  },
+  "cost_preview": {
+    "balance": "<span>Dispones de:</span><span2> {{ balance }} tokens</span2>",
+    "button": "Obtener más Tokens",
+    "census_total_one": "<span>Votantes:</span><span>{{ count }} votante</span>",
+    "census_total_many": "",
+    "census_total_other": "<span>Votantes:</span><span>{{ count }} votantes</span>",
+    "duration": "<span>Duración:</span> <span>{{ date, duration }}</span>",
+    "not_enough_tokens": "No tienes suficientes tokens para crear este proceso.",
+    "result": "<span>Después de crear la votación:</span><span2>{{ remainTokens }} tokens</span2>",
+    "subtitle": "Tu proceso de votación",
+    "total": "<span>Total:</span> <span>{{ cost }} tokens</span>"
+  },
+  "csp_census": {
+    "github": {
+      "error_fetching_users": "Error al recuperar usuarios",
+      "selected_users": "Usuarios seleccionados:"
+    }
+  },
+  "error": {
+    "go_back": "Volver atrás",
+    "invalid_cell_data": "Algunas filas no contienen direcciones correctas: {{rows, list}}",
+    "invalid_row_length": "Corrige las líneas {{rows, list}} del documento y vuelve a cargarlo",
+    "invalid_weight_type": "Se esperaba encontrar el peso en la primera columna en las líneas {{rows, list}}, pero se han encontrado datos inesperados",
+    "loading_page": "Error al cargar la página",
+    "not_found": "Lo sentimos, la página que buscabas no fue encontrada.",
+    "return_to_home": "Ves al inicio"
+  },
+  "error_text": "Lo sentimos, no se encontró la página que buscabas.",
+  "faucet": {
+    "advanced_settings": "Avanzado...",
+    "connect": "Por favor, conecta tu wallet",
+    "copy_package": "Copiar Paquete de Faucet",
+    "copy_package_done": "¡Copiado!",
+    "description": "Para desarrollar con Vocdoni, necesitas tokens para ciertas acciones (crear una elección, cambiar el estado de una elección, etc.). El número de diferentes factores como el tamaño del censo, la duración de la elección, los parámetros de la elección, etc.",
+    "general_information": {
+      "description": "Cuando solicites tokens de desarrollo, recibirás {{ amount }} tokens. Puedes reclamar desde el faucet una vez cada {{ waitHours }} horas.",
+      "description2": "Si necesitas más tokens para desarrollar sobre la plataforma de Vocdoni, puedes ponerte en contacto con nosotros en tokens (at) vocdoni.io",
+      "title": "Información General"
+    },
+    "package_success": "¡Felicidades! Aquí está tu Paquete de Faucet:",
+    "recipient_address": "Ingrese la dirección del destinatario en el que desea recibir los tokens.",
+    "request_description": "Para obtener más tokens de Vocdoni, debes iniciar sesión con una cuenta social (para evitar el mal uso del grifo). Solo solicitamos acceso de lectura.",
+    "request_tokens": {
+      "title": "Solicitar Tokens"
+    },
+    "title": "Faucet de Tokens Vocdoni",
+    "tokens_you_own": "Tienes {{ balance }} tokens."
+  },
+  "footer": {
+    "follow_us": "Síguenos",
+    "text": "<p1>El futuro</p1><p2>de la votación en Web3 comienza aquí</p2>"
+  },
+  "form": {
+    "account_create": {
+      "delete_image": "Eliminar imagen",
+      "description_helper": "Una breve descripción de tu organización",
+      "description_placeholder": "Descripción (opcional)",
+      "title_helper": "El nombre de la organización",
+      "title_placeholder": "El nombre de la organización"
+    },
+    "edit_profile": {
+      "avatar_helper": "Imagen/logotipo de tu organización",
+      "avatar_placeholder": "URL de la imagen",
+      "btn": "Guardar",
+      "footer": "Editar tu organización generará una solicitud de firma, con un coste de 1 token",
+      "title": "Editar Organización"
+    },
+    "error": {
+      "address_already_in_use": "Esta dirección ya está en el censo",
+      "address_pattern": "Solo se permiten direcciones hexadecimales (p.ej. 0x031101A...)",
+      "avatar_error": "URL no válida",
+      "field_is_required": "Este campo es obligatorio",
+      "min_address": "Por favor, proporciona al menos una dirección",
+      "min_users_address": "Por favor, proporciona al menos una dirección",
+      "recipient_address_invalid": "La dirección especificada no parece válida"
+    },
+    "process_create": {
+      "behavior": {
+        "anonymous": {
+          "description": "La identidad de los votantes será completamente anonimizada, incluyendo para el organizador. Cada votante deberá establecer una contraseña para garantizar la confidencialidad de su identidad.",
+          "title": "Anónimo"
+        },
+        "customization": {
+          "description": "Selecciona tu tema deseado, colores, textos y añade tu marca en la página de votación. También hay opciones más complejas disponibles.",
+          "title": "Personalización"
+        },
+        "overwrite": {
+          "description": "Si se selecciona, los votantes tendrán la opción de corregir su voto una vez.",
+          "title": "Sobrescribir voto"
+        },
+        "secret": {
+          "description": "Los resultados estarán disponibles cuando termine el proceso en lugar de estar disponibles en tiempo real.",
+          "title": "Secreto hasta el final"
+        },
+        "title": "Opciones"
+      },
+      "calendar": {
+        "date_format": "PPPPpppp",
+        "end_date": "Fecha de finalización",
+        "end_date_description": "Esta votación comenzará en {{ date.begin, format }} y terminará en {{ date.end, format }}, durando ~{{ date, duration }}",
+        "end_date_title_helper": "Definir la fecha y hora exactas de conclusión. ",
+        "now": "Ahora",
+        "start_date": "Hora de inicio",
+        "start_date_description": "Define el período activo para recibir votos. Si seleccionas \"Ahora\", la propuesta estará activa inmediatamente después de publicarla.",
+        "start_on_a_date": "Comenzar en una fecha",
+        "title": "Calendario",
+        "title_description": "Especificar el período activo para recibir votos."
+      },
+      "census": {
+        "add_button": "Añadir",
+        "add_new_address": "Añade una nueva dirección",
+        "delete_web3_address": "Eliminar direccion con índice {{ index }}",
+        "gitcoin_description": "Construye un censo resistente a Sybil (resistente a la falsificación de identidad) con Gitcoin Passport y sus sellos de verificación para una seguridad mejorada",
+        "gitcoin_passport_score": "Puntuación de Gitcoin Pasaport",
+        "gitcoin_stamps": "Stamps",
+        "gitcoin_strategy_description_AND": "Los usuarios votantes deben ser propietarios de todos los sellos seleccionados y tener un GPS igual o superior.",
+        "gitcoin_strategy_description_OR": "Los votantes deben ser propietarios de al menos un sello y tener un GPS igual o superior.",
+        "gitcoin_title": "Gitcoin Passport",
+        "holders": "{{ holders }} titulares",
+        "max_census_resum": "Tienes un grupo de {{ uniTokenHolders }} posibles votantes de {{ symbol }}. Para reducir el costo del proceso de votación, puedes optar por limitar el número total de participantes en el proceso de votación (ahora mismo {{ titulares }}, {{ porcentaje }}% del total de votantes potenciales). Esto no afectará a votantes específicos ni reducirá el censo; simplemente reducirá el número máximo de votos que se pueden emitir.",
+        "max_census_slider_arialabel": "Selector deslizante de participación máxima esperada",
+        "max_census_slider_label": "Participación max. esperada:",
+        "max_census_slider_tooltip": "{{ voters }} votantes ({{ percent }}% del total)",
+        "network": "Red",
+        "network_placeholder": "Selecciona una red",
+        "social_description": "Cree un censo de votantes elegibles que proporcione una lista de usuarios de Github.",
+        "social_title": "Censo de Github",
+        "spreadsheet_description": "Datos personalizados, como nombres de usuario y contraseñas, o información personal de los votantes, pueden utilizarse para la autenticación mediante un formulario.",
+        "spreadsheet_title": "Datos personalizados",
+        "token_base_description": "Utiliza un token (basado en EVM) para permitir a los usuarios votar en función de la cantidad que poseen.",
+        "token_base_title": "Basado en tokens",
+        "tokens_placeholder": "Busca o pega la dirección del token",
+        "wallet_address_description": "Identifica a tus votantes por sus direcciones de monedero digital.",
+        "wallet_address_title": "Direcciones de monedero",
+        "weight": "(Peso)",
+        "weighted_voting_description": "Cuando se activa, tu poder de voto se alinea con tu puntuación GPS. Si se desactiva, el voto de cada usuario tiene el mismo peso, establecido en 1 punto.",
+        "weighted_voting_title": "Peso del Voto Basado en GPS"
+      },
+      "confirm": {
+        "anonymous": "Anónimo",
+        "census": "Censo",
+        "census_preview_is_shortened": "(la lista previa está limitada a {{ limit }} resultados)",
+        "census_total_people_one": "Una persona podrá votar en esta votación",
+        "census_total_people_many": "{{ count }} personas podrán votar en esta votación",
+        "census_total_people_other": "{{ count }} personas podrán votar en esta votación",
+        "configuration": "Configuración",
+        "confirmation": "Confirmación",
+        "confirmation_terms_and_conditions": "Acepto los <customLink>términos y condiciones</customLink> de Vocdoni",
+        "confirmation_valid_info": "Confirmo que esta información es correcta y válida",
+        "cost_description": "Basado en diferentes parámetros, como el tamaño del censo, la duración de las elecciones y su comportamiento, aquí veréis el precio de vuestras elecciones.",
+        "cost_title": "Previsión de coste",
+        "create_button": "Crear",
+        "dates": "Fecha",
+        "description": "En esta página, puedes revisar que toda la información sea correcta y editarla en caso de que haya algún error. También puedes verificar el costo del proceso de votación y comprar más créditos en caso de que no tengas suficientes.",
+        "description_election": "Descripción",
+        "edit": "Editar",
+        "election_info": "Información de Votación",
+        "questions_one": "Pregunta",
+        "questions_many": "Preguntas",
+        "questions_other": "Preguntas",
+        "secret_until_the_end": "Secreto hasta el final",
+        "title": "Vista previa y costos de votación",
+        "title_election": "Título",
+        "vote_overwrite": "Sobrescribir voto"
+      },
+      "confirm_spreadsheet_removal": "Seguro? Piensa que al hacerlo se eliminará el fichero que has cargado.",
+      "creating_process": "Creando Proceso de Votación...",
+      "meta": {
+        "description": "Proporciona un título y descripción claros. Esto ayudará a los votantes a entender el propósito de la votación.",
+        "description_helper": "Una breve descripción de tu votación",
+        "description_label": "Descripción",
+        "description_placeholder": "Descripción (opcional)",
+        "title": "Información de la votación",
+        "title_helper": "Título / propósito del proceso de votación",
+        "title_label": "Título",
+        "title_placeholder": "Título del proceso de votación"
+      },
+      "navbar": {
+        "close_form_btn": "Cerrar formulario"
+      },
+      "next_step": "Siguiente",
+      "previous_step": "Anterior",
+      "question": {
+        "add_new_option": "Añadir opción",
+        "add_question": "Añadir pregunta",
+        "delete_option": "Eliminar opcion número {{ option }} de la pregunta {{ question }}",
+        "description": "Agrega las preguntas junto con las opciones que tus votantes deberán elegir. Tienes la flexibilidad de agregar varias preguntas, cada una con un número personalizado de opciones seleccionables.",
+        "description_placeholder": "Escribe aquí una descripción de la pregunta",
+        "option_placeholder": "Opción",
+        "question_delete": "Eliminar pregunta {{ num }}",
+        "title": "Preguntas",
+        "title_placeholder": "Título de tu pregunta"
+      },
+      "question_identifier": "Pregunta {{ num }}",
+      "question_placeholder": "Título de la pregunta {{ num }}",
+      "question_title": "Título",
+      "running_checks": "Ejecutando comprobaciones requeridas, por favor espera...",
+      "spreadsheet": {
+        "download_template_btn": "Descargar plantilla",
+        "download_template_description": "Descarga la plantilla original para completar su lista de votantes ",
+        "preview": {
+          "description": "Los miembros deberan cumplir este formulario para acceder a la votación",
+          "title": "Vista previa del formulario",
+          "upload_new_list": "Subir una nueva lista de votantes"
+        },
+        "requirements": {
+          "list_one": "La primera fila se usará como el nombre de los campos que los votantes deberán rellenar.",
+          "list_two": "Los campos no distinguen entre mayúsculas y minúsculas, los espacios en blanco se ignoraran y los signos diacriticos se transformaran en letras simples.",
+          "list_three": "Si se selecciona 'Voto ponderado', la 1a columna debe ser un entero con el peso de voto del votante.",
+          "title": "Requisitos"
+        },
+        "template": {
+          "email": "Email",
+          "firstname": "Nombre",
+          "lastname": "Apellidos",
+          "weight": "Peso"
+        }
+      },
+      "spreadsheet_total_rows_one": "El censo tiene un solo registro",
+      "spreadsheet_total_rows_many": "",
+      "spreadsheet_total_rows_other": "El censo tiene {{ count }} registros",
+      "steps": {
+        "census": "Censo",
+        "checks": "Organización",
+        "confirm": "Confirmar",
+        "info": "Info",
+        "questions": "Preguntas"
+      },
+      "success_description": "Redirigiéndote a la página del proceso de votación...",
+      "success_title": "Proceso de votación creado con éxito",
+      "web3": {
+        "census_members_one": "<span>1 miembro</span> <text> en el censo</text>",
+        "census_members_many": "",
+        "census_members_other": "<span>{{ count }} miembros</span> <text> en el censo</text>",
+        "your_wallet_is_added": "Tu dirección de billetera se ha añadido automáticamente al censo. Puedes eliminarla si lo deseas."
+      },
+      "weighted": "Voto ponderado"
+    }
+  },
+  "get_voc_tokens": {
+    "authentification_method": "Seleccione su método de autenticación preferido:",
+    "authentification_method_helper": "Puede obtener {{ faucetAmount }} tokens por método de autenticación a la semana",
+    "button": "Solicitar Tokens",
+    "description": "<text>Para agregar más tokens, debe <strong>iniciar sesión</strong> con una cuenta social (para prevenir el mal uso del grifo).</text><text><strong>Solo solicitamos acceso de lectura.</strong></text>",
+    "info": "<text>Si necesita más, contacte a <mailto>info@onvote.app</mailto></text>",
+    "title": "Obtener VOC Tokens"
+  },
+  "gitcoin": {
+    "effective": "20: Efectivo",
+    "more_effective": "25: Más efectivo",
+    "most_effective": "30: Muy efectivo"
+  },
+  "home": {
+    "contactus": {
+      "header": "Contáctanos"
+    },
+    "features": {
+      "header": "Características destacadas"
+    },
+    "process": {
+      "header": "Proceso"
+    },
+    "solutions": {
+      "header": "Soluciones adaptativas"
+    }
+  },
+  "loading": "Cargando...",
+  "login": {
+    "facebook": "Iniciar sesión usando Facebook",
+    "github": "Iniciar sesión con Github",
+    "google": "Iniciar sesión con Google"
+  },
+  "menu": {
+    "create": "Crear Proceso",
+    "create_process": "Nuevo proceso"
+  },
+  "meta": {
+    "length": "{{ length }} / {{ maxLength }} caracteres.",
+    "maxLength": "Longitud máxima alcanzada"
+  },
+  "new_organization": {
+    "create_organization_btn": "Crear Organización",
+    "description1": "Antes de comenzar a crear su proceso de votación, <span>debe crear una organización</span>, es gratuito. Con una organización, podrá crear una amplia gama de elecciones y dar voz a los miembros de su comunidad.",
+    "description2": "Como <span>paquete de bienvenida</span>, recibirá {{ faucetAmount }} tokens gratis para comenzar a utilizar nuestra plataforma.",
+    "name": "Nombre de la organización",
+    "title": "Nueva Organización"
+  },
+  "open_in_explorer": "Abrir en explorador",
+  "organization": {
+    "avatar_alt": "Imagen de avatar de la organización {{ name }}",
+    "elections": "Elecciones",
+    "elections_list_empty": {
+      "alt": "Imagen que ilustra que la organización está vacía",
+      "description": "Al comenzar haciendo tu primera votación, puedes elegir entre diferentes tipos de autenticación para tu voto.",
+      "not_owner": "Esta organización aún no tiene votaciones.",
+      "title": "Crea tu primer proceso de votación"
+    },
+    "title": {
+      "edit": "Editar organización",
+      "read_more": "Expandir título"
+    }
+  },
+  "rainbow": {
+    "group": {
+      "recovery": "Recuperación"
+    },
+    "recovery": "Recuperar cuenta"
+  },
+  "retry": "Reintentar",
+  "uploader": {
+    "click_or_drag_and_drop": "<p1>Sube o arrastra y suelta aqui la lista de votantes</p1><p2>(Formap permitidos: CSV, XLSX y ODS)</p2>",
+    "drop_here": "Suelta aqui"
+  },
+  "web3cards": {
+    "farcaster": {
+      "btn": "Ir a Farcaster.vote",
+      "description": "Con <b>\"Farcaster.vote\"</b> ofrecemos una manera simple y social de votar. Tus miembros solo tienen que votar a través de Farcaster en 2 simples clics. Prueba creando una votación con Farcaster frame",
+      "title": "Farcaster"
+    },
+    "onvote": {
+      "btn": "Crear",
+      "description": "Sistema Web3 de votación <b>segura</b>, <b>sin tasas</b> y <b>transparente</b>. Permite crear <b>censo de tokens, censo multichain, votación anónima</b> y censo sybil-resistant con un tipo de votación flexible.",
+      "title": "Onvote"
+    },
+    "others": {
+      "btn": "Contáctanos",
+      "description": "Hemos construido un conjunto de votaciones que permite una integración fácil con nuestra Blockchain dedicada a votaciones a través de nuestro SDK &; Componentes UI.<br/><br/>¡Empieza a integrarlo ahora!",
+      "title": "Otros"
+    },
+    "plugins": {
+      "btn": "Prueba la Aragon App",
+      "description": "Hemos implementado una <b>solución de votación sin tasas personalizada para la DAO</b> de Aragon, ¡y podemos hacer lo mismo por ti!<br/><br/>Empieza con votación sin tasas!",
+      "title": "Complementos DAO"
+    },
+    "title": "Nuestras soluciones de gobernanza Web3"
+  },
+  "welcome": {
+    "description": "Para empezar, debes registrar tu cuenta y tu SIK (clave de identidad segura) firmando dos transacciones (es seguro y gratuito).",
+    "intro": "Con esta dApp puedes crear votaciones anónimas, seguras y verificables.",
+    "step": {
+      "register": "Registrar cuenta",
+      "sik": "Crear SIK"
+    },
+    "title": "Bienvenido a {{ sitename }}"
+  }
+}

@@ -1,0 +1,516 @@
+{
+  "aside": {
+    "has_already_voted": "Tu voto ha sido registrado correctamente",
+    "is_not_in_census": "No estás en el censo",
+    "not_connected": "No estás conectado",
+    "overwrite_votes_left_one": "Puedes corregir tu voto una vez.",
+    "overwrite_votes_left_many": "",
+    "overwrite_votes_left_other": "Puedes corregir tu voto {{ count }} veces.",
+    "submitting": "Enviando",
+    "verify_vote_on_explorer": "Verifica el voto en el explorador",
+    "votes_one": "<span>1</span> <text>votante</text>",
+    "votes_many": "<span>{{ count }}</span> <text>votantes</text>",
+    "votes_other": "<span>{{ count }}</span> <text>votantes</text>",
+    "votes_weight_one": "<span>1</span> <text>voto</text>",
+    "votes_weight_many": "",
+    "votes_weight_other": "<span>{{ count }}</span> <text>votos</text>",
+    "voting_anonymous_advice": "Por favor, espera mientras sucede la magia 🪄.\nEsto puede tardar varios minutos; no cierres la ventana."
+  },
+  "cc": {
+    "actions": {
+      "cancel": "Cancelar el proceso inmediatamente, sin permitir nuevos votos y sin contar ningún resultado (precaución: no puede revertirse)",
+      "cancel_description": "Cancelando el proceso de votación \"{{ election.title.default }}\"...\nAtención: esta acción no se puede revertir y cancelará los votos que haya recibido.",
+      "continue": "Reanudar el proceso inmediatamente, en caso de que se haya pausado",
+      "continue_description": "Reanudando el proceso de votación \"{{ election.title.default }}\"",
+      "end": "Finalizar el proceso inmediatamente, impidiendo que se presenten nuevos votos, y muestra los resultados de la votación (precaución: no puede revertirse)",
+      "end_description": "Finalizando el proceso de votación \"{{ election.title.default }}\"...\nAtención: esta acción no se puede revertir y los votantes no podrán emitir más votos.",
+      "error_title": "Hubo algún error al ejecutar la transacción",
+      "pause": "Pausar el proceso de votación temporalmente, hasta que se reanude manualmente. Mientras el proceso está en pausa, los votantes no pueden enviar votos.",
+      "pause_description": "Pausando el proceso de votación \"{{ election.title.default }}\"...",
+      "waiting_title": "Esperando la confirmación de la transacción..."
+    },
+    "confirm": {
+      "cancel": "Cancelar",
+      "confirm": "Confirmar Voto",
+      "title": "Confirmar"
+    },
+    "empty": "Aparentemente este proceso no tiene preguntas",
+    "errors": {
+      "wrong_data_description": "Los datos especificados no son correctos",
+      "wrong_data_title": "Datos incorrectos"
+    },
+    "results": {
+      "date_format": "d 'de' MMMM 'de' y 'a' 'las' H:mm",
+      "secret_until_the_end": "Los resultados se harán públicos cuando el proceso finalice el {{ endDate }}.",
+      "title": "Resultados para \"{{ title }}\"",
+      "votes": "Votos: {{ votes }} ({{ percent }})"
+    },
+    "schedule": "Votación desde el {{ begin }} hasta {{ end }}",
+    "spreadsheet": {
+      "access_button": "Identificarse",
+      "anon_sik_helper": "Esto garantiza que la votación sea anónima",
+      "anon_sik_label": "Define una contraseña para tu voto",
+      "close": "Cerrar",
+      "logout": "Cerrar la sesión",
+      "modal_title": "Autenticación"
+    },
+    "statuses": {
+      "canceled": "Cancelada",
+      "ended": "Finalizada",
+      "invalid": "Inválida",
+      "ongoing": "En curso",
+      "paused": "Pausada",
+      "process_unknown": "Desconocido",
+      "results": "Resultados",
+      "upcoming": "Próxima"
+    },
+    "validation": {
+      "choices_count": "Debes seleccionar {{ count }} opciones",
+      "min_length": "Este campo debe tener al menos {{ min }} caracteres",
+      "required": "Este campo es obligatorio"
+    },
+    "vote": {
+      "abstain": "Abstenerse",
+      "button": "Votar",
+      "button_update": "Reenviar voto",
+      "confirm": "Confirma tus selecciones:",
+      "sign": "Firma antes de votar",
+      "voted_description": "Para verificar tu voto, puedes utilizar este identificador único: {{ id }}",
+      "voted_title": "¡Tu voto se ha registrado con éxito!"
+    }
+  },
+  "copy": {
+    "copied_title": "¡Copiado!"
+  },
+  "footer": {
+    "company": "Empresa",
+    "demo": "Tipos de Votación",
+    "demo1": "Elección Simple",
+    "demo2": "Elección Múltiple",
+    "demo3": "Votación por Aprobación",
+    "demo4": "Votación por Clasificación",
+    "demo5": "Presupuestos Participativos",
+    "demo6": "Votación Ponderada",
+    "footer_subtitle": "El Protocolo de Votación Global",
+    "terms_and_privacy": "<link1>Términos de uso</link1> y <link2>Política de privacidad</link2>",
+    "uses_cases": "Casos de Uso",
+    "uses_cases1": "Asambleas Generales de Accionistas (AGMs)",
+    "uses_cases2": "Elecciones",
+    "uses_cases3": "Presupuestos Participativos",
+    "uses_cases4": "Votación Digital",
+    "uses_cases5": "Encuesta Digital Cerrada"
+  },
+  "home": {
+    "benefits": {
+      "card_1": {
+        "description": "Nuestra solución es 10 veces más barata, mejorando la democracia al hacer que la votación sea accesible para todos.",
+        "title": "90% más económico"
+      },
+      "card_2": {
+        "description": "Ahorra tiempo y esfuerzo con nuestros procesos optimizados, disfrutando de menores costos operativos.",
+        "title": "Reduce costes"
+      },
+      "card_3": {
+        "description": "Incrementa la participación con una plataforma fácil de usar, accesible para todos.",
+        "title": "Mayor participación"
+      },
+      "card_4": {
+        "description": "Vota desde cualquier lugar, en cualquier dispositivo. Así de simple.",
+        "title": "Votación sin complicaciones"
+      },
+      "card_5": {
+        "description": "Ten la seguridad de que los métodos criptográficos avanzados garantizan la máxima seguridad mientras se mantiene el anonimato del votante y la integridad del voto.",
+        "title": "Seguridad basada en Blockchain"
+      },
+      "card_6": {
+        "description": "Promover la confianza y la transparencia impulsada por la tecnología blockchain, ofreciendo a los interesados una visibilidad sin igual en la integridad de los procesos de votación.",
+        "title": "Transparente y verificable"
+      },
+      "subtitle_1": "Con Vocdoni, obtienes beneficios diseñados para tus necesidades de votación. Nuestra tecnología facilita la transición hacia la democracia digital para organizaciones, comunidades y gobiernos. Descubre cómo Vocdoni agrega valor:",
+      "title": "Ventajas"
+    },
+    "clients_title": "Más de 100 organizaciones confían en nosotros",
+    "contactus": {
+      "btn": "Contáctanos",
+      "card_1": {
+        "description": "Explica tus necesidades y crearemos una solución personalizada para tus desafíos.",
+        "title": "Soluciones personalizadas para tus necesidades"
+      },
+      "card_2": {
+        "description": "Vocdoni ofrece tanto soluciones de autoservicio como soluciones personalizadas llave-en-mano adaptadas a tus necesidades.",
+        "title": "Te acompañamos en cada paso"
+      },
+      "title": "Trabajemos juntos para encontrar tu votación ideal"
+    },
+    "create_process": {
+      "btn": "Prueba gratis",
+      "helper_1": "Procesos de votación listos en 10 min. para tus votantes y adaptados a móbiles",
+      "helper_2": "Gratis hasta 100 votantes",
+      "subtitle": "La aplicación Vocdoni ofrece una experiencia de votación asequible, fácil de usar y compatible con el GDPR que cualquier persona puede utilizar desde cualquier lugar con su PC, portátil, tableta o teléfono. Impulsado por nuestra propia Blockchain®.",
+      "title": "Votación segura, rápida y verificable"
+    },
+    "demo": {
+      "btn": "Ver demos",
+      "census_type": {
+        "card_1": "Correo electrónico (GMail)",
+        "card_3": "Censo Abierto",
+        "radio": "Censo / Autenticación",
+        "title": "Por Tipo de Censo"
+      },
+      "description": "Explora el poder de Vocdoni con demos interactivas. Experimenta la transición a la democracia digital y encuentra el tipo de votación que necesitas.",
+      "header": "Demostración",
+      "title": "Explora nuestra solución",
+      "use_cases": {
+        "card_1": "Asambleas Generales",
+        "card_2": "Elecciones",
+        "card_3": "Presupuestos Participativos",
+        "card_4": "Votación en línea",
+        "card_5": "Integración de software",
+        "card_6": "Encuestas en línea",
+        "radio": "Por Caso de Uso",
+        "title": "Por Caso de Uso"
+      },
+      "voting_type": {
+        "card_1": "Elección Simple",
+        "card_2": "Elección Múltiple",
+        "card_3": "Voto de Aprobación",
+        "card_4": "Voto de Presupuesto",
+        "card_5": "Votación Clasificada",
+        "card_6": "Votación Ponderada",
+        "radio": "Por Tipo de Votación",
+        "title": "Por Tipo de Votación"
+      }
+    },
+    "faqs": {
+      "faq_1": {
+        "description": "Vocdoni se destaca por su experiencia de usuario fluida, seguridad avanzada y transparencia. Nuestra plataforma utiliza tecnología de vanguardia como pruebas de conocimiento cero y una Blockchain especializada para garantizar una votación segura y anónima, al tiempo que proporciona un proceso de votación rápido, seguro y verificable.",
+        "title": "¿Qué hace único a Vocdoni?"
+      },
+      "faq_2": {
+        "description": "Sí, cumplimos estrictamente con el GDPR, asegurando el tratamiento confidencial y respetuoso de los datos de usuario.",
+        "title": "¿Cumple Vocdoni con el GDPR?"
+      },
+      "faq_3": {
+        "description": "¡Por supuesto! Ofrecemos personalización para integrarse perfectamente con tu marca y sistemas existentes.",
+        "title": "¿Se puede personalizar Vocdoni?"
+      },
+      "faq_4": {
+        "description": "Ofrecemos las bibliotecas Vocdoni SDK y Vocdoni UI Components, diseñadas para una integración fácil con tu software o plataforma. Las creamos para priorizar la facilidad de uso en nombre de los desarrolladores y permitir resultados desde el primer día. Nuestro equipo de expertos te guiará a través del proceso de integración para garantizar una transición fluida y una interrupción mínima en tus operaciones.",
+        "title": "¿Es fácil integrar Vocdoni?"
+      },
+      "faq_5": {
+        "description": "Ofrecemos soporte completo para asegurar que aproveches al máximo nuestra plataforma, desde la configuración inicial hasta el mantenimiento continuo.",
+        "title": "¿Qué soporte ofrece Vocdoni?"
+      },
+      "faq_6": {
+        "description": "Sí, Vocdoni puede manejar elecciones de cualquier tamaño, garantizando un rendimiento confiable y una participación efectiva.",
+        "title": "¿Puede Vocdoni manejar elecciones grandes?"
+      },
+      "faq_7": {
+        "description": "Priorizamos la seguridad usando criptografía avanzada y blockchain para proteger cada voto y mantener la integridad del proceso.",
+        "title": "¿Qué tan seguro es Vocdoni?"
+      },
+      "faq_8": {
+        "description": "Vocdoni garantiza la integridad de cada proceso de votación al registrar cada voto como una transacción de cadena de bloques a prueba de manipulaciones, proporcionando transparencia y verificabilidad a todos los interesados. Las rigurosas medidas de seguridad de Vocdoni protegen contra manipulaciones y fraudes, asegurando que cada voto se registre y cuente con precisión.",
+        "title": "¿Cómo asegura Vocdoni la integridad de los procesos de votación?"
+      },
+      "subtitle": "A continuación encontrarás respuestas a las preguntas más frecuentes de nuestros usuarios. Proporciona claridad y confianza a tu experiencia de votación digital.",
+      "title": "Preguntas Frecuentes"
+    },
+    "features": {
+      "card_1": {
+        "description": "Desde votaciones de opción única hasta elecciones de preferencia múltiple o ponderadas, Vocdoni soporta diversos tipos de votación.",
+        "title": "Diversidad de votaciones"
+      },
+      "card_2": {
+        "description": "Personaliza cada aspecto de tu proceso de votación, desde el branding hasta el diseño de las papeletas, asegurando una integración perfecta con la identidad de tu organización.",
+        "title": "Personalización completa"
+      },
+      "card_3": {
+        "description": "Con interfaces intuitivas y un proceso guiado, Vocdoni garantiza que tanto organizadores como votantes puedan navegar fácilmente por la plataforma desde el primer día.",
+        "title": "Fácil para los usuarios"
+      },
+      "card_4": {
+        "description": "Aseguramos la integridad e identidad del voto con diversos sistemas de autentifación, como de doble factor, cuentas sociales y más.",
+        "title": "Autenticación robusta"
+      },
+      "card_5": {
+        "description": "Crea listas de votantes personalizadas (censos personalizados, OAuth, CRMs, etc.), lo que permite un alcance dirigido y experiencias de votación adaptadas a tu comunidad.",
+        "title": "Censos a medida"
+      },
+      "card_6": {
+        "description": "Nuestra blockchain descentralizada especializada en votaciones protege el anonimato y la privacidad del votante, asegurando un proceso libre de censura e interferencias.",
+        "title": "Protocolo Votación Descentralizado"
+      },
+      "card_7": {
+        "description": "Alcanza a una audiencia diversa con soporte multilingüe para votaciones inclusivas y accesibles, permitiendo a los participantes elegir su idioma preferido.",
+        "title": "Soporte multilenguaje"
+      },
+      "card_8": {
+        "description": "Monitorea los resultados de las votaciones en tiempo real, con actualizaciones y notificaciones instantáneas.",
+        "title": "Resultados instantáneos"
+      },
+      "card_9": {
+        "description": "Permite a los votantes emitir sus votos directamente desde su navegador web, teléfono o tableta, asegurando la accesibilidad y conveniencia para todos los participantes.",
+        "title": "Accesibilidad multiplataforma"
+      },
+      "subtitle_1": "Desbloquea el potencial de Vocdoni: personaliza tus votaciones, asegura elecciones seguras y transparentes, y empodera a los participantes con opciones intuitivas. Experimenta un compromiso mejorado, eficiencia y confianza en cada votación con nuestra aplicación.",
+      "title": "Funcionalidades"
+    },
+    "process": {
+      "description_1": "La aplicación Vocdoni te permite crear un proceso de votación en 4 sencillos pasos.",
+      "description_2": "Con un clic, puedes configurar si deseas votación anónima o resultados de elección en vivo, elegir entre varios tipos de elecciones, cargar tu censo de votantes y mucho más.",
+      "step_1": {
+        "description": "Control total con nuestra plataforma de autoservicio. ¿Necesitas personalización o asistencia? Estamos aquí para ayudarte.",
+        "title": "Inicia tu votación"
+      },
+      "step_2": {
+        "description": "Proceso de creación guiado en todo momento, para seleccionar tu tipo de elección, introducir las preguntas y opciones, seleccionar opciones de configuración y registrar votantes.",
+        "title": "Configura y publica"
+      },
+      "step_3": {
+        "description": "Los votantes participan fácilmente a través de nuestra interfaz amigable, accesible desde cualquier dispositivo.",
+        "title": "Vota"
+      },
+      "step_4": {
+        "description": "Tan fácil como eso. Una vez terminado, los resultados se calcularán automáticamente, se publicarán y estarán disponibles para cualquiera.",
+        "title": "Resultados inmediatos"
+      },
+      "title": "Proceso simple de 4 pasos"
+    },
+    "solutions": {
+      "card_1": {
+        "description": "Optimiza la toma de decisiones con votaciones seguras y transparentes. Engancha a los miembros eficazmente y promueve una cultura de participación.",
+        "title": "Organizaciones"
+      },
+      "card_2": {
+        "description": "Mejora el compromiso comunitario con una plataforma fácil de usar que fomenta la participación activa de todos los miembros.",
+        "title": "Comunidades"
+      },
+      "card_3": {
+        "description": "Aumenta la participación de los votantes, reduce los costes electorales y mejora la confianza ciudadana con procesos de votación seguros y verificables.",
+        "title": "Gobiernos e Instituciones Públicas"
+      },
+      "img_card_1": "Organizaciones",
+      "img_card_2": "Comunidades",
+      "img_card_3": "Gobierno e Instituciones Públicas",
+      "subtitle_1": "Ofrecemos soluciones para una amplia variedad de casos de uso, demostrando la versatilidad de la aplicación Vocdoni.",
+      "title": "Soluciones personalizadas"
+    },
+    "support": {
+      "btn_contact": "Contáctanos",
+      "btn_watch": "Agenda una llamada",
+      "header": "¡Pruebalo ahora! Obtén soporte gratuito.",
+      "helper_1": "Soporte de expertos gratuito por teléfono",
+      "helper_2": "Reduce costes y horas de trabajo",
+      "helper_3": "Precios competitivos",
+      "subtitle": "Podemos ayudarte a crear la experiencia de votación perfecta",
+      "title": "Da voz a tu comunidad"
+    }
+  },
+  "home_features": {
+    "anonymous_description": "¡Desbloquea la verdadera democracia con zkSNARKs! Los participantes pueden emitir sus votos con completa anonimato, asegurando que cada voz sea escuchada sin compromisos.",
+    "anonymous_title": "Anónimo",
+    "census_startegy_description": "Elabora la estrategia de censo perfecta combinando variables para determinar la elegibilidad de los votantes. Aprovecha combinaciones de múltiples tokens de redes basadas en EVM y otros datos.",
+    "census_startegy_title": "Estrategias de censo",
+    "descentralized_description": "Onvote funciona sobre una red descentralizada especializada construida para votaciones digitales. Todo el proceso es universalmente verificable y los votos son completamente a prueba de manipulaciones.",
+    "descentralized_title": "Descentralizado",
+    "flexible_description": "Onvote utiliza el Protocolo Vocdoni, un protocolo de votación altamente flexible que permite múltiples métodos de votación (como simple, cuadrático o clasificado), así como otras personalizaciones para ajustarse a tus necesidades únicas. Puedes liberar todo su potencial con nuestro SDK fácil de usar.",
+    "flexible_title": "Protocolo Flexible",
+    "gas_less_description": "Pagar por votar está mal. Para eliminar barreras y mantener la gobernanza, votar en Onvote es sin coste de gas. Solo los iniciadores de los procesos de votación asumen el costo.",
+    "gas_less_title": "Votación sin gas",
+    "multichain_description": "Combina tokens a través de cualquier cadena para maximizar el poder de votación. ¡Por ejemplo, los titulares pueden votar con todos sus $UNI en Polygon, Optimism, Ethereum y más!",
+    "multichain_title": "Multicadena",
+    "open_source_description": "Creemos que algo tan importante como tu voto debe ser de código abierto y auditado públicamente para ser confiable. Liberamos todo bajo AGPLv3.",
+    "open_source_title": "Código Abierto",
+    "title": "<p1>¿Estás</p1><p2>listo para una nueva Era en la gobernanza Web3?</p2>"
+  },
+  "link": {
+    "discord": "Enlace al Discord de Vocdoni",
+    "github": "Enlace al Github de Vocdoni",
+    "twitter": "Enlace al Twitter de Vocdoni"
+  },
+  "menu": {
+    "burger_aria_label": "menú de usuario",
+    "connect": "Conectar",
+    "copy_aria_label": "copiar dirección",
+    "documentation": "Documentación",
+    "get_more": "Obtener más",
+    "languages": "Idiomas",
+    "languages_list": "Mostrar idiomas disponibles",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "my_org": "Mi Org",
+    "new_process": "Crear Votación",
+    "organization": "Editar Organización",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "wallet": "Billetera"
+  },
+  "process": {
+    "census": "Censo",
+    "census_strategies": {
+      "csp": "CSP",
+      "spreadsheet": "CSV",
+      "token": "Token ({{ token.type, uppercase }}): {{ token.symbol }}",
+      "web3": "Direcciones web3"
+    },
+    "created_by": "Creado por",
+    "date": {
+      "ended": "Finalizado",
+      "ends": "Finaliza",
+      "relative": "{{ date, relative(past: hace %time; future: en %time) }}",
+      "relative_inline": "{{ status }} {{ date, relative(past: hace %time; future: en %time) }}",
+      "starts": "Empieza"
+    },
+    "gitcoin": {
+      "all_of_them": "(Todos ellos)",
+      "gps_score": "Gitcoin Passport Score: Puntuación mín. {{score}}",
+      "needed_stamps": "Stamps necesarios",
+      "one_of_them": "(Al menos uno de ellos)"
+    },
+    "is_anonymous": {
+      "description": "Identidad 100% anonimizada",
+      "title": "Anónimo"
+    },
+    "is_invalid": "Este proceso tiene datos no válidos y no se puede cargar",
+    "no_description": "No hay ninguna descripción proporcionada",
+    "people_in_census_one": "Un votante",
+    "people_in_census_many": "",
+    "people_in_census_other": "{{ count }} votantes",
+    "questions": "Preguntas",
+    "results": "Resultados",
+    "schedule": "HORARIO",
+    "share_caption": "Acabo de emitir mi voto para {{ title }}!!",
+    "share_title": "Compartir en {{ network }}",
+    "spreadsheet": {
+      "confirm": {
+        "abstain_count_one": "",
+        "abstain_count_many": "",
+        "abstain_count_other": "",
+        "blank_vote": "",
+        "description": "Antes de emitir tu voto, revisa que todo esté correcto.",
+        "option": "<strong>Opción {{ number }}:</strong> {{ answer }}",
+        "options": "<strong>Selección:</strong> {{ answers }}",
+        "question": "<strong>Pregunta {{ number }}:</strong> {{ answer }}"
+      }
+    },
+    "state": "ESTADO",
+    "status": {
+      "active": "Votación en curso",
+      "canceled": "Proceso cancelado",
+      "ended": "Finalizado",
+      "paused": "Proceso pausado",
+      "paused_description": "No es posible votar en este momento.",
+      "unknown": "Desconocido",
+      "upcoming": "Próximo"
+    },
+    "strategy": "Estrategia",
+    "success_modal": {
+      "btn": "Finalizar",
+      "text": "<p>Tu voto ha sido emitido y almacenado de forma segura en la cadena de bloques de Vocdoni. <verify>Puedes comprobarlo aquí</verify>.</p><p>La democracia es importante, puedes compartirla con tu comunidad y amigos:</p>",
+      "title": "Voto emitido correctamente!"
+    },
+    "total_census_size": "{{maxCensusSize}} votantes permitidos de {{censusSize}} totales en el censo",
+    "total_census_size_tooltip": "El número máximo de votantes permitidos está limitado a {{maxCensusSize}} de un censo de {{censusSize}} ({{percent}}% del total). Solo los primeros {{maxCensusSize}} votantes pueden votar.",
+    "voters": "Votantes"
+  },
+  "process_actions": {
+    "cancel": "Cancelar proceso",
+    "end": "Finalizar proceso",
+    "pause": "Pausar",
+    "start": "Iniciar/Reanudar"
+  },
+  "process_create": {
+    "anonymous": {
+      "legal_disclaimer": "Este sistema de votación utiliza el poder de votación basado en tokens (público en la cadena de bloques). Al seleccionar la opción de 'Votación anónima', los pesos se agruparán en saldos similares y se redondearán hacia abajo. Esto sacrifica cierta precisión, pero preserva la identidad anónima al desvincular los saldos de las carteras.",
+      "legal_note": "Aviso legal: "
+    },
+    "census": {
+      "crm_description": "Si ya tienes tu propio CRM, podemos integrarlo para permitir que tu comunidad vote con las mismas credenciales.",
+      "crm_title": "Integración CRM",
+      "database_description": "Integra la votación directamente con los usuarios en tu base de datos. Una manera sencilla de votar para tu comunidad.",
+      "database_title": "Base de Datos",
+      "digital_certificate_description": "Apoyamos diferentes certificados digitales, para obtener la máxima seguridad y validación de identidad.",
+      "digital_certificate_title": "Certificado Digital",
+      "email_description": "Los votantes validarán su correo electrónico autenticándose en su cuenta de Google Mail (OAuth).",
+      "email_title": "Por Correo Electrónico",
+      "mandatory_max_census_size": "Al menos un votante debe ser seleccionado",
+      "others_description": "¿Necesitas una solución específica? Podemos ayudarte con una integración personalizada que se adapte a tus necesidades.",
+      "others_title": "Otros",
+      "phone_description": "Los votantes tendrán que validar su teléfono móvil, ingresando su número y el código de verificación que recibirán.",
+      "phone_title": "Por Número de Teléfono",
+      "total_tokens_one": "1 token",
+      "total_tokens_many": "",
+      "total_tokens_other": "{{ count }} tokens"
+    },
+    "creation_steps": {
+      "census_created": "Creación del censo",
+      "done": "Creación del proceso",
+      "sign_tx": "Firmar transacción"
+    },
+    "creation_steps_description": "Necesitas firmar las transacciones para crear el proceso de votación en la cadena de bloques de Vocdoni. No cierres esta ventana.",
+    "creation_steps_title": "Progreso",
+    "modal_pro": {
+      "description": "<p><bold>{{ reason, ucfirst }}</bold> es una característica Premium</p>",
+      "error": "Error sending email, try it later or contact us at <email>info@vocdoni.org</email>",
+      "form_btn": "ENVIAR",
+      "form_description": "Puedes proporcionarnos tu información de contacto y nosotros te contactaremos para hablar sobre tus necesidades",
+      "form_email_label": "Correo electrónico:",
+      "form_email_placeholder": "Tu correo electrónico",
+      "form_name_label": "Nombre:",
+      "form_name_placeholder": "Tu nombre",
+      "scheudle_btn": "RESERVAR AHORA",
+      "scheudle_description": "Programa una llamada de 30 minutos con nuestro equipo para discutir tu proyecto de votación. Te guiaremos a través del proceso y adaptaremos soluciones para satisfacer tus necesidades específicas.",
+      "success": "Correo enviado correctamente",
+      "title": "Contáctanos"
+    },
+    "preview": {
+      "accuracy": "Precisión de los Saldos de Censo Anónimo: "
+    },
+    "question": {
+      "approval_voting": {
+        "description": "Los votantes pueden votar por tantos candidatos como aprueben, y el candidato con más votos gana.",
+        "title": "Votación por Aprobación"
+      },
+      "borda_count": {
+        "description": "Los votantes clasifican a los candidatos, y se asignan puntos en función de su clasificación. El candidato con más puntos gana.",
+        "title": "<p>Elección por Rango</p><p>(Cuenta Borda)</p>"
+      },
+      "multi_choice": {
+        "description": "Los votantes eligen un número predefinido de opciones, y la opción con más votantes gana.",
+        "title": "<p>Votación Plurinominal</p><p>(Elección Múltiple)</p>"
+      },
+      "others": {
+        "description": "Seleccione otros tipos de votación (opciones múltiples, votación de aprobación, presupuestos participativos, elección clasificada...)",
+        "title": "Otros"
+      },
+      "participation_budgeting": {
+        "description": "Los votantes pueden distribuir un número predefinido entre todas las opciones/proyectos (que representan el presupuesto total disponible) como deseen.",
+        "title": "Presupuesto Participativo"
+      },
+      "single_choice": {
+        "description": "Los votantes eligen una opción/candidato, y la opción/candidato con más votos gana.",
+        "title": "<p>Votación Plurinominal</p><p>(Elección Individual)</p>"
+      },
+      "voting_type": {
+        "description": "Selecciona el tipo de votación para esta elección. Si no encuentras lo que necesitas, puedes contactarnos.",
+        "pro": "",
+        "pro_census": "",
+        "title": "Tipos de Votación"
+      }
+    }
+  },
+  "share": {
+    "copy": "Copiar",
+    "election_share_btn_text": "Comparte",
+    "election_share_text": "¡Mira esta elección!",
+    "icon_title": "compartir enlace",
+    "mail_subject": "Plataforma de votación",
+    "modal_title": "Compartir con amigos"
+  },
+  "use_read_more": {
+    "read_less": "Leer menos",
+    "read_more": "Leer más"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "vocdoni-voting-page",
+  "private": true,
+  "license": "unlicense",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "lint": "tsc",
+    "build": "vite build",
+    "preview": "vite preview",
+    "translations": "i18next"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "2.8.2",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@rainbow-me/rainbowkit": "^2.0.7",
+    "@tanstack/react-query": "^5.35.1",
+    "@vocdoni/chakra-components": "~0.8.0",
+    "@vocdoni/sdk": "~0.8.0",
+    "date-fns": "^3.6.0",
+    "ethers": "^5.7.2",
+    "framer-motion": "^11.1.9",
+    "i18next": "^23.11.4",
+    "i18next-browser-languagedetector": "^7.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.51.4",
+    "react-i18next": "^14.1.1",
+    "react-icons": "^5.2.1",
+    "react-markdown": "^9.0.1",
+    "react-player": "^2.16.0",
+    "react-router-dom": "^6.9.0",
+    "remark-gfm": "^4.0.0",
+    "viem": "2.x",
+    "wagmi": "^2.8.5",
+    "web-vitals": "^3.3.0",
+    "yup": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.30",
+    "@types/react-dom": "^18.0.11",
+    "@types/react-transition-group": "^4.4.10",
+    "@vitejs/plugin-react": "^4.2.1",
+    "i18next-parser": "^8.13.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.0.2",
+    "vite": "^5.2.11",
+    "vite-tsconfig-paths": "^4.0.7"
+  }
+}
