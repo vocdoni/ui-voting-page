@@ -16,3 +16,8 @@ export const CensusTypes = [
   CensusTypeCsp as CensusType,
   CensusTypeGitcoin as CensusType,
 ]
+
+export type CensusMeta = {
+  type: CensusType
+  fields: string[]
+}
