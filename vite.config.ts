@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
 
   let vocdoniEnvironment = process.env.VOCDONI_ENVIRONMENT
   if (!vocdoniEnvironment) {
-    vocdoniEnvironment = 'dev'
+    vocdoniEnvironment = 'stg'
   }
 
   const outDir = process.env.BUILD_PATH || 'dist'
@@ -18,7 +18,7 @@ export default defineConfig(({ mode }) => {
   try {
     pids = JSON.parse(process.env.PROCESS_IDS)
   } catch (e) {
-    pids = ['88ef4916f98b38d2bc91b89928f78cbab3e4b1949e28787ec7a3020000000001']
+    pids = ['4ae20a8eb4caa52f5588f7bb9f3c6d6b7cf003a5b03f4589edea100000000290']
   }
 
   return {
