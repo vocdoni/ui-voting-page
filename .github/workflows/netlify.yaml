@@ -32,7 +32,7 @@ jobs:
         with:
           publish-dir: './dist'
           # keep as a non existant branch, because we don't want to publish this
-          production-branch: develop
+          production-branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: 'Vocdoni DEV Deploy from GitHub Actions'
           enable-pull-request-comment: true
