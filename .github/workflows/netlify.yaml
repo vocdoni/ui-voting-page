@@ -1,0 +1,47 @@
+name: Build and Deploy to Netlify
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  build-stg:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - name: Install
+        run: yarn
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Build voting page stg
+        run: yarn build
+        env:
+          VOCDONI_ENVIRONMENT: stg
+          PROCESS_IDS: [
+            "4ae20a8eb4caa52f5588f7bb9f3c6d6b7cf003a5b03f4589edea100000000290",
+            "4ae20a8eb4caa52f5588f7bb9f3c6d6b7cf003a5b03f4589edea10000000027d"
+          ]
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v2.0
+        with:
+          publish-dir: './dist'
+          # keep as a non existant branch, because we don't want to publish this
+          production-branch: develop
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: 'Vocdoni DEV Deploy from GitHub Actions'
+          enable-pull-request-comment: true
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: eba70567-ca33-4504-9603-0ddc8c4437c6
+        timeout-minutes: 1
