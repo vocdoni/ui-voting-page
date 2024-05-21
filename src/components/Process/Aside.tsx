@@ -181,7 +181,7 @@ const ProcessAside = () => {
   )
 }
 
-export const VoteButton = ({ setQuestionsTab, ...props }: { setQuestionsTab: () => void }) => {
+export const VoteButton = ({ ...props }) => {
   const { t } = useTranslation()
 
   const { election, connected, isAbleToVote, isInCensus } = useElection()
@@ -240,13 +240,12 @@ export const VoteButton = ({ setQuestionsTab, ...props }: { setQuestionsTab: () 
         </ConnectButton.Custom>
       )}
       {census?.type === 'spreadsheet' && !connected && <SpreadsheetAccess />}
-      {isAbleToVote && (
+      {(isAbleToVote || (connected && census?.type === 'spreadsheet')) && (
         <>
           <CVoteButton
-            w='60%'
+            w='100%'
             fontSize='lg'
             height='50px'
-            onClick={setQuestionsTab}
             mb={4}
             sx={{
               '&::disabled': {

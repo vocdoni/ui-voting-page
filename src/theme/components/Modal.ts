@@ -36,9 +36,6 @@ const baseStyle = definePartsStyle({
     justifyContent: 'center',
     padding: 0,
     mt: 8,
-    '& button': {
-      px: 16,
-    },
   },
 })
 

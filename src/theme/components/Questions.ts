@@ -66,6 +66,23 @@ const baseStyle = definePartsStyle({
       display: 'flex',
       flexDirection: 'column',
       gap: 10,
+
+      counterReset: 'indice',
+
+      '& > div': {
+        position: 'relative',
+        counterIncrement: 'indice',
+
+        '&::before': {
+          content: `counter(indice) "."`,
+          position: 'absolute',
+          top: { base: '9.2px', md: '37.7px' },
+          left: { base: 3, md: 10 },
+          fontSize: '24px',
+          fontWeight: 'extrabold',
+          color: 'process.questions.title',
+        },
+      },
     },
   },
 
@@ -73,6 +90,13 @@ const baseStyle = definePartsStyle({
     width: { base: 'full', xl: '80%' },
     m: 0,
     mx: 'auto',
+    p: { base: 3, md: 10 },
+    borderRadius: 'xl',
+    boxShadow: 'var(--box-shadow)',
+
+    '& > div:first-of-type': {
+      display: 'none',
+    },
 
     '& > div': {
       display: 'flex',
@@ -88,14 +112,12 @@ const baseStyle = definePartsStyle({
     lineHeight: 1.3,
     color: 'process.questions.title',
     mb: 5,
+
+    ml: 6,
   },
 
   description: {
-    px: 1,
-    color: 'process.questions.description',
-    textAlign: 'start',
-    fontSize: 'xl',
-    mb: '50px',
+    display: 'none',
   },
 
   stack: {
@@ -106,61 +128,20 @@ const baseStyle = definePartsStyle({
       alignItems: 'center',
       gap: 2,
       w: { lg2: '99%' },
+
       _hover: {
         bgColor: '#eee',
       },
 
-      '& span:nth-of-type(1)': {
-        display: { base: 'none', md: 'block' },
-        position: 'absolute',
-        width: '30px',
-        height: '30px',
-        background: 'transparent',
-        ml: '10px',
-        borderRadius: 'none',
-
-        '&[data-checked=""]': {
-          '&:before': {
-            display: 'none',
-            bgColor: 'transparent',
-          },
-
-          background: 'process.questions.question_selected.bg',
-          borderColor: 'white',
-          borderWidth: '1px',
-          bgSize: '15px',
-          bgRepeat: 'no-repeat',
-          bgPosition: 'center',
-          bgImage: checkIcon,
-
-          _hover: {
-            border: 'none',
-            background: 'process.questions.question_selected.bg',
-            borderColor: 'process.questions.question_selected.bg',
-            bgSize: '15px',
-            bgRepeat: 'no-repeat',
-            bgPosition: 'center',
-            bgImage: checkIcon,
-          },
-        },
-
-        '&[data-disabled=""]': {
-          bgColor: 'white !important',
-          border: 'none !important',
-        },
-      },
       '& span:nth-of-type(2)': {
         p: 2,
-        pl: { md: 12 },
+        pl: 9,
         m: 0,
-        border: '1px solid lightgray',
         w: '100%',
         borderRadius: 'lg',
       },
 
       '& input:checked ~ span:nth-of-type(2)': {
-        color: 'process.questions.question_selected.color',
-        bgColor: 'process.questions.question_selected.bg',
         w: '100%',
       },
     },
@@ -168,6 +149,41 @@ const baseStyle = definePartsStyle({
 
   radio: {
     borderRadius: 'full !important',
+    border: '1px solid red',
+    display: 'block',
+    position: 'absolute',
+    width: '20px',
+    height: '20px',
+    background: 'transparent',
+    ml: '10px',
+
+    '&[data-checked=""]': {
+      '&:before': {
+        display: 'none',
+        bgColor: 'transparent',
+      },
+
+      background: 'red',
+      borderColor: 'white',
+      borderWidth: '1px',
+      bgSize: '15px',
+      bgRepeat: 'no-repeat',
+      bgPosition: 'center',
+      bgImage: checkIcon,
+      _hover: {
+        border: 'none',
+        background: 'process.questions.question_selected.bg',
+        borderColor: 'process.questions.question_selected.bg',
+        bgSize: '15px',
+        bgRepeat: 'no-repeat',
+        bgPosition: 'center',
+        bgImage: checkIcon,
+      },
+    },
+
+    '&[data-disabled=""]': {
+      border: '1px solid lightgray',
+    },
   },
 
   checkbox: {

@@ -38,16 +38,16 @@ export const theme = extendTheme(vtheme, {
         },
       },
       '.md-sizes': {
-        '& :first-of-type': {
+        '&:first-of-type': {
           mt: 0,
         },
-        'h2[level="1"]': {
+        h1: {
           fontSize: '26px',
         },
-        'h2[level="2"]': {
+        h2: {
           fontSize: '23px',
         },
-        'h3[level="3"]': {
+        h3: {
           fontSize: '20px',
         },
         p: {
@@ -82,7 +82,7 @@ export const theme = extendTheme(vtheme, {
         px: {
           base: '10px',
           sm: '20px',
-          md: '80px',
+          lg2: '30px',
         },
       },
 

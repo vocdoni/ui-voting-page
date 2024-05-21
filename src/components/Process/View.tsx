@@ -1,10 +1,8 @@
 import {
-  AspectRatio,
   Box,
   Button,
   Flex,
   Link,
-  ListItem,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -12,69 +10,36 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
   Text,
-  UnorderedList,
   useDisclosure,
   useMultiStyleConfig,
 } from '@chakra-ui/react'
-import { ElectionQuestions, ElectionResults, environment, useConfirm } from '@vocdoni/chakra-components'
+import { ElectionQuestions, environment, useConfirm } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
-import { ElectionResultsTypeNames, ElectionStatus, PublishedElection } from '@vocdoni/sdk'
+import { ElectionResultsTypeNames, PublishedElection } from '@vocdoni/sdk'
 import { useEffect, useRef, useState } from 'react'
 import { FieldValues } from 'react-hook-form'
 import { Trans, useTranslation } from 'react-i18next'
 import { IoWarningOutline } from 'react-icons/io5'
-import ReactPlayer from 'react-player'
-import { FacebookShare, RedditShare, TelegramShare, TwitterShare } from '~components/Share'
-import ProcessAside, { VoteButton } from './Aside'
+import { VoteButton } from './Aside'
 import Header from './Header'
+import omniumLogo from '/assets/omnium.png'
 import confirmImg from '/assets/spreadsheet-confirm-modal.jpg'
-import successImg from '/assets/spreadsheet-success-modal.jpg'
 
 export const ProcessView = () => {
   const { t } = useTranslation()
-  const { election } = useElection()
-  const videoRef = useRef<HTMLDivElement>(null)
-  const [videoTop, setVideoTop] = useState(false)
   const electionRef = useRef<HTMLDivElement>(null)
-  const [tabIndex, setTabIndex] = useState(0)
   const [formErrors, setFormErrors] = useState<any>(null)
-
-  const handleTabsChange = (index: number) => {
-    setTabIndex(index)
-  }
-
-  const setQuestionsTab = () => setTabIndex(0)
+  const [numErrors, setNumErrors] = useState<null | number>(null)
+  const [numQuestions, setNumQuestions] = useState(0)
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!videoRef.current) return
+    const form = electionRef?.current?.getElementsByTagName('form')
 
-      const rect = videoRef.current.getBoundingClientRect()
-      if (rect.top <= 84) {
-        setVideoTop(true)
-      } else {
-        setVideoTop(false)
-      }
+    if (form) {
+      setNumQuestions(form[0].children.length)
     }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-
-  // If the election is finished show the results tab
-  useEffect(() => {
-    if (election?.status === ElectionStatus.RESULTS) {
-      setTabIndex(1)
-    }
-  }, [election])
+  }, [electionRef.current])
 
   // Move the focus of the screen to the first unanswered question
   useEffect(() => {
@@ -85,6 +50,8 @@ export const ProcessView = () => {
 
     if (inputs) {
       const inputsArray = Array.from(inputs)
+
+      setNumErrors(inputsArray.length)
 
       // The formErrors object has keys that represent the error names, so we filter the inputsArray with the names of the inputs
       const inputsError = inputsArray.filter((el) => el.name === Object.keys(formErrors)[0])
@@ -100,6 +67,8 @@ export const ProcessView = () => {
         top: newPosition,
         behavior: 'smooth',
       })
+    } else {
+      setNumErrors(null)
     }
   }, [formErrors])
 
@@ -108,80 +77,27 @@ export const ProcessView = () => {
       <Box className='site-wrapper' mb={44}>
         <Header />
 
-        {election?.streamUri && (
-          <Box
-            maxW={{ base: '800px', lg: videoTop ? '400px' : '800px' }}
-            ml={videoTop ? 'auto' : 'none'}
-            position={{ base: 'unset', lg: 'sticky' }}
-            top={{ base: 0, lg2: 20 }}
-            zIndex={100}
-          >
-            <AspectRatio ref={videoRef} ratio={16 / 9}>
-              <ReactPlayer url={election?.streamUri} width='100%' height='100%' playing controls />
-            </AspectRatio>
-          </Box>
+        <Box ref={electionRef} mb='50px' pt='25px'>
+          <ElectionQuestions
+            onInvalid={(args) => {
+              setFormErrors(args)
+            }}
+            confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
+          />
+        </Box>
+        {numErrors && (
+          <Text mb={3} textAlign='center' color='red'>
+            Has de contestar totes les votacions per poder finalitzar el procés. N'has respost{' '}
+            {numQuestions - numErrors} {''}
+            de {numQuestions}.
+          </Text>
         )}
-
-        <Flex direction={{ base: 'column', lg2: 'row' }} alignItems='start' gap={{ lg2: 10 }} mt={20}>
-          <Tabs
-            order={{ base: 2, lg2: 1 }}
-            variant='process'
-            index={tabIndex}
-            onChange={handleTabsChange}
-            flexGrow={0}
-            flexShrink={0}
-            flexBasis={{ base: '100%', md: '60%', lg: '65%', lg2: '70%', xl2: '75%' }}
-            w='full'
-          >
-            <TabList>
-              <Tab>{t('process.questions')}</Tab>
-              {election?.status !== ElectionStatus.CANCELED && <Tab>{t('process.results')}</Tab>}
-            </TabList>
-            <TabPanels>
-              <TabPanel>
-                <Box ref={electionRef} className='md-sizes' mb='100px' pt='25px'>
-                  <ElectionQuestions
-                    onInvalid={(args) => {
-                      setFormErrors(args)
-                    }}
-                    confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
-                  />
-                </Box>
-                <Box position='sticky' bottom={0} left={0} pb={1} pt={1} display={{ base: 'none', lg2: 'block' }}>
-                  <VoteButton setQuestionsTab={setQuestionsTab} />
-                </Box>
-              </TabPanel>
-              <TabPanel mb={20}>
-                <ElectionResults />
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
-          <Flex
-            flexGrow={1}
-            flexDirection='column'
-            alignItems={{ base: 'center', lg2: 'start' }}
-            order={{ base: 1, lg2: 2 }}
-            gap={0}
-            mx={{ base: 'auto', lg2: 0 }}
-            position={{ lg2: 'sticky' }}
-            top={'300px'}
-            mt={10}
-            maxW={{ lg2: '290px' }}
-            mb={10}
-          >
-            <ProcessAside />
-          </Flex>
-        </Flex>
-      </Box>
-      <Box
-        position='sticky'
-        bottom={0}
-        left={0}
-        bgColor='process.aside.aside_footer_mbl_border'
-        pt={1}
-        display={{ base: 'block', lg2: 'none' }}
-      >
-        <VoteButton setQuestionsTab={setQuestionsTab} />
+        <Text mb={10} textAlign='center'>
+          {t('process.helper')}
+        </Text>
+        <Box position='sticky' bottom={0} left={0} pb={1} pt={1}>
+          <VoteButton />
+        </Box>
       </Box>
 
       <SuccessVoteModal />
@@ -212,8 +128,6 @@ const SuccessVoteModal = () => {
   if (!election || !voted) return null
 
   const verify = environment.verifyVote(env, voted)
-  const url = encodeURIComponent(document.location.href)
-  const caption = t('process.share_caption', { title: election?.title.default })
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -221,7 +135,7 @@ const SuccessVoteModal = () => {
       <ModalContent>
         <ModalHeader>
           <Text>{t('process.success_modal.title')}</Text>
-          <Box bgImage={successImg} />
+          <Box bgImage={omniumLogo} width='200px' mx='auto' />
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
@@ -232,20 +146,6 @@ const SuccessVoteModal = () => {
               p: <Text mb={2} />,
             }}
           />
-          <UnorderedList listStyleType='none' display='flex' justifyContent='center' gap={6} mt={6} mb={2} ml={0}>
-            <ListItem>
-              <TwitterShare url={url} caption={caption} />
-            </ListItem>
-            <ListItem>
-              <FacebookShare url={url} caption={caption} />
-            </ListItem>
-            <ListItem>
-              <TelegramShare url={url} caption={caption} />
-            </ListItem>
-            <ListItem>
-              <RedditShare url={url} caption={caption} />
-            </ListItem>
-          </UnorderedList>
         </ModalBody>
 
         <ModalFooter mt={4}>

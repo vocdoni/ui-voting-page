@@ -9,28 +9,26 @@ const process = defineStyle({
 })
 
 const primary = defineStyle((props) => {
-  const { colorScheme } = props
-
   return {
     borderRadius: 'full',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     gap: 2,
-    bgColor: colorScheme !== 'gray' ? `${colorScheme}.500` : `${colorScheme}.100`,
+    bgColor: '#FF6320',
 
-    color: colorScheme !== 'gray' ? 'white' : 'black',
+    color: 'white',
 
     _hover: {
-      bgColor: colorScheme !== 'gray' ? `${colorScheme}.600` : `${colorScheme}.200`,
+      bgColor: '#E5531C',
 
       _disabled: {
-        bgColor: colorScheme !== 'gray' ? `${colorScheme}.600` : `${colorScheme}.200`,
+        bgColor: '#FFA07A',
       },
     },
 
     _active: {
-      bgColor: colorScheme !== 'gray' ? `${colorScheme}.700` : `${colorScheme}.300`,
+      bgColor: '#FF8A50',
     },
   }
 })

@@ -8,10 +8,19 @@ const baseStyle = definePartsStyle({
     w: '100%',
     borderRadius: 30,
     fontSize: { base: 'lg', xl: 'md' },
-    bgColor: 'process.aside.vote_btn_bg',
+
+    color: 'white',
 
     _hover: {
-      bgColor: 'process.aside.vote_btn_bg',
+      bgColor: '#E5531C',
+
+      _disabled: {
+        bgColor: '0.8',
+      },
+    },
+
+    _active: {
+      bgColor: '#FF8A50',
     },
   },
 
@@ -41,15 +50,22 @@ const baseStyle = definePartsStyle({
   submit: {
     width: '60%',
     mx: 'auto',
-    bgColor: 'process.identify_btn.bg',
-    color: 'process.identify_btn.color',
     borderRadius: '30px',
 
+    px: 16,
+    bgColor: '#FF6320',
+    color: 'white',
+
     _hover: {
-      bgColor: 'process.identify_btn.bg_hover',
+      bgColor: '#E5531C',
+
+      _disabled: {
+        opacity: '0.8',
+      },
     },
+
     _active: {
-      bgColor: 'process.identify_btn.bg_active',
+      bgColor: '#FF8A50',
     },
   },
 })
