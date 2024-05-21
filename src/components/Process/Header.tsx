@@ -4,7 +4,7 @@ import { useClient, useElection, useOrganization } from '@vocdoni/react-provider
 import { CensusType, ElectionStatus, Strategy } from '@vocdoni/sdk'
 import { ReactNode, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { FaInfoCircle, FaRegArrowAltCircleLeft } from 'react-icons/fa'
+import { FaInfoCircle } from 'react-icons/fa'
 import { IoWarningOutline } from 'react-icons/io5'
 import { useReadMoreMarkdown } from '~components/Layout/use-read-more'
 import { ShareModalButton } from '~components/Share'
@@ -12,8 +12,6 @@ import { ActionsMenu } from './ActionsMenu'
 import { StampIcon } from './Census/StampIcon'
 import { CreatedBy } from './CreatedBy'
 import { ProcessDate } from './Date'
-
-const GoBack = () => <Icon as={FaRegArrowAltCircleLeft} mt='1.5px' boxSize={5} />
 
 type CensusInfo = { size: number; weight: bigint; type: CensusType }
 

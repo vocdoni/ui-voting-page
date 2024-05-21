@@ -1,6 +1,6 @@
 import { useClient } from '@vocdoni/react-providers'
 import { lazy } from 'react'
-import { createHashRouter, RouteObject, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router-dom'
 import { ProcessIds } from '~constants'
 import Error404 from '~elements/Error404'
 import RouteError from '~elements/RouteError'
@@ -31,7 +31,7 @@ export const RoutesProvider = () => {
     home.loader = async () => await client.fetchElection(ProcessIds[0])
   }
 
-  const router = createHashRouter([
+  const router = createBrowserRouter([
     {
       path: '/',
       element: <Layout />,
