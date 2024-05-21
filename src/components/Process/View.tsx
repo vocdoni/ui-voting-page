@@ -28,9 +28,10 @@ import confirmImg from '/assets/spreadsheet-confirm-modal.jpg'
 
 export const ProcessView = () => {
   const { t } = useTranslation()
+  const { isAbleToVote } = useElection()
   const electionRef = useRef<HTMLDivElement>(null)
   const [formErrors, setFormErrors] = useState<any>(null)
-  const [numErrors, setNumErrors] = useState<null | number>(null)
+  const [numErrors, setNumErrors] = useState<number>(0)
   const [numQuestions, setNumQuestions] = useState(0)
 
   useEffect(() => {
@@ -43,15 +44,18 @@ export const ProcessView = () => {
 
   // Move the focus of the screen to the first unanswered question
   useEffect(() => {
-    if (!formErrors) return
+    if (!formErrors) {
+      setNumErrors(0)
+      return
+    }
+
+    setNumErrors(Object.keys(formErrors).length)
 
     // We gather all the inputs
     const inputs = electionRef?.current?.getElementsByTagName('input')
 
     if (inputs) {
       const inputsArray = Array.from(inputs)
-
-      setNumErrors(inputsArray.length)
 
       // The formErrors object has keys that represent the error names, so we filter the inputsArray with the names of the inputs
       const inputsError = inputsArray.filter((el) => el.name === Object.keys(formErrors)[0])
@@ -67,8 +71,6 @@ export const ProcessView = () => {
         top: newPosition,
         behavior: 'smooth',
       })
-    } else {
-      setNumErrors(null)
     }
   }, [formErrors])
 
@@ -85,17 +87,19 @@ export const ProcessView = () => {
             confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
           />
         </Box>
-        {numErrors && (
+        {!!numErrors && (
           <Text mb={3} textAlign='center' color='red'>
             Has de contestar totes les votacions per poder finalitzar el procés. N'has respost{' '}
             {numQuestions - numErrors} {''}
             de {numQuestions}.
           </Text>
         )}
-        <Text mb={10} textAlign='center'>
-          {t('process.helper')}
-        </Text>
-        <Box position='sticky' bottom={0} left={0} pb={1} pt={1}>
+        {isAbleToVote && (
+          <Text mb={10} textAlign='center'>
+            {t('process.helper')}
+          </Text>
+        )}
+        <Box position='sticky' bottom={0} left={0} pb={1} pt={1} onClick={() => setFormErrors(0)}>
           <VoteButton />
         </Box>
       </Box>
@@ -172,7 +176,7 @@ const ConfirmVoteModal = ({ election, answers }: { election: PublishedElection; 
         <Box bgImage={`url(${confirmImg})`} />
       </ModalHeader>
       <ModalBody display='flex' flexDirection='column' gap={5} p={0} mb={2}>
-        <Text>{t('process.spreadsheet.confirm.description')}</Text>
+        <Text textAlign='center'>{t('process.spreadsheet.confirm.description')}</Text>
         <Flex
           flexDirection='column'
           maxH='200px'
@@ -248,9 +252,7 @@ const ConfirmVoteModal = ({ election, answers }: { election: PublishedElection; 
         <Button onClick={cancel!} variant='ghost' sx={styles.cancel}>
           {t('cc.confirm.cancel')}
         </Button>
-        <Button onClick={proceed!} sx={styles.confirm}>
-          {t('cc.confirm.confirm')}
-        </Button>
+        <Button onClick={proceed!}>{t('cc.confirm.confirm')}</Button>
       </ModalFooter>
     </>
   )

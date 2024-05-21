@@ -76,7 +76,7 @@
       "confirm": "Confirma les teves seleccions:",
       "sign": "Signa abans de votar",
       "voted_description": "Per verificar el teu vot, pots utilitzar aquesta identificació única: {{ id }}",
-      "voted_title": "El teu vot s'ha registrat amb èxit!"
+      "voted_title": "El teu vot ha estat registrat correctament. Els resultats es faran públics durant l’Assemblea General del divendres 28 de juny."
     }
   },
   "copy": {
@@ -145,7 +145,7 @@
         "abstain_count_many": "",
         "abstain_count_other": "",
         "blank_vote": "",
-        "description": "Abans de votar, reviseu que tot sigui correcte.",
+        "description": "Confirma el teu vot",
         "option": "<strong>Opció {{ number }}:</strong> {{ answer }}",
         "options": "<strong>Selecció:</strong> {{ answers }}",
         "question": "<strong>Pregunta {{ number }}:</strong> {{ answer }}"

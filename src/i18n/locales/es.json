@@ -145,7 +145,7 @@
         "abstain_count_many": "",
         "abstain_count_other": "",
         "blank_vote": "",
-        "description": "Antes de emitir tu voto, revisa que todo esté correcto.",
+        "description": "Confrima tu voto",
         "option": "<strong>Opción {{ number }}:</strong> {{ answer }}",
         "options": "<strong>Selección:</strong> {{ answers }}",
         "question": "<strong>Pregunta {{ number }}:</strong> {{ answer }}"

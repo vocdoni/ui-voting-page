@@ -10,8 +10,8 @@ const baseStyle = definePartsStyle({
     py: 7,
     mb: '30px',
     borderRadius: '8px',
-    color: 'process.questions.alert.color',
-    bgColor: 'process.questions.alert.bg',
+    color: '#FF6320',
+    bgColor: 'transparent',
     display: 'grid',
     columnGap: 4,
     justifyContent: 'center',
@@ -19,7 +19,7 @@ const baseStyle = definePartsStyle({
     gridTemplateColumns: 'auto 1fr',
     gridTemplateRows: 'auto auto',
     boxShadow: 'var(--box-shadow-darker)',
-    border: 'none',
+    border: '1px solid #FF6320',
 
     '& span': {
       color: 'white',
@@ -31,34 +31,14 @@ const baseStyle = definePartsStyle({
 
   alertTitle: {
     fontSize: 'lg',
-    mb: 3,
   },
 
   alertDescription: {
-    display: 'flex',
-    gap: 2,
-    flexDirection: { base: 'column', lg2: 'row' },
-    justifyContent: 'center',
-    alignItems: { md: 'center' },
-    whiteSpace: { base: 'pre-wrap', lg2: 'nowrap' },
+    display: 'none',
   },
 
   alertLink: {
-    display: 'block',
-    w: '100%',
-    px: 2,
-    py: 1,
-    textOverflow: 'ellipsis',
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    color: 'process.questions.alert.link_color',
-    backgroundColor: 'process.questions.alert.link_bg',
-    borderRadius: 'md',
-    fontSize: 'sm',
-
-    _hover: {
-      textDecoration: 'none',
-    },
+    display: 'none',
   },
 
   wrapper: {

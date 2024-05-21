@@ -22,6 +22,10 @@ const baseStyle = definePartsStyle({
     _active: {
       bgColor: '#FF8A50',
     },
+
+    _disabled: {
+      border: '1px solid red',
+    },
   },
 
   disconnect: {
@@ -66,6 +70,10 @@ const baseStyle = definePartsStyle({
 
     _active: {
       bgColor: '#FF8A50',
+    },
+
+    _disabled: {
+      border: '1px solid red',
     },
   },
 })

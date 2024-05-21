@@ -239,8 +239,8 @@ export const VoteButton = ({ ...props }) => {
           }}
         </ConnectButton.Custom>
       )}
-      {census?.type === 'spreadsheet' && !connected && <SpreadsheetAccess />}
-      {(isAbleToVote || (connected && census?.type === 'spreadsheet')) && (
+      {census?.type === 'spreadsheet' && !isConnected && <SpreadsheetAccess />}
+      {isAbleToVote !== false && isConnected && (
         <>
           <CVoteButton
             w='100%'

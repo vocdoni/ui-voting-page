@@ -4,14 +4,8 @@ import { useElection } from '@vocdoni/react-providers'
 import { Strategy } from '@vocdoni/sdk'
 import { ReactNode, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { FaInfoCircle } from 'react-icons/fa'
-import { IoWarningOutline } from 'react-icons/io5'
 import { useReadMoreMarkdown } from '~components/Layout/use-read-more'
 import { StampIcon } from './Census/StampIcon'
-import { CreatedBy } from './CreatedBy'
-import { ProcessDate } from './Date'
-
-type CensusInfo = { size: number; weight: bigint; type: CensusType }
 import omniumHeader from '/assets/omnium-header.png'
 import omniumLogo from '/assets/omnium-logo.png'
 
