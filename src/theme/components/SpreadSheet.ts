@@ -8,7 +8,6 @@ const baseStyle = definePartsStyle({
     w: '100%',
     borderRadius: 30,
     fontSize: { base: 'lg', xl: 'md' },
-
     color: 'white',
 
     _hover: {
@@ -29,8 +28,10 @@ const baseStyle = definePartsStyle({
   },
 
   disconnect: {
-    w: 'min-content',
-    textDecoration: 'underline',
+    w: '100%',
+    textDecoration: 'none',
+    bgColor: 'white',
+    color: 'red',
 
     _hover: {
       textDecoration: 'none',
@@ -42,7 +43,6 @@ const baseStyle = definePartsStyle({
   label: {
     textTransform: 'none',
   },
-
   body: {
     display: 'flex',
     flexDirection: 'column',

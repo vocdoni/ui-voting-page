@@ -239,23 +239,25 @@ export const VoteButton = ({ ...props }) => {
           }}
         </ConnectButton.Custom>
       )}
-      {census?.type === 'spreadsheet' && !isConnected && <SpreadsheetAccess />}
-      {isAbleToVote !== false && isConnected && (
-        <>
-          <CVoteButton
-            w='100%'
-            fontSize='lg'
-            height='50px'
-            mb={4}
-            sx={{
-              '&::disabled': {
-                opacity: '0.8',
-              },
-            }}
-          />
-          {isWeighted && <VoteWeight />}
-        </>
-      )}
+      <Flex flexDirection='column' gap={5} w='100%'>
+        {census?.type === 'spreadsheet' && !isAbleToVote && <SpreadsheetAccess />}
+        {isAbleToVote && (
+          <>
+            <CVoteButton
+              w='100%'
+              fontSize='lg'
+              height='50px'
+              mb={4}
+              sx={{
+                '&::disabled': {
+                  opacity: '0.8',
+                },
+              }}
+            />
+            {isWeighted && <VoteWeight />}
+          </>
+        )}
+      </Flex>
     </Flex>
   )
 }

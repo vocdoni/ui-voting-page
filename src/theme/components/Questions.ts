@@ -57,7 +57,7 @@ const baseStyle = definePartsStyle({
           content: `counter(indice) "."`,
           position: 'absolute',
           top: { base: '9.2px', md: '37.7px' },
-          left: { base: 3, md: 10 },
+          left: { base: '20px', md: '45px' },
           fontSize: '24px',
           fontWeight: 'extrabold',
           color: 'process.questions.title',
@@ -93,7 +93,7 @@ const baseStyle = definePartsStyle({
     color: 'process.questions.title',
     mb: 5,
 
-    ml: 6,
+    ml: '43px',
   },
 
   description: {

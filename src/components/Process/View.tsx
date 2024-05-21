@@ -24,7 +24,6 @@ import { IoWarningOutline } from 'react-icons/io5'
 import { VoteButton } from './Aside'
 import Header from './Header'
 import omniumLogo from '/assets/omnium.png'
-import confirmImg from '/assets/spreadsheet-confirm-modal.jpg'
 
 export const ProcessView = () => {
   const { t } = useTranslation()
@@ -173,10 +172,9 @@ const ConfirmVoteModal = ({ election, answers }: { election: PublishedElection; 
   return (
     <>
       <ModalHeader>
-        <Box bgImage={`url(${confirmImg})`} />
+        <Text textAlign='center'>{t('process.spreadsheet.confirm.description')}</Text>
       </ModalHeader>
       <ModalBody display='flex' flexDirection='column' gap={5} p={0} mb={2}>
-        <Text textAlign='center'>{t('process.spreadsheet.confirm.description')}</Text>
         <Flex
           flexDirection='column'
           maxH='200px'
