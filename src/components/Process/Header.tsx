@@ -1,5 +1,5 @@
 import { Box, Flex, Image, Text } from '@chakra-ui/react'
-import { ElectionDescription, ElectionStatusBadge } from '@vocdoni/chakra-components'
+import { ElectionStatusBadge } from '@vocdoni/chakra-components'
 import { useElection } from '@vocdoni/react-providers'
 import { Strategy } from '@vocdoni/sdk'
 import { ReactNode, useEffect, useState } from 'react'
@@ -67,18 +67,22 @@ const ProcessHeader = () => {
           <ElectionStatusBadge px={4} justifyContent='center' fontWeight='bold' w='min-content' whiteSpace='nowrap' />
           {daysToEndElection !== -1 && <Text>{t('process.days_to_end', { count: daysToEndElection })}</Text>}
         </Flex>
-        <Flex flexDirection='column'>
-          {!election?.description?.default.length && (
-            <Text textAlign='center' mt={5} color='process.no_description'>
-              {t('process.no_description')}
-            </Text>
-          )}
-          <Box className='md-sizes'>
-            <ReadMoreMarkdownWrapper className='md-sizes' from='rgba(250, 250, 250, 0)' to='rgba(250, 250, 250, 1)'>
-              <ElectionDescription mb={0} fontSize='lg' lineHeight={1.5} color='process.description' />
-            </ReadMoreMarkdownWrapper>
-          </Box>
-          <ReadMoreMarkdownButton colorScheme='primary' alignSelf='center' />
+        <Flex flexDirection='column' gap={4} fontSize='18px'>
+          <Text>
+            Benvingut/da a la pàgina de votacions per actualitzar la composició de membres de la Junta Directiva.
+          </Text>
+          <Text>
+            S’ha presentat una sola candidatura per a les eleccions a la Junta Directiva, conformada per 19 persones.
+            Les votacions es fan pel sistema de llistes obertes, és a dir, cal indicar el sentit de la votació persona a
+            persona.
+          </Text>
+          <Text>
+            Per poder emetre correctament els vostres vots cal que respongueu les diferents votacions i cliqueu el botó
+            “Finalitzar la votació” que trobareu al final d’aquesta pàgina.
+          </Text>
+          <Text as='h1' color='#FF6320' fontSize='32px' fontWeight='extrabold' mt={10}>
+            Eleccions a la Junta Directiva
+          </Text>
         </Flex>
       </Box>
     </Box>

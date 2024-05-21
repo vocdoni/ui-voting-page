@@ -247,7 +247,6 @@ export const VoteButton = ({ ...props }) => {
               w='100%'
               fontSize='lg'
               height='50px'
-              mb={4}
               sx={{
                 '&::disabled': {
                   opacity: '0.8',
