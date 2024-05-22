@@ -128,6 +128,7 @@
     "days_to_end_one": "El proceso acaba mañana",
     "days_to_end_many": "El proceso acaba en {{ count }} días",
     "days_to_end_other": "El proceso acaba en {{ count }} días",
+    "description": "<p>Bienvenido/a a la página de votaciones para actualizar la composición de miembros de la Junta Directiva.</p><p> Se ha presentado una sola candidatura para las elecciones a la Junta Directiva, conformada por 19 personas. Las votaciones se hacen por el sistema de listas abiertas, es decir, hay que indicar el sentido de la votación persona a persona.</p><p> Para poder emitir correctamente vuestros votos, es necesario que respondáis las diferentes votaciones y hagáis clic en el botón “Finalizar la votación” que encontraréis al final de esta página.</p><h1>Elecciones a la Junta Directiva</h1>",
     "gitcoin": {
       "all_of_them": "(Todos ellos)",
       "gps_score": "Gitcoin Passport Score: Puntuación mín. {{score}}",
@@ -135,9 +136,10 @@
       "one_of_them": "(Al menos uno de ellos)"
     },
     "helper": "Una vez completado, recuerden presionar el botón 'Finalizar la votación' que se encuentra al final de esta página y confirmar la elección.",
+    "helper_error_one": "Has de contestar todas las votaciones para poder finalizar el proceso. Has respondido {{count}} de {{count2}}.",
+    "helper_error_many": "Has de contestar todas las votaciones para poder finalizar el proceso. Has respondido {{count}} de {{count2}}.",
+    "helper_error_other": "Has de contestar todas las votaciones para poder finalizar el proceso. Has respondido {{count}} de {{count2}}.",
     "is_invalid": "Este proceso tiene datos no válidos y no se puede cargar",
-    "no_description": "No hay ninguna descripción proporcionada",
-    "share_caption": "Acabo de emitir mi voto para {{ title }}!!",
     "share_title": "Compartir en {{ network }}",
     "spreadsheet": {
       "confirm": {

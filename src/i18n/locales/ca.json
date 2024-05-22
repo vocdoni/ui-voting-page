@@ -128,6 +128,7 @@
     "days_to_end_one": "El procés acaba demà",
     "days_to_end_many": "El procés acaba en {{ count }} dies",
     "days_to_end_other": "El procés acaba en {{ count }} dies",
+    "description": "<p>Benvingut/da a la pàgina de votacions per actualitzar la composició de membres de la Junta Directiva.</p><p> S’ha presentat una sola candidatura per a les eleccions a la Junta Directiva, conformada per 19 persones. Les votacions es fan pel sistema de llistes obertes, és a dir, cal indicar el sentit de la votació persona a persona.</p><p> Per poder emetre correctament els vostres vots cal que respongueu les diferents votacions i cliqueu el botó “Finalitzar la votació” que trobareu al final d’aquesta pàgina.</p><h1>Eleccions a la Junta Directiva</h1>",
     "gitcoin": {
       "all_of_them": "(Tots ells)",
       "gps_score": "Gitcoin Passport Score: Puntuació mínima {{score}}",
@@ -135,9 +136,10 @@
       "one_of_them": "(Almenys un d'ells)"
     },
     "helper": "Un cop completat, recordeu prémer el botó “Finalitzar la votació” que es troba al final d’aquesta pàgina i confirmeu l’elecció.",
+    "helper_error_one": "Has de contestar totes les votacions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
+    "helper_error_many": "Has de contestar totes les votacions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
+    "helper_error_other": "Has de contestar totes les votacions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
     "is_invalid": "Aquest procés té dades no vàlides i per tant no pot carregar-se",
-    "no_description": "No hi ha cap descripció proporcionada",
-    "share_caption": "Acabo d'emetre el meu vot a {{ title }}!!",
     "share_title": "Comparteix a {{ network }}",
     "spreadsheet": {
       "confirm": {

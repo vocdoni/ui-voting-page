@@ -88,9 +88,7 @@ export const ProcessView = () => {
         </Box>
         {!!numErrors && (
           <Text mb={3} textAlign='center' color='red'>
-            Has de contestar totes les votacions per poder finalitzar el procés. N'has respost{' '}
-            {numQuestions - numErrors} {''}
-            de {numQuestions}.
+            .{t('process.helper_error', { count: numQuestions - numErrors, count2: numQuestions })}
           </Text>
         )}
         {isAbleToVote && (
