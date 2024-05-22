@@ -78,7 +78,9 @@ export const ProcessView = () => {
     <>
       <Flex justifyContent='end' gap={1} mb={3}>
         <a href={VocdoniAppURL}>
-          <Button colorScheme='pink'>Admin</Button>
+          <Button bgColor='white' color='black' boxShadow='2px 2px 2px 2px lightgray' _hover={{ bgColor: '#f1f1f1' }}>
+            Admin
+          </Button>
         </a>
 
         {connected && (
