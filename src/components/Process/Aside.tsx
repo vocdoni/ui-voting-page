@@ -240,7 +240,7 @@ export const VoteButton = ({ ...props }) => {
         </ConnectButton.Custom>
       )}
       <Flex flexDirection='column' gap={5} w='100%'>
-        {census?.type === 'spreadsheet' && !isAbleToVote && <SpreadsheetAccess />}
+        {census?.type === 'spreadsheet' && !connected && !isAbleToVote && <SpreadsheetAccess />}
         {isAbleToVote && (
           <>
             <CVoteButton

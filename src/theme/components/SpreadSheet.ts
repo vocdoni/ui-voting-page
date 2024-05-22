@@ -21,18 +21,13 @@ const baseStyle = definePartsStyle({
     _active: {
       bgColor: '#FF8A50',
     },
-
-    _disabled: {
-      border: '1px solid red',
-    },
   },
 
   disconnect: {
-    w: '100%',
     textDecoration: 'none',
     bgColor: 'white',
     color: 'red',
-
+    fontSize: '20px',
     _hover: {
       textDecoration: 'none',
     },

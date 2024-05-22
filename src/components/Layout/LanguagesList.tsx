@@ -46,7 +46,8 @@ export const LanguagesMenu = () => {
             as={Button}
             aria-label={t('menu.burger_aria_label')}
             variant='rounded-ghost'
-            sx={{ span: { margin: 'px' } }}
+            // sx={{ span: { margin: 'px' } }}
+            pr={0}
             rightIcon={
               isOpen ? <Icon ml={1} as={FaChevronUp} boxSize={3} /> : <Icon ml={1} as={FaChevronDown} boxSize={3} />
             }

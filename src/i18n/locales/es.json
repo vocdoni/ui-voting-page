@@ -51,7 +51,7 @@
       "anon_sik_helper": "Esto garantiza que la votación sea anónima",
       "anon_sik_label": "Define una contraseña para tu voto",
       "close": "Cerrar",
-      "logout": "Cerrar la sesión",
+      "logout": "⎋",
       "modal_title": "Autenticación"
     },
     "statuses": {
@@ -76,7 +76,7 @@
       "confirm": "Confirma tus selecciones:",
       "sign": "Firma antes de votar",
       "voted_description": "Para verificar tu voto, puedes utilizar este identificador único: {{ id }}",
-      "voted_title": "¡Tu voto se ha registrado con éxito!"
+      "voted_title": "Tu voto ha sido registrado correctamente. Los resultados se harán públicos durante la Asamblea General del viernes 28 de junio."
     }
   },
   "copy": {

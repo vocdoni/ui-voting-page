@@ -51,7 +51,7 @@
       "anon_sik_helper": "Això garanteix que el teu vot sigui anònim",
       "anon_sik_label": "Defineix una contrasenya per al teu vot",
       "close": "Tanca",
-      "logout": "Tanca la sessió",
+      "logout": "⎋",
       "modal_title": "Autenticació"
     },
     "statuses": {
@@ -148,9 +148,9 @@
         "abstain_count_other": "",
         "blank_vote": "",
         "description": "Confirma el teu vot",
-        "option": "<strong>Opció {{ number }}:</strong> {{ answer }}",
+        "option": "<strong>Opció:</strong> {{ answer }}",
         "options": "<strong>Selecció:</strong> {{ answers }}",
-        "question": "<strong>Pregunta {{ number }}:</strong> {{ answer }}"
+        "question": "<strong><span>{{ question }}</span>:</strong> {{ answer }}"
       }
     },
     "status": {

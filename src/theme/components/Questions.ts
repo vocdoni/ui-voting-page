@@ -22,7 +22,7 @@ const baseStyle = definePartsStyle({
     border: '1px solid #FF6320',
 
     '& span': {
-      color: 'white',
+      color: '#FF6320',
       ml: { base: 2, lg: 10, xl: 2 },
       gridRow: '1/3',
       gridColumn: '1/2',
@@ -129,7 +129,7 @@ const baseStyle = definePartsStyle({
 
   radio: {
     borderRadius: 'full !important',
-    border: '1px solid red',
+    border: '1px solid lightgray',
     display: 'block',
     position: 'absolute',
     width: '20px',
@@ -143,7 +143,7 @@ const baseStyle = definePartsStyle({
         bgColor: 'transparent',
       },
 
-      background: 'red',
+      background: '#28A745',
       borderColor: 'white',
       borderWidth: '1px',
       bgSize: '15px',

@@ -14,20 +14,21 @@ import {
   useDisclosure,
   useMultiStyleConfig,
 } from '@chakra-ui/react'
-import { ElectionQuestions, environment, useConfirm } from '@vocdoni/chakra-components'
+import { ElectionQuestions, environment, SpreadsheetAccess, useConfirm } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
 import { ElectionResultsTypeNames, PublishedElection } from '@vocdoni/sdk'
 import { useEffect, useRef, useState } from 'react'
 import { FieldValues } from 'react-hook-form'
 import { Trans, useTranslation } from 'react-i18next'
 import { IoWarningOutline } from 'react-icons/io5'
+import { VocdoniAppURL } from '~constants'
 import { VoteButton } from './Aside'
 import Header from './Header'
 import omniumLogo from '/assets/omnium.png'
 
 export const ProcessView = () => {
   const { t } = useTranslation()
-  const { isAbleToVote } = useElection()
+  const { isAbleToVote, connected } = useElection()
   const electionRef = useRef<HTMLDivElement>(null)
   const [formErrors, setFormErrors] = useState<any>(null)
   const [numErrors, setNumErrors] = useState<number>(0)
@@ -74,35 +75,44 @@ export const ProcessView = () => {
   }, [formErrors])
 
   return (
-    <Box>
-      <Box className='site-wrapper' mb={44}>
-        <Header />
+    <>
+      <Flex justifyContent='end' gap={1} mb={3}>
+        <a href={VocdoniAppURL}>
+          <Button colorScheme='pink'>Admin</Button>
+        </a>
 
-        <Box ref={electionRef} mb='50px' pt='25px'>
-          <ElectionQuestions
-            onInvalid={(args) => {
-              setFormErrors(args)
-            }}
-            confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
-          />
-        </Box>
-        {!!numErrors && (
-          <Text mb={3} textAlign='center' color='red'>
-            .{t('process.helper_error', { count: numQuestions - numErrors, count2: numQuestions })}
-          </Text>
+        {connected && (
+          <Box>
+            <SpreadsheetAccess />
+          </Box>
         )}
-        {isAbleToVote && (
-          <Text mb={10} textAlign='center'>
-            {t('process.helper')}
-          </Text>
-        )}
-        <Box position='sticky' bottom={0} left={0} pb={1} pt={1} onClick={() => setFormErrors(0)}>
-          <VoteButton />
-        </Box>
+      </Flex>
+      <Header />
+
+      <Box ref={electionRef} mb='50px' pt='25px'>
+        <ElectionQuestions
+          onInvalid={(args) => {
+            setFormErrors(args)
+          }}
+          confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
+        />
+      </Box>
+      {!!numErrors && (
+        <Text mb={3} textAlign='center' color='red'>
+          .{t('process.helper_error', { count: numQuestions - numErrors, count2: numQuestions })}
+        </Text>
+      )}
+      {isAbleToVote && (
+        <Text mb={10} textAlign='center'>
+          {t('process.helper')}
+        </Text>
+      )}
+      <Box position='sticky' bottom={0} left={0} pb={1} pt={1} onClick={() => setFormErrors(0)}>
+        <VoteButton />
       </Box>
 
       <SuccessVoteModal />
-    </Box>
+    </>
   )
 }
 
@@ -175,61 +185,27 @@ const ConfirmVoteModal = ({ election, answers }: { election: PublishedElection; 
       <ModalBody display='flex' flexDirection='column' gap={5} p={0} mb={2}>
         <Flex
           flexDirection='column'
-          maxH='200px'
+          maxH='400px'
           overflowY='scroll'
           boxShadow='rgba(128, 128, 128, 0.42) 1px 1px 1px 1px'
           px={2}
-          borderRadius='lg2'
+          borderRadius='lg'
         >
           {election.questions.map((q, i) => (
-            <Box key={i}>
-              <Box py={2}>
-                <Text display='flex' flexDirection='column' gap={1} mb={1}>
-                  <Trans
-                    i18nKey='process.spreadsheet.confirm.question'
-                    components={{
-                      span: <Text as='span' fontWeight='bold' whiteSpace='nowrap' />,
-                    }}
-                    values={{
-                      answer: q.title.default,
-                      number: i + 1,
-                    }}
-                  />
-                </Text>
-                {election.resultsType.name === ElectionResultsTypeNames.SINGLE_CHOICE_MULTIQUESTION ? (
-                  <Text display='flex' flexDirection='column' gap={1}>
-                    <Trans
-                      i18nKey='process.spreadsheet.confirm.option'
-                      components={{
-                        span: <Text as='span' fontWeight='bold' whiteSpace='nowrap' />,
-                      }}
-                      values={{
-                        answer: q.choices[Number(answers[i])].title.default,
-                        number: i + 1,
-                      }}
-                    />
-                  </Text>
-                ) : (
-                  <Text display='flex' flexDirection='column' gap={1}>
-                    <Trans
-                      i18nKey='process.spreadsheet.confirm.options'
-                      components={{
-                        span: <Text as='span' fontWeight='bold' whiteSpace='nowrap' />,
-                      }}
-                      values={{
-                        answers:
-                          answers[0].length === 0
-                            ? t('process.spreadsheet.confirm.blank_vote')
-                            : answers[0]
-                                .map((a: string) => q.choices[Number(a)].title.default)
-                                .map((a: string) => `- ${a}`)
-                                .join('<br />'),
-                      }}
-                    />
-                  </Text>
-                )}
-              </Box>
-              {i + 1 !== election.questions.length && <Box h='1px' bgColor='lightgray' />}
+            <Box key={i} mb={2} mt={i === 0 ? 4 : 0}>
+              <Text display='flex' flexDirection='row' gap={1} mb={1}>
+                <Trans
+                  i18nKey='process.spreadsheet.confirm.question'
+                  components={{
+                    span: <Text as='span' fontWeight='bold' whiteSpace='nowrap' />,
+                  }}
+                  values={{
+                    question: q.title.default,
+                    answer: q.choices[Number(answers[i])].title.default,
+                    number: i + 1,
+                  }}
+                />
+              </Text>
             </Box>
           ))}
         </Flex>
