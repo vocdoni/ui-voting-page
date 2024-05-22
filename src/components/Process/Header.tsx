@@ -1,23 +1,15 @@
-import { Box, Flex, Image, Text } from '@chakra-ui/react'
+import { Box, Flex, Text } from '@chakra-ui/react'
 import { ElectionStatusBadge } from '@vocdoni/chakra-components'
 import { useElection } from '@vocdoni/react-providers'
 import { Strategy } from '@vocdoni/sdk'
 import { ReactNode, useEffect, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
-import { useReadMoreMarkdown } from '~components/Layout/use-read-more'
 import { StampIcon } from './Census/StampIcon'
 import omniumHeader from '/assets/omnium-header.png'
-import omniumLogo from '/assets/omnium-logo.png'
 
 const ProcessHeader = () => {
   const { t } = useTranslation()
   const { election } = useElection()
-  const { ReadMoreMarkdownWrapper, ReadMoreMarkdownButton } = useReadMoreMarkdown(
-    'rgba(242, 242, 242, 0)',
-    'rgba(242, 242, 242, 1)',
-    600,
-    20
-  )
   const [daysToEndElection, setDaysToEndElection] = useState(-1)
 
   useEffect(() => {
@@ -43,25 +35,25 @@ const ProcessHeader = () => {
   return (
     <Box mb={10}>
       <Box
+        bgImage={omniumHeader}
         w='100%'
-        maxW={{ base: '150px', md: '200px', lg2: '300px' }}
-        marginLeft={{ lg2: '70px' }}
-        maxH='300px'
-        overflow='hidden'
-        mb={{ base: 3, md: 5, lg2: 8 }}
-      >
-        <Image src={omniumLogo} w='100%' h='auto' objectFit='cover' alt='omnium logo' />
-      </Box>
-      <Box
+        h='200px'
+        bgPosition='center'
+        bgSize='cover'
+        bgRepeat='no-repeat'
+        mb={{ base: 5, lg2: 8 }}
+        borderTopRadius='20px'
+      />
+      {/* <Box
         w='100%'
-        maxH={{ base: '100px', md: '250px' }}
+        maxH={{ base: '300px', md: '250px' }}
         mx='auto'
         overflow='hidden'
         borderTopRadius='20px'
         mb={{ base: 5, lg2: 8 }}
       >
-        <Image src={omniumHeader} w='100%' h='auto' alt='assemblea general omium' />
-      </Box>
+        <Image src={omniumHeader} w='100%' h='auto' alt='assemblea general omium' objectFit='fill' />
+      </Box> */}
       <Box>
         <Flex flexDirection={{ base: 'column', sm: 'row' }} gap={{ base: 3, sm: 5 }} justifyContent='start' mb={10}>
           <ElectionStatusBadge px={4} justifyContent='center' fontWeight='bold' w='min-content' whiteSpace='nowrap' />

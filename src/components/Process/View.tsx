@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Flex,
+  Image,
   Link,
   Modal,
   ModalBody,
@@ -24,6 +25,7 @@ import { IoWarningOutline } from 'react-icons/io5'
 import { VocdoniAppURL } from '~constants'
 import { VoteButton } from './Aside'
 import Header from './Header'
+import omniumLogoHeader from '/assets/omnium-logo.png'
 import omniumLogo from '/assets/omnium.png'
 
 export const ProcessView = () => {
@@ -76,7 +78,15 @@ export const ProcessView = () => {
 
   return (
     <>
-      <Flex justifyContent='end' gap={1} mb={3}>
+      <Flex justifyContent='end' alignItems='center' gap={1} mb={{ base: 5, lg2: 8 }}>
+        <Image
+          src={omniumLogoHeader}
+          maxW={{ base: '150px', md: '250px', lg: '300px' }}
+          mr='auto'
+          h='auto'
+          alt='omnium logo'
+        />
+
         <a href={VocdoniAppURL}>
           <Button bgColor='white' color='black' boxShadow='2px 2px 2px 2px lightgray' _hover={{ bgColor: '#f1f1f1' }}>
             Admin
