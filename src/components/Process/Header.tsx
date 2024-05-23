@@ -1,7 +1,7 @@
 import { Box, Flex, Icon, Image, Text, Tooltip } from '@chakra-ui/react'
 import { ElectionDescription, ElectionSchedule, ElectionStatusBadge, ElectionTitle } from '@vocdoni/chakra-components'
 import { useClient, useElection, useOrganization } from '@vocdoni/react-providers'
-import { CensusType, ElectionStatus, Strategy } from '@vocdoni/sdk'
+import { CensusType, ElectionStatus, InvalidElection, PublishedElection, Strategy } from '@vocdoni/sdk'
 import { ReactNode, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FaInfoCircle } from 'react-icons/fa'
@@ -33,7 +33,7 @@ const ProcessHeader = () => {
   useEffect(() => {
     ;(async () => {
       try {
-        if (!election?.census?.censusId || !client) return
+        if (election instanceof InvalidElection || !election?.census?.censusId || !client) return
         const censusInfo: CensusInfo = await client.fetchCensusInfo(election.census.censusId)
         setCensusInfo(censusInfo)
       } catch (e) {
@@ -44,11 +44,15 @@ const ProcessHeader = () => {
   }, [election, client])
 
   const showOrgInformation = !loaded || (loaded && organization?.account?.name)
-  const showTotalCensusSize = censusInfo?.size && election?.maxCensusSize && election.maxCensusSize < censusInfo.size
+  const showTotalCensusSize =
+    election instanceof PublishedElection &&
+    censusInfo?.size &&
+    election?.maxCensusSize &&
+    election.maxCensusSize < censusInfo.size
 
   return (
     <Box mb={10}>
-      {election?.header && (
+      {election instanceof PublishedElection && election?.header && (
         <Box w='100%' mx='auto' maxH='300px' my='30px' overflow='hidden'>
           <Image src={election?.header} w='100%' h='auto' objectFit='cover' />
         </Box>
@@ -88,7 +92,7 @@ const ProcessHeader = () => {
             </Box>
           </Flex>
           <Flex flexDirection='column'>
-            {!election?.description?.default.length && (
+            {election instanceof PublishedElection && !election?.description?.default.length && (
               <Text textAlign='center' mt={5} color='process.no_description'>
                 {t('process.no_description')}
               </Text>
@@ -117,7 +121,7 @@ const ProcessHeader = () => {
           }}
         >
           <Box flexDir='row' display='flex' justifyContent='space-between' w={{ lg2: 'full' }}>
-            {election?.status !== ElectionStatus.CANCELED ? (
+            {election instanceof PublishedElection && election?.status !== ElectionStatus.CANCELED ? (
               <ProcessDate />
             ) : (
               <Text color='process.canceled' fontWeight='bold'>
@@ -128,7 +132,7 @@ const ProcessHeader = () => {
               <ActionsMenu />
             </Box>
           </Box>
-          {election?.electionType.anonymous && (
+          {election instanceof PublishedElection && election?.electionType.anonymous && (
             <Box>
               <Text fontWeight='bold'>{t('process.is_anonymous.title')}</Text>
               <Text>{t('process.is_anonymous.description')}</Text>
@@ -139,33 +143,34 @@ const ProcessHeader = () => {
               {t('process.census')}{' '}
               {showTotalCensusSize && <Icon as={FaInfoCircle} color='process_create.alert_info.color' ml={1} />}
             </Text>
-            {showTotalCensusSize ? (
-              <Tooltip
-                hasArrow
-                bg='primary.600'
-                color='white'
-                placement='top'
-                label={t('process.total_census_size_tooltip', {
-                  censusSize: censusInfo?.size,
-                  maxCensusSize: election?.maxCensusSize,
-                  percent:
-                    censusInfo?.size && election?.maxCensusSize
-                      ? Math.round((election?.maxCensusSize / censusInfo?.size) * 100)
-                      : 0,
-                })}
-              >
-                <Text>
-                  {t('process.total_census_size', {
+            {election instanceof PublishedElection &&
+              (showTotalCensusSize ? (
+                <Tooltip
+                  hasArrow
+                  bg='primary.600'
+                  color='white'
+                  placement='top'
+                  label={t('process.total_census_size_tooltip', {
                     censusSize: censusInfo?.size,
                     maxCensusSize: election?.maxCensusSize,
+                    percent:
+                      censusInfo?.size && election?.maxCensusSize
+                        ? Math.round((election?.maxCensusSize / censusInfo?.size) * 100)
+                        : 0,
                   })}
-                </Text>
-              </Tooltip>
-            ) : (
-              <Text>{t('process.people_in_census', { count: election?.maxCensusSize })}</Text>
-            )}
+                >
+                  <Text>
+                    {t('process.total_census_size', {
+                      censusSize: censusInfo?.size,
+                      maxCensusSize: election?.maxCensusSize,
+                    })}
+                  </Text>
+                </Tooltip>
+              ) : (
+                <Text>{t('process.people_in_census', { count: election?.maxCensusSize })}</Text>
+              ))}
           </Box>
-          {election?.meta?.census && (
+          {election instanceof PublishedElection && election?.meta?.census && (
             <>
               <Box>
                 <Text fontWeight='bold'>{t('process.strategy')}</Text>
@@ -197,23 +202,25 @@ const ProcessHeader = () => {
               />
             </Box>
           )}
-          {election?.status === ElectionStatus.PAUSED && election?.organizationId !== account?.address && (
-            <Flex
-              color='process.paused'
-              gap={2}
-              alignItems='center'
-              border='1px solid'
-              borderColor='process.paused'
-              borderRadius='lg'
-              p={2}
-            >
-              <Icon as={IoWarningOutline} />
-              <Box>
-                <Text>{t('process.status.paused')}</Text>
-                <Text>{t('process.status.paused_description')}</Text>
-              </Box>
-            </Flex>
-          )}
+          {election instanceof PublishedElection &&
+            election?.status === ElectionStatus.PAUSED &&
+            election?.organizationId !== account?.address && (
+              <Flex
+                color='process.paused'
+                gap={2}
+                alignItems='center'
+                border='1px solid'
+                borderColor='process.paused'
+                borderRadius='lg'
+                p={2}
+              >
+                <Icon as={IoWarningOutline} />
+                <Box>
+                  <Text>{t('process.status.paused')}</Text>
+                  <Text>{t('process.status.paused_description')}</Text>
+                </Box>
+              </Flex>
+            )}
         </Flex>
       </Flex>
     </Box>
@@ -224,9 +231,9 @@ const GitcoinStrategyInfo = () => {
   const { t } = useTranslation()
   const { election } = useElection()
 
-  if (!election || (election && !election?.meta?.strategy)) return
-  const strategy: Strategy = election.get('strategy')
+  if (!election || election instanceof InvalidElection || !election?.meta?.strategy) return
 
+  const strategy: Strategy = election.get('strategy')
   const score = strategy.tokens['GPS'].minBalance
   const firstParenthesesMatch = strategy.predicate.match(/\(([^)]+)\)/)
   let unionTypeString: string | null = null
@@ -266,6 +273,8 @@ const GitcoinStrategyInfo = () => {
 const useStrategy = () => {
   const { t } = useTranslation()
   const { election } = useElection()
+  if (!election || election instanceof InvalidElection || !election?.meta?.census) return ''
+
   const strategies: { [key: string]: ReactNode } = {
     spreadsheet: t('process.census_strategies.spreadsheet'),
     token: t('process.census_strategies.token', { token: election?.meta?.token }),
@@ -273,8 +282,6 @@ const useStrategy = () => {
     csp: t('process.census_strategies.csp'),
     gitcoin: <GitcoinStrategyInfo />,
   }
-
-  if (!election || (election && !election?.meta?.census)) return ''
 
   const type = election.get('census.type')
 

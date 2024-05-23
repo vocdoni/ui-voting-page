@@ -24,8 +24,10 @@ const ProcessAside = () => {
   } = useElection()
   const { isConnected } = useAccount()
   const { env } = useClient()
-  const census: CensusMeta = dotobject(election?.meta || {}, 'census')
 
+  if (!election || !(election instanceof PublishedElection)) return null
+
+  const census: CensusMeta = dotobject(election?.meta || {}, 'census')
   const renderVoteMenu =
     voted ||
     (voting && election?.electionType.anonymous) ||
@@ -183,10 +185,12 @@ const ProcessAside = () => {
 
 export const VoteButton = ({ setQuestionsTab, ...props }: { setQuestionsTab: () => void }) => {
   const { t } = useTranslation()
-
   const { election, connected, isAbleToVote, isInCensus } = useElection()
-  const census: CensusMeta = dotobject(election?.meta || {}, 'census')
   const { isConnected } = useAccount()
+
+  if (!(election instanceof PublishedElection)) return null
+
+  const census: CensusMeta = dotobject(election?.meta || {}, 'census')
 
   if (
     election?.status === ElectionStatus.CANCELED ||
