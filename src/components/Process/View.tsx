@@ -1,32 +1,14 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  Link,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Text,
-  useDisclosure,
-  useMultiStyleConfig,
-} from '@chakra-ui/react'
-import { ElectionQuestions, environment, SpreadsheetAccess, useConfirm } from '@vocdoni/chakra-components'
-import { useClient, useElection } from '@vocdoni/react-providers'
-import { ElectionResultsTypeNames, PublishedElection } from '@vocdoni/sdk'
+import { Box, Button, Flex, Image, Text } from '@chakra-ui/react'
+import { ElectionQuestions, SpreadsheetAccess } from '@vocdoni/chakra-components'
+import { useElection } from '@vocdoni/react-providers'
 import { useEffect, useRef, useState } from 'react'
-import { FieldValues } from 'react-hook-form'
-import { Trans, useTranslation } from 'react-i18next'
-import { IoWarningOutline } from 'react-icons/io5'
+import { useTranslation } from 'react-i18next'
 import { VocdoniAppURL } from '~constants'
 import { VoteButton } from './Aside'
+import { ConfirmVoteModal } from './ConfirmVoteModal'
 import Header from './Header'
+import { SuccessVoteModal } from './SuccessVoteModal'
 import omniumLogoHeader from '/assets/omnium-logo.png'
-import omniumLogo from '/assets/omnium.png'
 
 export const ProcessView = () => {
   const { t } = useTranslation()
@@ -124,120 +106,6 @@ export const ProcessView = () => {
       </Box>
 
       <SuccessVoteModal />
-    </>
-  )
-}
-
-const SuccessVoteModal = () => {
-  const { t } = useTranslation()
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const { votesLeft, election, voted } = useElection()
-  const { env } = useClient()
-
-  const [vLeft, setVLeft] = useState<number>(0)
-
-  useEffect(() => {
-    if (!vLeft && votesLeft >= 0) {
-      setVLeft(votesLeft)
-    }
-
-    if (vLeft && votesLeft < vLeft) {
-      setVLeft(votesLeft)
-      onOpen()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [votesLeft, vLeft])
-
-  if (!election || !voted) return null
-
-  const verify = environment.verifyVote(env, voted)
-
-  return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>
-          <Text>{t('process.success_modal.title')}</Text>
-          <Box bgImage={omniumLogo} width='200px' mx='auto' />
-        </ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <Trans
-            i18nKey='process.success_modal.text'
-            components={{
-              verify: <Link href={verify} target='_blank' />,
-              p: <Text mb={2} />,
-            }}
-          />
-        </ModalBody>
-
-        <ModalFooter mt={4}>
-          <Button onClick={onClose} variant='primary'>
-            {t('process.success_modal.btn')}
-          </Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
-  )
-}
-
-const ConfirmVoteModal = ({ election, answers }: { election: PublishedElection; answers: FieldValues }) => {
-  const { t } = useTranslation()
-  const styles = useMultiStyleConfig('ConfirmModal')
-  const { cancel, proceed } = useConfirm()
-
-  const canAbstain =
-    election.resultsType.name === ElectionResultsTypeNames.MULTIPLE_CHOICE && election.resultsType.properties.canAbstain
-
-  return (
-    <>
-      <ModalHeader>
-        <Text textAlign='center'>{t('process.spreadsheet.confirm.description')}</Text>
-      </ModalHeader>
-      <ModalBody display='flex' flexDirection='column' gap={5} p={0} mb={2}>
-        <Flex
-          flexDirection='column'
-          maxH='400px'
-          overflowY='scroll'
-          boxShadow='rgba(128, 128, 128, 0.42) 1px 1px 1px 1px'
-          px={2}
-          borderRadius='lg'
-        >
-          {election.questions.map((q, i) => (
-            <Box key={i} mb={2} mt={i === 0 ? 4 : 0}>
-              <Text display='flex' flexDirection='row' gap={1} mb={1}>
-                <Trans
-                  i18nKey='process.spreadsheet.confirm.question'
-                  components={{
-                    span: <Text as='span' fontWeight='bold' whiteSpace='nowrap' />,
-                  }}
-                  values={{
-                    question: q.title.default,
-                    answer: q.choices[Number(answers[i])].title.default,
-                    number: i + 1,
-                  }}
-                />
-              </Text>
-            </Box>
-          ))}
-        </Flex>
-        {canAbstain && answers[0].length < election.voteType.maxCount! && (
-          <Flex direction={'row'} py={2} gap={2} alignItems={'center'} color={'primary.main'}>
-            <IoWarningOutline />
-            <Text display='flex' flexDirection='column' gap={1}>
-              {t('process.spreadsheet.confirm.abstain_count', {
-                count: election.voteType.maxCount! - answers[0].length,
-              })}
-            </Text>
-          </Flex>
-        )}
-      </ModalBody>
-      <ModalFooter sx={styles.footer}>
-        <Button onClick={cancel!} variant='ghost' sx={styles.cancel}>
-          {t('cc.confirm.cancel')}
-        </Button>
-        <Button onClick={proceed!}>{t('cc.confirm.confirm')}</Button>
-      </ModalFooter>
     </>
   )
 }
