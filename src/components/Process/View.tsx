@@ -1,10 +1,7 @@
-import { Box, Button, Flex, Image, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Image } from '@chakra-ui/react'
 import { QuestionsFormProvider, SpreadsheetAccess } from '@vocdoni/chakra-components'
 import { useElection } from '@vocdoni/react-providers'
-import { useRef } from 'react'
-import { useTranslation } from 'react-i18next'
 import { VocdoniAppURL } from '~constants'
-import { VoteButton } from './Aside'
 import { ConfirmVoteModal } from './ConfirmVoteModal'
 import Header from './Header'
 import { Questions } from './Questions'
@@ -12,9 +9,7 @@ import { SuccessVoteModal } from './SuccessVoteModal'
 import omniumLogoHeader from '/assets/omnium-logo.png'
 
 export const ProcessView = () => {
-  const { t } = useTranslation()
-  const { isAbleToVote, connected } = useElection()
-  const electionRef = useRef<HTMLDivElement>(null)
+  const { connected } = useElection()
 
   return (
     <>
@@ -41,22 +36,11 @@ export const ProcessView = () => {
       </Flex>
       <Header />
 
-      <Box ref={electionRef} mb='50px' pt='25px'>
-        <QuestionsFormProvider
-          confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
-        >
-          <Questions />
-        </QuestionsFormProvider>
-      </Box>
-      {isAbleToVote && (
-        <Text mb={10} textAlign='center'>
-          {t('process.helper')}
-        </Text>
-      )}
-      <Box position='sticky' bottom={0} left={0} pb={1} pt={1}>
-        <VoteButton />
-      </Box>
-
+      <QuestionsFormProvider
+        confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
+      >
+        <Questions />
+      </QuestionsFormProvider>
       <SuccessVoteModal />
     </>
   )

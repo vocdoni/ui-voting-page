@@ -4,6 +4,7 @@ import { useElection } from '@vocdoni/react-providers'
 import { InvalidElection } from '@vocdoni/sdk'
 import { useEffect, useRef, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
+import { VoteButton } from './Aside'
 
 export const Questions = () => {
   const {
@@ -44,30 +45,40 @@ export const Questions = () => {
   if (!election || election instanceof InvalidElection) return null
 
   return (
-    <Box ref={electionRef} className='md-sizes' mb='100px' pt='25px'>
-      <Button
-        isDisabled={!isAbleToVote}
-        onClick={() => {
-          reset()
-          election.questions.forEach((_, i) => setValue(i.toString(), '0'))
-        }}
-      >
-        <Trans i18nKey='process.mark_all'>Marca tot</Trans>
-      </Button>
-      <ElectionQuestionsForm
-        onInvalid={(args) => {
-          setFormErrors(args)
-        }}
-      />
-      {!!Object.values(formErrors).length && (
-        <Text mb={3} textAlign='center' color='red'>
-          .
-          {t('process.helper_error', {
-            count: election.questions.length - Object.values(formErrors).length,
-            count2: election.questions.length,
-          })}
+    <>
+      <Box ref={electionRef} className='md-sizes' mb='100px' pt='25px'>
+        <Button
+          isDisabled={!isAbleToVote}
+          onClick={() => {
+            reset()
+            election.questions.forEach((_, i) => setValue(i.toString(), '0'))
+          }}
+        >
+          <Trans i18nKey='process.mark_all'>Marca tot</Trans>
+        </Button>
+        <ElectionQuestionsForm
+          onInvalid={(args) => {
+            setFormErrors(args)
+          }}
+        />
+        {!!Object.values(formErrors).length && (
+          <Text mb={3} textAlign='center' color='red'>
+            .
+            {t('process.helper_error', {
+              count: election.questions.length - Object.values(formErrors).length,
+              count2: election.questions.length,
+            })}
+          </Text>
+        )}
+      </Box>
+      {isAbleToVote && (
+        <Text mb={10} textAlign='center'>
+          {t('process.helper')}
         </Text>
       )}
-    </Box>
+      <Box position='sticky' bottom={0} left={0} pb={1} pt={1} onClick={() => setFormErrors({})}>
+        <VoteButton />
+      </Box>
+    </>
   )
 }
