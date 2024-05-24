@@ -3,8 +3,7 @@ import { Wallet } from '@ethersproject/wallet'
 import { QuestionsFormProvider, SpreadsheetAccess } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
 import { ArchivedElection, VocdoniSDKClient } from '@vocdoni/sdk'
-import { useEffect, useRef } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useEffect } from 'react'
 import { VocdoniAppURL } from '~constants'
 import { ConfirmVoteModal } from './ConfirmVoteModal'
 import Header from './Header'
@@ -13,10 +12,8 @@ import { SuccessVoteModal } from './SuccessVoteModal'
 import omniumLogoHeader from '/assets/omnium-logo.png'
 
 export const ProcessView = () => {
-  const { t } = useTranslation()
-  const { isAbleToVote, connected, election, client: electionClient } = useElection()
+  const { connected, election, client: electionClient } = useElection()
   const { env, setClient, client } = useClient()
-  const electionRef = useRef<HTMLDivElement>(null)
 
   const shouldRender = !(election instanceof ArchivedElection)
 
