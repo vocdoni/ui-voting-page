@@ -50,6 +50,10 @@ const baseStyle = definePartsStyle({
       counterReset: 'indice',
 
       '& > div': {
+        // hide the question type badge (single choice, multiple choice, etc)
+        '&:first-of-type': {
+          display: 'none',
+        },
         position: 'relative',
         counterIncrement: 'indice',
 
@@ -73,10 +77,6 @@ const baseStyle = definePartsStyle({
     p: { base: 3, md: 10 },
     borderRadius: 'xl',
     boxShadow: 'var(--box-shadow)',
-
-    '& > div:first-of-type': {
-      display: 'none',
-    },
 
     '& > div': {
       display: 'flex',
