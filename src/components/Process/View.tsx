@@ -12,8 +12,8 @@ import { SuccessVoteModal } from './SuccessVoteModal'
 import omniumLogoHeader from '/assets/omnium-logo.png'
 
 export const ProcessView = () => {
-  const { connected, election, client: electionClient } = useElection()
-  const { env, setClient, client } = useClient()
+  const { connected, election, client: electionClient, setClient: setElectionClient } = useElection()
+  const { env, setClient, client, setSigner } = useClient()
 
   const shouldRender = !(election instanceof ArchivedElection)
 
@@ -28,18 +28,24 @@ export const ProcessView = () => {
         if (!shouldRender || connected) return
         if (privkey) {
           const privKeyWallet = new Wallet(privkey)
-          let client = new VocdoniSDKClient({
+          let newClient = new VocdoniSDKClient({
             env,
             wallet: privKeyWallet,
             electionId: election?.id,
           })
+          let clientAddress =
+            client.wallet && client.wallet instanceof Wallet ? await client.wallet?.getAddress() : null
           let electionClientAddress =
             electionClient.wallet && electionClient.wallet instanceof Wallet
               ? await electionClient.wallet?.getAddress()
               : null
-          let walletAddress = await client.wallet?.getAddress()
-          if (!!!client.wallet || electionClientAddress !== walletAddress) {
-            setClient(client)
+          let walletAddress = await newClient.wallet?.getAddress()
+          if (!!!client.wallet || clientAddress !== walletAddress) {
+            setClient(newClient)
+            setSigner(privKeyWallet)
+          }
+          if (!!!electionClient.wallet || electionClientAddress !== walletAddress) {
+            setElectionClient(newClient)
           }
         }
       } catch (error) {
@@ -66,11 +72,6 @@ export const ProcessView = () => {
           </Button>
         </a>
 
-        {connected && !privkey.length && (
-          <Box>
-            <SpreadsheetAccess />
-          </Box>
-        )}
       </Flex>
       <Header />
 

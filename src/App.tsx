@@ -10,16 +10,11 @@ import { clientToSigner } from '~util/wagmi-adapters'
 import { RoutesProvider } from './router'
 
 export const App = () => {
-  const { data } = useWalletClient()
   const { t } = useTranslation()
 
-  let signer: Signer = {} as Signer
-  if (data) {
-    signer = clientToSigner(data)
-  }
 
   return (
-    <ClientProvider env={VocdoniEnvironment as EnvOptions} signer={signer} locale={translations(t)}>
+    <ClientProvider env={VocdoniEnvironment as EnvOptions} locale={translations(t)}>
       <RoutesProvider />
       <ColorModeScript />
     </ClientProvider>
