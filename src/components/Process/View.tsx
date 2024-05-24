@@ -1,6 +1,8 @@
 import { Box, Button, Flex, Image } from '@chakra-ui/react'
+import { Wallet } from '@ethersproject/wallet'
 import { QuestionsFormProvider, SpreadsheetAccess } from '@vocdoni/chakra-components'
-import { useElection, useClient } from '@vocdoni/react-providers'
+import { useClient, useElection } from '@vocdoni/react-providers'
+import { ArchivedElection, VocdoniSDKClient } from '@vocdoni/sdk'
 import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { VocdoniAppURL } from '~constants'
@@ -9,13 +11,11 @@ import Header from './Header'
 import { Questions } from './Questions'
 import { SuccessVoteModal } from './SuccessVoteModal'
 import omniumLogoHeader from '/assets/omnium-logo.png'
-import { ArchivedElection, VocdoniSDKClient } from '@vocdoni/sdk'
-import { Wallet } from '@ethersproject/wallet'
 
 export const ProcessView = () => {
   const { t } = useTranslation()
-  const { isAbleToVote, connected, election, client: electionClient, setClient } = useElection()
-  const { env } = useClient()
+  const { isAbleToVote, connected, election, client: electionClient } = useElection()
+  const { env, setClient, client } = useClient()
   const electionRef = useRef<HTMLDivElement>(null)
 
   const shouldRender = !(election instanceof ArchivedElection)
@@ -36,9 +36,12 @@ export const ProcessView = () => {
             wallet: privKeyWallet,
             electionId: election?.id,
           })
-          let electionClientAddress =(electionClient.wallet && electionClient.wallet instanceof Wallet) ? await electionClient.wallet?.getAddress(): null
+          let electionClientAddress =
+            electionClient.wallet && electionClient.wallet instanceof Wallet
+              ? await electionClient.wallet?.getAddress()
+              : null
           let walletAddress = await client.wallet?.getAddress()
-          if (!!!electionClient.wallet || electionClientAddress !== walletAddress) {
+          if (!!!client.wallet || electionClientAddress !== walletAddress) {
             setClient(client)
           }
         }
