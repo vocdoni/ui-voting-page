@@ -1,7 +1,7 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
 import { ElectionStatusBadge } from '@vocdoni/chakra-components'
 import { useElection } from '@vocdoni/react-providers'
-import { Strategy } from '@vocdoni/sdk'
+import { InvalidElection, PublishedElection, Strategy } from '@vocdoni/sdk'
 import { ReactNode, useEffect, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { StampIcon } from './Census/StampIcon'
@@ -13,6 +13,8 @@ const ProcessHeader = () => {
   const [daysToEndElection, setDaysToEndElection] = useState(-1)
 
   useEffect(() => {
+    if (election instanceof InvalidElection) return
+
     const startDate = new Date()
     const endDate = election?.endDate
 
@@ -31,7 +33,8 @@ const ProcessHeader = () => {
     } else {
       setDaysToEndElection(-1)
     }
-  }, [election?.endDate])
+  }, [(election as PublishedElection)?.endDate])
+
   return (
     <Box mb={10}>
       <Box
@@ -77,7 +80,8 @@ const GitcoinStrategyInfo = () => {
   const { t } = useTranslation()
   const { election } = useElection()
 
-  if (!election || (election && !election?.meta?.strategy)) return
+  if (!election || election instanceof InvalidElection || !election?.meta?.strategy) return
+
   const strategy: Strategy = election.get('strategy')
 
   const score = strategy.tokens['GPS'].minBalance
@@ -119,6 +123,9 @@ const GitcoinStrategyInfo = () => {
 const useStrategy = () => {
   const { t } = useTranslation()
   const { election } = useElection()
+
+  if (!election || election instanceof InvalidElection || !election?.meta?.census) return ''
+
   const strategies: { [key: string]: ReactNode } = {
     spreadsheet: t('process.census_strategies.spreadsheet'),
     token: t('process.census_strategies.token', { token: election?.meta?.token }),
@@ -126,9 +133,6 @@ const useStrategy = () => {
     csp: t('process.census_strategies.csp'),
     gitcoin: <GitcoinStrategyInfo />,
   }
-
-  if (!election || (election && !election?.meta?.census)) return ''
-
   const type = election.get('census.type')
 
   if (typeof strategies[type] === 'undefined') {
