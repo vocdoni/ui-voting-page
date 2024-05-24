@@ -1,7 +1,9 @@
 name: Build and Deploy to Netlify
 on:
   push:
-    branches: [main]
+    branches:
+    - main
+    - d/**
   pull_request:
 jobs:
   build-stg:
