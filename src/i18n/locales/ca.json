@@ -30,8 +30,8 @@
       "waiting_title": "Esperant la confirmació de la transacció..."
     },
     "confirm": {
-      "cancel": "Cancel·la",
-      "confirm": "Confirma Vot",
+      "cancel": "Tornar enrere",
+      "confirm": "Envia el teu vot",
       "title": "Confirmar"
     },
     "empty": "Sembla que aquest procés no té preguntes",
@@ -67,7 +67,7 @@
     "validation": {
       "choices_count": "Has de seleccionar {{ count }} opcions",
       "min_length": "Aquest camp ha de tenir com a mínim {{ min }} caràcters",
-      "required": "Aquest camp és obligatori"
+      "required": "Selecciona una opciò"
     },
     "vote": {
       "abstain": "Abstenció",
@@ -76,7 +76,7 @@
       "confirm": "Confirma les teves seleccions:",
       "sign": "Signa abans de votar",
       "voted_description": "Per verificar el teu vot, pots utilitzar aquesta identificació única: {{ id }}",
-      "voted_title": "El teu vot ha estat registrat correctament. Els resultats es faran públics durant l’Assemblea General del divendres 28 de juny."
+      "voted_title": "El teu vot ha estat registrat correctament. Els resultats electorals es coneixeran el 28 de juny durant l’Assemblea General a Valls."
     }
   },
   "copy": {
@@ -128,7 +128,7 @@
     "days_to_end_one": "El procés acaba demà",
     "days_to_end_many": "El procés acaba en {{ count }} dies",
     "days_to_end_other": "El procés acaba en {{ count }} dies",
-    "description": "<p>Benvingut/da a la pàgina de votacions per actualitzar la composició de membres de la Junta Directiva.</p><p> S’ha presentat una sola candidatura per a les eleccions a la Junta Directiva, conformada per 19 persones. Les votacions es fan pel sistema de llistes obertes, és a dir, cal indicar el sentit de la votació persona a persona.</p><p> Per poder emetre correctament els vostres vots cal que respongueu les diferents votacions i cliqueu el botó “Finalitzar la votació” que trobareu al final d’aquesta pàgina.</p><h1>Eleccions a la Junta Directiva</h1>",
+    "description": "<p>Et donem la benvinguda a la votació a la Junta Directiva. Tens fins al 28 de juny per exercir el teu dret a vot. Et recordem que aquest sistema de vot és secret, personal i intransferible. Pots triar votar tota la llista de la candidatura o bé, votar cada càrrec de manera individual o en blanc. Participa-hi!</p><h1>Eleccions a la Junta Directiva d'Òmnium</h1>",
     "gitcoin": {
       "all_of_them": "(Tots ells)",
       "gps_score": "Gitcoin Passport Score: Puntuació mínima {{score}}",
@@ -147,7 +147,8 @@
         "abstain_count_many": "",
         "abstain_count_other": "",
         "blank_vote": "",
-        "description": "Confirma el teu vot",
+        "header": "Confirma el teu vot",
+        "description": "Estas a un pas de finalitzar la teva votació. Aquestes són les opcions que has triat:",
         "option": "<strong>Opció:</strong> {{ answer }}",
         "options": "<strong>Selecció:</strong> {{ answers }}",
         "question": "<strong><span>{{ question }}</span>:</strong> {{ answer }}"
@@ -162,7 +163,7 @@
     },
     "success_modal": {
       "btn": "Finalitzar",
-      "text": "<p>Gràcies pel teu vot. Torna a la pàgina principal per seguir i consultar els resultats finals quan estiguin disponibles.</p>",
+      "text": "<p>El teu vot ha estat registrat correctament</p><p>Ajuda'ns a conèixer-te millor!</p>",
       "title": "Vot emès correctament!"
     },
     "voters": "Votants"

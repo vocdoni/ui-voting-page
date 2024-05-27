@@ -11,7 +11,7 @@ export const Questions = () => {
     fmethods: { setValue, reset },
   } = useQuestionsForm()
   const { t } = useTranslation()
-  const { isAbleToVote, election } = useElection()
+  const { isAbleToVote, election, voted } = useElection()
   const [formErrors, setFormErrors] = useState<any>({})
   const electionRef = useRef<HTMLDivElement>(null)
 
@@ -46,16 +46,22 @@ export const Questions = () => {
 
   return (
     <>
-      <Box ref={electionRef} className='md-sizes' mb='100px' pt='25px'>
-        <Button
-          isDisabled={!isAbleToVote}
-          onClick={() => {
-            reset()
-            election.questions.forEach((_, i) => setValue(i.toString(), '0'))
-          }}
-        >
-          <Trans i18nKey='process.mark_all'>Marca tot</Trans>
-        </Button>
+      <Box ref={electionRef} className='md-sizes' mb={voted ? '20px' : '100px'} pt='25px'>
+        {!voted && (
+          <>
+            {' '}
+            <Button
+              isDisabled={!isAbleToVote}
+              onClick={() => {
+                reset()
+                election.questions.forEach((_, i) => setValue(i.toString(), '0'))
+              }}
+              mb={10}
+            >
+              <Trans i18nKey='process.mark_all'>Votar tota la llista Òmnium 2026</Trans>
+            </Button>
+          </>
+        )}
         <ElectionQuestionsForm
           onInvalid={(args) => {
             setFormErrors(args)
@@ -76,7 +82,7 @@ export const Questions = () => {
           {t('process.helper')}
         </Text>
       )}
-      <Box position='sticky' bottom={0} left={0} pb={1} pt={1} onClick={() => setFormErrors({})}>
+      <Box onClick={() => setFormErrors({})}>
         <VoteButton />
       </Box>
     </>

@@ -1,18 +1,16 @@
-import { Box, Button, Flex, Image } from '@chakra-ui/react'
+import { Box, Link, Text } from '@chakra-ui/react'
 import { Wallet } from '@ethersproject/wallet'
-import { QuestionsFormProvider, SpreadsheetAccess } from '@vocdoni/chakra-components'
+import { QuestionsFormProvider } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
 import { ArchivedElection, VocdoniSDKClient } from '@vocdoni/sdk'
 import { useEffect } from 'react'
-import { VocdoniAppURL } from '~constants'
 import { ConfirmVoteModal } from './ConfirmVoteModal'
 import Header from './Header'
 import { Questions } from './Questions'
 import { SuccessVoteModal } from './SuccessVoteModal'
-import omniumLogoHeader from '/assets/omnium-logo.png'
 
 export const ProcessView = () => {
-  const { connected, election, client: electionClient, setClient: setElectionClient } = useElection()
+  const { connected, election, client: electionClient, setClient: setElectionClient, voted } = useElection()
   const { env, setClient, client, setSigner } = useClient()
 
   const shouldRender = !(election instanceof ArchivedElection)
@@ -57,22 +55,6 @@ export const ProcessView = () => {
 
   return (
     <>
-      <Flex justifyContent='end' alignItems='center' gap={1} mb={{ base: 5, lg2: 8 }}>
-        <Image
-          src={omniumLogoHeader}
-          maxW={{ base: '150px', md: '250px', lg: '300px' }}
-          mr='auto'
-          h='auto'
-          alt='omnium logo'
-        />
-
-        <a href={VocdoniAppURL}>
-          <Button bgColor='white' color='black' boxShadow='2px 2px 2px 2px lightgray' _hover={{ bgColor: '#f1f1f1' }}>
-            Admin
-          </Button>
-        </a>
-
-      </Flex>
       <Header />
 
       <QuestionsFormProvider
@@ -80,6 +62,23 @@ export const ProcessView = () => {
       >
         <Questions />
       </QuestionsFormProvider>
+      {voted && (
+        <Box mb={20}>
+          <Text textAlign='center'>
+            Ajuda'ns a conèixer-te millor!{' '}
+            <Link href='https://form.jotform.com/241433006383347' target='_blank' color='#FF6320'>
+              Respon aquestes preguntes
+            </Link>
+          </Text>
+
+          <Text textAlign='center'>
+            Inscriu-te a l'Assemblea General a Valls{' '}
+            <Link href='https://form.jotform.com/241163398249362' target='_blank' color='#FF6320'>
+              aquí
+            </Link>
+          </Text>
+        </Box>
+      )}
       <SuccessVoteModal />
     </>
   )

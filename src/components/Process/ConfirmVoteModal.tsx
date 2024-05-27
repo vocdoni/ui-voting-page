@@ -16,9 +16,12 @@ export const ConfirmVoteModal = ({ election, answers }: { election: PublishedEle
   return (
     <>
       <ModalHeader>
-        <Text textAlign='center'>{t('process.spreadsheet.confirm.description')}</Text>
+        <Text mb='0px !important' textAlign='center'>
+          {t('process.spreadsheet.confirm.header')}
+        </Text>
       </ModalHeader>
       <ModalBody display='flex' flexDirection='column' gap={5} p={0} mb={2}>
+        <Text>{t('process.spreadsheet.confirm.description')}</Text>
         <Flex
           flexDirection='column'
           maxH='400px'
@@ -57,7 +60,7 @@ export const ConfirmVoteModal = ({ election, answers }: { election: PublishedEle
         )}
       </ModalBody>
       <ModalFooter sx={styles.footer}>
-        <Button onClick={cancel!} variant='ghost' sx={styles.cancel}>
+        <Button onClick={cancel!} bgColor='white' color='black' border='1px solid' _hover={{ bgColor: '#f1f1f1' }}>
           {t('cc.confirm.cancel')}
         </Button>
         <Button onClick={proceed!}>{t('cc.confirm.confirm')}</Button>

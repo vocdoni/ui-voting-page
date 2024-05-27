@@ -9,7 +9,7 @@ import omniumHeader from '/assets/omnium-header.png'
 
 const ProcessHeader = () => {
   const { t } = useTranslation()
-  const { election } = useElection()
+  const { election, voted } = useElection()
   const [daysToEndElection, setDaysToEndElection] = useState(-1)
 
   useEffect(() => {
@@ -36,27 +36,17 @@ const ProcessHeader = () => {
   }, [(election as PublishedElection)?.endDate])
 
   return (
-    <Box mb={10}>
+    <Box mb={10} mt={3}>
       <Box
         bgImage={omniumHeader}
         w='100%'
-        h='200px'
+        h={{ base: '200px', md: '300px' }}
         bgPosition='center'
         bgSize='cover'
         bgRepeat='no-repeat'
         mb={{ base: 5, lg2: 8 }}
-        borderTopRadius='20px'
       />
-      {/* <Box
-        w='100%'
-        maxH={{ base: '300px', md: '250px' }}
-        mx='auto'
-        overflow='hidden'
-        borderTopRadius='20px'
-        mb={{ base: 5, lg2: 8 }}
-      >
-        <Image src={omniumHeader} w='100%' h='auto' alt='assemblea general omium' objectFit='fill' />
-      </Box> */}
+
       <Box>
         <Flex flexDirection={{ base: 'column', sm: 'row' }} gap={{ base: 3, sm: 5 }} justifyContent='start' mb={10}>
           <ElectionStatusBadge px={4} justifyContent='center' fontWeight='bold' w='min-content' whiteSpace='nowrap' />
@@ -70,6 +60,7 @@ const ProcessHeader = () => {
               h1: <Text as='h1' color='#FF6320' fontSize='32px' fontWeight='extrabold' mt={10} />,
             }}
           />
+          {!voted && <Text>Tria individualment els candidats que vols votar, o bé, vota en blanc.</Text>}
         </Flex>
       </Box>
     </Box>

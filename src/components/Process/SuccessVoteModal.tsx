@@ -1,12 +1,10 @@
 import {
   Box,
-  Button,
   Link,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
   Text,
@@ -16,7 +14,7 @@ import { environment } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
 import { useEffect, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
-import omniumLogo from '/assets/omnium.png'
+import omniumLogo from '/assets/omnium-logo.png'
 
 export const SuccessVoteModal = () => {
   const { t } = useTranslation()
@@ -47,11 +45,18 @@ export const SuccessVoteModal = () => {
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>
+          <Box
+            bgImage={omniumLogo}
+            bgRepeat='no-repeat'
+            bgSize='contain'
+            maxW='100%'
+            maxH={{ base: '80px', lg: '73px' }}
+            mb={14}
+          />
           <Text>{t('process.success_modal.title')}</Text>
-          <Box bgImage={omniumLogo} width='200px' mx='auto' />
         </ModalHeader>
         <ModalCloseButton />
-        <ModalBody>
+        <ModalBody mb={5}>
           <Trans
             i18nKey='process.success_modal.text'
             components={{
@@ -60,12 +65,6 @@ export const SuccessVoteModal = () => {
             }}
           />
         </ModalBody>
-
-        <ModalFooter mt={4}>
-          <Button onClick={onClose} variant='primary'>
-            {t('process.success_modal.btn')}
-          </Button>
-        </ModalFooter>
       </ModalContent>
     </Modal>
   )

@@ -18,7 +18,14 @@ export const theme = extendTheme(vtheme, {
         '--box-shadow-darker': '0px 2px 4px #808080b5',
         '--vcd-gradient-primary': 'linear-gradient(to right, #24656e, #2c545a)',
       },
-
+      body: {
+        fontFamily: '"Roboto", sans-serif',
+        fontWeight: 'normal',
+      },
+      fonts: {
+        heading: '"Roboto", sans-serif',
+        body: '"Roboto", sans-serif',
+      },
       '.creating-process-img': {
         bgImage: SConfirmModal,
       },

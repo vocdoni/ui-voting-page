@@ -8,7 +8,6 @@ const baseStyle = definePartsStyle({
   alert: {
     px: { base: 3, sm: 5 },
     py: 7,
-    mb: '30px',
     borderRadius: '8px',
     color: '#FF6320',
     bgColor: 'transparent',
@@ -47,25 +46,12 @@ const baseStyle = definePartsStyle({
       flexDirection: 'column',
       gap: 10,
 
-      counterReset: 'indice',
-
       '& > div': {
         // hide the question type badge (single choice, multiple choice, etc)
         '&:first-of-type': {
           display: 'none',
         },
         position: 'relative',
-        counterIncrement: 'indice',
-
-        '&::before': {
-          content: `counter(indice) "."`,
-          position: 'absolute',
-          top: { base: '9.2px', md: '37.7px' },
-          left: { base: '20px', md: '45px' },
-          fontSize: '24px',
-          fontWeight: 'extrabold',
-          color: 'process.questions.title',
-        },
       },
     },
   },
@@ -90,10 +76,8 @@ const baseStyle = definePartsStyle({
     textAlign: 'start',
     fontSize: 'xl2',
     lineHeight: 1.3,
-    color: 'process.questions.title',
     mb: 5,
-
-    ml: '43px',
+    ml: '10px',
   },
 
   description: {
@@ -129,7 +113,7 @@ const baseStyle = definePartsStyle({
 
   radio: {
     borderRadius: 'full !important',
-    border: '1px solid lightgray',
+    border: '1px solid #FF6320',
     display: 'block',
     position: 'absolute',
     width: '20px',

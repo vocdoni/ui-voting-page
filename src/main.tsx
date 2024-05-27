@@ -6,11 +6,11 @@ import * as ReactDOM from 'react-dom/client'
 import { WagmiProvider } from 'wagmi'
 import { config } from '~util/rainbowkit'
 import { App } from './App'
+import './i18n'
 import reportWebVitals from './reportWebVitals'
 import * as serviceWorker from './serviceWorker'
 import { theme } from './theme'
-
-import './i18n'
+import Fonts from './theme/Fonts'
 
 const container = document.getElementById('root')
 if (!container) throw new Error('Failed to find the root element')
@@ -21,6 +21,7 @@ const queryClient = new QueryClient()
 root.render(
   <StrictMode>
     <ChakraProvider theme={theme}>
+      <Fonts />
       <WagmiProvider config={config}>
         <QueryClientProvider client={queryClient}>
           <RainbowKitProvider>
