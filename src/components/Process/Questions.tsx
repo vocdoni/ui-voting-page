@@ -46,7 +46,7 @@ export const Questions = () => {
 
   return (
     <>
-      <Box ref={electionRef} className='md-sizes' mb={voted ? '20px' : '100px'} pt='25px'>
+      <Box ref={electionRef} className='md-sizes' mb={voted ? '40px' : '100px'} pt='25px'>
         {!voted && (
           <>
             {' '}

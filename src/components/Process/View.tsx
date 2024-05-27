@@ -64,15 +64,15 @@ export const ProcessView = () => {
       </QuestionsFormProvider>
       {voted && (
         <Box mb={20}>
-          <Text textAlign='center'>
+          <Text textAlign='center' mb={5}>
             Ajuda'ns a conèixer-te millor!{' '}
             <Link href='https://form.jotform.com/241433006383347' target='_blank' color='#FF6320'>
-              Respon aquestes preguntes
+              respon aquestes preguntes
             </Link>
           </Text>
 
           <Text textAlign='center'>
-            Inscriu-te a l'Assemblea General a Valls{' '}
+            Inscriu-te a l'Assemblea General de Valls{' '}
             <Link href='https://form.jotform.com/241163398249362' target='_blank' color='#FF6320'>
               aquí
             </Link>
