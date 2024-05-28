@@ -74,18 +74,33 @@ export const ProcessView = () => {
         <Box mb={20}>
           <Text textAlign='center' mb={5}>
             <Trans
-              i18nKey='process.omnium_link.you_know'
+              i18nKey='process.omnium_link.assembly'
               components={{
-                customLink: <Link href='https://form.jotform.com/241433006383347' target='_blank' color='#FF6320' />,
+                customLink: (
+                  <Link
+                    href='https://form.jotform.com/241163398249362'
+                    target='_blank'
+                    color='#FF6320'
+                    textDecoration='underline'
+                    _hover={{ textDecoration: 'none' }}
+                  />
+                ),
               }}
             />
           </Text>
-
           <Text textAlign='center'>
             <Trans
-              i18nKey='process.omnium_link.assembly'
+              i18nKey='process.omnium_link.you_know'
               components={{
-                customLink: <Link href='https://form.jotform.com/241163398249362' target='_blank' color='#FF6320' />,
+                customLink: (
+                  <Link
+                    href='https://form.jotform.com/241433006383347'
+                    target='_blank'
+                    color='#FF6320'
+                    textDecoration='underline'
+                    _hover={{ textDecoration: 'none' }}
+                  />
+                ),
               }}
             />
           </Text>

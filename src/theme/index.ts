@@ -92,7 +92,6 @@ export const theme = extendTheme(vtheme, {
           lg2: '30px',
         },
       },
-
       '.site-wrapper-full': {
         width: 'full',
         px: {
@@ -101,7 +100,6 @@ export const theme = extendTheme(vtheme, {
           md: '80px',
         },
       },
-
       '.voting-type': {
         justifyContent: 'space-around',
         flexWrap: 'wrap',
@@ -110,6 +108,20 @@ export const theme = extendTheme(vtheme, {
         mb: 32,
         maxW: '1250px',
         mx: 'auto',
+      },
+      /* Estilos de la barra de desplazamiento */
+      '::-webkit-scrollbar': {
+        width: '6px',
+      },
+      '::-webkit-scrollbar-track': {
+        background: '#f1f1f1',
+      },
+      '::-webkit-scrollbar-thumb': {
+        background: '#FF6320',
+        borderRadius: '10px',
+      },
+      '::-webkit-scrollbar-thumb:hover': {
+        background: '#555',
       },
     },
   },

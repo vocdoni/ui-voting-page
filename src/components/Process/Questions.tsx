@@ -8,7 +8,7 @@ import { VoteButton } from './Aside'
 
 export const Questions = () => {
   const {
-    fmethods: { setValue, reset },
+    fmethods: { setValue, reset, getValues },
   } = useQuestionsForm()
   const { t } = useTranslation()
   const { isAbleToVote, election, voted } = useElection()
@@ -43,24 +43,21 @@ export const Questions = () => {
   }, [formErrors])
 
   if (!election || election instanceof InvalidElection) return null
-
   return (
     <>
       <Box ref={electionRef} className='md-sizes' mb={voted ? '40px' : '100px'} pt='25px'>
         {!voted && (
-          <>
-            {' '}
-            <Button
-              isDisabled={!isAbleToVote}
-              onClick={() => {
-                reset()
-                election.questions.forEach((_, i) => setValue(i.toString(), '0'))
-              }}
-              mb={10}
-            >
-              <Trans i18nKey='process.mark_all'>Votar tota la llista Òmnium 2026</Trans>
-            </Button>
-          </>
+          <Button
+            isDisabled={!isAbleToVote}
+            onClick={() => {
+              reset
+              election.questions.forEach((_, i) => setValue(i.toString(), '0'))
+            }}
+            mb={10}
+            ml='auto'
+          >
+            <Trans i18nKey='process.mark_all'>Desfer</Trans>
+          </Button>
         )}
         <ElectionQuestionsForm
           onInvalid={(args) => {

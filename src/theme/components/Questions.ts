@@ -128,7 +128,7 @@ const baseStyle = definePartsStyle({
         bgColor: 'transparent',
       },
 
-      background: '#28A745',
+      background: 'process.questions.question_selected.bg',
       borderColor: 'white',
       borderWidth: '1px',
       bgSize: '15px',
@@ -136,7 +136,6 @@ const baseStyle = definePartsStyle({
       bgPosition: 'center',
       bgImage: checkIcon,
       _hover: {
-        border: 'none',
         background: 'process.questions.question_selected.bg',
         borderColor: 'process.questions.question_selected.bg',
         bgSize: '15px',

@@ -127,14 +127,14 @@
     "days_to_end_one": "El procés acaba demà",
     "days_to_end_many": "El procés acaba en {{ count }} dies",
     "days_to_end_other": "El procés acaba en {{ count }} dies",
-    "description": "<p>Et donem la benvinguda a la votació a la Junta Directiva. Tens fins al 28 de juny per exercir el teu dret a vot. Et recordem que aquest sistema de vot és secret, personal i intransferible. Pots triar votar tota la llista de la candidatura o bé, votar cada càrrec de manera individual o en blanc. Participa-hi!</p><h1>Eleccions a la Junta Directiva d'Òmnium</h1>",
+    "description": "<h1>Et donem la benvinguda a la votació a la Junta Directiva</h1> <p>Tens fins al 28 de juny per exercir el teu dret a vot. Et recordem que aquest sistema de vot és secret, personal i intransferible. Pots triar votar tota la llista de la candidatura o bé, votar cada càrrec de manera individual o en blanc. Participa-hi!</p>",
     "gitcoin": {
       "all_of_them": "(Tots ells)",
       "gps_score": "Gitcoin Passport Score: Puntuació mínima {{score}}",
       "needed_stamps": "Stamps necessaris",
       "one_of_them": "(Almenys un d'ells)"
     },
-    "helper": "Un cop completat, recordeu prémer el botó “Finalitzar la votació” que es troba al final d’aquesta pàgina i confirmeu l’elecció.",
+    "helper": "Un cop completat, prem el botó “Finalitzar la votació” que es troba a continuació i confirmeu l’elecció",
     "helper_candidates": "Tria individualment els candidats que vols votar, o bé, vota en blanc.",
     "helper_error_one": "Has de contestar totes les votacions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
     "helper_error_many": "Has de contestar totes les votacions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
@@ -143,7 +143,7 @@
     "mark_all": "Votar tota la llista Òmnium 2026",
     "omnium_link": {
       "assembly": "Inscriu-te a l'Assemblea General de Valls <customLink>aquí</customLink>",
-      "you_know": "Ajuda'ns a conèixer-te millor! <customLink>respon aquestes preguntes</customLink>"
+      "you_know": "Ajuda'ns a conèixer-te millor! <customLink>Respon aquestes preguntes</customLink>"
     },
     "share_title": "Comparteix a {{ network }}",
     "spreadsheet": {
@@ -164,8 +164,8 @@
       "upcoming": "Previst"
     },
     "success_modal": {
-      "text": "El teu vot ha estat registrat correctament",
-      "title": "Vot emès correctament!"
+      "text": "Ajuda'ns a conèixer-te millor:",
+      "title": "El teu vot ha estat registrat correctament"
     },
     "voters": "Votants",
     "voting": "Estem processant el teu vot. Aquest procés trigarà uns segons. Si us plau, no actualitzis aquesta pàgina."

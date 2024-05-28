@@ -9,7 +9,7 @@ import omniumHeader from '/assets/omnium-header.png'
 
 const ProcessHeader = () => {
   const { t } = useTranslation()
-  const { election, voted } = useElection()
+  const { election } = useElection()
   const [daysToEndElection, setDaysToEndElection] = useState(-1)
 
   useEffect(() => {
@@ -57,10 +57,9 @@ const ProcessHeader = () => {
             i18nKey='process.description'
             components={{
               p: <Text />,
-              h1: <Text as='h1' color='#FF6320' fontSize='32px' fontWeight='extrabold' mt={10} />,
+              h1: <Text as='h1' color='#FF6320' fontSize='32px' fontWeight='extrabold' />,
             }}
           />
-          {!voted && <Text>{t('process.helper_candidates')}</Text>}
         </Flex>
       </Box>
     </Box>
