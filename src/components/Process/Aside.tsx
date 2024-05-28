@@ -25,7 +25,7 @@ const ProcessAside = () => {
   const { isConnected } = useAccount()
   const { env } = useClient()
 
-  if (!(election instanceof PublishedElection)) return null
+  if (!election || !(election instanceof PublishedElection)) return null
 
   const census: CensusMeta = dotobject(election?.meta || {}, 'census')
   const renderVoteMenu =
@@ -188,15 +188,15 @@ export const VoteButton = ({ ...props }) => {
   const { election, connected, isAbleToVote, isInCensus } = useElection()
   const { isConnected } = useAccount()
 
-  if (!(election instanceof PublishedElection) || election?.status === ElectionStatus.CANCELED) {
-    return null
-  }
+  if (!(election instanceof PublishedElection)) return null
 
   const census: CensusMeta = dotobject(election?.meta || {}, 'census')
 
-  if (isConnected && !isInCensus && !['spreadsheet', 'csp'].includes(census?.type)) {
+  if (
+    election?.status === ElectionStatus.CANCELED ||
+    (isConnected && !isInCensus && !['spreadsheet', 'csp'].includes(census?.type))
+  )
     return null
-  }
 
   const isWeighted = election?.census.weight !== election?.census.size
 

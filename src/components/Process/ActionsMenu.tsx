@@ -23,8 +23,9 @@ export const ActionsMenu = (props: MenuListProps) => {
   if (
     !election ||
     !(election instanceof PublishedElection) ||
-    [ElectionStatus.CANCELED, ElectionStatus.ENDED, ElectionStatus.RESULTS].includes(election.status) ||
-    election?.organizationId !== account?.address
+    election?.organizationId !== account?.address ||
+    // canceled and ended elections cannot be acted upon
+    [ElectionStatus.CANCELED, ElectionStatus.ENDED, ElectionStatus.RESULTS].includes(election.status)
   ) {
     return null
   }
