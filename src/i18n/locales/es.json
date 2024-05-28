@@ -107,8 +107,7 @@
   },
   "menu": {
     "burger_aria_label": "menú de usuario",
-    "connect": "Conectar",
-    "logout": "Cerrar sesión"
+    "connect": "Conectar"
   },
   "process": {
     "census_strategies": {
@@ -136,20 +135,24 @@
       "one_of_them": "(Al menos uno de ellos)"
     },
     "helper": "Una vez completado, recuerden presionar el botón 'Finalizar la votación' que se encuentra al final de esta página y confirmar la elección.",
+    "helper_candidates": "",
     "helper_error_one": "Has de contestar todas las votaciones para poder finalizar el proceso. Has respondido {{count}} de {{count2}}.",
     "helper_error_many": "Has de contestar todas las votaciones para poder finalizar el proceso. Has respondido {{count}} de {{count2}}.",
     "helper_error_other": "Has de contestar todas las votaciones para poder finalizar el proceso. Has respondido {{count}} de {{count2}}.",
     "is_invalid": "Este proceso tiene datos no válidos y no se puede cargar",
+    "mark_all": "Votar tota la llista Òmnium 2026",
+    "omnium_link": {
+      "assembly": "",
+      "you_know": ""
+    },
     "share_title": "Compartir en {{ network }}",
     "spreadsheet": {
       "confirm": {
         "abstain_count_one": "",
         "abstain_count_many": "",
         "abstain_count_other": "",
-        "blank_vote": "",
         "description": "Confrima tu voto",
-        "option": "<strong>Opción {{ number }}:</strong> {{ answer }}",
-        "options": "<strong>Selección:</strong> {{ answers }}",
+        "header": "",
         "question": "<strong>Pregunta {{ number }}:</strong> {{ answer }}"
       }
     },
@@ -161,11 +164,11 @@
       "upcoming": "Próximo"
     },
     "success_modal": {
-      "btn": "Finalizar",
       "text": "<p>Gracias por tu voto. Vuelve a la página principal para seguir y consultar los resultados finales cuando estén disponibles.</p>",
       "title": "Voto emitido correctamente!"
     },
-    "voters": "Votantes"
+    "voters": "Votantes",
+    "voting": ""
   },
   "process_actions": {
     "cancel": "Cancelar proceso",

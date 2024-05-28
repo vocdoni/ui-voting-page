@@ -1,16 +1,24 @@
-import { Box, Link, Text } from '@chakra-ui/react'
+import { Box, Link, Modal, ModalBody, ModalContent, ModalOverlay, Spinner, Text, VStack } from '@chakra-ui/react'
 import { Wallet } from '@ethersproject/wallet'
 import { QuestionsFormProvider } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
 import { ArchivedElection, VocdoniSDKClient } from '@vocdoni/sdk'
 import { useEffect } from 'react'
+import { Trans, useTranslation } from 'react-i18next'
 import { ConfirmVoteModal } from './ConfirmVoteModal'
 import Header from './Header'
 import { Questions } from './Questions'
 import { SuccessVoteModal } from './SuccessVoteModal'
 
 export const ProcessView = () => {
-  const { connected, election, client: electionClient, setClient: setElectionClient, voted } = useElection()
+  const {
+    connected,
+    election,
+    client: electionClient,
+    setClient: setElectionClient,
+    voted,
+    loading: { voting },
+  } = useElection()
   const { env, setClient, client, setSigner } = useClient()
 
   const shouldRender = !(election instanceof ArchivedElection)
@@ -65,21 +73,46 @@ export const ProcessView = () => {
       {voted && (
         <Box mb={20}>
           <Text textAlign='center' mb={5}>
-            Ajuda'ns a conèixer-te millor!{' '}
-            <Link href='https://form.jotform.com/241433006383347' target='_blank' color='#FF6320'>
-              respon aquestes preguntes
-            </Link>
+            <Trans
+              i18nKey='process.omnium_link.you_know'
+              components={{
+                link: <Link href='https://form.jotform.com/241433006383347' target='_blank' color='#FF6320' />,
+              }}
+            />
           </Text>
 
           <Text textAlign='center'>
-            Inscriu-te a l'Assemblea General de Valls{' '}
-            <Link href='https://form.jotform.com/241163398249362' target='_blank' color='#FF6320'>
-              aquí
-            </Link>
+            <Trans
+              i18nKey='process.omnium_link.assembly'
+              components={{
+                link: <Link href='https://form.jotform.com/241163398249362' target='_blank' color='#FF6320' />,
+              }}
+            />
           </Text>
         </Box>
       )}
+      <VotingVoteModal />
       <SuccessVoteModal />
     </>
+  )
+}
+const VotingVoteModal = () => {
+  const { t } = useTranslation()
+  const {
+    loading: { voting },
+  } = useElection()
+
+  return (
+    <Modal isOpen={voting} onClose={() => {}}>
+      <ModalOverlay />
+      <ModalContent>
+        <VStack>
+          <Spinner color='#FF6320' mb={5} w={10} h={10} />
+        </VStack>
+        <ModalBody>
+          <Text>{t('process.voting')}</Text>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
   )
 }

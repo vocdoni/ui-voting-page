@@ -60,7 +60,7 @@ const ProcessHeader = () => {
               h1: <Text as='h1' color='#FF6320' fontSize='32px' fontWeight='extrabold' mt={10} />,
             }}
           />
-          {!voted && <Text>Tria individualment els candidats que vols votar, o bé, vota en blanc.</Text>}
+          {!voted && <Text>{t('process.helper_candidates')}</Text>}
         </Flex>
       </Box>
     </Box>

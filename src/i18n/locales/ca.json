@@ -76,7 +76,7 @@
       "confirm": "Confirma les teves seleccions:",
       "sign": "Signa abans de votar",
       "voted_description": "Per verificar el teu vot, pots utilitzar aquesta identificació única: {{ id }}",
-      "voted_title": "El teu vot ha estat registrat correctament. Els resultats electorals es coneixeran el 28 de juny durant l’Assemblea General a Valls."
+      "voted_title": "Els resultats electorals es coneixeran el 28 de juny durant l’Assemblea General a Valls."
     }
   },
   "copy": {
@@ -107,8 +107,7 @@
   },
   "menu": {
     "burger_aria_label": "menú d'usuari",
-    "connect": "Connectar",
-    "logout": "Tancar sessió"
+    "connect": "Connectar"
   },
   "process": {
     "census_strategies": {
@@ -136,21 +135,24 @@
       "one_of_them": "(Almenys un d'ells)"
     },
     "helper": "Un cop completat, recordeu prémer el botó “Finalitzar la votació” que es troba al final d’aquesta pàgina i confirmeu l’elecció.",
+    "helper_candidates": "Tria individualment els candidats que vols votar, o bé, vota en blanc.",
     "helper_error_one": "Has de contestar totes les votacions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
     "helper_error_many": "Has de contestar totes les votacions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
     "helper_error_other": "Has de contestar totes les votacions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
     "is_invalid": "Aquest procés té dades no vàlides i per tant no pot carregar-se",
+    "mark_all": "Votar tota la llista Òmnium 2026",
+    "omnium_link": {
+      "assembly": "Inscriu-te a l'Assemblea General de Valls <link>aquí</link>",
+      "you_know": "Ajuda'ns a conèixer-te millor! <link>respon aquestes preguntes</link>"
+    },
     "share_title": "Comparteix a {{ network }}",
     "spreadsheet": {
       "confirm": {
         "abstain_count_one": "",
         "abstain_count_many": "",
         "abstain_count_other": "",
-        "blank_vote": "",
-        "header": "Confirma el teu vot",
         "description": "Estas a un pas de finalitzar la teva votació. Aquestes són les opcions que has triat:",
-        "option": "<strong>Opció:</strong> {{ answer }}",
-        "options": "<strong>Selecció:</strong> {{ answers }}",
+        "header": "Confirma el teu vot",
         "question": "<strong><span>{{ question }}</span>:</strong> {{ answer }}"
       }
     },
@@ -162,11 +164,11 @@
       "upcoming": "Previst"
     },
     "success_modal": {
-      "btn": "Finalitzar",
       "text": "<p>El teu vot ha estat registrat correctament</p><p>Ajuda'ns a conèixer-te millor!</p>",
       "title": "Vot emès correctament!"
     },
-    "voters": "Votants"
+    "voters": "Votants",
+    "voting": "Estem processant el teu vot. Aquest procés trigarà uns segons. Si us plau, no actualitzis aquesta pàgina."
   },
   "process_actions": {
     "cancel": "Cancel·la",
