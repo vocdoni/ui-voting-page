@@ -9,6 +9,8 @@ const baseStyle = definePartsStyle({
   },
   dialog: {
     p: { base: 10, lg: 14 },
+    mt: 'auto',
+    mb: 'auto',
   },
   header: {
     padding: 0,
