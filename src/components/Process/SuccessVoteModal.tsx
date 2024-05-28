@@ -31,10 +31,10 @@ export const SuccessVoteModal = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [votesLeft, vLeft])
 
-  // if (!election || !voted) return null
+  if (!election || !voted) return null
 
   return (
-    <Modal isOpen={true} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>
