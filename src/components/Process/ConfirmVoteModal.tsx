@@ -33,7 +33,7 @@ export const ConfirmVoteModal = ({ election, answers }: { election: PublishedEle
         >
           {election.questions.map((q, i) => (
             <Box key={i} mb={2} mt={i === 0 ? 4 : 0}>
-              <Text display='flex' flexDirection='row' gap={1} mb={1}>
+              <Text display='flex' flexDirection='column' gap={1} mb={1}>
                 <Trans
                   i18nKey='process.spreadsheet.confirm.question'
                   components={{
