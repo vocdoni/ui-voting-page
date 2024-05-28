@@ -142,8 +142,8 @@
     "is_invalid": "Aquest procés té dades no vàlides i per tant no pot carregar-se",
     "mark_all": "Votar tota la llista Òmnium 2026",
     "omnium_link": {
-      "assembly": "Inscriu-te a l'Assemblea General de Valls <link>aquí</link>",
-      "you_know": "Ajuda'ns a conèixer-te millor! <link>respon aquestes preguntes</link>"
+      "assembly": "Inscriu-te a l'Assemblea General de Valls <customLink>aquí</customLink>",
+      "you_know": "Ajuda'ns a conèixer-te millor! <customLink>respon aquestes preguntes</customLink>"
     },
     "share_title": "Comparteix a {{ network }}",
     "spreadsheet": {
