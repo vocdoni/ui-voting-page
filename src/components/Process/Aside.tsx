@@ -1,4 +1,4 @@
-import { Box, Button, Card, Flex, Link, Text } from '@chakra-ui/react'
+import { Box, Card, Flex, Link, Text } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { VoteButton as CVoteButton, environment, SpreadsheetAccess, VoteWeight } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
@@ -211,38 +211,6 @@ export const VoteButton = ({ ...props }) => {
       px={{ base: 3, lg2: 0 }}
       {...props}
     >
-      {census?.type !== 'spreadsheet' && !connected && (
-        <ConnectButton.Custom>
-          {({ account, chain, openConnectModal, authenticationStatus, mounted }) => {
-            const ready = mounted && authenticationStatus !== 'loading'
-            const connected =
-              ready && account && chain && (!authenticationStatus || authenticationStatus === 'authenticated')
-            return (
-              <Box
-                {...(!ready && {
-                  'aria-hidden': true,
-                  style: {
-                    opacity: 0,
-                    pointerEvents: 'none',
-                    userSelect: 'none',
-                  },
-                })}
-                w='full'
-              >
-                {(() => {
-                  if (!connected) {
-                    return (
-                      <Button onClick={openConnectModal} w='full'>
-                        {t('menu.connect').toString()}
-                      </Button>
-                    )
-                  }
-                })()}
-              </Box>
-            )
-          }}
-        </ConnectButton.Custom>
-      )}
       <Flex flexDirection='column' gap={5} w='100%'>
         {census?.type === 'spreadsheet' && !connected && !isAbleToVote && <SpreadsheetAccess />}
         {isAbleToVote && (
