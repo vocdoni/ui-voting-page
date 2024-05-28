@@ -30,6 +30,7 @@ const baseStyle = definePartsStyle({
 
   alertTitle: {
     fontSize: 'lg',
+    whiteSpace: 'wrap',
   },
 
   alertDescription: {

@@ -164,7 +164,7 @@
       "upcoming": "Previst"
     },
     "success_modal": {
-      "text": "<p>El teu vot ha estat registrat correctament</p><p>Ajuda'ns a conèixer-te millor!</p>",
+      "text": "El teu vot ha estat registrat correctament",
       "title": "Vot emès correctament!"
     },
     "voters": "Votants",
