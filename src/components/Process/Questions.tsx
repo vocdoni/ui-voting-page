@@ -8,13 +8,14 @@ import { VoteButton } from './Aside'
 
 export const Questions = () => {
   const {
-    fmethods: { setValue, reset, getValues },
+    fmethods: { setValue, reset },
   } = useQuestionsForm()
   const { t } = useTranslation()
-  const { isAbleToVote, election, voted } = useElection()
+  const { isAbleToVote, election, voted, connected } = useElection()
   const [formErrors, setFormErrors] = useState<any>({})
+  const [showUndoBtn, setShowUndoBtn] = useState(false)
   const electionRef = useRef<HTMLDivElement>(null)
-  console.log(formErrors)
+
   // Move the focus of the screen to the first unanswered question
   useEffect(() => {
     if (!Object.keys(formErrors).length) return
@@ -54,24 +55,28 @@ export const Questions = () => {
                 onClick={() => {
                   reset()
                   setFormErrors({})
+                  if (connected) setShowUndoBtn(true)
                   election.questions.forEach((_, i) => setValue(i.toString(), '0'))
                 }}
               >
                 <Trans i18nKey='process.mark_all'>Votar tota la llista Òmnium 2026</Trans>
               </Button>
-              <Button
-                bgColor='white'
-                color='black'
-                border='1px solid black'
-                _hover={{ bgColor: '#f2f2f2' }}
-                isDisabled={!isAbleToVote}
-                onClick={() => {
-                  reset()
-                  setFormErrors({})
-                }}
-              >
-                <Trans i18nKey='process.undo'>Deseleccionar</Trans>
-              </Button>
+              {showUndoBtn && isAbleToVote && (
+                <Button
+                  bgColor='white'
+                  color='black'
+                  border='1px solid black'
+                  _hover={{ bgColor: '#f2f2f2' }}
+                  isDisabled={!isAbleToVote}
+                  onClick={() => {
+                    reset()
+                    setShowUndoBtn(false)
+                    setFormErrors({})
+                  }}
+                >
+                  <Trans i18nKey='process.undo'>Deseleccionar</Trans>
+                </Button>
+              )}
             </Flex>
             <Text as='h1' color='#FF6320' fontSize='32px' fontWeight='extrabold' mb={3}>
               Eleccions a la Junta Directiva d’Òmnium
@@ -79,7 +84,12 @@ export const Questions = () => {
             <Text mb={10}>Tria individualment els candidats que vols votar, o bé, vota en blanc</Text>
           </>
         )}
-        <Box onClick={() => setFormErrors({})}>
+        <Box
+          onClick={() => {
+            setFormErrors({})
+            if (connected) setShowUndoBtn(true)
+          }}
+        >
           <ElectionQuestionsForm
             onInvalid={(args) => {
               setFormErrors(args)
