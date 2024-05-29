@@ -87,7 +87,7 @@ export const Questions = () => {
           />
         </Box>
         {!!Object.values(formErrors).length && (
-          <Text mt={10} textAlign='center' color='red'>
+          <Text mt={10} textAlign='center' color='error'>
             .
             {t('process.helper_error', {
               count: election.questions.length - Object.values(formErrors).length,

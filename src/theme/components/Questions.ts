@@ -164,6 +164,7 @@ const baseStyle = definePartsStyle({
   error: {
     display: 'flex',
     justifyContent: 'center',
+    color: 'error',
   },
 })
 
