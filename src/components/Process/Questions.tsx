@@ -89,13 +89,28 @@ export const Questions = () => {
             setFormErrors({})
             if (connected) setShowUndoBtn(true)
           }}
+          position='relative'
         >
           <ElectionQuestionsForm
             onInvalid={(args) => {
               setFormErrors(args)
             }}
           />
+          {voted && (
+            <Button
+              as='a'
+              href='https://form.jotform.com/241163398249362'
+              target='_blank'
+              position='absolute'
+              bottom='30px'
+              left='50%'
+              transform='translateX(-50%)'
+            >
+              Inscriu-te
+            </Button>
+          )}
         </Box>
+
         {!!Object.values(formErrors).length && (
           <Text mt={10} textAlign='center' color='error'>
             .

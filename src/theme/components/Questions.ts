@@ -19,6 +19,7 @@ const baseStyle = definePartsStyle({
     gridTemplateRows: 'auto auto',
     boxShadow: 'var(--box-shadow-darker)',
     border: '1px solid #FF6320',
+    pb: '100px',
 
     '& span': {
       color: '#FF6320',
