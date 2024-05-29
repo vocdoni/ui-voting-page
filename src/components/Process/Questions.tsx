@@ -15,7 +15,7 @@ export const Questions = () => {
   const { isAbleToVote, election, voted } = useElection()
   const [formErrors, setFormErrors] = useState<any>({})
   const electionRef = useRef<HTMLDivElement>(null)
-
+  console.log(formErrors)
   // Move the focus of the screen to the first unanswered question
   useEffect(() => {
     if (!Object.keys(formErrors).length) return
@@ -57,7 +57,10 @@ export const Questions = () => {
               border='1px solid black'
               _hover={{ bgColor: '#f2f2f2' }}
               isDisabled={!isAbleToVote}
-              onClick={() => reset()}
+              onClick={() => {
+                reset()
+                setFormErrors({})
+              }}
               mb={10}
               ml='auto'
             />
@@ -67,6 +70,7 @@ export const Questions = () => {
               isDisabled={!isAbleToVote}
               onClick={() => {
                 reset()
+                setFormErrors({})
                 election.questions.forEach((_, i) => setValue(i.toString(), '0'))
               }}
               mb={10}
@@ -75,13 +79,15 @@ export const Questions = () => {
             </Button>
           )}
         </Flex>
-        <ElectionQuestionsForm
-          onInvalid={(args) => {
-            setFormErrors(args)
-          }}
-        />
+        <Box onClick={() => setFormErrors({})}>
+          <ElectionQuestionsForm
+            onInvalid={(args) => {
+              setFormErrors(args)
+            }}
+          />
+        </Box>
         {!!Object.values(formErrors).length && (
-          <Text mb={3} textAlign='center' color='red'>
+          <Text mt={10} textAlign='center' color='red'>
             .
             {t('process.helper_error', {
               count: election.questions.length - Object.values(formErrors).length,
@@ -89,12 +95,13 @@ export const Questions = () => {
             })}
           </Text>
         )}
+        {isAbleToVote && (
+          <Text mt={10} textAlign='center'>
+            {t('process.helper')}
+          </Text>
+        )}
       </Box>
-      {isAbleToVote && (
-        <Text mb={10} textAlign='center'>
-          {t('process.helper')}
-        </Text>
-      )}
+
       <Box onClick={() => setFormErrors({})}>
         <VoteButton />
       </Box>
