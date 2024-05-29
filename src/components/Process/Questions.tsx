@@ -1,9 +1,10 @@
-import { Box, Button, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, IconButton, Text } from '@chakra-ui/react'
 import { ElectionQuestionsForm, useQuestionsForm } from '@vocdoni/chakra-components'
 import { useElection } from '@vocdoni/react-providers'
 import { InvalidElection } from '@vocdoni/sdk'
 import { useEffect, useRef, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
+import { FaUndo } from 'react-icons/fa'
 import { VoteButton } from './Aside'
 
 export const Questions = () => {
@@ -46,19 +47,37 @@ export const Questions = () => {
   return (
     <>
       <Box ref={electionRef} className='md-sizes' mb={voted ? '40px' : '100px'} pt='25px'>
-        {!voted && (
-          <Button
-            isDisabled={!isAbleToVote}
-            onClick={() => {
-              reset
-              election.questions.forEach((_, i) => setValue(i.toString(), '0'))
-            }}
-            mb={10}
-            ml='auto'
-          >
-            <Trans i18nKey='process.mark_all'>Desfer</Trans>
-          </Button>
-        )}
+        <Flex ml='auto' justifyContent='end' flexDirection='row' gap={3}>
+          {!voted && (
+            <IconButton
+              aria-label='desfer'
+              icon={<FaUndo />}
+              bgColor='white'
+              color='black'
+              border='1px solid black'
+              _hover={{ bgColor: '#f2f2f2' }}
+              isDisabled={!isAbleToVote}
+              onClick={() => {
+                reset
+                election.questions.forEach((_, i) => setValue(i.toString(), ''))
+              }}
+              mb={10}
+              ml='auto'
+            />
+          )}
+          {!voted && (
+            <Button
+              isDisabled={!isAbleToVote}
+              onClick={() => {
+                reset
+                election.questions.forEach((_, i) => setValue(i.toString(), '0'))
+              }}
+              mb={10}
+            >
+              <Trans i18nKey='process.mark_all'></Trans>
+            </Button>
+          )}
+        </Flex>
         <ElectionQuestionsForm
           onInvalid={(args) => {
             setFormErrors(args)
