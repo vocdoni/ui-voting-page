@@ -46,35 +46,39 @@ export const Questions = () => {
   return (
     <>
       <Box ref={electionRef} className='md-sizes' mb={voted ? '40px' : '100px'} pt='25px'>
-        <Flex ml='auto' justifyContent='end' flexDirection={{ base: 'column', sm: 'row' }} gap={3} mb={10}>
-          {!voted && (
-            <Button
-              isDisabled={!isAbleToVote}
-              onClick={() => {
-                reset()
-                setFormErrors({})
-                election.questions.forEach((_, i) => setValue(i.toString(), '0'))
-              }}
-            >
-              <Trans i18nKey='process.mark_all'>Votar tota la llista Òmnium 2026</Trans>
-            </Button>
-          )}
-          {!voted && (
-            <Button
-              bgColor='white'
-              color='black'
-              border='1px solid black'
-              _hover={{ bgColor: '#f2f2f2' }}
-              isDisabled={!isAbleToVote}
-              onClick={() => {
-                reset()
-                setFormErrors({})
-              }}
-            >
-              <Trans i18nKey='process.undo'>Deseleccionar</Trans>
-            </Button>
-          )}
-        </Flex>
+        {!voted && (
+          <>
+            <Flex ml='auto' justifyContent='end' flexDirection={{ base: 'column', sm: 'row' }} gap={3} mb={10}>
+              <Button
+                isDisabled={!isAbleToVote}
+                onClick={() => {
+                  reset()
+                  setFormErrors({})
+                  election.questions.forEach((_, i) => setValue(i.toString(), '0'))
+                }}
+              >
+                <Trans i18nKey='process.mark_all'>Votar tota la llista Òmnium 2026</Trans>
+              </Button>
+              <Button
+                bgColor='white'
+                color='black'
+                border='1px solid black'
+                _hover={{ bgColor: '#f2f2f2' }}
+                isDisabled={!isAbleToVote}
+                onClick={() => {
+                  reset()
+                  setFormErrors({})
+                }}
+              >
+                <Trans i18nKey='process.undo'>Deseleccionar</Trans>
+              </Button>
+            </Flex>
+            <Text as='h1' color='#FF6320' fontSize='32px' fontWeight='extrabold' mb={3}>
+              Eleccions a la Junta Directiva d’Òmnium
+            </Text>
+            <Text mb={10}>Tria individualment els candidats que vols votar, o bé, vota en blanc</Text>
+          </>
+        )}
         <Box onClick={() => setFormErrors({})}>
           <ElectionQuestionsForm
             onInvalid={(args) => {

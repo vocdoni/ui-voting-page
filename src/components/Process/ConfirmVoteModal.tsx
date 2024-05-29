@@ -21,7 +21,7 @@ export const ConfirmVoteModal = ({ election, answers }: { election: PublishedEle
         </Text>
       </ModalHeader>
       <ModalBody display='flex' flexDirection='column' gap={5} p={0} mb={2}>
-        <Text>{t('process.spreadsheet.confirm.description')}</Text>
+        <Text textAlign='center'>{t('process.spreadsheet.confirm.description')}</Text>
         <Flex
           className='custom-scrollbar'
           flexDirection='column'

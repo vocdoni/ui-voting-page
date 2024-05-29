@@ -127,18 +127,18 @@
     "days_to_end_one": "El procés acaba demà",
     "days_to_end_many": "El procés acaba en {{ count }} dies",
     "days_to_end_other": "El procés acaba en {{ count }} dies",
-    "description": "<h1>Et donem la benvinguda a la votació a la Junta Directiva</h1> <p>Tens fins al 28 de juny per exercir el teu dret a vot. Et recordem que aquest sistema de vot és secret, personal i intransferible. Pots triar votar tota la llista de la candidatura o bé, votar cada càrrec de manera individual o en blanc. Participa-hi!</p>",
+    "description": "<h1>Et donem la benvinguda a la votació</h1> <p>La Junta Directiva d’Òmnium Cultural renova part dels seus membres cada dos anys. Enguany pertoca renovar la vicepresidència primera, la secretaria i les vocalies 10 a 19.També s’obren altres places per cobrir vacants, renúncies o noves creacions.</p> <p>Des de l’any 2018 ho fem de manera electrònica amb un sistema secret, personal i intransferible. La votació telemàtica es tancarà el 28 de juny a les 19h, coincidint amb la celebració de l’Assemblea General a Valls. Gràcies per participar-hi!</p>",
     "gitcoin": {
       "all_of_them": "(Tots ells)",
       "gps_score": "Gitcoin Passport Score: Puntuació mínima {{score}}",
       "needed_stamps": "Stamps necessaris",
       "one_of_them": "(Almenys un d'ells)"
     },
-    "helper": "Un cop completat, prem el botó “Finalitzar la votació” que es troba a continuació i confirmeu l’elecció",
+    "helper": "Un cop completat, prem “Finalitzar la votació” i confirma l’elecció.",
     "helper_candidates": "Tria individualment els candidats que vols votar, o bé, vota en blanc.",
-    "helper_error_one": "Has de contestar totes les votacions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
-    "helper_error_many": "Has de contestar totes les votacions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
-    "helper_error_other": "Has de contestar totes les votacions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
+    "helper_error_one": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
+    "helper_error_many": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
+    "helper_error_other": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
     "is_invalid": "Aquest procés té dades no vàlides i per tant no pot carregar-se",
     "mark_all": "Votar tota la llista Òmnium 2026",
     "omnium_link": {
@@ -164,12 +164,12 @@
       "upcoming": "Previst"
     },
     "success_modal": {
-      "text": "Ajuda'ns a conèixer-te millor:",
-      "title": "El teu vot ha estat registrat correctament"
+      "text": "Si tens 2 minuts més, ajuda’ns a millorar ❤️",
+      "title": "El teu vot ha estat registrat correctament. Moltes gràcies!"
     },
     "undo": "Deseleccionar",
     "voters": "Votants",
-    "voting": "Estem processant el teu vot. Aquest procés trigarà uns segons. Si us plau, no actualitzis aquesta pàgina."
+    "voting": "Estem processant el teu vot. Aquest procés trigarà uns segons. Si us plau, no tanquis ni actualitzis aquesta pàgina."
   },
   "process_actions": {
     "cancel": "Cancel·la",
