@@ -58,7 +58,7 @@ export const Questions = () => {
               _hover={{ bgColor: '#f2f2f2' }}
               isDisabled={!isAbleToVote}
               onClick={() => {
-                reset
+                reset()
                 election.questions.forEach((_, i) => setValue(i.toString(), ''))
               }}
               mb={10}
@@ -69,7 +69,7 @@ export const Questions = () => {
             <Button
               isDisabled={!isAbleToVote}
               onClick={() => {
-                reset
+                reset()
                 election.questions.forEach((_, i) => setValue(i.toString(), '0'))
               }}
               mb={10}
