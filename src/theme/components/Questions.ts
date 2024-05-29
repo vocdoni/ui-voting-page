@@ -31,11 +31,11 @@ const baseStyle = definePartsStyle({
   alertTitle: {
     fontSize: 'lg',
     whiteSpace: 'wrap',
+    fontWeight: 'bold',
+    mb: 3,
   },
 
-  alertDescription: {
-    display: 'none',
-  },
+  alertDescription: {},
 
   alertLink: {
     display: 'none',

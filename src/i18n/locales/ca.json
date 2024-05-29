@@ -75,8 +75,8 @@
       "button_update": "Torna a enviar el vot",
       "confirm": "Confirma les teves seleccions:",
       "sign": "Signa abans de votar",
-      "voted_description": "Per verificar el teu vot, pots utilitzar aquesta identificació única: {{ id }}",
-      "voted_title": "Els resultats electorals es coneixeran el 28 de juny durant l’Assemblea General a Valls."
+      "voted_description": "Els resultats electorals es coneixeran el 28 de juny durant l’Assemblea General de Valls.",
+      "voted_title": "El teu vot ha estat registrat correctament"
     }
   },
   "copy": {
