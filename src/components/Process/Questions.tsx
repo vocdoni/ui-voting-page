@@ -50,7 +50,7 @@ export const Questions = () => {
         <Flex ml='auto' justifyContent='end' flexDirection='row' gap={3}>
           {!voted && (
             <IconButton
-              aria-label='desfer'
+              aria-label='desmarcar totes les opcions'
               icon={<FaUndo />}
               bgColor='white'
               color='black'
