@@ -106,7 +106,7 @@ export const Questions = () => {
               left='50%'
               transform='translateX(-50%)'
             >
-              Inscriu-te
+              Inscriu-te aqui
             </Button>
           )}
         </Box>
