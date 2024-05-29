@@ -74,7 +74,7 @@ export const Questions = () => {
               }}
               mb={10}
             >
-              <Trans i18nKey='process.mark_all'></Trans>
+              <Trans i18nKey='process.mark_all'>Votar tota la llista Òmnium 2026</Trans>
             </Button>
           )}
         </Flex>
