@@ -1,10 +1,9 @@
-import { Box, Button, Flex, IconButton, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Text } from '@chakra-ui/react'
 import { ElectionQuestionsForm, useQuestionsForm } from '@vocdoni/chakra-components'
 import { useElection } from '@vocdoni/react-providers'
 import { InvalidElection } from '@vocdoni/sdk'
 import { useEffect, useRef, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
-import { FaUndo } from 'react-icons/fa'
 import { VoteButton } from './Aside'
 
 export const Questions = () => {
@@ -47,11 +46,21 @@ export const Questions = () => {
   return (
     <>
       <Box ref={electionRef} className='md-sizes' mb={voted ? '40px' : '100px'} pt='25px'>
-        <Flex ml='auto' justifyContent='end' flexDirection='row' gap={3}>
+        <Flex ml='auto' justifyContent='end' flexDirection={{ base: 'column', sm: 'row' }} gap={3} mb={10}>
           {!voted && (
-            <IconButton
-              aria-label='desmarcar totes les opcions'
-              icon={<FaUndo />}
+            <Button
+              isDisabled={!isAbleToVote}
+              onClick={() => {
+                reset()
+                setFormErrors({})
+                election.questions.forEach((_, i) => setValue(i.toString(), '0'))
+              }}
+            >
+              <Trans i18nKey='process.mark_all'>Votar tota la llista Òmnium 2026</Trans>
+            </Button>
+          )}
+          {!voted && (
+            <Button
               bgColor='white'
               color='black'
               border='1px solid black'
@@ -61,21 +70,8 @@ export const Questions = () => {
                 reset()
                 setFormErrors({})
               }}
-              mb={10}
-              ml='auto'
-            />
-          )}
-          {!voted && (
-            <Button
-              isDisabled={!isAbleToVote}
-              onClick={() => {
-                reset()
-                setFormErrors({})
-                election.questions.forEach((_, i) => setValue(i.toString(), '0'))
-              }}
-              mb={10}
             >
-              <Trans i18nKey='process.mark_all'>Votar tota la llista Òmnium 2026</Trans>
+              <Trans i18nKey='process.undo'>Deseleccionar</Trans>
             </Button>
           )}
         </Flex>

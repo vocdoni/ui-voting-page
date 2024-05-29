@@ -167,6 +167,7 @@
       "text": "<p>Gracias por tu voto. Vuelve a la página principal para seguir y consultar los resultados finales cuando estén disponibles.</p>",
       "title": "Voto emitido correctamente!"
     },
+    "undo": " Deseleccionar",
     "voters": "Votantes",
     "voting": ""
   },
