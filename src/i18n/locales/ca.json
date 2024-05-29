@@ -75,7 +75,7 @@
       "button_update": "Torna a enviar el vot",
       "confirm": "Confirma les teves seleccions:",
       "sign": "Signa abans de votar",
-      "voted_description": "Els resultats electorals es coneixeran el 28 de juny durant l’Assemblea General de Valls.",
+      "voted_description": "Els resultats electorals es coneixeran el 28 de juny durant l’Assemblea General a Valls.",
       "voted_title": "El teu vot ha estat registrat correctament"
     }
   },
@@ -142,7 +142,7 @@
     "is_invalid": "Aquest procés té dades no vàlides i per tant no pot carregar-se",
     "mark_all": "Votar tota la llista Òmnium 2026",
     "omnium_link": {
-      "assembly": "Inscriu-te a l'Assemblea General de Valls <customLink>aquí</customLink>",
+      "assembly": "Inscriu-te a l'Assemblea General a Valls <customLink>aquí</customLink>",
       "you_know": "Ajuda'ns a conèixer-te millor! <customLink>Respon aquestes preguntes</customLink>"
     },
     "share_title": "Comparteix a {{ network }}",
