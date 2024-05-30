@@ -59,7 +59,7 @@ export const Questions = () => {
                   election.questions.forEach((_, i) => setValue(i.toString(), '0'))
                 }}
               >
-                <Trans i18nKey='process.mark_all'>Votar tota la llista Òmnium 2026</Trans>
+                <Trans i18nKey='process.mark_all'>Seleccionar tota la llista Òmnium 26</Trans>
               </Button>
               {showUndoBtn && isAbleToVote && (
                 <Button
@@ -78,10 +78,15 @@ export const Questions = () => {
                 </Button>
               )}
             </Flex>
-            <Text as='h1' color='#FF6320' fontSize='32px' fontWeight='extrabold' mb={3}>
+            <Text as='h2' color='#FF6320' fontSize='32px' fontWeight='extrabold' mb={3}>
               Eleccions a la Junta Directiva d’Òmnium
             </Text>
-            <Text mb={10}>Tria individualment els candidats que vols votar, o bé, vota en blanc</Text>
+            <Text mb={10}>
+              {' '}
+              <Trans i18nKey='process.helper_candidates'>
+                Tria individualment els candidats que vols votar, o bé, vota en blanc:
+              </Trans>
+            </Text>
           </>
         )}
         <Box

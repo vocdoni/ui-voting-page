@@ -127,7 +127,7 @@
     "days_to_end_one": "El procés acaba demà",
     "days_to_end_many": "El procés acaba en {{ count }} dies",
     "days_to_end_other": "El procés acaba en {{ count }} dies",
-    "description": "<h1>Et donem la benvinguda a la votació</h1> <p>La Junta Directiva d’Òmnium Cultural renova part dels seus membres cada dos anys. Enguany pertoca renovar la vicepresidència primera, la secretaria i les vocalies 10 a 19.També s’obren altres places per cobrir vacants, renúncies o noves creacions.</p> <p>Des de l’any 2018 ho fem de manera electrònica amb un sistema secret, personal i intransferible. La votació telemàtica es tancarà el 28 de juny a les 19h, coincidint amb la celebració de l’Assemblea General a Valls. Gràcies per participar-hi!</p>",
+    "description": "<h1>Et donem la benvinguda a la votació</h1> <p>La Junta Directiva d’Òmnium Cultural renova part dels seus membres cada dos anys. Enguany pertoca renovar la vicepresidència primera, la secretaria i les vocalies 10 a 19.També s’obren altres places per cobrir vacants, renúncies o noves creacions.</p> <p>Des de l’any 2018 ho fem de manera electrònica amb un sistema secret, personal i intransferible. La votació telemàtica es tancarà el 28 de juny a les 19h, coincidint amb la celebració de l’Assemblea General a Valls.</p> <p>Gràcies per participar-hi!</p>",
     "gitcoin": {
       "all_of_them": "(Tots ells)",
       "gps_score": "Gitcoin Passport Score: Puntuació mínima {{score}}",
@@ -135,12 +135,12 @@
       "one_of_them": "(Almenys un d'ells)"
     },
     "helper": "Un cop completat, prem “Finalitzar la votació” i confirma l’elecció.",
-    "helper_candidates": "Tria individualment els candidats que vols votar, o bé, vota en blanc.",
+    "helper_candidates": "Tria individualment els candidats que vols votar, o bé, vota en blanc:",
     "helper_error_one": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
     "helper_error_many": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
     "helper_error_other": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
     "is_invalid": "Aquest procés té dades no vàlides i per tant no pot carregar-se",
-    "mark_all": "Votar tota la llista Òmnium 2026",
+    "mark_all": "Seleccionar tota la llista Òmnium 26",
     "omnium_link": {
       "assembly": "Inscriu-te a l'Assemblea General a Valls <customLink>aquí</customLink>",
       "you_know": "Ajuda'ns a conèixer-te millor! <customLink>Respon aquestes preguntes</customLink>"

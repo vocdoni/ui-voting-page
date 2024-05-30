@@ -11,21 +11,12 @@ const baseStyle = definePartsStyle({
     borderRadius: '8px',
     color: '#FF6320',
     bgColor: 'transparent',
-    display: 'grid',
-    columnGap: 4,
-    justifyContent: 'center',
-    alignItems: 'center',
-    gridTemplateColumns: 'auto 1fr',
-    gridTemplateRows: 'auto auto',
     boxShadow: 'var(--box-shadow-darker)',
     border: '1px solid #FF6320',
     pb: '100px',
 
     '& span': {
-      color: '#FF6320',
-      ml: { base: 2, lg: 10, xl: 2 },
-      gridRow: '1/3',
-      gridColumn: '1/2',
+      display: 'none',
     },
   },
 
