@@ -1,4 +1,4 @@
-import { Box, Button, Card, Flex, Link, Text } from '@chakra-ui/react'
+import { Box, Button, Card, Flex, FlexProps, Link, Text } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { VoteButton as CVoteButton, environment, SpreadsheetAccess, VoteWeight } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
@@ -183,20 +183,23 @@ const ProcessAside = () => {
   )
 }
 
-export const VoteButton = ({ setQuestionsTab, ...props }: { setQuestionsTab: () => void }) => {
+export const VoteButton = ({ ...props }: FlexProps) => {
   const { t } = useTranslation()
   const { election, connected, isAbleToVote, isInCensus } = useElection()
   const { isConnected } = useAccount()
 
-  if (!(election instanceof PublishedElection)) return null
+  if (!(election instanceof PublishedElection)) {
+    return null
+  }
 
-  const census: CensusMeta = dotobject(election?.meta || {}, 'census')
+  const census: CensusMeta | null = election.get('census')
 
   if (
     election?.status === ElectionStatus.CANCELED ||
-    (isConnected && !isInCensus && !['spreadsheet', 'csp'].includes(census?.type))
-  )
+    (isConnected && !isInCensus && !['spreadsheet', 'csp'].includes(census!.type))
+  ) {
     return null
+  }
 
   const isWeighted = election?.census.weight !== election?.census.size
 
@@ -243,14 +246,12 @@ export const VoteButton = ({ setQuestionsTab, ...props }: { setQuestionsTab: () 
           }}
         </ConnectButton.Custom>
       )}
-      {census?.type === 'spreadsheet' && !connected && <SpreadsheetAccess />}
       {isAbleToVote && (
         <>
           <CVoteButton
             w='60%'
             fontSize='lg'
             height='50px'
-            onClick={setQuestionsTab}
             mb={4}
             sx={{
               '&::disabled': {

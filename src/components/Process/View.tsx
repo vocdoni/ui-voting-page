@@ -1,12 +1,11 @@
 import { AspectRatio, Box, Flex, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react'
-import { ElectionQuestions, ElectionResults } from '@vocdoni/chakra-components'
 import { useElection } from '@vocdoni/react-providers'
 import { ElectionStatus, PublishedElection } from '@vocdoni/sdk'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import ReactPlayer from 'react-player'
 import ProcessAside, { VoteButton } from './Aside'
-import { ConfirmVoteModal } from './ConfirmVoteModal'
+import { ChainedProcesses, ChainedResults } from './Chained'
 import Header from './Header'
 import { SuccessVoteModal } from './SuccessVoteModal'
 
@@ -22,8 +21,6 @@ export const ProcessView = () => {
   const handleTabsChange = (index: number) => {
     setTabIndex(index)
   }
-
-  const setQuestionsTab = () => setTabIndex(0)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -115,20 +112,10 @@ export const ProcessView = () => {
             </TabList>
             <TabPanels>
               <TabPanel>
-                <Box ref={electionRef} className='md-sizes' mb='100px' pt='25px'>
-                  <ElectionQuestions
-                    onInvalid={(args) => {
-                      setFormErrors(args)
-                    }}
-                    confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
-                  />
-                </Box>
-                <Box position='sticky' bottom={0} left={0} pb={1} pt={1} display={{ base: 'none', lg2: 'block' }}>
-                  <VoteButton setQuestionsTab={setQuestionsTab} />
-                </Box>
+                <ChainedProcesses root={election} />
               </TabPanel>
               <TabPanel mb={20}>
-                <ElectionResults />
+                <ChainedResults root={election} />
               </TabPanel>
             </TabPanels>
           </Tabs>
@@ -157,7 +144,7 @@ export const ProcessView = () => {
         pt={1}
         display={{ base: 'block', lg2: 'none' }}
       >
-        <VoteButton setQuestionsTab={setQuestionsTab} />
+        <VoteButton />
       </Box>
 
       <SuccessVoteModal />
