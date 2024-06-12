@@ -1,9 +1,28 @@
-import { AspectRatio, Box, Flex, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react'
+import {
+  AspectRatio,
+  Box,
+  Flex,
+  Link,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalOverlay,
+  Spinner,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+  VStack,
+} from '@chakra-ui/react'
+import { Link as ReactRouterLink } from 'react-router-dom'
+
 import { ElectionQuestions, ElectionResults } from '@vocdoni/chakra-components'
 import { useElection } from '@vocdoni/react-providers'
 import { ElectionStatus, PublishedElection } from '@vocdoni/sdk'
 import { useEffect, useRef, useState } from 'react'
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import ReactPlayer from 'react-player'
 import ProcessAside, { VoteButton } from './Aside'
 import { ConfirmVoteModal } from './ConfirmVoteModal'
@@ -79,7 +98,7 @@ export const ProcessView = () => {
 
   return (
     <Box>
-      <Box className='site-wrapper' mb={44}>
+      <Box className='site-wrapper'>
         <Header />
 
         {election instanceof PublishedElection && election?.streamUri && (
@@ -96,7 +115,7 @@ export const ProcessView = () => {
           </Box>
         )}
 
-        <Flex direction={{ base: 'column', lg2: 'row' }} alignItems='start' gap={{ lg2: 10 }} mt={20}>
+        <Flex direction={{ base: 'column', lg2: 'row' }} alignItems='start' gap={{ lg2: 10 }} mt={{ lg2: 20 }}>
           <Tabs
             order={{ base: 2, lg2: 1 }}
             variant='process'
@@ -115,7 +134,7 @@ export const ProcessView = () => {
             </TabList>
             <TabPanels>
               <TabPanel>
-                <Box ref={electionRef} className='md-sizes' mb='100px' pt='25px'>
+                <Box ref={electionRef} className='md-sizes' mb={{ md: '50px' }} pt='25px'>
                   <ElectionQuestions
                     onInvalid={(args) => {
                       setFormErrors(args)
@@ -123,7 +142,7 @@ export const ProcessView = () => {
                     confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
                   />
                 </Box>
-                <Box position='sticky' bottom={0} left={0} pb={1} pt={1} display={{ base: 'none', lg2: 'block' }}>
+                <Box display={{ base: 'none', md: 'block' }}>
                   <VoteButton setQuestionsTab={setQuestionsTab} />
                 </Box>
               </TabPanel>
@@ -131,6 +150,18 @@ export const ProcessView = () => {
                 <ElectionResults />
               </TabPanel>
             </TabPanels>
+            <Text textAlign='center' mx='auto' maxW='1150px' my={10}>
+              <Trans
+                i18nKey='process.footer_message'
+                components={{
+                  bold: <Text as='span' fontWeight='bold' />,
+                  normal: <Text as='span' />,
+                  customLink: (
+                    <Link as={ReactRouterLink} to='' textDecor='underline' _hover={{ textDecoration: 'none' }} />
+                  ),
+                }}
+              />
+            </Text>
           </Tabs>
           <Flex
             flexGrow={1}
@@ -153,14 +184,36 @@ export const ProcessView = () => {
         position='sticky'
         bottom={0}
         left={0}
-        bgColor='process.aside.aside_footer_mbl_border'
+        bgColor='process.vote_button.wrapper_bg'
         pt={1}
-        display={{ base: 'block', lg2: 'none' }}
+        display={{ base: 'block', md: 'none' }}
       >
         <VoteButton setQuestionsTab={setQuestionsTab} />
       </Box>
 
+      <VotingVoteModal />
       <SuccessVoteModal />
     </Box>
+  )
+}
+
+const VotingVoteModal = () => {
+  const { t } = useTranslation()
+  const {
+    loading: { voting },
+  } = useElection()
+
+  return (
+    <Modal isOpen={voting} onClose={() => {}}>
+      <ModalOverlay />
+      <ModalContent>
+        <VStack>
+          <Spinner color='#f6ad18' mb={5} w={10} h={10} />
+        </VStack>
+        <ModalBody>
+          <Text textAlign='center'>{t('process.voting')}</Text>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
   )
 }

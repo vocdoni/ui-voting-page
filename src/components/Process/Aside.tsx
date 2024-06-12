@@ -1,6 +1,6 @@
 import { Box, Button, Card, Flex, Link, Text } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { VoteButton as CVoteButton, environment, SpreadsheetAccess, VoteWeight } from '@vocdoni/chakra-components'
+import { VoteButton as CVoteButton, environment, SpreadsheetAccess } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
 import { dotobject, ElectionStatus, formatUnits, PublishedElection } from '@vocdoni/sdk'
 import { TFunction } from 'i18next'
@@ -247,18 +247,21 @@ export const VoteButton = ({ setQuestionsTab, ...props }: { setQuestionsTab: () 
       {isAbleToVote && (
         <>
           <CVoteButton
-            w='60%'
+            w='100%'
             fontSize='lg'
-            height='50px'
             onClick={setQuestionsTab}
-            mb={4}
+            bgColor={{ base: 'process.vote_button.mobile_bg', md: 'process.vote_button.mobile_color' }}
+            color={{ base: 'process.vote_button.mobile_color', md: 'process.vote_button.mobile_bg' }}
+            _hover={{
+              bgColor: { base: 'process.vote_button.mobile_bg', md: 'process.vote_button.mobile_color' },
+              color: { base: 'process.vote_button.mobile_color', md: 'process.vote_button.mobile_bg' },
+            }}
             sx={{
               '&::disabled': {
                 opacity: '0.8',
               },
             }}
           />
-          {isWeighted && <VoteWeight />}
         </>
       )}
     </Flex>

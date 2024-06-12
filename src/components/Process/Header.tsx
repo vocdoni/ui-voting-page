@@ -1,5 +1,5 @@
 import { Box, Flex, Icon, Image, Text, Tooltip } from '@chakra-ui/react'
-import { ElectionDescription, ElectionSchedule, ElectionStatusBadge, ElectionTitle } from '@vocdoni/chakra-components'
+import { ElectionDescription, ElectionStatusBadge, ElectionTitle } from '@vocdoni/chakra-components'
 import { useClient, useElection, useOrganization } from '@vocdoni/react-providers'
 import { CensusType, ElectionStatus, InvalidElection, PublishedElection, Strategy } from '@vocdoni/sdk'
 import { ReactNode, useEffect, useState } from 'react'
@@ -7,11 +7,10 @@ import { useTranslation } from 'react-i18next'
 import { FaInfoCircle } from 'react-icons/fa'
 import { IoWarningOutline } from 'react-icons/io5'
 import { useReadMoreMarkdown } from '~components/Layout/use-read-more'
-import { ShareModalButton } from '~components/Share'
 import { ActionsMenu } from './ActionsMenu'
 import { StampIcon } from './Census/StampIcon'
 import { CreatedBy } from './CreatedBy'
-import { ProcessDate } from './Date'
+import ercHeader from '/assets/erc.png'
 
 type CensusInfo = { size: number; weight: bigint; type: CensusType }
 
@@ -52,29 +51,17 @@ const ProcessHeader = () => {
 
   return (
     <Box mb={10}>
-      {election instanceof PublishedElection && election?.header && (
-        <Box w='100%' mx='auto' maxH='300px' my='30px' overflow='hidden'>
-          <Image src={election?.header} w='100%' h='auto' objectFit='cover' />
-        </Box>
-      )}
+      <Image src={ercHeader} maxW='350px' mb={'32px'} />
       <Flex direction={{ base: 'column', lg2: 'row' }} mb={7} gap={10}>
         <Box flex={{ lg2: '1 1 80%' }}>
           <ElectionTitle fontSize={{ base: '32px', md: '34px' }} textAlign='left' my={5} />
           <Flex flexDirection={{ base: 'column', xl: 'row' }} mb={4} justifyContent='space-between'>
             <Flex gap={4} flexDirection={{ base: 'column', xl: 'row' }} alignItems={{ base: 'start', xl: 'center' }}>
-              <Flex gap={3} justifyContent={'space-between'} w={{ base: '100%', xl: 'fit-content' }}>
-                <Flex gap={3} alignItems='center'>
-                  <Text as='span' color='process.label' fontSize='sm'>
-                    {t('process.state')}
-                  </Text>
-                  <ElectionStatusBadge />
-                </Flex>
-                <Box display={{ base: 'flex', xl: 'none' }}>
-                  <ShareModalButton
-                    caption={t('share.election_share_text')}
-                    text={t('share.election_share_btn_text')}
-                  />
-                </Box>
+              <Flex gap={3} alignItems='center'>
+                <Text as='span' color='process.label' fontSize='sm'>
+                  {t('process.state')}
+                </Text>
+                <ElectionStatusBadge />
               </Flex>
               <Flex
                 flexDirection={{ base: 'column', xl: 'row' }}
@@ -84,12 +71,12 @@ const ProcessHeader = () => {
                 <Text as='span' color='process.label' fontSize='sm'>
                   {t('process.schedule')}
                 </Text>
-                <ElectionSchedule textAlign='left' color='process.info_title' />
+                {/* <ElectionSchedule textAlign='left' color='process.info_title' /> */}
+                <Text color='process.info_title'>
+                  {formatDate((election as any).startDate, (election as any).endDate)}
+                </Text>
               </Flex>
             </Flex>
-            <Box display={{ base: 'none', xl: 'flex' }}>
-              <ShareModalButton caption={t('share.election_share_text')} text={t('share.election_share_btn_text')} />
-            </Box>
           </Flex>
           <Flex flexDirection='column'>
             {election instanceof PublishedElection && !election?.description?.default.length && (
@@ -121,14 +108,12 @@ const ProcessHeader = () => {
           }}
         >
           <Box flexDir='row' display='flex' justifyContent='space-between' w={{ lg2: 'full' }}>
-            {election instanceof PublishedElection && election?.status !== ElectionStatus.CANCELED ? (
-              <ProcessDate />
-            ) : (
+            {election instanceof PublishedElection && election?.status === ElectionStatus.CANCELED && (
               <Text color='process.canceled' fontWeight='bold'>
                 {t('process.status.canceled')}
               </Text>
             )}
-            <Box position='absolute' right={0} top={0}>
+            <Box ml='auto'>
               <ActionsMenu />
             </Box>
           </Box>
@@ -225,6 +210,17 @@ const ProcessHeader = () => {
       </Flex>
     </Box>
   )
+}
+
+const formatDate = (startDate: Date, endDate: Date) => {
+  const startTime = startDate.toLocaleTimeString('en-US')
+  const startDay = startDate.getDate()
+  const startMonth = startDate.toLocaleString('ca', { month: 'long' }).replace(/^\w/, (c) => c.toUpperCase())
+
+  const endTime = endDate.toLocaleTimeString('en-US')
+  const endDay = endDate.getDate()
+  const endMonth = endDate.toLocaleString('ca', { month: 'long' }).replace(/^\w/, (c) => c.toUpperCase())
+  return `${startTime} del ${startDay} ${startMonth} al ${endTime} del ${endDay} ${endMonth}`
 }
 
 const GitcoinStrategyInfo = () => {

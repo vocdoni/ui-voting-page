@@ -32,7 +32,16 @@ export const ActionsMenu = (props: MenuListProps) => {
 
   return (
     <Menu closeOnSelect={false}>
-      <MenuButton as={IconButton} aria-label='Actions' icon={<FaCog />} variant='ghost' />
+      <MenuButton
+        as={IconButton}
+        aria-label='Actions'
+        icon={<FaCog />}
+        variant='ghost'
+        width='min-content'
+        minW={0}
+        minH={0}
+        h='min-content'
+      />
       <ActionsProvider>
         <ActionsMenuList {...props} />
       </ActionsProvider>

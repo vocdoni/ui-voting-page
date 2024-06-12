@@ -31,8 +31,8 @@
     },
     "confirm": {
       "cancel": "Cancel·la",
-      "confirm": "Confirma Vot",
-      "title": "Confirmar"
+      "confirm": "Emetre vot",
+      "title": "Confirmar la votació"
     },
     "empty": "Sembla que aquest procés no té preguntes",
     "errors": {
@@ -41,8 +41,8 @@
     },
     "results": {
       "date_format": "PPpp",
-      "secret_until_the_end": "Els resultats es faran públics quan el procés finalitzi el {{ endDate }}",
-      "title": "Resultats per a \"{{ title }}\"",
+      "secret_until_the_end": "Els resultats provisionals seran accessibles quan el procés finalitzi.",
+      "title": "{{ title }}",
       "votes": "Vots: {{ votes }} ({{ percent }})"
     },
     "schedule": "Votació del {{ begin }} al {{ end }}",
@@ -125,6 +125,7 @@
       "relative_inline": "{{ status }} {{ date, relative(past: fa %time; future: en %time) }}",
       "starts": "Comença el procés"
     },
+    "footer_message": "<bold>Esquerra Repulicana</bold> <normal>utilitza la plataforma de programari lliure Vocdoni basada en tecnologia blockchain per gestionar i registrar les votacions de manera segura i transparent. Per més informació sobre la plataforma podeu consultar el següent enllaç:</normal> <customLink>vocdoni.io</customLink>",
     "gitcoin": {
       "all_of_them": "(Tots ells)",
       "gps_score": "Gitcoin Passport Score: Puntuació mínima {{score}}",
@@ -141,7 +142,7 @@
     "people_in_census_many": "",
     "people_in_census_other": "{{ count }} votants",
     "questions": "Preguntes",
-    "results": "Resultats",
+    "results": "Resultats provisionals",
     "schedule": "HORARI",
     "share_caption": "Acabo d'emetre el meu vot a {{ title }}!!",
     "share_title": "Comparteix a {{ network }}",
@@ -151,7 +152,7 @@
         "abstain_count_many": "",
         "abstain_count_other": "",
         "blank_vote": "",
-        "description": "Abans de votar, reviseu que tot sigui correcte.",
+        "description": "Aquesta és la teva selecció. Si vols modificar-la pots tancar aquest missatge i seleccionar-la de nou.",
         "option": "<strong>Opció {{ number }}:</strong> {{ answer }}",
         "options": "<strong>Selecció:</strong> {{ answers }}",
         "question": "<strong>Pregunta {{ number }}:</strong> {{ answer }}"
@@ -170,12 +171,13 @@
     "strategy": "Estratègia",
     "success_modal": {
       "btn": "Finalitzar",
-      "text": "<p>El teu vot ha estat emès i emmagatzemat de forma segura a la cadena de blocs de Vocdoni. <verify>Pots comprovar-ho aquí</verify>.</p><p>La democràcia és important, la pots compartir amb la teva comunitat i amics:</p>",
+      "text": "<p>El teu vot ha estat emès i emmagatzemat de forma segura a la cadena de blocs de Vocdoni. <verify>Pots comprovar-ho aquí</verify>.</p>",
       "title": "Vot emès correctament!"
     },
     "total_census_size": "{{maxCensusSize}} electors permesos de {{censusSize}} totals en el cens",
     "total_census_size_tooltip": "El nombre màxim d'electors permesos està limitat a {{maxCensusSize}} d'un cens de {{censusSize}} ({{percent}}% del total). Només els primers {{maxCensusSize}} electors poden votar.",
-    "voters": "Votants"
+    "voters": "Votants",
+    "voting": "Estem processant el teu vot. Aquest procés trigarà uns segons. Si us plau, no tanquis ni actualitzis aquesta pàgina."
   },
   "process_actions": {
     "cancel": "Cancel·la",

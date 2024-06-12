@@ -4,7 +4,7 @@ import { ElectionResultsTypeNames, PublishedElection } from '@vocdoni/sdk'
 import { FieldValues } from 'react-hook-form'
 import { Trans, useTranslation } from 'react-i18next'
 import { IoWarningOutline } from 'react-icons/io5'
-import confirmImg from '/assets/spreadsheet-confirm-modal.jpg'
+import confirmImg from '/assets/modal-voting.png'
 
 export const ConfirmVoteModal = ({ election, answers }: { election: PublishedElection; answers: FieldValues }) => {
   const { t } = useTranslation()
@@ -17,7 +17,7 @@ export const ConfirmVoteModal = ({ election, answers }: { election: PublishedEle
   return (
     <>
       <ModalHeader>
-        <Box bgImage={`url(${confirmImg})`} />
+        <Box bgImage={confirmImg} minH='280px' />
       </ModalHeader>
       <ModalBody display='flex' flexDirection='column' gap={5} p={0} mb={2}>
         <Text>{t('process.spreadsheet.confirm.description')}</Text>

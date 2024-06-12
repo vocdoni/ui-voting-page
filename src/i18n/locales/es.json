@@ -125,6 +125,7 @@
       "relative_inline": "{{ status }} {{ date, relative(past: hace %time; future: en %time) }}",
       "starts": "Empieza"
     },
+    "footer_message": "",
     "gitcoin": {
       "all_of_them": "(Todos ellos)",
       "gps_score": "Gitcoin Passport Score: Puntuación mín. {{score}}",
@@ -141,7 +142,7 @@
     "people_in_census_many": "",
     "people_in_census_other": "{{ count }} votantes",
     "questions": "Preguntas",
-    "results": "Resultados",
+    "results": "Resultados provisionales",
     "schedule": "HORARIO",
     "share_caption": "Acabo de emitir mi voto para {{ title }}!!",
     "share_title": "Compartir en {{ network }}",
@@ -175,7 +176,8 @@
     },
     "total_census_size": "{{maxCensusSize}} votantes permitidos de {{censusSize}} totales en el censo",
     "total_census_size_tooltip": "El número máximo de votantes permitidos está limitado a {{maxCensusSize}} de un censo de {{censusSize}} ({{percent}}% del total). Solo los primeros {{maxCensusSize}} votantes pueden votar.",
-    "voters": "Votantes"
+    "voters": "Votantes",
+    "voting": ""
   },
   "process_actions": {
     "cancel": "Cancelar proceso",

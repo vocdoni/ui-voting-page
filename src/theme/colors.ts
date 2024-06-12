@@ -14,9 +14,9 @@ export const colorsBase = {
   },
   green: '#48BB78',
   primary: {
-    main: '#24656e',
-    dark: '#175b64',
-    dark2: '#2c545a',
+    main: '#FFB232',
+    dark: '#f2992b',
+    dark2: '#ff8c19',
   },
   red: '#E53E3E',
   white: {
@@ -109,11 +109,11 @@ export const colors = {
 
   process: {
     aside: {
-      bg: colorsBase.gradient,
+      bg: colorsBase.primary.main,
       color: colorsBase.white.pure,
       vote_btn_color: colorsBase.black,
       vote_btn_bg: colorsBase.primary.main,
-      aside_footer_mbl_border: colorsBase.white.dark,
+      aside_footer_mbl_bg: colorsBase.primary.main,
       verify_link: colorsBase.white.pure,
     },
     canceled: colorsBase.primary.main,
@@ -169,7 +169,8 @@ export const colors = {
     },
     vote_button: {
       mobile_bg: colorsBase.white.pure,
-      mobile_color: colorsBase.black,
+      mobile_color: colorsBase.primary.main,
+      wrapper_bg: colorsBase.primary.main,
       desktop_bg: colorsBase.primary.main,
       desktop_color: colorsBase.white.pure,
     },

@@ -88,6 +88,7 @@ export const theme = extendTheme(vtheme, {
 
       '.site-wrapper-full': {
         width: 'full',
+        mx: 'auto',
         px: {
           base: '10px',
           sm: '20px',
