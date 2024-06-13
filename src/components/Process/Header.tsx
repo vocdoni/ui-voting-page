@@ -51,7 +51,7 @@ const ProcessHeader = () => {
 
   return (
     <Box mb={10}>
-      <Image src={ercHeader} maxW='250px' mb={'32px'} />
+      <Image src={ercHeader} maxW='350px' mb={'32px'} />
       <Flex direction={{ base: 'column', lg2: 'row' }} mb={7} gap={10}>
         <Box flex={{ lg2: '1 1 80%' }}>
           <ElectionTitle fontSize={{ base: '32px', md: '34px' }} textAlign='left' my={5} />
