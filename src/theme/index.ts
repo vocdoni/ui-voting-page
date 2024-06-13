@@ -6,7 +6,7 @@ import { colors, colorsBase } from './colors'
 import { components } from './components'
 import { fontSizes } from './font'
 import { sizes } from './space'
-import SConfirmModal from '/assets/spreadsheet-confirm-modal.jpg'
+import SConfirmModal from '/assets/spreadsheet-confirm-modal.png'
 
 export const theme = extendTheme(vtheme, {
   styles: {
