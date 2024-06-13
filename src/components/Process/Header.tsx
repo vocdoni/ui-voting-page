@@ -10,7 +10,7 @@ import { useReadMoreMarkdown } from '~components/Layout/use-read-more'
 import { ActionsMenu } from './ActionsMenu'
 import { StampIcon } from './Census/StampIcon'
 import { CreatedBy } from './CreatedBy'
-import ercHeader from '/assets/erc.png'
+import ercHeader from '/assets/erc.svg'
 
 type CensusInfo = { size: number; weight: bigint; type: CensusType }
 
@@ -51,7 +51,7 @@ const ProcessHeader = () => {
 
   return (
     <Box mb={10}>
-      <Image src={ercHeader} maxW='350px' mb={'32px'} />
+      <Image src={ercHeader} maxW='400px' mb={'32px'} />
       <Flex direction={{ base: 'column', lg2: 'row' }} mb={7} gap={10}>
         <Box flex={{ lg2: '1 1 80%' }}>
           <ElectionTitle fontSize={{ base: '32px', md: '34px' }} textAlign='left' my={5} />
