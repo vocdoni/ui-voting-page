@@ -20,7 +20,7 @@ import { InvalidElection } from '@vocdoni/sdk'
 import { useEffect, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { FacebookShare, RedditShare, TelegramShare, TwitterShare } from '~components/Share'
-import successImg from '/assets/modal-success.png'
+import successImg from '/assets/spreadsheet-confirm-modal.png'
 
 export const SuccessVoteModal = () => {
   const { t } = useTranslation()
