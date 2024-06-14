@@ -8,7 +8,7 @@ const Vote = () => {
 
   return (
     <OrganizationProvider id={election.organizationId}>
-      <ElectionProvider election={election} fetchCensus autoUpdate>
+      <ElectionProvider key='root-election' election={election} fetchCensus autoUpdate>
         <ProcessView />
       </ElectionProvider>
     </OrganizationProvider>

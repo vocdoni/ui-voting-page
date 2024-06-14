@@ -25,7 +25,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import ReactPlayer from 'react-player'
 import ProcessAside, { VoteButton } from './Aside'
-import { ConfirmVoteModal } from './ConfirmVoteModal'
+import { ChainedProcesses, ChainedResults } from './Chained'
 import Header from './Header'
 import { SuccessVoteModal } from './SuccessVoteModal'
 
@@ -41,8 +41,6 @@ export const ProcessView = () => {
   const handleTabsChange = (index: number) => {
     setTabIndex(index)
   }
-
-  const setQuestionsTab = () => setTabIndex(0)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -134,20 +132,10 @@ export const ProcessView = () => {
             </TabList>
             <TabPanels>
               <TabPanel>
-                <Box ref={electionRef} className='md-sizes' mb={{ md: '50px' }} pt='25px'>
-                  <ElectionQuestions
-                    onInvalid={(args) => {
-                      setFormErrors(args)
-                    }}
-                    confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
-                  />
-                </Box>
-                <Box display={{ base: 'none', md: 'block' }}>
-                  <VoteButton setQuestionsTab={setQuestionsTab} />
-                </Box>
+                <ChainedProcesses root={election} />
               </TabPanel>
               <TabPanel mb={20}>
-                <ElectionResults />
+                <ChainedResults root={election} />
               </TabPanel>
             </TabPanels>
             <Text textAlign='center' mx='auto' maxW='1150px' my={10}>
@@ -188,7 +176,7 @@ export const ProcessView = () => {
         pt={1}
         display={{ base: 'block', md: 'none' }}
       >
-        <VoteButton setQuestionsTab={setQuestionsTab} />
+        <VoteButton />
       </Box>
 
       <VotingVoteModal />
