@@ -12,6 +12,7 @@ type ChainedContextState = {
   root: PublishedElection
   setProcess: (id: string, process: PublishedElection) => void
   setCurrent: (id: string | null) => void
+  reset: () => void
 }
 
 type ChainedProviderProps = {
@@ -32,8 +33,15 @@ export const ChainedProvider: FC<PropsWithChildren<ChainedProviderProps>> = ({ c
     }))
   }
 
+  const reset = () => {
+    setProcesses((prev) => ({
+      [root.id]: prev[root.id],
+    }))
+    setCurrent(root.id)
+  }
+
   return (
-    <ChainedContext.Provider value={{ processes, client, current, root, setProcess, setCurrent }}>
+    <ChainedContext.Provider value={{ processes, client, current, reset, root, setProcess, setCurrent }}>
       {children}
     </ChainedContext.Provider>
   )

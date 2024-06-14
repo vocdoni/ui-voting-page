@@ -90,13 +90,13 @@ export const ChainedResults = ({ root }: ChainedProcessesProps) => {
 const ChainedProcessesWrapper = () => {
   // note election context refers to the root election here, ALWAYS
   const { connected, election } = useElection()
-  const { processes, current, root, setCurrent } = useChainedProcesses()
+  const { processes, current, root, setCurrent, reset } = useChainedProcesses()
 
   // set current to root if login out
   useEffect(() => {
     if (connected) return
 
-    setCurrent(root.id)
+    reset()
   }, [connected])
 
   if (!current || !processes[current] || !election || election instanceof InvalidElection) {
