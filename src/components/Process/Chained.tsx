@@ -50,13 +50,10 @@ const ChainedProcessesInner = () => {
   }
 
   return (
-    <Box className='md-sizes' mb='100px' pt='25px'>
+    <Box className='md-sizes' mb='50px' pt='25px'>
       <ElectionQuestions
         confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
       />
-      <Box position='sticky' bottom={0} left={0} pb={1} pt={1} display={{ base: 'none', lg2: 'block' }}>
-        <VoteButton />
-      </Box>
     </Box>
   )
 }
@@ -108,7 +105,16 @@ const ChainedProcessesWrapper = () => {
       <ElectionProvider key={current} election={processes[current]} ConnectButton={ConnectButton} fetchCensus>
         <ChainedProcessesInner />
       </ElectionProvider>
-      {!connected && election.get('census.type') === 'spreadsheet' && <SpreadsheetAccess />}
+      <Box
+        bottom={0}
+        left={0}
+        pt={1}
+        position={{ base: 'sticky', lg2: 'relative' }}
+        bgColor={{ base: 'white', lg2: 'transparent' }}
+      >
+        {!connected && election.get('census.type') === 'spreadsheet' && <SpreadsheetAccess />}
+        <VoteButton />
+      </Box>
     </>
   )
 }

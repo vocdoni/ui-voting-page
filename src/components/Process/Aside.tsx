@@ -249,12 +249,6 @@ export const VoteButton = ({ ...props }: FlexProps) => {
           <CVoteButton
             w='100%'
             fontSize='lg'
-            bgColor={{ base: 'process.vote_button.mobile_bg', md: 'process.vote_button.mobile_color' }}
-            color={{ base: 'process.vote_button.mobile_color', md: 'process.vote_button.mobile_bg' }}
-            _hover={{
-              bgColor: { base: 'process.vote_button.mobile_bg', md: 'process.vote_button.mobile_color' },
-              color: { base: 'process.vote_button.mobile_color', md: 'process.vote_button.mobile_bg' },
-            }}
             sx={{
               '&::disabled': {
                 opacity: '0.8',

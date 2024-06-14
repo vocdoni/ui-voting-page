@@ -18,13 +18,12 @@ import {
 } from '@chakra-ui/react'
 import { Link as ReactRouterLink } from 'react-router-dom'
 
-import { ElectionQuestions, ElectionResults } from '@vocdoni/chakra-components'
 import { useElection } from '@vocdoni/react-providers'
 import { ElectionStatus, PublishedElection } from '@vocdoni/sdk'
 import { useEffect, useRef, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import ReactPlayer from 'react-player'
-import ProcessAside, { VoteButton } from './Aside'
+import ProcessAside from './Aside'
 import { ChainedProcesses, ChainedResults } from './Chained'
 import Header from './Header'
 import { SuccessVoteModal } from './SuccessVoteModal'
@@ -160,23 +159,13 @@ export const ProcessView = () => {
             mx={{ base: 'auto', lg2: 0 }}
             position={{ lg2: 'sticky' }}
             top={'300px'}
-            mt={10}
+            mt={{ lg2: 10 }}
             maxW={{ lg2: '290px' }}
             mb={10}
           >
             <ProcessAside />
           </Flex>
         </Flex>
-      </Box>
-      <Box
-        position='sticky'
-        bottom={0}
-        left={0}
-        bgColor='process.vote_button.wrapper_bg'
-        pt={1}
-        display={{ base: 'block', md: 'none' }}
-      >
-        <VoteButton />
       </Box>
 
       <VotingVoteModal />

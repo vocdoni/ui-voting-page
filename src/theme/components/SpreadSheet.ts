@@ -7,11 +7,11 @@ const baseStyle = definePartsStyle({
   button: {
     w: '100%',
     borderRadius: 30,
-    bgColor: { base: 'process.vote_button.mobile_bg', md: 'process.vote_button.mobile_color' },
-    color: { base: 'process.vote_button.mobile_color', md: 'process.vote_button.mobile_bg' },
+    bgColor: 'process.vote_button.mobile_color',
+    color: 'process.vote_button.mobile_bg',
 
     _hover: {
-      bgColor: { base: 'process.vote_button.mobile_bg', md: 'process.vote_button.mobile_color' },
+      bgColor: 'process.vote_button.mobile_color',
     },
   },
 

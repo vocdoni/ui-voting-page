@@ -49,6 +49,8 @@ const ProcessHeader = () => {
     election?.maxCensusSize &&
     election.maxCensusSize < censusInfo.size
 
+  if (!election) return
+
   return (
     <Box mb={10}>
       <Image src={ercHeader} maxW='400px' mb={'32px'} />
@@ -63,11 +65,7 @@ const ProcessHeader = () => {
                 </Text>
                 <ElectionStatusBadge />
               </Flex>
-              <Flex
-                flexDirection={{ base: 'column', xl: 'row' }}
-                alignItems={{ base: 'start', xl: 'center' }}
-                gap={{ xl: 3 }}
-              >
+              <Flex alignItems='center' gap={1} flexWrap='wrap'>
                 <Text as='span' color='process.label' fontSize='sm'>
                   {t('process.schedule')}
                 </Text>
@@ -93,6 +91,7 @@ const ProcessHeader = () => {
         </Box>
 
         <Flex
+          display={{ base: 'none', lg2: 'flex' }}
           flex={{ lg2: '1 1 20%' }}
           position='relative'
           flexDirection={{ base: 'row', lg2: 'column' }}
@@ -212,11 +211,12 @@ const ProcessHeader = () => {
 }
 
 const formatDate = (startDate: Date, endDate: Date) => {
-  const startTime = startDate.toLocaleTimeString('en-US')
+  const timeOptions: Intl.DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit' }
+  const startTime = startDate.toLocaleTimeString('en-US', timeOptions)
   const startDay = startDate.getDate()
   const startMonth = startDate.toLocaleString('ca', { month: 'long' }).replace(/^\w/, (c) => c.toUpperCase())
 
-  const endTime = endDate.toLocaleTimeString('en-US')
+  const endTime = endDate.toLocaleTimeString('en-US', timeOptions)
   const endDay = endDate.getDate()
   const endMonth = endDate.toLocaleString('ca', { month: 'long' }).replace(/^\w/, (c) => c.toUpperCase())
   return `${startTime} del ${startDay} ${startMonth} al ${endTime} del ${endDay} ${endMonth}`
