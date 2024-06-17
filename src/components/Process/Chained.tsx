@@ -9,13 +9,19 @@ import { VoteButton } from './Aside'
 import { ChainedProvider, useChainedProcesses } from './ChainedContext'
 import { ConfirmVoteModal } from './ConfirmVoteModal'
 
-type ChainedProcessesProps = {
-  root?: PublishedElection | ArchivedElection | InvalidElection
+type ChainedProcessesInnerProps = {
+  connected: boolean
 }
 
-const ChainedProcessesInner = () => {
-  const { election, voted, setClient } = useElection()
-  const { processes, client, current, setProcess, setCurrent, root } = useChainedProcesses()
+const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
+  const { election, voted, setClient, client: ecl, clearClient } = useElection()
+  const { processes, client, current, setProcess, setCurrent } = useChainedProcesses()
+
+  // clear session of local context when login out
+  useEffect(() => {
+    if (connected) return
+    clearClient()
+  }, [connected])
 
   // ensure the client is set to the root one
   useEffect(() => {
@@ -61,6 +67,10 @@ const ChainedProcessesInner = () => {
   )
 }
 
+type ChainedProcessesProps = {
+  root?: PublishedElection | ArchivedElection | InvalidElection
+}
+
 export const ChainedProcesses = ({ root }: ChainedProcessesProps) => {
   const { client } = useElection()
   if (!root) {
@@ -90,7 +100,7 @@ export const ChainedResults = ({ root }: ChainedProcessesProps) => {
 const ChainedProcessesWrapper = () => {
   // note election context refers to the root election here, ALWAYS
   const { connected, election } = useElection()
-  const { processes, current, root, setCurrent, reset } = useChainedProcesses()
+  const { processes, current, reset } = useChainedProcesses()
 
   // set current to root if login out
   useEffect(() => {
@@ -106,7 +116,7 @@ const ChainedProcessesWrapper = () => {
   return (
     <>
       <ElectionProvider key={current} election={processes[current]} ConnectButton={ConnectButton} fetchCensus>
-        <ChainedProcessesInner />
+        <ChainedProcessesInner connected={connected} />
       </ElectionProvider>
       {!connected && election.get('census.type') === 'spreadsheet' && <SpreadsheetAccess />}
     </>
