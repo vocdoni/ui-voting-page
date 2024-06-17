@@ -8,6 +8,7 @@ import { Trans } from 'react-i18next'
 import { VoteButton } from './Aside'
 import { ChainedProvider, useChainedProcesses } from './ChainedContext'
 import { ConfirmVoteModal } from './ConfirmVoteModal'
+import { VotingVoteModal } from './View'
 
 type ChainedProcessesProps = {
   root?: PublishedElection | ArchivedElection | InvalidElection
@@ -54,6 +55,17 @@ const ChainedProcessesInner = () => {
       <ElectionQuestions
         confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
       />
+      <Box
+        bottom={0}
+        left={0}
+        pt={1}
+        position={{ base: 'sticky', lg2: 'relative' }}
+        bgColor={{ base: 'white', lg2: 'transparent' }}
+      >
+        <VoteButton />
+      </Box>
+
+      <VotingVoteModal />
     </Box>
   )
 }
@@ -113,7 +125,6 @@ const ChainedProcessesWrapper = () => {
         bgColor={{ base: 'white', lg2: 'transparent' }}
       >
         {!connected && election.get('census.type') === 'spreadsheet' && <SpreadsheetAccess />}
-        <VoteButton />
       </Box>
     </>
   )

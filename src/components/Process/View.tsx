@@ -168,18 +168,18 @@ export const ProcessView = () => {
         </Flex>
       </Box>
 
-      <VotingVoteModal />
       <SuccessVoteModal />
     </Box>
   )
 }
 
-const VotingVoteModal = () => {
+export const VotingVoteModal = () => {
   const { t } = useTranslation()
   const {
     loading: { voting },
   } = useElection()
 
+  console.log(voting)
   return (
     <Modal isOpen={voting} onClose={() => {}}>
       <ModalOverlay />
