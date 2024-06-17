@@ -12,6 +12,9 @@ i18n
     debug: import.meta.env.DEV,
     defaultNS: 'translation',
     lng: 'ca',
+    interpolation: {
+      escapeValue: false,
+    },
   })
 
 // load translations
