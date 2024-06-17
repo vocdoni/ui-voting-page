@@ -14,7 +14,7 @@ type ChainedProcessesInnerProps = {
 }
 
 const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
-  const { election, voted, setClient, client: ecl, clearClient } = useElection()
+  const { election, voted, setClient, clearClient } = useElection()
   const { processes, client, current, setProcess, setCurrent } = useChainedProcesses()
 
   // clear session of local context when login out
