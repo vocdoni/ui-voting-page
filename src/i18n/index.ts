@@ -11,6 +11,9 @@ i18n
     fallbackLng: 'ca',
     debug: import.meta.env.DEV,
     defaultNS: 'translation',
+    interpolation: {
+      escapeValue: false,
+    },
   })
 
 // load translations
