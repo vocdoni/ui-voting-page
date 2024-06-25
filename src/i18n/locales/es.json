@@ -16,6 +16,9 @@
     "votes_weight_other": "<span>{{ count }}</span> <text>votos</text>",
     "voting_anonymous_advice": "Por favor, espera mientras sucede la magia 🪄.\nEsto puede tardar varios minutos; no cierres la ventana."
   },
+  "blindcsp": {
+    "connect": "Demo connect"
+  },
   "cc": {
     "actions": {
       "cancel": "Cancelar el proceso inmediatamente, sin permitir nuevos votos y sin contar ningún resultado (precaución: no puede revertirse)",
@@ -82,6 +85,9 @@
   "copy": {
     "copied_title": "¡Copiado!"
   },
+  "error": {
+    "election_is_invalid": "Invalid election"
+  },
   "footer": {
     "company": "Empresa",
     "demo": "Tipos de Votación",
@@ -99,6 +105,12 @@
     "uses_cases3": "Presupuestos Participativos",
     "uses_cases4": "Votación Digital",
     "uses_cases5": "Encuesta Digital Cerrada"
+  },
+  "landing": {
+    "desc_body": "Os convocamos a la Asamblea General de {{ orgName }}, que tendrá lugar el {{ date }} a las {{ time }}. <br/>Es fundamental que todos los miembros de nuestra organización participen en esta importante votación para garantizar una representación equitativa de todas las opiniones y perspectivas dentro de nuestra comunidad.",
+    "desc_footer": "Para poder acceder a la votación, os pediremos vuestro número de DNI (Documento Nacional de Identidad) y fecha de\n        nacimiento. Posteriormente, podréis seleccionar vuestras opciones y enviar el voto de forma segura.",
+    "desc_title": "Elecciones participativas",
+    "select_an_option": "<strong>Seleccione</strong> una opción dependiendo de tu edad"
   },
   "link": {
     "discord": "Enlace al Discord de Vocdoni",
