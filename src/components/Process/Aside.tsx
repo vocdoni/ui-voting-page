@@ -1,12 +1,13 @@
 import { Box, Button, Card, Flex, FlexProps, Link, Text } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { VoteButton as CVoteButton, environment, SpreadsheetAccess, VoteWeight } from '@vocdoni/chakra-components'
+import { environment, SpreadsheetAccess, VoteButton as CVoteButton, VoteWeight } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
 import { dotobject, ElectionStatus, formatUnits, PublishedElection } from '@vocdoni/sdk'
 import { TFunction } from 'i18next'
 import { Trans, useTranslation } from 'react-i18next'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { useAccount, useDisconnect } from 'wagmi'
+import BlindCSPConnect from './BlindCSPConnect'
 import { CensusMeta } from './Census/CensusType'
 
 const results = (result: number, decimals?: number) =>
@@ -217,6 +218,8 @@ export const VoteButton = ({ ...props }: FlexProps) => {
 
   const isWeighted = election?.census.weight !== election?.census.size
 
+  const isBlindCsp = census?.type === 'csp' && election?.meta.csp?.service === 'vocdoni-blind-csp'
+
   return (
     <Flex
       direction={'column'}
@@ -228,7 +231,8 @@ export const VoteButton = ({ ...props }: FlexProps) => {
       px={{ base: 3, lg2: 0 }}
       {...props}
     >
-      {census?.type !== 'spreadsheet' && !connected && (
+      {isBlindCsp && !connected && <BlindCSPConnect />}
+      {census?.type !== 'spreadsheet' && !isBlindCsp && !connected && (
         <ConnectButton.Custom>
           {({ account, chain, openConnectModal, authenticationStatus, mounted }) => {
             const ready = mounted && authenticationStatus !== 'loading'
