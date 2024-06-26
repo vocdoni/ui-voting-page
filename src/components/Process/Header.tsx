@@ -111,9 +111,7 @@ const ProcessHeader = () => {
                 {t('process.status.canceled')}
               </Text>
             )}
-            <Box ml='auto'>
-              <ActionsMenu />
-            </Box>
+            <ActionsMenu />
           </Box>
           {election instanceof PublishedElection && election?.electionType.anonymous && (
             <Box>
