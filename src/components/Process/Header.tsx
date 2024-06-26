@@ -128,9 +128,7 @@ const ProcessHeader = () => {
                 {t('process.status.canceled')}
               </Text>
             )}
-            <Box position='absolute' right={0} top={0}>
-              <ActionsMenu />
-            </Box>
+            <ActionsMenu />
           </Box>
           {election instanceof PublishedElection && election?.electionType.anonymous && (
             <Box>
