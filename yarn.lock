@@ -2705,11 +2705,11 @@
     react-refresh "^0.14.2"
 
 "@vocdoni/chakra-components@~0.8.3":
-  version "0.8.5"
-  resolved "https://registry.yarnpkg.com/@vocdoni/chakra-components/-/chakra-components-0.8.5.tgz#c4ea39243f69420359ffef46d29a384abdd78949"
-  integrity sha512-qAxslKof1zQsrPqEZS894193f/rQi00MfYSoIYDyQZ8hfu6h25ocqTEfUr+bTz4hZ7i2cJwe4xac5Zqy0WPKGA==
+  version "0.8.6"
+  resolved "https://registry.yarnpkg.com/@vocdoni/chakra-components/-/chakra-components-0.8.6.tgz#03aa046f50460de95d350c65118de3ded4eb7e7f"
+  integrity sha512-Yu50+4I7yWU/BKS0KnTnuBjd2XI1dxNWLAZ9YSK5LglEoesnPvUFXR+WTFOwHGLG2p+tgafdA3VhgoYtB3z9Aw==
   dependencies:
-    "@vocdoni/react-providers" "~0.4.3"
+    "@vocdoni/react-providers" "~0.4.4"
 
 "@vocdoni/proto@1.15.5":
   version "1.15.5"
@@ -2719,10 +2719,10 @@
     long "^5.2.1"
     protobufjs "^7.1.2"
 
-"@vocdoni/react-providers@~0.4.3":
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/@vocdoni/react-providers/-/react-providers-0.4.3.tgz#0ce49356db26b75a9b1d09d1703bf0451a0aaaa5"
-  integrity sha512-wgrzodMdNwwe+PvZqxfe8r56KM1dhFUZ1p6RnCZ+RKqsoB1J4VzPH/AUG3iPC66bbzG17dwkr5PFgqkNsv/lvA==
+"@vocdoni/react-providers@~0.4.4":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@vocdoni/react-providers/-/react-providers-0.4.4.tgz#f0f12a1b6159a7cddcb2bc878145e76ab07430f6"
+  integrity sha512-w3DBbAcxa9E6RLm+mV0WKvYKldF+RNiORCIJ4pFRuRWHa02Bq4/YF3abxMAE9Lk2M5yWWDFnewBj2Bla6zzWyg==
 
 "@vocdoni/sdk@~0.8.1":
   version "0.8.1"
