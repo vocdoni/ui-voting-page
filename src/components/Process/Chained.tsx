@@ -196,7 +196,9 @@ const getNextProcessInFlow = async (client: VocdoniSDKClient, voted: string, met
 const getProcessIdsInFlowStep = (meta: FlowNode) => {
   const ids: string[] = []
 
-  ids.push(meta.default)
+  if (meta.default) {
+    ids.push(meta.default)
+  }
 
   if (!meta.conditions) {
     return ids
