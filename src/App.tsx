@@ -3,23 +3,24 @@ import { ClientProvider } from '@vocdoni/chakra-components'
 import { EnvOptions } from '@vocdoni/sdk'
 import { Signer } from 'ethers'
 import { useTranslation } from 'react-i18next'
-import { useWalletClient } from 'wagmi'
+import { useAccount, useWalletClient } from 'wagmi'
 import { VocdoniEnvironment } from '~constants'
 import { translations } from '~i18n/components'
-import { clientToSigner } from '~util/wagmi-adapters'
+import { walletClientToSigner } from '~util/wagmi-adapters'
 import { RoutesProvider } from './router'
 
 export const App = () => {
   const { data } = useWalletClient()
-  const { t } = useTranslation()
+  const { address } = useAccount()
+  const { t, i18n } = useTranslation()
 
-  let signer: Signer = {} as Signer
-  if (data) {
-    signer = clientToSigner(data)
+  let signer = null
+  if (data && address && data.account.address === address) {
+    signer = walletClientToSigner(data)
   }
 
   return (
-    <ClientProvider env={VocdoniEnvironment as EnvOptions} signer={signer} locale={translations(t)}>
+    <ClientProvider env={VocdoniEnvironment as EnvOptions} signer={signer as Signer} locale={translations(t)}>
       <RoutesProvider />
       <ColorModeScript />
     </ClientProvider>

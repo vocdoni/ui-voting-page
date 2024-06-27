@@ -1,11 +1,12 @@
-import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+import { connectorsForWallets, Wallet } from '@rainbow-me/rainbowkit'
 import '@rainbow-me/rainbowkit/styles.css'
+import { coinbaseWallet, metaMaskWallet, rainbowWallet, walletConnectWallet } from '@rainbow-me/rainbowkit/wallets'
+import { configureChains, createConfig } from 'wagmi'
 import {
   arbitrum,
   avalanche,
   base,
   bsc,
-  degen,
   eos,
   fantom,
   gnosis,
@@ -17,33 +18,60 @@ import {
   polygon,
   polygonMumbai,
   polygonZkEvm,
-  sepolia,
   zkSync,
   zora,
 } from 'wagmi/chains'
+import { publicProvider } from 'wagmi/providers/public'
 
-export const config = getDefaultConfig({
-  appName: 'Vocdoni Voting Page',
-  projectId: 'b78ba61f132db687dc6ec6d61b7e34d5',
-  chains: [
+export const { chains, publicClient } = configureChains(
+  [
+    mainnet,
     arbitrum,
     avalanche,
     base,
     bsc,
-    degen,
     eos,
     fantom,
     gnosis,
     goerli,
     hardhat,
     localhost,
-    mainnet,
     optimism,
     polygon,
     polygonMumbai,
     polygonZkEvm,
-    sepolia,
     zkSync,
     zora,
   ],
+  [publicProvider()]
+)
+
+const appName = 'Vocdoni UI Scaffold'
+const projectId = '641a1f59121ad0b519cca3a699877a08'
+
+type WalletGroup = {
+  groupName: string
+  wallets: Wallet[]
+}
+
+const featuredConnectors = () => {
+  const web3: WalletGroup = {
+    groupName: 'Popular',
+    wallets: [
+      metaMaskWallet({ chains, projectId }),
+      rainbowWallet({ projectId, chains }),
+      coinbaseWallet({ chains, appName }),
+      walletConnectWallet({ chains, projectId }),
+    ],
+  }
+
+  return [web3]
+}
+
+const connectors = connectorsForWallets(featuredConnectors())
+
+export const config = createConfig({
+  autoConnect: true,
+  connectors,
+  publicClient,
 })

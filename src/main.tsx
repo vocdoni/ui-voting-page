@@ -1,9 +1,8 @@
 import { ChakraProvider } from '@chakra-ui/react'
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { StrictMode } from 'react'
 import * as ReactDOM from 'react-dom/client'
-import { WagmiProvider } from 'wagmi'
+import { WagmiConfig } from 'wagmi'
 import { config } from '~util/rainbowkit'
 import { App } from './App'
 import reportWebVitals from './reportWebVitals'
@@ -21,13 +20,11 @@ const queryClient = new QueryClient()
 root.render(
   <StrictMode>
     <ChakraProvider theme={theme}>
-      <WagmiProvider config={config}>
+      <WagmiConfig config={config}>
         <QueryClientProvider client={queryClient}>
-          <RainbowKitProvider>
-            <App />
-          </RainbowKitProvider>
+          <App />
         </QueryClientProvider>
-      </WagmiProvider>
+      </WagmiConfig>
     </ChakraProvider>
   </StrictMode>
 )
