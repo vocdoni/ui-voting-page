@@ -28,12 +28,15 @@ const BlindCSPConnect = () => {
     }
   }, [env, election?.id])
 
+  console.log('cl.wallet', cl.wallet)
   return (
-    !cl.wallet && (
-      <Button w={'full'} onClick={connect} isLoading={isLoading}>
-        <Trans i18nKey={'blindcsp.connect'}>Demo connect</Trans>
-      </Button>
-    )
+    <>
+      {(!cl.wallet || Object.keys(cl.wallet).length === 0) && (
+        <Button w={'full'} onClick={connect} isLoading={isLoading}>
+          <Trans i18nKey={'blindcsp.connect'}>Demo connect</Trans>
+        </Button>
+      )}
+    </>
   )
 }
 
