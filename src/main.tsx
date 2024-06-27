@@ -1,15 +1,15 @@
 import { ChakraProvider } from '@chakra-ui/react'
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { StrictMode } from 'react'
 import * as ReactDOM from 'react-dom/client'
 import { WagmiConfig } from 'wagmi'
-import { config } from '~util/rainbowkit'
+import { chains, config } from '~util/rainbowkit'
 import { App } from './App'
+import './i18n'
 import reportWebVitals from './reportWebVitals'
 import * as serviceWorker from './serviceWorker'
 import { theme } from './theme'
-
-import './i18n'
 
 const container = document.getElementById('root')
 if (!container) throw new Error('Failed to find the root element')
@@ -22,7 +22,9 @@ root.render(
     <ChakraProvider theme={theme}>
       <WagmiConfig config={config}>
         <QueryClientProvider client={queryClient}>
-          <App />
+          <RainbowKitProvider chains={chains}>
+            <App />
+          </RainbowKitProvider>
         </QueryClientProvider>
       </WagmiConfig>
     </ChakraProvider>

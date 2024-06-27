@@ -12,7 +12,7 @@ import { RoutesProvider } from './router'
 export const App = () => {
   const { data } = useWalletClient()
   const { address } = useAccount()
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
   let signer = null
   if (data && address && data.account.address === address) {
