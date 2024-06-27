@@ -7,7 +7,6 @@ import { TFunction } from 'i18next'
 import { Trans, useTranslation } from 'react-i18next'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { useAccount, useDisconnect } from 'wagmi'
-import BlindCSPConnect from './BlindCSPConnect'
 import { CensusMeta } from './Census/CensusType'
 
 const results = (result: number, decimals?: number) =>
@@ -231,7 +230,6 @@ export const VoteButton = ({ ...props }: FlexProps) => {
       px={{ base: 3, lg2: 0 }}
       {...props}
     >
-      {isBlindCsp && !connected && <BlindCSPConnect />}
       {census?.type !== 'spreadsheet' && !isBlindCsp && !connected && (
         <ConnectButton.Custom>
           {({ account, chain, openConnectModal, authenticationStatus, mounted }) => {
