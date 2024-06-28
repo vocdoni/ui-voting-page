@@ -35,7 +35,7 @@ jobs:
         run: yarn build
         env:
           VOCDONI_ENVIRONMENT: stg
-          PROCESS_IDS: '["4ae20a8eb4ca8bd340fc16a71ae591b88418c42e799705b98073020000000031"]'
+          PROCESS_IDS: '["b31dff61814d8bd340fc16a71ae591b88418c42e799705b98073020000000050"]'
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0
