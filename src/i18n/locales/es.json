@@ -82,6 +82,9 @@
   "copy": {
     "copied_title": "¡Copiado!"
   },
+  "error": {
+    "election_is_invalid": "Invalid election"
+  },
   "footer": {
     "company": "Empresa",
     "demo": "Tipos de Votación",
@@ -153,6 +156,7 @@
         "abstain_count_other": "",
         "blank_vote": "",
         "description": "Antes de emitir tu voto, revisa que todo esté correcto.",
+        "disclaimer": "",
         "option": "<strong>Opción {{ number }}:</strong> {{ answer }}",
         "options": "<strong>Selección:</strong> {{ answers }}",
         "question": "<strong>Pregunta {{ number }}:</strong> {{ answer }}"
@@ -267,8 +271,6 @@
   },
   "share": {
     "copy": "Copiar",
-    "election_share_btn_text": "Comparte",
-    "election_share_text": "¡Mira esta elección!",
     "icon_title": "compartir enlace",
     "mail_subject": "Plataforma de votación",
     "modal_title": "Compartir con amigos"

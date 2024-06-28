@@ -1,4 +1,14 @@
-import { Box, Button, Flex, ModalBody, ModalFooter, ModalHeader, Text, useMultiStyleConfig } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Flex,
+  ModalBody,
+  ModalCloseButton,
+  ModalFooter,
+  ModalHeader,
+  Text,
+  useMultiStyleConfig,
+} from '@chakra-ui/react'
 import { useConfirm } from '@vocdoni/chakra-components'
 import { ElectionResultsTypeNames, PublishedElection } from '@vocdoni/sdk'
 import { FieldValues } from 'react-hook-form'
@@ -16,11 +26,13 @@ export const ConfirmVoteModal = ({ election, answers }: { election: PublishedEle
 
   return (
     <>
+      <ModalCloseButton />
       <ModalHeader>
         <Box bgImage={confirmImg} minH='280px' />
       </ModalHeader>
       <ModalBody display='flex' flexDirection='column' gap={5} p={0} mb={2}>
         <Text>{t('process.spreadsheet.confirm.description')}</Text>
+
         <Flex
           flexDirection='column'
           maxH='200px'
@@ -92,6 +104,7 @@ export const ConfirmVoteModal = ({ election, answers }: { election: PublishedEle
           </Flex>
         )}
       </ModalBody>
+      <Text mt={2}>{t('process.spreadsheet.confirm.disclaimer')}</Text>
       <ModalFooter sx={styles.footer}>
         <Button onClick={cancel!} variant='ghost' sx={styles.cancel}>
           {t('cc.confirm.cancel')}

@@ -14,11 +14,11 @@ export const colorsBase = {
   },
   green: '#48BB78',
   primary: {
-    main: '#FFB232',
-    dark: '#f2992b',
-    dark2: '#ff8c19',
+    main: '#FFDF4F',
+    dark: '#E6CA45',
+    dark2: '#CCB43B',
   },
-  red: '#E53E3E',
+  red: '#ea3f29',
   white: {
     pure: '#ffffff',
     dark: '#fafafa',
@@ -30,7 +30,7 @@ export const colorsBase = {
 export const colors = {
   primary: {
     main: colorsBase.primary.main,
-    50: colorsBase.white.pure,
+    50: colorsBase.black,
     500: colorsBase.primary.main,
     600: colorsBase.primary.dark,
     700: colorsBase.primary.dark2,
@@ -110,7 +110,7 @@ export const colors = {
   process: {
     aside: {
       bg: colorsBase.primary.main,
-      color: colorsBase.white.pure,
+      color: colorsBase.black,
       vote_btn_color: colorsBase.black,
       vote_btn_bg: colorsBase.primary.main,
       aside_footer_mbl_bg: colorsBase.primary.main,
@@ -124,7 +124,7 @@ export const colors = {
       hover: colorsBase.primary.dark,
     },
     gitcoin_card_checked: colorsBase.primary.main,
-    info_title: colorsBase.primary.main,
+    info_title: colorsBase.red,
     description: colorsBase.gray.dark,
     identify_btn: {
       bg: colorsBase.primary.main,
@@ -137,13 +137,13 @@ export const colors = {
     questions: {
       alert: {
         bg: colorsBase.primary.main,
-        color: colorsBase.white.pure,
+        color: colorsBase.black,
         link_color: colorsBase.black,
         link_bg: colorsBase.white.pure,
       },
       question_selected: {
         bg: colorsBase.primary.main,
-        color: colorsBase.white.pure,
+        color: colorsBase.black,
       },
       description: colorsBase.gray.dark,
       title: colorsBase.primary.main,
@@ -161,6 +161,8 @@ export const colors = {
       disconnect_bg: 'transparent',
       disconnect_color_desktop: colorsBase.gray.dark,
       disconnect_color_mbl: colorsBase.white.pure,
+      bg: colorsBase.primary.main,
+      color: colorsBase.black,
     },
     tabs: {
       active_bg: colorsBase.gray.main,
@@ -218,4 +220,6 @@ export const colors = {
       color_active: colorsBase.white.pure,
     },
   },
+
+  spinner: colorsBase.primary.main,
 }

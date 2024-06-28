@@ -75,12 +75,15 @@
       "button_update": "Torna a enviar el vot",
       "confirm": "Confirma les teves seleccions:",
       "sign": "Signa abans de votar",
-      "voted_description": "Per verificar el teu vot, pots utilitzar aquesta identificació única: {{ id }}",
+      "voted_description": "Per verificar el teu vot, pots clicar sobre el teu codi identificador únic: {{ id }}",
       "voted_title": "El teu vot s'ha registrat amb èxit!"
     }
   },
   "copy": {
     "copied_title": "Copiat!"
+  },
+  "error": {
+    "election_is_invalid": "Invalid election"
   },
   "footer": {
     "company": "Empresa",
@@ -125,7 +128,7 @@
       "relative_inline": "{{ status }} {{ date, relative(past: fa %time; future: en %time) }}",
       "starts": "Comença el procés"
     },
-    "footer_message": "<bold>Esquerra Repulicana</bold> <normal>utilitza la plataforma de programari lliure Vocdoni basada en tecnologia blockchain per gestionar i registrar les votacions de manera segura i transparent. Per més informació sobre la plataforma podeu consultar el següent enllaç:</normal> <customLink>vocdoni.io</customLink>",
+    "footer_message": "<bold>Esquerra Republicana</bold> <normal>utilitza la plataforma de programari lliure Vocdoni basada en tecnologia blockchain per gestionar i registrar les votacions de manera segura i transparent. Per més informació sobre la plataforma podeu consultar el següent enllaç:</normal> <customLink>vocdoni.io</customLink>",
     "gitcoin": {
       "all_of_them": "(Tots ells)",
       "gps_score": "Gitcoin Passport Score: Puntuació mínima {{score}}",
@@ -152,7 +155,8 @@
         "abstain_count_many": "",
         "abstain_count_other": "",
         "blank_vote": "",
-        "description": "Aquesta és la teva selecció. Si vols modificar-la pots tancar aquest missatge i seleccionar-la de nou.",
+        "description": "Aquesta és la teva selecció. Si vols modificar-la pots tancar aquest missatge i seleccionar l’opció que consideris.",
+        "disclaimer": "Si us plau, revisa el teu vot abans d'enviar-lo, ja que no es podrà modificar",
         "option": "<strong>Opció {{ number }}:</strong> {{ answer }}",
         "options": "<strong>Selecció:</strong> {{ answers }}",
         "question": "<strong>Pregunta {{ number }}:</strong> {{ answer }}"
@@ -267,8 +271,6 @@
   },
   "share": {
     "copy": "Copia",
-    "election_share_btn_text": "Comparteix",
-    "election_share_text": "Mira aquesta elecció!",
     "icon_title": "compartir enllaç",
     "mail_subject": "Plataforma de votació",
     "modal_title": "Comparteix amb amics"

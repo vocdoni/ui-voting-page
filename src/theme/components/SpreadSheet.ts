@@ -7,12 +7,7 @@ const baseStyle = definePartsStyle({
   button: {
     w: '100%',
     borderRadius: 30,
-    bgColor: 'process.vote_button.mobile_color',
-    color: 'process.vote_button.mobile_bg',
-
-    _hover: {
-      bgColor: 'process.vote_button.mobile_color',
-    },
+    color: 'process.spreadsheet.color',
   },
 
   disconnect: {
@@ -41,16 +36,8 @@ const baseStyle = definePartsStyle({
   submit: {
     width: '60%',
     mx: 'auto',
-    bgColor: 'process.identify_btn.bg',
-    color: 'process.identify_btn.color',
     borderRadius: '30px',
-
-    _hover: {
-      bgColor: 'process.identify_btn.bg_hover',
-    },
-    _active: {
-      bgColor: 'process.identify_btn.bg_active',
-    },
+    color: 'process.spreadsheet.color',
   },
 })
 

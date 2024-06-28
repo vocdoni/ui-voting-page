@@ -57,14 +57,13 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
   }
 
   return (
-    <Box className='md-sizes' mb='50px' pt='25px'>
+    <Box className='md-sizes' pt='25px'>
       <ElectionQuestions
         confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
       />
       <Box
         bottom={0}
         left={0}
-        pt={1}
         position={{ base: 'sticky', lg2: 'relative' }}
         bgColor={{ base: 'white', lg2: 'transparent' }}
       >
@@ -130,9 +129,9 @@ const ChainedProcessesWrapper = () => {
       <Box
         bottom={0}
         left={0}
-        pt={1}
         position={{ base: 'sticky', lg2: 'relative' }}
         bgColor={{ base: 'white', lg2: 'transparent' }}
+        mt='50px'
       >
         {!connected && election.get('census.type') === 'spreadsheet' && <SpreadsheetAccess />}
       </Box>

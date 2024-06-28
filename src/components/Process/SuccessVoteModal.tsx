@@ -52,16 +52,20 @@ export const SuccessVoteModal = () => {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
+        <ModalCloseButton />
         <ModalHeader>
           <Text>{t('process.success_modal.title')}</Text>
           <Box bgImage={successImg} minH='210px' />
         </ModalHeader>
-        <ModalCloseButton />
         <ModalBody>
           <Trans
             i18nKey='process.success_modal.text'
             components={{
-              verify: <Link href={verify} target='_blank' />,
+              verify: (
+                <Link href={verify} target='_blank'>
+                  {verify}
+                </Link>
+              ),
               p: <Text mb={2} />,
             }}
           />

@@ -248,7 +248,9 @@ export const VoteButton = ({ ...props }: FlexProps) => {
         <>
           <CVoteButton
             w='100%'
+            mt='60px !important'
             fontSize='lg'
+            color='process.spreadsheet.color'
             sx={{
               '&::disabled': {
                 opacity: '0.8',

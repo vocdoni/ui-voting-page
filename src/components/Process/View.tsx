@@ -185,7 +185,7 @@ export const VotingVoteModal = () => {
       <ModalOverlay />
       <ModalContent>
         <VStack>
-          <Spinner color='#f6ad18' mb={5} w={10} h={10} />
+          <Spinner color='spinner' mb={5} w={10} h={10} />
         </VStack>
         <ModalBody>
           <Text textAlign='center'>{t('process.voting')}</Text>

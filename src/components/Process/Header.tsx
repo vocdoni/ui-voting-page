@@ -10,7 +10,7 @@ import { useReadMoreMarkdown } from '~components/Layout/use-read-more'
 import { ActionsMenu } from './ActionsMenu'
 import { StampIcon } from './Census/StampIcon'
 import { CreatedBy } from './CreatedBy'
-import ercHeader from '/assets/erc.svg'
+import ercHeader from '/assets/esquerra_logo.png'
 
 type CensusInfo = { size: number; weight: bigint; type: CensusType }
 

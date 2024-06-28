@@ -41,6 +41,10 @@ export const ActionsMenu = (props: MenuListProps) => {
         minW={0}
         minH={0}
         h='min-content'
+        bgColor='transparent'
+        _hover={{
+          bgColor: 'transparent',
+        }}
       />
       <ActionsProvider>
         <ActionsMenuList {...props} />
