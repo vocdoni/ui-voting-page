@@ -157,9 +157,9 @@
         "blank_vote": "",
         "description": "Aquesta és la teva selecció. Si vols modificar-la pots tancar aquest missatge i seleccionar l’opció que consideris.",
         "disclaimer": "Si us plau, revisa el teu vot abans d'enviar-lo, ja que no es podrà modificar",
-        "option": "<strong>Opció {{ number }}:</strong> {{ answer }}",
+        "option": "<strong>Opció:</strong> {{ answer }}",
         "options": "<strong>Selecció:</strong> {{ answers }}",
-        "question": "<strong>Pregunta {{ number }}:</strong> {{ answer }}"
+        "question": "<strong>Pregunta:</strong> {{ answer }}"
       }
     },
     "state": "ESTAT",

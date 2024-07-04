@@ -157,9 +157,9 @@
         "blank_vote": "",
         "description": "Antes de emitir tu voto, revisa que todo esté correcto.",
         "disclaimer": "",
-        "option": "<strong>Opción {{ number }}:</strong> {{ answer }}",
+        "option": "<strong>Opción:</strong> {{ answer }}",
         "options": "<strong>Selección:</strong> {{ answers }}",
-        "question": "<strong>Pregunta {{ number }}:</strong> {{ answer }}"
+        "question": "<strong>Pregunta:</strong> {{ answer }}"
       }
     },
     "state": "ESTADO",

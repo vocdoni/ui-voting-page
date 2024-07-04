@@ -155,7 +155,7 @@ export const colors = {
       bg: colorsBase.gray.light2,
       description: colorsBase.gray.dark,
       progressbar_bg: colorsBase.gray.light,
-      title: colorsBase.primary.main,
+      title: colorsBase.black,
     },
     spreadsheet: {
       disconnect_bg: 'transparent',

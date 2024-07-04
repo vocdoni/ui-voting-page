@@ -52,7 +52,6 @@ export const ConfirmVoteModal = ({ election, answers }: { election: PublishedEle
                     }}
                     values={{
                       answer: q.title.default,
-                      number: i + 1,
                     }}
                   />
                 </Text>
@@ -65,7 +64,6 @@ export const ConfirmVoteModal = ({ election, answers }: { election: PublishedEle
                       }}
                       values={{
                         answer: q.choices[Number(answers[i])].title.default,
-                        number: i + 1,
                       }}
                     />
                   </Text>
