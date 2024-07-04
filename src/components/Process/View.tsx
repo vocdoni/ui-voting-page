@@ -179,7 +179,6 @@ export const VotingVoteModal = () => {
     loading: { voting },
   } = useElection()
 
-  console.log(voting)
   return (
     <Modal isOpen={voting} onClose={() => {}}>
       <ModalOverlay />
