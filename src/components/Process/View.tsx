@@ -134,7 +134,14 @@ export const ProcessView = () => {
                 <ChainedProcesses root={election} />
               </TabPanel>
               <TabPanel mb={20}>
-                <ChainedResults root={election} />
+                {' '}
+                {election instanceof PublishedElection && election?.status === ElectionStatus.ENDED ? (
+                  <ChainedResults root={election} />
+                ) : (
+                  <Text textAlign='center' mt={10} fontWeight='bold' fontSize='24px'>
+                    {t('cc.results.secret_until_the_end')}
+                  </Text>
+                )}
               </TabPanel>
             </TabPanels>
             <Text textAlign='center' mx='auto' maxW='1150px' my={10}>
