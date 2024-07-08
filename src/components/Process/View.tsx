@@ -19,7 +19,7 @@ import {
 import { Link as ReactRouterLink } from 'react-router-dom'
 
 import { useElection } from '@vocdoni/react-providers'
-import { ElectionStatus, PublishedElection } from '@vocdoni/sdk'
+import { ArchivedElection, ElectionStatus, PublishedElection } from '@vocdoni/sdk'
 import { useEffect, useRef, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import ReactPlayer from 'react-player'
@@ -135,7 +135,8 @@ export const ProcessView = () => {
               </TabPanel>
               <TabPanel mb={20}>
                 {' '}
-                {election instanceof PublishedElection && election?.status === ElectionStatus.ENDED ? (
+                {(election instanceof PublishedElection && election?.status === ElectionStatus.ENDED) ||
+                (election instanceof ArchivedElection && election?.status === ElectionStatus.RESULTS) ? (
                   <ChainedResults root={election} />
                 ) : (
                   <Text textAlign='center' mt={10} fontWeight='bold' fontSize='24px'>
