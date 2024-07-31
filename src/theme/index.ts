@@ -30,13 +30,6 @@ export const theme = extendTheme(vtheme, {
           h: 6,
         },
       },
-      link: {
-        color: 'link.primary',
-        textDecoration: 'underline',
-        _hover: {
-          textDecoration: 'none',
-        },
-      },
       '.md-sizes': {
         '& :first-of-type': {
           mt: 0,

@@ -128,7 +128,7 @@
       "relative_inline": "{{ status }} {{ date, relative(past: fa %time; future: en %time) }}",
       "starts": "Comença el procés"
     },
-    "footer_message": "<bold>Esquerra Republicana</bold> <normal>utilitza la plataforma de programari lliure Vocdoni basada en tecnologia blockchain per gestionar i registrar les votacions de manera segura i transparent. Per més informació sobre la plataforma podeu consultar el següent enllaç:</normal> <customLink>vocdoni.io</customLink>",
+    "footer_message": "<bold>Esquerra Republicana</bold> <normal>utilitza la plataforma de programari lliure Vocdoni basada en tecnologia blockchain per gestionar i registrar les votacions de manera segura i transparent. Per més informació sobre la plataforma podeu consultar el següent enllaç:</normal> <vocdoni>vocdoni.io</vocdoni>",
     "gitcoin": {
       "all_of_them": "(Tots ells)",
       "gps_score": "Gitcoin Passport Score: Puntuació mínima {{score}}",

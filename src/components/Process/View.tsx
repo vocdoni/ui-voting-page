@@ -16,7 +16,6 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react'
-import { Link as ReactRouterLink } from 'react-router-dom'
 
 import { useElection } from '@vocdoni/react-providers'
 import { ElectionStatus, PublishedElection } from '@vocdoni/sdk'
@@ -150,9 +149,7 @@ export const ProcessView = () => {
                 components={{
                   bold: <Text as='span' fontWeight='bold' />,
                   normal: <Text as='span' />,
-                  customLink: (
-                    <Link as={ReactRouterLink} to='' textDecor='underline' _hover={{ textDecoration: 'none' }} />
-                  ),
+                  vocdoni: <Link href='https://vocdoni.io' />,
                 }}
               />
             </Text>

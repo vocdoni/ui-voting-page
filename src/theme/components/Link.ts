@@ -10,5 +10,11 @@ const primary = defineStyle({
 })
 
 export const Link = defineStyleConfig({
+  baseStyle: {
+    textDecoration: 'underline',
+    _hover: {
+      color: 'link.primary',
+    },
+  },
   variants: { contrast, primary },
 })
