@@ -151,13 +151,18 @@ const ChainedResultsWrapper = () => {
     if (!election || election instanceof InvalidElection || loading || loaded) return
     setLoading(true)
     ;(async () => {
-      const { processes: fetchedProcesses, ids } = await getAllProcessesInFlow(client, election)
-      for (const process of fetchedProcesses) {
-        setProcess(process.id, process)
+      try {
+        const { processes: fetchedProcesses, ids } = await getAllProcessesInFlow(client, election)
+        for (const process of fetchedProcesses) {
+          setProcess(process.id, process)
+        }
+        setSorted(ids)
+      } catch (e) {
+        console.error('error fetching chained processes', e)
+      } finally {
+        setLoaded(true)
+        setLoading(false)
       }
-      setSorted(ids)
-      setLoaded(true)
-      setLoading(false)
     })()
   }, [election])
 
@@ -260,7 +265,10 @@ export const getAllProcessesInFlow = async (
   }
 
   const meta = election.get('multiprocess')
-  const initialIds = [election.id, ...getProcessIdsInFlowStep(meta)]
+  const initialIds = [election.id]
+  if (meta) {
+    initialIds.push(...getProcessIdsInFlowStep(meta))
+  }
   for (const id of initialIds) {
     await loadProcess(id)
   }
