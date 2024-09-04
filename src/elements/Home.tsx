@@ -5,7 +5,7 @@ import { Trans, useTranslation } from 'react-i18next'
 import ProcessCardDetailed from '~components/Process/CardDetailed'
 import { ElectionProvider, useElection } from '@vocdoni/react-providers'
 import { PublishedElection } from '@vocdoni/sdk'
-import { ProcessIds } from '~constants'
+import { DemoMeta, ProcessIds } from '~constants'
 
 interface IDemoData {
   orgName: string
@@ -13,25 +13,20 @@ interface IDemoData {
   date: string
 }
 
-export const DemoData: IDemoData = {
-  orgName: 'Test Organization',
-  mainTitle: 'General elections',
-  date: '2024-05-03 11:30:00',
-}
-
 const Home = () => {
   const { t } = useTranslation()
-  const startDate = new Date(DemoData.date)
+  const demoMeta = DemoMeta as IDemoData
+  const startDate = new Date(demoMeta.date)
 
   return (
     <Flex flexDirection='column' gap={10} maxW='900px' mx='auto' p={5} minH='100vh'>
       <Image src={demoImg} width='300px' alt='ajuntament berga escut' mx='auto' />
       <Box>
         <Text as='h1' fontWeight='bold' fontSize='36px' textAlign='center'>
-          {DemoData.mainTitle}
+          {demoMeta.mainTitle}
         </Text>
         <Text as='h2' fontSize='16px' textAlign='center'>
-          {DemoData.orgName}
+          {demoMeta.orgName}
         </Text>
       </Box>
       <Text>
@@ -45,7 +40,7 @@ const Home = () => {
               br: <br />,
             }}
             values={{
-              orgName: DemoData.orgName,
+              orgName: demoMeta.orgName,
               date: startDate.toLocaleDateString(),
               time: startDate.toLocaleTimeString(),
             }}
