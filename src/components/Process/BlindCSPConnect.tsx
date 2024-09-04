@@ -28,7 +28,6 @@ const BlindCSPConnect = () => {
     }
   }, [env, election?.id])
 
-  console.log('cl.wallet', cl.wallet)
   return (
     <>
       {(!cl.wallet || Object.keys(cl.wallet).length === 0) && (
