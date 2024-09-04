@@ -8,6 +8,7 @@ import { Trans } from 'react-i18next'
 import { VoteButton } from './Aside'
 import { ChainedProvider, useChainedProcesses } from './ChainedContext'
 import { ConfirmVoteModal } from './ConfirmVoteModal'
+import BlindCSPConnect from '~components/Process/BlindCSPConnect'
 
 type ChainedProcessesInnerProps = {
   connected: boolean
@@ -113,12 +114,15 @@ const ChainedProcessesWrapper = () => {
     return <Progress w='full' size='xs' isIndeterminate />
   }
 
+  const isBlindCsp = election.get('census.type') === 'csp' && election?.meta.csp?.service === 'vocdoni-blind-csp'
+
   return (
     <>
       <ElectionProvider key={current} election={processes[current]} ConnectButton={ConnectButton} fetchCensus>
         <ChainedProcessesInner connected={connected} />
       </ElectionProvider>
       {!connected && election.get('census.type') === 'spreadsheet' && <SpreadsheetAccess />}
+      {isBlindCsp && !connected && <BlindCSPConnect />}
     </>
   )
 }
@@ -196,7 +200,9 @@ const getNextProcessInFlow = async (client: VocdoniSDKClient, voted: string, met
 const getProcessIdsInFlowStep = (meta: FlowNode) => {
   const ids: string[] = []
 
-  ids.push(meta.default)
+  if (meta.default) {
+    ids.push(meta.default)
+  }
 
   if (!meta.conditions) {
     return ids

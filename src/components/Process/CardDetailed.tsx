@@ -18,7 +18,7 @@ const ProcessCardDetailed = ({ election }: Props) => {
     <ElectionProvider election={election}>
       <Card variant='detailed'>
         <CardBody>
-          <Link to={`/processes/${enforceHexPrefix(election.id)}`}>
+          <Link to={`/${enforceHexPrefix(election.id)}`}>
             <ProcessDetailedCardTitle />
             <Box>
               <ElectionStatusBadge />

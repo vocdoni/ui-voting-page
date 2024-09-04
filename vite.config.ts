@@ -21,12 +21,24 @@ export default defineConfig(({ mode }) => {
     pids = ['4ae20a8eb4caa52f5588f7bb9f3c6d6b7cf003a5b03f4589edea100000000290']
   }
 
+  let demoMeta = {}
+  try {
+    demoMeta = JSON.parse(process.env.DEMO_META)
+  } catch (e) {
+    demoMeta = {
+      orgName: 'Test Organization',
+      mainTitle: 'General elections',
+      date: new Date().setMonth(new Date().getMonth() + 2).toString(),
+    }
+  }
+
   return {
     base,
     build: { outDir },
     define: {
       'import.meta.env.VOCDONI_ENVIRONMENT': `"${vocdoniEnvironment}"`,
       'import.meta.env.PROCESS_IDS': JSON.stringify(pids),
+      'import.meta.env.DEMO_META': JSON.stringify(pids),
     },
     plugins: [tsconfigPaths(), react()],
   }

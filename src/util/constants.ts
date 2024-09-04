@@ -10,3 +10,4 @@ export const ExplorerBaseURL = explorer
 export const VocdoniAppURL = app
 export const VocdoniEnvironment = evocdoni
 export const ProcessIds = import.meta.env.PROCESS_IDS
+export const DemoMeta = import.meta.env.DEMO_META
