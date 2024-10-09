@@ -5,10 +5,12 @@ import { ElectionProvider, useElection } from '@vocdoni/react-providers'
 import { InvalidElection, IVotePackage, PublishedElection, VocdoniSDKClient } from '@vocdoni/sdk'
 import { useEffect, useState } from 'react'
 import { Trans } from 'react-i18next'
-import { VoteButton } from './Aside'
+import { VoteButton } from '~components/Process/Aside'
+import BlindCSPConnect from '~components/Process/BlindCSPConnect'
 import { ChainedProvider, useChainedProcesses } from './ChainedContext'
 import { ConfirmVoteModal } from './ConfirmVoteModal'
-import BlindCSPConnect from '~components/Process/BlindCSPConnect'
+import { MultiElectionQuestionsForm, MultiElectionVoteButton } from '~components/Process/MultiElectionQuestions'
+import { MultiElectionsProvider } from '~components/Process/MultiElectionContext'
 
 type ChainedProcessesInnerProps = {
   connected: boolean
@@ -48,12 +50,35 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
     })()
   }, [processes, current, voted, client])
 
+  const [renderWith, setRenderWith] = useState<RenderWith[]>([])
+  // Effect to set renderWith component state.
+  useEffect(() => {
+    if (!current || processes[current] instanceof InvalidElection) return
+    const currentElection = processes[current]
+    const meta = currentElection.get('multiprocess')
+    if (meta.renderWith) {
+      setRenderWith(meta.renderWith)
+    }
+  }, [current, processes])
+  const isRenderWith = renderWith.length > 0
+
   if (!current || !processes[current]) {
     return <Progress w='full' size='xs' isIndeterminate />
   }
 
   if (processes[current] instanceof InvalidElection) {
     return <Trans i18nKey='error.election_is_invalid'>Invalid election</Trans>
+  }
+
+  if (isRenderWith) {
+    return (
+      <MultiElectionsProvider renderWith={[{ id: current }, ...renderWith]} rootClient={client}>
+        <MultiElectionQuestionsForm ConnectButton={ConnectButton} />
+        <Box position='sticky' bottom={0} left={0} pb={1} pt={1} display={{ base: 'none', lg2: 'block' }}>
+          <VoteButton />
+        </Box>
+      </MultiElectionsProvider>
+    )
   }
 
   return (
@@ -112,6 +137,10 @@ const ChainedProcessesWrapper = () => {
 
   if (!current || !processes[current] || !election || election instanceof InvalidElection) {
     return <Progress w='full' size='xs' isIndeterminate />
+  }
+
+  if (processes[current] instanceof InvalidElection) {
+    return <Trans i18nKey='error.election_is_invalid'>Invalid election</Trans>
   }
 
   const isBlindCsp = election.get('census.type') === 'csp' && election?.meta.csp?.service === 'vocdoni-blind-csp'
@@ -274,7 +303,11 @@ type FlowCondition = {
   goto: string
 }
 
+// FlowNode can have or conditions or renderWith, but not both
 type FlowNode = {
   default: string
-  conditions?: FlowCondition[]
+} & ({ conditions?: FlowCondition[]; renderWith?: never } | { conditions?: never; renderWith: RenderWith[] })
+
+export type RenderWith = {
+  id: string
 }
