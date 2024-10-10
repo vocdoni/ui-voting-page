@@ -75,7 +75,7 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
       <MultiElectionsProvider renderWith={[{ id: current }, ...renderWith]} rootClient={client}>
         <MultiElectionQuestionsForm ConnectButton={ConnectButton} />
         <Box position='sticky' bottom={0} left={0} pb={1} pt={1} display={{ base: 'none', lg2: 'block' }}>
-          <VoteButton />
+          <VoteButton isMultiElection={true} />
         </Box>
       </MultiElectionsProvider>
     )
