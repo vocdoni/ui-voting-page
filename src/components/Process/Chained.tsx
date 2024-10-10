@@ -9,7 +9,7 @@ import { VoteButton } from '~components/Process/Aside'
 import BlindCSPConnect from '~components/Process/BlindCSPConnect'
 import { ChainedProvider, useChainedProcesses } from './ChainedContext'
 import { ConfirmVoteModal } from './ConfirmVoteModal'
-import { MultiElectionQuestionsForm, MultiElectionVoteButton } from '~components/Process/MultiElectionQuestions'
+import { MultiElectionQuestionsForm } from '~components/Process/MultiElectionQuestions'
 import { MultiElectionsProvider } from '~components/Process/MultiElectionContext'
 
 type ChainedProcessesInnerProps = {
