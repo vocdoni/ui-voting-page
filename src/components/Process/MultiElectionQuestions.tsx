@@ -1,11 +1,6 @@
-import {
-  MultiElectionsProvider,
-  MultiElectionsProviderProps,
-  SubElectionState,
-  useMultiElections,
-} from './MultiElectionContext'
+import { SubElectionState, useMultiElections } from './MultiElectionContext'
 import { ElectionProvider, useElection } from '@vocdoni/react-providers'
-import { ComponentType, useEffect, useMemo, useState } from 'react'
+import { ComponentType, useEffect, useMemo } from 'react'
 import { PublishedElection } from '@vocdoni/sdk'
 import { ButtonProps } from '@chakra-ui/button'
 import {
@@ -14,6 +9,7 @@ import {
   DefaultElectionFormId,
   VoteButtonLogic,
 } from '@vocdoni/chakra-components'
+import { Flex } from '@chakra-ui/react'
 
 export type MultiElectionQuestionsFormProps = { ConnectButton?: ComponentType } & ElectionQuestionsFormProps
 
@@ -35,19 +31,18 @@ export const MultiElectionQuestionsForm = ({
   ConnectButton,
   ...props
 }: MultiElectionQuestionsFormProps) => {
-  const { voteAll, fmethods, renderWith, elections, addElection } = useMultiElections()
+  const { voteAll, fmethods, renderWith } = useMultiElections()
 
   return (
     <form onSubmit={fmethods.handleSubmit(voteAll, onInvalid)} id={formId ?? DefaultElectionFormId}>
-      {/*<ElectionQuestion {...props} />*/}
       {renderWith.length > 0 && (
-        <>
+        <Flex direction={'column'} gap={10}>
           {renderWith.map(({ id }) => (
             <ElectionProvider key={id} ConnectButton={ConnectButton} id={id} fetchCensus>
               <SubElectionQuestions {...props} />
             </ElectionProvider>
           ))}
-        </>
+        </Flex>
       )}
     </form>
   )
@@ -86,22 +81,6 @@ const SubElectionQuestions = (props: Omit<MultiElectionQuestionsFormProps, 'Conn
       return
     }
     addElection(subElectionState)
-
-    // }
-    // ;(async () => {
-    //   if (
-    //     election &&
-    //     election instanceof PublishedElection
-    //     // client?.wallet &&
-    //     // typeof client.wallet.getAddress === 'function'
-    //   ) {
-    //     // Store the election if wallet contain address
-    //     // const address = await client.wallet.getAddress()
-    //     // if (walletAddress === address && elections[election.id]) return
-    //     // setWalletAddress(address)
-    //     addElection({ election, vote, isAbleToVote, voted })
-    //   }
-    // })()
   }, [subElectionState, elections, election])
 
   return <ElectionQuestion {...props} />
