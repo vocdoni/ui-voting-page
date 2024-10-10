@@ -4,7 +4,7 @@ import { PublishedElection, VocdoniSDKClient } from '@vocdoni/sdk'
 import { Wallet } from '@ethersproject/wallet'
 import { useElection, ElectionState } from '@vocdoni/react-providers'
 import { MultiElectionConfirmation } from './MultiElectionConfirmation'
-import { useConfirm, getVotePackage } from '@vocdoni/chakra-components'
+import { useConfirm, getVoteBallot } from '@vocdoni/chakra-components'
 
 export type MultiElectionFormContextState = {
   fmethods: UseFormReturn<any>
@@ -80,7 +80,7 @@ const useMultiElectionsProvider = ({
 
     const votingList = Object.entries(electionsStates).map(([key, { election, vote }]) => {
       if (!(election instanceof PublishedElection) || !values[election.id]) return Promise.resolve()
-      const votePackage = getVotePackage(election, values[election.id])
+      const votePackage = getVoteBallot(election, values[election.id])
       return vote(votePackage)
     })
     return Promise.all(votingList).finally(() => setVoting(false))
