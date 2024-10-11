@@ -1,6 +1,6 @@
-import { Box, Button, Card, Flex, FlexProps, Link, Text } from '@chakra-ui/react'
+import { Box, Button, ButtonProps, Card, Flex, FlexProps, Link, Text } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { VoteButton as CVoteButton, environment, SpreadsheetAccess } from '@vocdoni/chakra-components'
+import { environment, SpreadsheetAccess, VoteButton as CVoteButton, VoteWeight } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
 import { dotobject, ElectionStatus, formatUnits, PublishedElection } from '@vocdoni/sdk'
 import { TFunction } from 'i18next'
@@ -8,6 +8,7 @@ import { Trans, useTranslation } from 'react-i18next'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { useAccount, useDisconnect } from 'wagmi'
 import { CensusMeta } from './Census/CensusType'
+import { MultiElectionVoteButton } from '~components/Process/MultiElectionQuestions'
 
 const results = (result: number, decimals?: number) =>
   decimals ? parseInt(formatUnits(BigInt(result), decimals), 10) : result
@@ -197,7 +198,8 @@ const ProcessAside = () => {
   )
 }
 
-export const VoteButton = ({ ...props }: FlexProps) => {
+type VoteButtonProps = { isMultiElection?: boolean } & FlexProps
+export const VoteButton = ({ isMultiElection = false, ...props }: VoteButtonProps) => {
   const { t } = useTranslation()
   const { election, connected, isAbleToVote, isInCensus } = useElection()
   const { isConnected } = useAccount()
@@ -215,6 +217,10 @@ export const VoteButton = ({ ...props }: FlexProps) => {
     return null
   }
 
+  const isWeighted = election?.census.weight !== election?.census.size
+
+  const isBlindCsp = census?.type === 'csp' && election?.meta.csp?.service === 'vocdoni-blind-csp'
+
   return (
     <Flex
       direction={'column'}
@@ -226,7 +232,7 @@ export const VoteButton = ({ ...props }: FlexProps) => {
       px={{ base: 3, lg2: 0 }}
       {...props}
     >
-      {census?.type !== 'spreadsheet' && !connected && (
+      {census?.type !== 'spreadsheet' && !isBlindCsp && !connected && (
         <ConnectButton.Custom>
           {({ account, chain, openConnectModal, authenticationStatus, mounted }) => {
             const ready = mounted && authenticationStatus !== 'loading'
@@ -259,21 +265,37 @@ export const VoteButton = ({ ...props }: FlexProps) => {
         </ConnectButton.Custom>
       )}
       {isAbleToVote && (
-        <>
-          <CVoteButton
-            w='100%'
-            mt='60px !important'
-            fontSize='lg'
-            color='process.spreadsheet.color'
-            sx={{
-              '&::disabled': {
-                opacity: '0.8',
-              },
-            }}
-          />
-        </>
+        <VoteButtonAction
+          w='100%'
+          mt='60px !important'
+          fontSize='lg'
+          color='process.spreadsheet.color'
+          sx={{
+            '&::disabled': {
+              opacity: '0.8',
+            },
+          }}
+          isMultiElection={isMultiElection}
+          isWeighted={isWeighted}
+        />
       )}
     </Flex>
+  )
+}
+
+const VoteButtonAction = ({
+  isMultiElection = false,
+  isWeighted,
+  ...props
+}: { isWeighted: boolean; isMultiElection?: boolean } & ButtonProps) => {
+  if (isMultiElection) {
+    return <MultiElectionVoteButton {...props} />
+  }
+  return (
+    <>
+      <CVoteButton {...props} />
+      {isWeighted && <VoteWeight />}
+    </>
   )
 }
 

@@ -62,14 +62,12 @@ const baseStyle = definePartsStyle({
   },
 
   wrapper: {
-    '& > form': {
       display: 'flex',
       flexDirection: 'column',
       gap: 10,
 
-      '& > div:first-of-type': {
+    '& > div:first-of-type': {
         display: 'none',
-      },
     },
   },
 
@@ -90,6 +88,7 @@ const baseStyle = definePartsStyle({
     textAlign: 'start',
     fontSize: 'xl2',
     lineHeight: 1.3,
+    color: 'process.questions.title',
     mb: 5,
   },
 

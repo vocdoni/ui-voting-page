@@ -2,16 +2,31 @@ import { Box, Progress } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { ElectionQuestions, ElectionResults, SpreadsheetAccess } from '@vocdoni/chakra-components'
 import { ElectionProvider, useElection } from '@vocdoni/react-providers'
-import { ArchivedElection, InvalidElection, IVotePackage, PublishedElection, VocdoniSDKClient } from '@vocdoni/sdk'
-import { useEffect, useState } from 'react'
+import { InvalidElection, IVotePackage, PublishedElection, VocdoniSDKClient } from '@vocdoni/sdk'
+import { PropsWithChildren, useEffect, useState } from 'react'
 import { Trans } from 'react-i18next'
-import { VoteButton } from './Aside'
+import { VoteButton } from '~components/Process/Aside'
+import BlindCSPConnect from '~components/Process/BlindCSPConnect'
 import { ChainedProvider, useChainedProcesses } from './ChainedContext'
 import { ConfirmVoteModal } from './ConfirmVoteModal'
+import { MultiElectionQuestionsForm } from '~components/Process/MultiElectionQuestions'
+import { MultiElectionsProvider } from '~components/Process/MultiElectionContext'
 import { VotingVoteModal } from './View'
 
 type ChainedProcessesInnerProps = {
   connected: boolean
+}
+
+const VoteButtonContainer = ({ children }: PropsWithChildren) => {
+  return (
+    <Box         bottom={0}
+                 left={0}
+                 position={{ base: 'sticky', lg2: 'relative' }}
+                 bgColor={{ base: 'white', lg2: 'transparent' }}
+                 mt='50px'>
+      {children}
+    </Box>
+  )
 }
 
 const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
@@ -48,6 +63,18 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
     })()
   }, [processes, current, voted, client])
 
+  const [renderWith, setRenderWith] = useState<RenderWith[]>([])
+  // Effect to set renderWith component state.
+  useEffect(() => {
+    if (!current || processes[current] instanceof InvalidElection) return
+    const currentElection = processes[current]
+    const meta = currentElection.get('multiprocess')
+    if (meta.renderWith) {
+      setRenderWith(meta.renderWith)
+    }
+  }, [current, processes])
+  const isRenderWith = renderWith.length > 0
+
   if (!current || !processes[current]) {
     return <Progress w='full' size='xs' isIndeterminate />
   }
@@ -56,27 +83,31 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
     return <Trans i18nKey='error.election_is_invalid'>Invalid election</Trans>
   }
 
+  if (isRenderWith) {
+    return (
+      <MultiElectionsProvider renderWith={[{ id: current }, ...renderWith]} rootClient={client}>
+        <MultiElectionQuestionsForm ConnectButton={ConnectButton} />
+        <VoteButtonContainer>
+          <VoteButton isMultiElection={true} />
+        </VoteButtonContainer>
+      </MultiElectionsProvider>
+    )
+  }
+
   return (
-    <Box className='md-sizes' pt='25px'>
+    <>
       <ElectionQuestions
         confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
       />
-      <Box
-        bottom={0}
-        left={0}
-        position={{ base: 'sticky', lg2: 'relative' }}
-        bgColor={{ base: 'white', lg2: 'transparent' }}
-      >
+      <VoteButtonContainer>
         <VoteButton />
-      </Box>
-
-      <VotingVoteModal />
-    </Box>
+      </VoteButtonContainer>
+    </>
   )
 }
 
 type ChainedProcessesProps = {
-  root?: PublishedElection | ArchivedElection | InvalidElection
+  root?: PublishedElection | InvalidElection
 }
 
 export const ChainedProcesses = ({ root }: ChainedProcessesProps) => {
@@ -121,21 +152,22 @@ const ChainedProcessesWrapper = () => {
     return <Progress w='full' size='xs' isIndeterminate />
   }
 
+  if (processes[current] instanceof InvalidElection) {
+    return <Trans i18nKey='error.election_is_invalid'>Invalid election</Trans>
+  }
+
+  const isBlindCsp = election.get('census.type') === 'csp' && election?.meta.csp?.service === 'vocdoni-blind-csp'
+
   return (
-    <>
+    <Box className='md-sizes' mb='100px' pt='25px'>
       <ElectionProvider key={current} election={processes[current]} ConnectButton={ConnectButton} fetchCensus>
         <ChainedProcessesInner connected={connected} />
       </ElectionProvider>
-      <Box
-        bottom={0}
-        left={0}
-        position={{ base: 'sticky', lg2: 'relative' }}
-        bgColor={{ base: 'white', lg2: 'transparent' }}
-        mt='50px'
-      >
+      <VoteButtonContainer>
         {!connected && election.get('census.type') === 'spreadsheet' && <SpreadsheetAccess />}
-      </Box>
-    </>
+        {isBlindCsp && !connected && <BlindCSPConnect />}
+      </VoteButtonContainer>
+    </Box>
   )
 }
 
@@ -212,7 +244,9 @@ const getNextProcessInFlow = async (client: VocdoniSDKClient, voted: string, met
 const getProcessIdsInFlowStep = (meta: FlowNode) => {
   const ids: string[] = []
 
-  ids.push(meta.default)
+  if (meta.default) {
+    ids.push(meta.default)
+  }
 
   if (!meta.conditions) {
     return ids
@@ -284,7 +318,11 @@ type FlowCondition = {
   goto: string
 }
 
+// FlowNode can have or conditions or renderWith, but not both
 type FlowNode = {
   default: string
-  conditions?: FlowCondition[]
+} & ({ conditions?: FlowCondition[]; renderWith?: never } | { conditions?: never; renderWith: RenderWith[] })
+
+export type RenderWith = {
+  id: string
 }

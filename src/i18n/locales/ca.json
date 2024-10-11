@@ -16,6 +16,9 @@
     "votes_weight_other": "<span>{{ count }}</span> <text>vots</text>",
     "voting_anonymous_advice": "Si us plau, espera mentre la màgia té lloc 🪄.\nAixò pot trigar uns minuts; no tanquis la finestra."
   },
+  "blindcsp": {
+    "connect": "Demo connect"
+  },
   "cc": {
     "actions": {
       "cancel": "Cancel·la immediatament el procés de votació, sense permetre nous vots i sense comptabilitzar resultats (precaució: no es pot desfer)",
@@ -102,6 +105,12 @@
     "uses_cases3": "Pressupostos Participatius",
     "uses_cases4": "Votació Digital",
     "uses_cases5": "Enquesta Digital Tancada"
+  },
+  "landing": {
+    "desc_body": "Us convoquem a l'Assamblea General de {{ orgName }}, que tindrà lloc el {{ date }} a les {{ time }}. <br/>Es fonamental que tots els membres de la nostra organització participin en aquesta important votació per garantir una representació equitativa de totes les opinions i prespectives dins de la nostra comunitat.",
+    "desc_footer": "Per poder accedir a la votació, us demanarem el vostre número de DNI (Document Nacional d'Identitat) i data de\n        naixement. Posteriorment, podreu seleccionar les vostres opcions i enviar el vot de forma segura.",
+    "desc_title": "Eleccions participatives",
+    "select_an_option": "<strong>Seleccioneu</strong> una opció depenent de la teva edat"
   },
   "link": {
     "discord": "Enllaç al Discord de Vocdoni",
