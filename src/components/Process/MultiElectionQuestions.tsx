@@ -9,9 +9,15 @@ import {
   DefaultElectionFormId,
   VoteButtonLogic,
 } from '@vocdoni/chakra-components'
-import { Flex } from '@chakra-ui/react'
+import { Flex, FormControl, FormErrorMessage, useMultiStyleConfig } from '@chakra-ui/react'
+import { Controller, FieldValues, ValidateResult } from 'react-hook-form'
 
-export type MultiElectionQuestionsFormProps = { ConnectButton?: ComponentType } & ElectionQuestionsFormProps
+export type SubmitFormValidation = (values: Record<string, FieldValues>) => ValidateResult | Promise<ValidateResult>
+
+export type MultiElectionQuestionsFormProps = {
+  ConnectButton?: ComponentType
+  validate?: SubmitFormValidation
+} & ElectionQuestionsFormProps
 
 export const MultiElectionVoteButton = (props: ButtonProps) => {
   const { isAbleToVote, voting, voted } = useMultiElections()
@@ -29,12 +35,16 @@ export const MultiElectionQuestionsForm = ({
   formId,
   onInvalid,
   ConnectButton,
+  validate,
   ...props
 }: MultiElectionQuestionsFormProps) => {
+  const styles = useMultiStyleConfig('ElectionQuestions')
   const { voteAll, fmethods, renderWith } = useMultiElections()
 
+  const { handleSubmit, control } = fmethods
+
   return (
-    <form onSubmit={fmethods.handleSubmit(voteAll, onInvalid)} id={formId ?? DefaultElectionFormId}>
+    <form onSubmit={handleSubmit(voteAll, onInvalid)} id={formId ?? DefaultElectionFormId}>
       {renderWith.length > 0 && (
         <Flex direction={'column'} gap={10}>
           {renderWith.map(({ id }) => (
@@ -44,6 +54,27 @@ export const MultiElectionQuestionsForm = ({
           ))}
         </Flex>
       )}
+      {/*This controller is a trick to perform a form additional validation.
+       Adding the validation on the handleSubmit method caused UX errors when trying to rerun the validation again
+        because the error was already on error state.
+        On this way, the validation works as expected.*/}
+      <Controller
+        name={'handleSubmit'}
+        control={control}
+        rules={{
+          validate: (field, formFields: Record<string, FieldValues>) => {
+            if (validate) return validate(formFields)
+            return true
+          },
+        }}
+        render={({ fieldState: { error: fieldError } }) => {
+          return (
+            <FormControl isInvalid={!!fieldError?.message}>
+              <FormErrorMessage sx={styles.error}>{fieldError?.message as string}</FormErrorMessage>
+            </FormControl>
+          )
+        }}
+      />
     </form>
   )
 }
