@@ -1,6 +1,6 @@
 import { SubElectionState, useMultiElections } from './MultiElectionContext'
 import { ElectionProvider, useElection } from '@vocdoni/react-providers'
-import { ComponentType, useEffect, useMemo } from 'react'
+import { ComponentType, useEffect, useMemo, useState } from 'react'
 import { PublishedElection } from '@vocdoni/sdk'
 import { ButtonProps } from '@chakra-ui/button'
 import {
@@ -10,7 +10,7 @@ import {
   VoteButtonLogic,
 } from '@vocdoni/chakra-components'
 import { Flex, FormControl, FormErrorMessage, useMultiStyleConfig } from '@chakra-ui/react'
-import { Controller, FieldValues, ValidateResult } from 'react-hook-form'
+import { FieldValues, ValidateResult } from 'react-hook-form'
 
 export type SubmitFormValidation = (values: Record<string, FieldValues>) => ValidateResult | Promise<ValidateResult>
 
@@ -40,11 +40,32 @@ export const MultiElectionQuestionsForm = ({
 }: MultiElectionQuestionsFormProps) => {
   const styles = useMultiStyleConfig('ElectionQuestions')
   const { voteAll, fmethods, renderWith } = useMultiElections()
+  const [globalError, setGlobalError] = useState('')
 
-  const { handleSubmit, control } = fmethods
+  const { handleSubmit, watch } = fmethods
+  const formData = watch()
+
+  const _validate = () => {
+    if (validate) {
+      const error = validate(formData)
+      if (typeof error === 'string' || (typeof error === 'boolean' && !error)) {
+        setGlobalError(error.toString())
+        return false
+      }
+    }
+    setGlobalError('')
+    return true
+  }
+
+  const onSubmit = (values: Record<string, FieldValues>) => {
+    if (validate && !_validate()) {
+      return
+    }
+    voteAll(values)
+  }
 
   return (
-    <form onSubmit={handleSubmit(voteAll, onInvalid)} id={formId ?? DefaultElectionFormId}>
+    <form onSubmit={handleSubmit(onSubmit, onInvalid)} id={formId ?? DefaultElectionFormId}>
       {renderWith.length > 0 && (
         <Flex direction={'column'} gap={10}>
           {renderWith.map(({ id }) => (
@@ -54,27 +75,9 @@ export const MultiElectionQuestionsForm = ({
           ))}
         </Flex>
       )}
-      {/*This controller is a trick to perform a form additional validation.
-       Adding the validation on the handleSubmit method caused UX errors when trying to rerun the validation again
-        because the error was already on error state.
-        On this way, the validation works as expected.*/}
-      <Controller
-        name={'handleSubmit'}
-        control={control}
-        rules={{
-          validate: (field, formFields: Record<string, FieldValues>) => {
-            if (validate) return validate(formFields)
-            return true
-          },
-        }}
-        render={({ fieldState: { error: fieldError } }) => {
-          return (
-            <FormControl isInvalid={!!fieldError?.message}>
-              <FormErrorMessage sx={styles.error}>{fieldError?.message as string}</FormErrorMessage>
-            </FormControl>
-          )
-        }}
-      />
+      <FormControl isInvalid={!!globalError}>
+        <FormErrorMessage sx={styles.error}>{globalError}</FormErrorMessage>
+      </FormControl>
     </form>
   )
 }
