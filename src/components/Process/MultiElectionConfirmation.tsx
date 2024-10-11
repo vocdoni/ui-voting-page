@@ -28,14 +28,14 @@ export const MultiElectionConfirmation = ({ answers, elections, ...rest }: Multi
         {Object.values(elections).map(({ election, voted, isAbleToVote }) => {
           if (voted)
             return (
-              <chakra.div __css={styles.question}>
+              <chakra.div __css={styles.question} key={election.id}>
                 <chakra.div __css={styles.title}>{election.title.default}</chakra.div>
                 <chakra.div __css={styles.answer}>{localize('vote.already_voted')}</chakra.div>
               </chakra.div>
             )
           if (!isAbleToVote)
             return (
-              <chakra.div __css={styles.question}>
+              <chakra.div __css={styles.question} key={election.id}>
                 <chakra.div __css={styles.title}>{election.title.default}</chakra.div>
                 <chakra.div __css={styles.answer}>{localize('vote.not_able_to_vote')}</chakra.div>
               </chakra.div>
