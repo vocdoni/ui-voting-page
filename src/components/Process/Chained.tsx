@@ -4,12 +4,17 @@ import { ElectionQuestions, ElectionResults, SpreadsheetAccess } from '@vocdoni/
 import { ElectionProvider, useElection } from '@vocdoni/react-providers'
 import { InvalidElection, IVotePackage, PublishedElection, VocdoniSDKClient } from '@vocdoni/sdk'
 import { PropsWithChildren, useEffect, useState } from 'react'
-import { Trans } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import { VoteButton } from '~components/Process/Aside'
 import BlindCSPConnect from '~components/Process/BlindCSPConnect'
 import { ChainedProvider, useChainedProcesses } from './ChainedContext'
 import { ConfirmVoteModal } from './ConfirmVoteModal'
-import { MultiElectionQuestionsForm } from '~components/Process/MultiElectionQuestions'
+
+import {
+  MultiElectionQuestionsForm,
+  sameLengthValidator,
+  SubmitFormValidation,
+} from '~components/Process/MultiElectionQuestions'
 import { MultiElectionsProvider } from '~components/Process/MultiElectionContext'
 import { VotingVoteModal } from './View'
 
@@ -19,17 +24,20 @@ type ChainedProcessesInnerProps = {
 
 const VoteButtonContainer = ({ children }: PropsWithChildren) => {
   return (
-    <Box         bottom={0}
-                 left={0}
-                 position={{ base: 'sticky', lg2: 'relative' }}
-                 bgColor={{ base: 'white', lg2: 'transparent' }}
-                 mt='50px'>
+    <Box
+      bottom={0}
+      left={0}
+      position={{ base: 'sticky', lg2: 'relative' }}
+      bgColor={{ base: 'white', lg2: 'transparent' }}
+      mt='50px'
+    >
       {children}
     </Box>
   )
 }
 
 const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
+  const { t } = useTranslation()
   const { election, voted, setClient, clearClient } = useElection()
   const { processes, client, current, setProcess, setCurrent } = useChainedProcesses()
 
@@ -84,9 +92,15 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
   }
 
   if (isRenderWith) {
+    const formValidation: SubmitFormValidation = (values) => {
+      if (!sameLengthValidator(values)) {
+        return t('errors.all_ballots_must_have_same_length')
+      }
+      return true
+    }
     return (
       <MultiElectionsProvider renderWith={[{ id: current }, ...renderWith]} rootClient={client}>
-        <MultiElectionQuestionsForm ConnectButton={ConnectButton} />
+        <MultiElectionQuestionsForm validate={formValidation} ConnectButton={ConnectButton} />
         <VoteButtonContainer>
           <VoteButton isMultiElection={true} />
         </VoteButtonContainer>
