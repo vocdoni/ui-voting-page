@@ -3,7 +3,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { ElectionQuestions, ElectionResults, SpreadsheetAccess } from '@vocdoni/chakra-components'
 import { ElectionProvider, useElection } from '@vocdoni/react-providers'
 import { InvalidElection, IVotePackage, PublishedElection, VocdoniSDKClient } from '@vocdoni/sdk'
-import { useEffect, useState } from 'react'
+import { PropsWithChildren, useEffect, useState } from 'react'
 import { Trans } from 'react-i18next'
 import { VoteButton } from '~components/Process/Aside'
 import BlindCSPConnect from '~components/Process/BlindCSPConnect'
@@ -14,6 +14,14 @@ import { MultiElectionsProvider } from '~components/Process/MultiElectionContext
 
 type ChainedProcessesInnerProps = {
   connected: boolean
+}
+
+const VoteButtonContainer = ({ children }: PropsWithChildren) => {
+  return (
+    <Box position='sticky' bottom={0} left={0} pb={1} pt={1} display={{ base: 'none', lg2: 'block' }}>
+      {children}
+    </Box>
+  )
 }
 
 const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
@@ -74,22 +82,22 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
     return (
       <MultiElectionsProvider renderWith={[{ id: current }, ...renderWith]} rootClient={client}>
         <MultiElectionQuestionsForm ConnectButton={ConnectButton} />
-        <Box position='sticky' bottom={0} left={0} pb={1} pt={1} display={{ base: 'none', lg2: 'block' }}>
+        <VoteButtonContainer>
           <VoteButton isMultiElection={true} />
-        </Box>
+        </VoteButtonContainer>
       </MultiElectionsProvider>
     )
   }
 
   return (
-    <Box className='md-sizes' mb='100px' pt='25px'>
+    <>
       <ElectionQuestions
         confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
       />
-      <Box position='sticky' bottom={0} left={0} pb={1} pt={1} display={{ base: 'none', lg2: 'block' }}>
+      <VoteButtonContainer>
         <VoteButton />
-      </Box>
-    </Box>
+      </VoteButtonContainer>
+    </>
   )
 }
 
@@ -146,13 +154,15 @@ const ChainedProcessesWrapper = () => {
   const isBlindCsp = election.get('census.type') === 'csp' && election?.meta.csp?.service === 'vocdoni-blind-csp'
 
   return (
-    <>
+    <Box className='md-sizes' mb='100px' pt='25px'>
       <ElectionProvider key={current} election={processes[current]} ConnectButton={ConnectButton} fetchCensus>
         <ChainedProcessesInner connected={connected} />
       </ElectionProvider>
-      {!connected && election.get('census.type') === 'spreadsheet' && <SpreadsheetAccess />}
-      {isBlindCsp && !connected && <BlindCSPConnect />}
-    </>
+      <VoteButtonContainer>
+        {!connected && election.get('census.type') === 'spreadsheet' && <SpreadsheetAccess />}
+        {isBlindCsp && !connected && <BlindCSPConnect />}
+      </VoteButtonContainer>
+    </Box>
   )
 }
 
