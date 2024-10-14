@@ -2772,6 +2772,12 @@
   dependencies:
     "@vocdoni/react-providers" "~0.5.1"
 
+"@vocdoni/chakra-components@./vocdoni-chakra-components-v0.9.5-2.tgz":
+  version "0.9.5-2"
+  resolved "./vocdoni-chakra-components-v0.9.5-2.tgz#fa996a302f10e7d8cf5fe1ea4a0a416699ce4917"
+  dependencies:
+    "@vocdoni/react-providers" "~0.5.1"
+
 "@vocdoni/proto@1.15.9":
   version "1.15.9"
   resolved "https://registry.yarnpkg.com/@vocdoni/proto/-/proto-1.15.9.tgz#567c08f343d42cc2390c963bf62b41bd845d9a73"
@@ -3800,7 +3806,7 @@ circom_runtime@0.1.25:
   dependencies:
     ffjavascript "0.3.0"
 
-"circomlibjs@github:vocdoni/circomlibjs#f/browser":
+circomlibjs@vocdoni/circomlibjs#f/browser:
   version "0.2.2"
   resolved "https://codeload.github.com/vocdoni/circomlibjs/tar.gz/bc351ea49a39e3a16421962f1e704f3742a343dd"
   dependencies:
@@ -7595,7 +7601,7 @@ smart-buffer@^4.2.0:
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.2.0.tgz#6e1d71fa4f18c05f7d0ff216dd16a481d0e8d9ae"
   integrity sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==
 
-"snarkjs@github:vocdoni/snarkjs#f/browser":
+snarkjs@vocdoni/snarkjs#f/browser:
   version "0.7.0"
   resolved "https://codeload.github.com/vocdoni/snarkjs/tar.gz/5ba4333d0b6df8098219bca9b1f288a30d066d0e"
   dependencies:
@@ -8588,6 +8594,7 @@ word-wrap@~1.2.3:
   integrity sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
