@@ -3,10 +3,11 @@ import { ConnectButton } from '@rainbow-me/rainbowkit'
 import {
   ElectionQuestions,
   ElectionResults,
-  MultiElectionsProvider,
-  SpreadsheetAccess,
   MultiElectionQuestionsForm,
+  MultiElectionsProvider,
+  RenderWith,
   sameLengthValidator,
+  SpreadsheetAccess,
   SubmitFormValidation,
 } from '@vocdoni/chakra-components'
 import { ElectionProvider, useElection } from '@vocdoni/react-providers'
@@ -336,7 +337,3 @@ type FlowCondition = {
 type FlowNode = {
   default: string
 } & ({ conditions?: FlowCondition[]; renderWith?: never } | { conditions?: never; renderWith: RenderWith[] })
-
-export type RenderWith = {
-  id: string
-}
