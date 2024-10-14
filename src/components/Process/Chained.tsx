@@ -1,6 +1,14 @@
 import { Box, Progress } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { ElectionQuestions, ElectionResults, SpreadsheetAccess } from '@vocdoni/chakra-components'
+import {
+  ElectionQuestions,
+  ElectionResults,
+  MultiElectionsProvider,
+  SpreadsheetAccess,
+  MultiElectionQuestionsForm,
+  sameLengthValidator,
+  SubmitFormValidation,
+} from '@vocdoni/chakra-components'
 import { ElectionProvider, useElection } from '@vocdoni/react-providers'
 import { InvalidElection, IVotePackage, PublishedElection, VocdoniSDKClient } from '@vocdoni/sdk'
 import { PropsWithChildren, useEffect, useState } from 'react'
@@ -9,14 +17,6 @@ import { VoteButton } from '~components/Process/Aside'
 import BlindCSPConnect from '~components/Process/BlindCSPConnect'
 import { ChainedProvider, useChainedProcesses } from './ChainedContext'
 import { ConfirmVoteModal } from './ConfirmVoteModal'
-
-import {
-  MultiElectionQuestionsForm,
-  sameLengthValidator,
-  SubmitFormValidation,
-} from '~components/Process/MultiElectionQuestions'
-import { MultiElectionsProvider } from '~components/Process/MultiElectionContext'
-import { VotingVoteModal } from './View'
 
 type ChainedProcessesInnerProps = {
   connected: boolean
