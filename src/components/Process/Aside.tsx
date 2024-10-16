@@ -1,12 +1,6 @@
 import { Box, Button, ButtonProps, Card, Flex, FlexProps, Link, Text } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import {
-  environment,
-  MultiElectionVoteButton,
-  SpreadsheetAccess,
-  VoteButton as CVoteButton,
-  VoteWeight,
-} from '@vocdoni/chakra-components'
+import { environment, SpreadsheetAccess, VoteButton as CVoteButton, VoteWeight } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
 import { dotobject, ElectionStatus, formatUnits, PublishedElection } from '@vocdoni/sdk'
 import { TFunction } from 'i18next'
@@ -203,8 +197,8 @@ const ProcessAside = () => {
   )
 }
 
-type VoteButtonProps = { isMultiElection?: boolean } & FlexProps
-export const VoteButton = ({ isMultiElection = false, ...props }: VoteButtonProps) => {
+type VoteButtonProps = FlexProps
+export const VoteButton = (props: VoteButtonProps) => {
   const { t } = useTranslation()
   const { election, connected, isAbleToVote, isInCensus } = useElection()
   const { isConnected } = useAccount()
@@ -270,37 +264,22 @@ export const VoteButton = ({ isMultiElection = false, ...props }: VoteButtonProp
         </ConnectButton.Custom>
       )}
       {isAbleToVote && (
-        <VoteButtonAction
-          w='60%'
-          fontSize='lg'
-          height='50px'
-          mb={4}
-          sx={{
-            '&::disabled': {
-              opacity: '0.8',
-            },
-          }}
-          isMultiElection={isMultiElection}
-          isWeighted={isWeighted}
-        />
+        <>
+          <CVoteButton
+            w='60%'
+            fontSize='lg'
+            height='50px'
+            mb={4}
+            sx={{
+              '&::disabled': {
+                opacity: '0.8',
+              },
+            }}
+          />
+          {isWeighted && <VoteWeight />}
+        </>
       )}
     </Flex>
-  )
-}
-
-const VoteButtonAction = ({
-  isMultiElection = false,
-  isWeighted,
-  ...props
-}: { isWeighted: boolean; isMultiElection?: boolean } & ButtonProps) => {
-  if (isMultiElection) {
-    return <MultiElectionVoteButton {...props} />
-  }
-  return (
-    <>
-      <CVoteButton {...props} />
-      {isWeighted && <VoteWeight />}
-    </>
   )
 }
 

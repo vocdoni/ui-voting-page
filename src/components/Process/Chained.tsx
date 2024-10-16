@@ -2,10 +2,10 @@ import { Box, Progress } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import {
   ElectionQuestions,
+  ElectionQuestionsForm,
   ElectionResults,
-  MultiElectionQuestionsForm,
-  MultiElectionsProvider,
   SpreadsheetAccess,
+  QuestionsFormProvider,
 } from '@vocdoni/chakra-components'
 import { ElectionProvider, useElection } from '@vocdoni/react-providers'
 import { InvalidElection, IVotePackage, PublishedElection, VocdoniSDKClient } from '@vocdoni/sdk'
@@ -68,7 +68,7 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
     if (!current || processes[current] instanceof InvalidElection) return
     const currentElection = processes[current]
     const meta = currentElection.get('multiprocess')
-    if (meta.renderWith) {
+    if (meta && meta.renderWith) {
       setRenderWith(meta.renderWith)
     }
   }, [current, processes])
@@ -84,19 +84,20 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
 
   if (isRenderWith) {
     return (
-      <MultiElectionsProvider renderWith={[{ id: current }, ...renderWith]} rootClient={client}>
-        <MultiElectionQuestionsForm ConnectButton={ConnectButton} />
+      <QuestionsFormProvider renderWith={[{ id: current }, ...renderWith]}>
+        <ElectionQuestionsForm />
         <VoteButtonContainer>
-          <VoteButton isMultiElection={true} />
+          <VoteButton />
         </VoteButtonContainer>
-      </MultiElectionsProvider>
+      </QuestionsFormProvider>
     )
   }
 
   return (
     <>
       <ElectionQuestions
-        confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
+      // renderWith={renderWith}
+      // confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
       />
       <VoteButtonContainer>
         <VoteButton />
