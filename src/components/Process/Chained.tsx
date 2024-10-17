@@ -4,8 +4,9 @@ import {
   ElectionQuestions,
   ElectionQuestionsForm,
   ElectionResults,
-  SpreadsheetAccess,
   QuestionsFormProvider,
+  SpreadsheetAccess,
+  SubmitFormValidation,
 } from '@vocdoni/chakra-components'
 import { ElectionProvider, useElection } from '@vocdoni/react-providers'
 import { InvalidElection, IVotePackage, PublishedElection, VocdoniSDKClient } from '@vocdoni/sdk'
@@ -14,7 +15,6 @@ import { Trans, useTranslation } from 'react-i18next'
 import { VoteButton } from '~components/Process/Aside'
 import BlindCSPConnect from '~components/Process/BlindCSPConnect'
 import { ChainedProvider, useChainedProcesses } from './ChainedContext'
-import { ConfirmVoteModal } from './ConfirmVoteModal'
 
 type ChainedProcessesInnerProps = {
   connected: boolean
@@ -90,14 +90,14 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
   }
 
   if (isRenderWith) {
-    // const formValidation: SubmitFormValidation = (values) => {
-    //   if (!sameLengthValidator(values)) {
-    //     return t('errors.all_ballots_must_have_same_length')
-    //   }
-    //   return true
-    // }
+    const formValidation: SubmitFormValidation = (values) => {
+      if (!sameLengthValidator(values)) {
+        return t('errors.all_ballots_must_have_same_length')
+      }
+      return true
+    }
     return (
-      <QuestionsFormProvider renderWith={renderWith}>
+      <QuestionsFormProvider validate={formValidation} renderWith={renderWith}>
         <ElectionQuestionsForm />
         <VoteButtonContainer>
           <VoteButton />
@@ -361,4 +361,16 @@ export type FlowNode =
 
 export type RenderWith = {
   id: string
+}
+
+/**
+ * Check all values responses have the same length
+ * Won't work for multiquestions elections.
+ */
+export const sameLengthValidator: SubmitFormValidation = (answers) => {
+  const [first, ...rest] = Object.values(answers)
+  if (!first) {
+    throw new Error('No fields found')
+  }
+  return rest.every((ballot) => ballot[0].length === first[0].length)
 }

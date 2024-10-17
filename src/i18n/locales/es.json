@@ -88,6 +88,9 @@
   "error": {
     "election_is_invalid": "Invalid election"
   },
+  "errors": {
+    "all_ballots_must_have_same_length": "La votación debe ser paritaria. Selecciona el mismo número de opciones de la primera lista y de la segunda. Puedes votar un mínimo de 1 opción y un máximo de 15 por lista."
+  },
   "footer": {
     "company": "Empresa",
     "demo": "Tipos de Votación",

@@ -88,6 +88,9 @@
   "error": {
     "election_is_invalid": "Invalid election"
   },
+  "errors": {
+    "all_ballots_must_have_same_length": "La votació ha de ser paritària. Selecciona el mateix número d’opcions de la primera llista i de la segona. Pots votar un mínim d’1 opció i un màxim de 15 per llista."
+  },
   "footer": {
     "company": "Empresa",
     "demo": "Tipus de Votació",
