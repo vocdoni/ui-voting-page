@@ -162,7 +162,7 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
-"@babel/runtime@^7.12.5", "@babel/runtime@^7.15.4", "@babel/runtime@^7.18.3", "@babel/runtime@^7.23.2", "@babel/runtime@^7.23.9":
+"@babel/runtime@^7.12.5", "@babel/runtime@^7.15.4", "@babel/runtime@^7.18.3", "@babel/runtime@^7.23.2", "@babel/runtime@^7.25.0":
   version "7.25.7"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.25.7.tgz#7ffb53c37a8f247c8c4d335e89cdf16a2e0d0fb6"
   integrity sha512-FjoyLe754PMiYsFaN5C94ttGiOmBNYTf6pLr4xXHAT5uctHb092PBszndLDR5XA/jghQvn4n7JMHl7dmTgbm9w==
@@ -2808,12 +2808,12 @@
     "@types/babel__core" "^7.20.5"
     react-refresh "^0.14.2"
 
-"@vocdoni/chakra-components@~0.8.3":
-  version "0.8.9"
-  resolved "https://registry.yarnpkg.com/@vocdoni/chakra-components/-/chakra-components-0.8.9.tgz#d2cea8b6c3c40f8e24a0e8d9f22df7446f154521"
-  integrity sha512-jfmOmqpb/qCzcMSG/MJaxJAZDycnBOZxi4aC2SsBnpWbl8GvZgb5XrzSF7LKnKct3NWSzlyeUDNrJUtDcJhRkA==
+"@vocdoni/chakra-components@~0.9.6":
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/@vocdoni/chakra-components/-/chakra-components-0.9.6.tgz#a0ff7160a50ad31189c238673ac809d8c40b34ad"
+  integrity sha512-8mOmEQ1yQvKWkAiAM3ohXaSZ7cXdWeIpItCZhb/QN/WIC//QoYBQk+RCnCZQjH4dmLsfbAVgNIyjWcuerYNXjQ==
   dependencies:
-    "@vocdoni/react-providers" "~0.4.4"
+    "@vocdoni/react-providers" "~0.5.1"
 
 "@vocdoni/proto@1.15.9":
   version "1.15.9"
@@ -2823,10 +2823,10 @@
     long "^5.2.1"
     protobufjs "^7.1.2"
 
-"@vocdoni/react-providers@~0.4.4":
-  version "0.4.7"
-  resolved "https://registry.yarnpkg.com/@vocdoni/react-providers/-/react-providers-0.4.7.tgz#f4ebfc2d237cf864d3c050d186fe919761a23d5f"
-  integrity sha512-jTbfyM6KGmhjXMlUQzz+sn2m1cNZJdpADvPA456BA5YPb6CfeLgLzlnxeeeTAVPEnVMuovIQmejuMxvVEfLe4g==
+"@vocdoni/react-providers@~0.5.1":
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/@vocdoni/react-providers/-/react-providers-0.5.4.tgz#638edb351446789ceab99bd7828f02a345fb2569"
+  integrity sha512-3m1b9KnM/2xeRmsBg9yR9wj5tOEEbMcU1lqzRvAU+HPeTsth5qU9g6P3XjuFTU00Z7jaGVdm4Xa/ltN/+HKNAg==
 
 "@vocdoni/sdk@0.9.1":
   version "0.9.1"
@@ -3857,7 +3857,7 @@ circom_runtime@0.1.25:
   dependencies:
     ffjavascript "0.3.0"
 
-"circomlibjs@github:vocdoni/circomlibjs#f/browser":
+circomlibjs@vocdoni/circomlibjs#f/browser:
   version "0.2.2"
   resolved "https://codeload.github.com/vocdoni/circomlibjs/tar.gz/bc351ea49a39e3a16421962f1e704f3742a343dd"
   dependencies:
@@ -4132,10 +4132,10 @@ date-fns@^2.29.3:
   dependencies:
     "@babel/runtime" "^7.21.0"
 
-date-fns@^3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-3.6.0.tgz#f20ca4fe94f8b754951b24240676e8618c0206bf"
-  integrity sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==
+date-fns@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-4.1.0.tgz#64b3d83fff5aa80438f5b1a633c2e83b8a1c2d14"
+  integrity sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==
 
 debug@4, debug@^4.1.0, debug@^4.3.1:
   version "4.3.7"
@@ -7231,12 +7231,12 @@ react-hook-form@^7.51.5:
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.53.0.tgz#3cf70951bf41fa95207b34486203ebefbd3a05ab"
   integrity sha512-M1n3HhqCww6S2hxLxciEXy2oISPnAzxY7gvwVPrtlczTM/1dDadXgUxDpHMrMTblDOcm/AXtXxHwZ3jpg1mqKQ==
 
-react-i18next@^14.1.2:
-  version "14.1.3"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-14.1.3.tgz#85525c4294ef870ddd3f5d184e793cae362f47cb"
-  integrity sha512-wZnpfunU6UIAiJ+bxwOiTmBOAaB14ha97MjOEnLGac2RJ+h/maIYXZuTHlmyqQVX1UVHmU1YDTQ5vxLmwfXTjw==
+react-i18next@^15.0.3:
+  version "15.0.3"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-15.0.3.tgz#01606062f7f81f9b3a88f388e0a8097f8230f5d4"
+  integrity sha512-BlO1P+oLKjjIxDBQ0GkAIMacgjfMbnvops+3Y5nZXF7UJ99v4KCWr0Na1azJXC8AMiNWp4kgUcFCJM7U9ZsUDg==
   dependencies:
-    "@babel/runtime" "^7.23.9"
+    "@babel/runtime" "^7.25.0"
     html-parse-stringify "^3.0.1"
 
 react-icons@^5.2.1:
@@ -7704,7 +7704,7 @@ smart-buffer@^4.2.0:
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.2.0.tgz#6e1d71fa4f18c05f7d0ff216dd16a481d0e8d9ae"
   integrity sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==
 
-"snarkjs@github:vocdoni/snarkjs#f/browser":
+snarkjs@vocdoni/snarkjs#f/browser:
   version "0.7.0"
   resolved "https://codeload.github.com/vocdoni/snarkjs/tar.gz/5ba4333d0b6df8098219bca9b1f288a30d066d0e"
   dependencies:
