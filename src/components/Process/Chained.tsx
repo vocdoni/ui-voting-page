@@ -248,12 +248,16 @@ const getProcessIdsInFlowStep = (meta: FlowNode) => {
     ids.push(meta.default)
   }
 
-  if (!meta.conditions) {
-    return ids
+  if (meta.renderWith) {
+    for (const renderWith of meta.renderWith) {
+      ids.push(renderWith.id)
+    }
   }
 
-  for (const condition of meta.conditions) {
-    ids.push(condition.goto)
+  if (meta.conditions) {
+    for (const condition of meta.conditions) {
+      ids.push(condition.goto)
+    }
   }
 
   return ids
@@ -273,7 +277,7 @@ export const getAllProcessesInFlow = async (
       processes[id] = election
 
       const meta = election.get('multiprocess')
-      if (meta && meta.default && !visited.has(meta.default)) {
+      if (meta && (meta.default || meta.renderWith) && !visited.has(meta.default)) {
         const idsToFetch = getProcessIdsInFlowStep(meta)
         for (const nextId of idsToFetch) {
           await loadProcess(nextId)
@@ -285,6 +289,16 @@ export const getAllProcessesInFlow = async (
             if (!visited.has(condition.goto)) {
               visited.add(condition.goto)
               ids.push(condition.goto)
+            }
+          }
+        }
+
+        // Add renderWith processes
+        if (meta.renderWith) {
+          for (const renderWithElection of meta.renderWith as RenderWith[]) {
+            if (!visited.has(renderWithElection.id)) {
+              visited.add(renderWithElection.id)
+              ids.push(renderWithElection.id)
             }
           }
         }
@@ -303,6 +317,7 @@ export const getAllProcessesInFlow = async (
   if (meta) {
     initialIds.push(...getProcessIdsInFlowStep(meta))
   }
+
   for (const id of initialIds) {
     await loadProcess(id)
   }
@@ -319,9 +334,17 @@ type FlowCondition = {
 }
 
 // FlowNode can have or conditions or renderWith, but not both
-type FlowNode = {
-  default: string
-} & ({ conditions?: FlowCondition[]; renderWith?: never } | { conditions?: never; renderWith: RenderWith[] })
+export type FlowNode =
+  | {
+      conditions?: FlowCondition[]
+      renderWith?: never
+      default: string
+    }
+  | {
+      conditions?: never
+      renderWith: RenderWith[]
+      default?: string // Default is optional for renderWith elections
+    }
 
 export type RenderWith = {
   id: string
