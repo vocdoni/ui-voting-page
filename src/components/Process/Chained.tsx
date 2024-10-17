@@ -2,13 +2,10 @@ import { Box, Progress } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import {
   ElectionQuestions,
+  ElectionQuestionsForm,
   ElectionResults,
-  MultiElectionQuestionsForm,
-  MultiElectionsProvider,
-  RenderWith,
-  sameLengthValidator,
   SpreadsheetAccess,
-  SubmitFormValidation,
+  QuestionsFormProvider,
 } from '@vocdoni/chakra-components'
 import { ElectionProvider, useElection } from '@vocdoni/react-providers'
 import { InvalidElection, IVotePackage, PublishedElection, VocdoniSDKClient } from '@vocdoni/sdk'
@@ -78,7 +75,7 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
     if (!current || processes[current] instanceof InvalidElection) return
     const currentElection = processes[current]
     const meta = currentElection.get('multiprocess')
-    if (meta.renderWith) {
+    if (meta && meta.renderWith) {
       setRenderWith(meta.renderWith)
     }
   }, [current, processes])
@@ -93,26 +90,27 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
   }
 
   if (isRenderWith) {
-    const formValidation: SubmitFormValidation = (values) => {
-      if (!sameLengthValidator(values)) {
-        return t('errors.all_ballots_must_have_same_length')
-      }
-      return true
-    }
+    // const formValidation: SubmitFormValidation = (values) => {
+    //   if (!sameLengthValidator(values)) {
+    //     return t('errors.all_ballots_must_have_same_length')
+    //   }
+    //   return true
+    // }
     return (
-      <MultiElectionsProvider renderWith={[{ id: current }, ...renderWith]} rootClient={client}>
-        <MultiElectionQuestionsForm validate={formValidation} ConnectButton={ConnectButton} />
+      <QuestionsFormProvider renderWith={renderWith}>
+        <ElectionQuestionsForm />
         <VoteButtonContainer>
-          <VoteButton isMultiElection={true} />
+          <VoteButton />
         </VoteButtonContainer>
-      </MultiElectionsProvider>
+      </QuestionsFormProvider>
     )
   }
 
   return (
     <>
       <ElectionQuestions
-        confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
+      // renderWith={renderWith}
+      // confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
       />
       <VoteButtonContainer>
         <VoteButton />
@@ -263,12 +261,16 @@ const getProcessIdsInFlowStep = (meta: FlowNode) => {
     ids.push(meta.default)
   }
 
-  if (!meta.conditions) {
-    return ids
+  if (meta.renderWith) {
+    for (const renderWith of meta.renderWith) {
+      ids.push(renderWith.id)
+    }
   }
 
-  for (const condition of meta.conditions) {
-    ids.push(condition.goto)
+  if (meta.conditions) {
+    for (const condition of meta.conditions) {
+      ids.push(condition.goto)
+    }
   }
 
   return ids
@@ -288,7 +290,7 @@ export const getAllProcessesInFlow = async (
       processes[id] = election
 
       const meta = election.get('multiprocess')
-      if (meta && meta.default && !visited.has(meta.default)) {
+      if (meta && (meta.default || meta.renderWith) && !visited.has(meta.default)) {
         const idsToFetch = getProcessIdsInFlowStep(meta)
         for (const nextId of idsToFetch) {
           await loadProcess(nextId)
@@ -300,6 +302,16 @@ export const getAllProcessesInFlow = async (
             if (!visited.has(condition.goto)) {
               visited.add(condition.goto)
               ids.push(condition.goto)
+            }
+          }
+        }
+
+        // Add renderWith processes
+        if (meta.renderWith) {
+          for (const renderWithElection of meta.renderWith as RenderWith[]) {
+            if (!visited.has(renderWithElection.id)) {
+              visited.add(renderWithElection.id)
+              ids.push(renderWithElection.id)
             }
           }
         }
@@ -318,6 +330,7 @@ export const getAllProcessesInFlow = async (
   if (meta) {
     initialIds.push(...getProcessIdsInFlowStep(meta))
   }
+
   for (const id of initialIds) {
     await loadProcess(id)
   }
@@ -334,6 +347,18 @@ type FlowCondition = {
 }
 
 // FlowNode can have or conditions or renderWith, but not both
-type FlowNode = {
-  default: string
-} & ({ conditions?: FlowCondition[]; renderWith?: never } | { conditions?: never; renderWith: RenderWith[] })
+export type FlowNode =
+  | {
+      conditions?: FlowCondition[]
+      renderWith?: never
+      default: string
+    }
+  | {
+      conditions?: never
+      renderWith: RenderWith[]
+      default?: string // Default is optional for renderWith elections
+    }
+
+export type RenderWith = {
+  id: string
+}
