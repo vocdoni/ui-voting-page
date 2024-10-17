@@ -1,6 +1,6 @@
 import { Box, Button, Card, Flex, FlexProps, Link, Text } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { environment, SpreadsheetAccess, VoteButton as CVoteButton, VoteWeight } from '@vocdoni/chakra-components'
+import { environment, SpreadsheetAccess, VoteButton as CVoteButton } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
 import { dotobject, ElectionStatus, formatUnits, PublishedElection } from '@vocdoni/sdk'
 import { TFunction } from 'i18next'
@@ -278,7 +278,8 @@ export const VoteButton = (props: VoteButtonProps) => {
               },
             }}
           />
-          {isWeighted && <VoteWeight />}
+          {/*todo(kon): Hide is VoteWeight only for this project?*/}
+          {/*{isWeighted && <VoteWeight />}*/}
         </>
       )}
     </Flex>

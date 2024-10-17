@@ -13,12 +13,12 @@ export const useFormValidation = () => {
   const formValidation: SubmitFormValidation = (values) => {
     const title = t('paritary_errors.title')
     const description = t('paritary_errors.description')
-    toast({
-      status: 'error',
-      title: title,
-      description: description,
-    })
     if (!sameLengthValidator(values)) {
+      toast({
+        status: 'error',
+        title: title,
+        description: description,
+      })
       return description
     }
     return true
