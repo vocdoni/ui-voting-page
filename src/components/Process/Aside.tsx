@@ -25,14 +25,16 @@ const ProcessAside = () => {
   } = useElection()
   const { isConnected } = useAccount()
   const { env, clear } = useClient()
-
   if (!election || !(election instanceof PublishedElection)) return null
 
   const census: CensusMeta = dotobject(election?.meta || {}, 'census')
+
+  const isMultiProcess = !!election.get('multiprocess')
   const renderVoteMenu =
-    voted ||
-    (voting && election?.electionType.anonymous) ||
-    (hasOverwriteEnabled(election) && isInCensus && votesLeft > 0 && voted)
+    !isMultiProcess &&
+    (voted ||
+      (voting && election?.electionType.anonymous) ||
+      (hasOverwriteEnabled(election) && isInCensus && votesLeft > 0 && voted))
 
   const showVoters =
     election?.status !== ElectionStatus.CANCELED &&
