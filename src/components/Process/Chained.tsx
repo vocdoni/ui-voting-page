@@ -84,7 +84,7 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
 
   if (isRenderWith) {
     return (
-      <QuestionsFormProvider renderWith={[{ id: current }, ...renderWith]}>
+      <QuestionsFormProvider renderWith={renderWith}>
         <ElectionQuestionsForm />
         <VoteButtonContainer>
           <VoteButton />
