@@ -8,6 +8,7 @@ import ProcessAside, { VoteButton } from './Aside'
 import { ChainedProcesses, ChainedResults } from './Chained'
 import Header from './Header'
 import { SuccessVoteModal } from './SuccessVoteModal'
+import VotingVoteModal from '~components/Process/VotingVoteModal'
 
 export const ProcessView = () => {
   const { t } = useTranslation()
@@ -146,7 +147,7 @@ export const ProcessView = () => {
       >
         <VoteButton />
       </Box>
-
+      <VotingVoteModal />
       <SuccessVoteModal />
     </Box>
   )
