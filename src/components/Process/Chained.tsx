@@ -13,6 +13,8 @@ import { PropsWithChildren, useEffect, useState } from 'react'
 import { Trans } from 'react-i18next'
 import { VoteButton } from '~components/Process/Aside'
 import BlindCSPConnect from '~components/Process/BlindCSPConnect'
+import { SuccessVoteModal } from '~components/Process/SuccessVoteModal'
+import VotingVoteModal from '~components/Process/VotingVoteModal'
 import { ChainedProvider, useChainedProcesses } from './ChainedContext'
 
 type ChainedProcessesInnerProps = {
@@ -176,6 +178,8 @@ const ChainedProcessesWrapper = () => {
     <Box className='md-sizes' mb='100px' pt='25px'>
       <ElectionProvider key={current} election={processes[current]} ConnectButton={ConnectButton} fetchCensus>
         <ChainedProcessesInner connected={connected} />
+        <VotingVoteModal />
+        <SuccessVoteModal />
       </ElectionProvider>
       <VoteButtonContainer>
         {!connected && election.get('census.type') === 'spreadsheet' && <SpreadsheetAccess />}
