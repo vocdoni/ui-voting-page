@@ -13,6 +13,7 @@ import { PropsWithChildren, useEffect, useState } from 'react'
 import { Trans } from 'react-i18next'
 import { VoteButton } from '~components/Process/Aside'
 import BlindCSPConnect from '~components/Process/BlindCSPConnect'
+import { ConfirmVoteModal } from '~components/Process/ConfirmVoteModal'
 import { SuccessVoteModal } from '~components/Process/SuccessVoteModal'
 import VotingVoteModal from '~components/Process/VotingVoteModal'
 import { ChainedProvider, useChainedProcesses } from './ChainedContext'
@@ -112,8 +113,7 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
   return (
     <>
       <ElectionQuestions
-      // todo(kon): adapt this to new confirmContents api
-      // confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
+        confirmContents={(elections, answers) => <ConfirmVoteModal elections={elections} answers={answers} />}
       />
       <VoteButtonContainer>
         <VoteButton />
