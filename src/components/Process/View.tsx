@@ -1,32 +1,15 @@
-import {
-  AspectRatio,
-  Box,
-  Flex,
-  Link,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalOverlay,
-  Spinner,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  Text,
-  VStack,
-} from '@chakra-ui/react'
+import { AspectRatio, Box, Flex, Link, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react'
 
 import { useElection } from '@vocdoni/react-providers'
 import { ElectionStatus, PublishedElection } from '@vocdoni/sdk'
 import { useEffect, useRef, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import ReactPlayer from 'react-player'
+import VotingVoteModal from '~components/Process/VotingVoteModal'
 import ProcessAside from './Aside'
 import { ChainedProcesses, ChainedResults } from './Chained'
 import Header from './Header'
 import { SuccessVoteModal } from './SuccessVoteModal'
-import VotingVoteModal from '~components/Process/VotingVoteModal'
 
 export const ProcessView = () => {
   const { t } = useTranslation()
@@ -175,26 +158,5 @@ export const ProcessView = () => {
       <VotingVoteModal />
       <SuccessVoteModal />
     </Box>
-  )
-}
-
-export const VotingVoteModal = () => {
-  const { t } = useTranslation()
-  const {
-    loading: { voting },
-  } = useElection()
-
-  return (
-    <Modal isOpen={voting} onClose={() => {}}>
-      <ModalOverlay />
-      <ModalContent>
-        <VStack>
-          <Spinner color='spinner' mb={5} w={10} h={10} />
-        </VStack>
-        <ModalBody>
-          <Text textAlign='center'>{t('process.voting')}</Text>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
   )
 }
