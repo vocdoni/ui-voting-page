@@ -137,16 +137,6 @@ export const ProcessView = () => {
           </Flex>
         </Flex>
       </Box>
-      <Box
-        position='sticky'
-        bottom={0}
-        left={0}
-        bgColor='process.aside.aside_footer_mbl_border'
-        pt={1}
-        display={{ base: 'block', lg2: 'none' }}
-      >
-        <VoteButton />
-      </Box>
       <VotingVoteModal />
       <SuccessVoteModal />
     </Box>

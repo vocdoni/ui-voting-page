@@ -1,4 +1,4 @@
-import { Box, Progress } from '@chakra-ui/react'
+import { Box, Progress, useBreakpointValue } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import {
   ElectionQuestions,
@@ -14,13 +14,27 @@ import { Trans } from 'react-i18next'
 import { VoteButton } from '~components/Process/Aside'
 import BlindCSPConnect from '~components/Process/BlindCSPConnect'
 import { ChainedProvider, useChainedProcesses } from './ChainedContext'
-import { ConfirmVoteModal } from './ConfirmVoteModal'
 
 type ChainedProcessesInnerProps = {
   connected: boolean
 }
 
 const VoteButtonContainer = ({ children }: PropsWithChildren) => {
+  const isBreakPoint = useBreakpointValue({ base: true, lg2: false })
+  if (isBreakPoint) {
+    return (
+      <Box
+        position='sticky'
+        bottom={0}
+        left={0}
+        bgColor='process.aside.aside_footer_mbl_border'
+        pt={1}
+        display={{ base: 'block', lg2: 'none' }}
+      >
+        {children}
+      </Box>
+    )
+  }
   return (
     <Box position='sticky' bottom={0} left={0} pb={1} pt={1} display={{ base: 'none', lg2: 'block' }}>
       {children}
@@ -96,7 +110,7 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
   return (
     <>
       <ElectionQuestions
-      // renderWith={renderWith}
+      // todo(kon): adapt this to new confirmContents api
       // confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
       />
       <VoteButtonContainer>
