@@ -1,4 +1,4 @@
-import { Box, Button, Card, Flex, FlexProps, Link, Text } from '@chakra-ui/react'
+import { Box, Button, ButtonProps, Card, Flex, FlexProps, Link, Text } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { environment, SpreadsheetAccess, VoteButton as CVoteButton, VoteWeight } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
@@ -25,14 +25,16 @@ const ProcessAside = () => {
   } = useElection()
   const { isConnected } = useAccount()
   const { env, clear } = useClient()
-
   if (!election || !(election instanceof PublishedElection)) return null
 
   const census: CensusMeta = dotobject(election?.meta || {}, 'census')
+
+  const isMultiProcess = !!election.get('multiprocess')
   const renderVoteMenu =
-    voted ||
-    (voting && election?.electionType.anonymous) ||
-    (hasOverwriteEnabled(election) && isInCensus && votesLeft > 0 && voted)
+    !isMultiProcess &&
+    (voted ||
+      (voting && election?.electionType.anonymous) ||
+      (hasOverwriteEnabled(election) && isInCensus && votesLeft > 0 && voted))
 
   const showVoters =
     election?.status !== ElectionStatus.CANCELED &&
@@ -197,7 +199,8 @@ const ProcessAside = () => {
   )
 }
 
-export const VoteButton = ({ ...props }: FlexProps) => {
+type VoteButtonProps = FlexProps
+export const VoteButton = (props: VoteButtonProps) => {
   const { t } = useTranslation()
   const { election, connected, isAbleToVote, isInCensus } = useElection()
   const { isConnected } = useAccount()
