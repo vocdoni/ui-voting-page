@@ -1,4 +1,4 @@
-import { Box, Progress } from '@chakra-ui/react'
+import { Box, Progress, useBreakpointValue } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import {
   ElectionQuestions,
@@ -15,20 +15,32 @@ import { VoteButton } from '~components/Process/Aside'
 import BlindCSPConnect from '~components/Process/BlindCSPConnect'
 import { ChainedProvider, useChainedProcesses } from './ChainedContext'
 import { useFormValidation } from '~components/Process/ParitaryErc'
+import { SuccessVoteModal } from '~components/Process/SuccessVoteModal'
+import VotingVoteModal from '~components/Process/VotingVoteModal'
+import { ConfirmVoteModal } from '~components/Process/ConfirmVoteModal'
 
 type ChainedProcessesInnerProps = {
   connected: boolean
 }
 
 const VoteButtonContainer = ({ children }: PropsWithChildren) => {
+  const isBreakPoint = useBreakpointValue({ base: true, lg2: false })
+  if (isBreakPoint) {
+    return (
+      <Box
+        position='sticky'
+        bottom={0}
+        left={0}
+        bgColor='process.aside.aside_footer_mbl_border'
+        pt={1}
+        display={{ base: 'block', lg2: 'none' }}
+      >
+        {children}
+      </Box>
+    )
+  }
   return (
-    <Box
-      bottom={0}
-      left={0}
-      position={{ base: 'sticky', lg2: 'relative' }}
-      bgColor={{ base: 'white', lg2: 'transparent' }}
-      mt='50px'
-    >
+    <Box position='sticky' bottom={0} left={0} pb={1} pt={1} display={{ base: 'none', lg2: 'block' }}>
       {children}
     </Box>
   )
@@ -91,7 +103,11 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
 
   if (isRenderWith) {
     return (
-      <QuestionsFormProvider validate={formValidation} renderWith={renderWith}>
+      <QuestionsFormProvider
+        renderWith={renderWith}
+        confirmContents={(elections, answers) => <ConfirmVoteModal elections={elections} answers={answers} />}
+        validate={formValidation}
+      >
         <ElectionQuestionsForm />
         <VoteButtonContainer>
           <VoteButton />
@@ -103,8 +119,7 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
   return (
     <>
       <ElectionQuestions
-      // renderWith={renderWith}
-      // confirmContents={(election, answers) => <ConfirmVoteModal election={election} answers={answers} />}
+        confirmContents={(elections, answers) => <ConfirmVoteModal elections={elections} answers={answers} />}
       />
       <VoteButtonContainer>
         <VoteButton />
@@ -169,6 +184,8 @@ const ChainedProcessesWrapper = () => {
     <Box className='md-sizes' mb='100px' pt='25px'>
       <ElectionProvider key={current} election={processes[current]} ConnectButton={ConnectButton} fetchCensus>
         <ChainedProcessesInner connected={connected} />
+        <VotingVoteModal />
+        <SuccessVoteModal />
       </ElectionProvider>
       <VoteButtonContainer>
         {!connected && election.get('census.type') === 'spreadsheet' && <SpreadsheetAccess />}
