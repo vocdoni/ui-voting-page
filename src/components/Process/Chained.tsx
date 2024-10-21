@@ -101,7 +101,10 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
 
   if (isRenderWith) {
     return (
-      <QuestionsFormProvider renderWith={renderWith}>
+      <QuestionsFormProvider
+        renderWith={renderWith}
+        confirmContents={(elections, answers) => <ConfirmVoteModal elections={elections} answers={answers} />}
+      >
         <ElectionQuestionsForm />
         <VoteButtonContainer>
           <VoteButton />
