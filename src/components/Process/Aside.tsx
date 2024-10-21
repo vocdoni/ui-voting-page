@@ -278,8 +278,6 @@ export const VoteButton = (props: VoteButtonProps) => {
               },
             }}
           />
-          {/*todo(kon): Hide is VoteWeight only for this project?*/}
-          {/*{isWeighted && <VoteWeight />}*/}
         </>
       )}
     </Flex>
