@@ -42,6 +42,14 @@ const baseStyle = definePartsStyle({
     alignItems: { md: 'center' },
     whiteSpace: { base: 'pre-wrap', lg2: 'nowrap' },
   },
+  alertDescriptionWrapper: {
+    display: 'flex',
+    gap: 2,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: { md: 'center' },
+    whiteSpace: { base: 'pre-wrap', lg2: 'nowrap' },
+  },
 
   alertLink: {
     display: 'block',
@@ -62,11 +70,9 @@ const baseStyle = definePartsStyle({
   },
 
   wrapper: {
-    '& > form': {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 10,
-    },
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 10,
   },
 
   question: {
