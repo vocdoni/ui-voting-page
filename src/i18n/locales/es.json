@@ -78,6 +78,7 @@
       "button_update": "Reenviar voto",
       "confirm": "Confirma tus selecciones:",
       "sign": "Firma antes de votar",
+      "not_able_to_vote": "No puedes votar en este proceso",
       "voted_description": "Para verificar tu voto, puedes utilizar este identificador único: {{ id }}",
       "voted_description_multielection": "Para verificar tu voto, puedes utilizar estos identificadores únicos:  {{ ids }}",
       "voted_title": "¡Tu voto se ha registrado con éxito!"

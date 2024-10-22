@@ -28,6 +28,7 @@ export const translations = (t: TFunction<string, string>) => ({
     voted_description: t('cc.vote.voted_description').toString(),
     voted_description_multielection: t('cc.vote.voted_description_multielection').toString(),
     voted_title: t('cc.vote.voted_title').toString(),
+    not_able_to_vote: t('cc.vote.not_able_to_vote').toString(),
   },
   empty: t('cc.empty').toString(),
   errors: {

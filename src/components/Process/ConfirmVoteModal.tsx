@@ -17,11 +17,32 @@ export const ConfirmVoteModal = ({ elections, answers }: QuestionsConfirmationPr
       </ModalHeader>
       <ModalBody display='flex' flexDirection='column' gap={5} p={0} mb={2}>
         <Text>{t('process.spreadsheet.confirm.description')}</Text>
-        {Object.values(elections).map(({ election, voted, isAbleToVote }) => {
+        {Object.values(elections).map(({ election, isAbleToVote }) => {
           const canAbstain =
             election.resultsType.name === ElectionResultsTypeNames.MULTIPLE_CHOICE &&
             election.resultsType.properties.canAbstain
           const eAnswers = answers[election.id]
+          if (!isAbleToVote) {
+            return (
+              <Flex
+                flexDirection='column'
+                maxH='200px'
+                overflowY='scroll'
+                boxShadow='rgba(128, 128, 128, 0.42) 1px 1px 1px 1px'
+                px={2}
+                borderRadius='lg2'
+              >
+                <Box py={2}>
+                  <Text fontWeight='bold' whiteSpace='nowrap' mb={1}>
+                    {election.title.default}
+                  </Text>
+                  <Text fontWeight='bold' whiteSpace='nowrap' mb={1}>
+                    {t('vote.not_able_to_vote')}
+                  </Text>
+                </Box>
+              </Flex>
+            )
+          }
           return (
             <>
               <Flex
