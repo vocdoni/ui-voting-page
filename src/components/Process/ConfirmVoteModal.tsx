@@ -32,6 +32,7 @@ export const ConfirmVoteModal = ({ elections, answers }: QuestionsConfirmationPr
           const canAbstain =
             election.resultsType.name === ElectionResultsTypeNames.MULTIPLE_CHOICE &&
             election.resultsType.properties.canAbstain
+          const eAnswers = answers[election.id]
           return (
             <>
               <Flex
@@ -64,7 +65,7 @@ export const ConfirmVoteModal = ({ elections, answers }: QuestionsConfirmationPr
                               span: <Text as='span' fontWeight='bold' whiteSpace='nowrap' />,
                             }}
                             values={{
-                              answer: q.choices[Number(answers[i])].title.default,
+                              answer: q.choices[Number(eAnswers[i])].title.default,
                             }}
                           />
                         </Text>
@@ -77,9 +78,9 @@ export const ConfirmVoteModal = ({ elections, answers }: QuestionsConfirmationPr
                             }}
                             values={{
                               answers:
-                                answers[0].length === 0
+                                eAnswers[0].length === 0
                                   ? t('process.spreadsheet.confirm.blank_vote')
-                                  : answers[0]
+                                  : eAnswers[0]
                                       .map((a: string) => q.choices[Number(a)].title.default)
                                       .map((a: string) => `- ${a}`)
                                       .join('<br />'),
@@ -92,12 +93,12 @@ export const ConfirmVoteModal = ({ elections, answers }: QuestionsConfirmationPr
                   </Box>
                 ))}
               </Flex>
-              {canAbstain && answers[0].length < election.voteType.maxCount! && (
+              {canAbstain && eAnswers[0].length < election.voteType.maxCount! && (
                 <Flex direction={'row'} py={2} gap={2} alignItems={'center'} color={'primary.main'}>
                   <IoWarningOutline />
                   <Text display='flex' flexDirection='column' gap={1}>
                     {t('process.spreadsheet.confirm.abstain_count', {
-                      count: election.voteType.maxCount! - answers[0].length,
+                      count: election.voteType.maxCount! - eAnswers[0].length,
                     })}
                   </Text>
                 </Flex>
