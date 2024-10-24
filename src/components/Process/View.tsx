@@ -5,11 +5,9 @@ import { ElectionStatus, PublishedElection } from '@vocdoni/sdk'
 import { useEffect, useRef, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import ReactPlayer from 'react-player'
-import VotingVoteModal from '~components/Process/VotingVoteModal'
 import ProcessAside from './Aside'
 import { ChainedProcesses, ChainedResults } from './Chained'
 import Header from './Header'
-import { SuccessVoteModal } from './SuccessVoteModal'
 
 export const ProcessView = () => {
   const { t } = useTranslation()
@@ -117,14 +115,7 @@ export const ProcessView = () => {
                 <ChainedProcesses root={election} />
               </TabPanel>
               <TabPanel mb={20}>
-                {election instanceof PublishedElection &&
-                [ElectionStatus.ENDED, ElectionStatus.RESULTS].includes(election?.status) ? (
-                  <ChainedResults root={election} />
-                ) : (
-                  <Text textAlign='center' mt={10} fontWeight='bold' fontSize='24px'>
-                    {t('cc.results.secret_until_the_end')}
-                  </Text>
-                )}
+                <ChainedResults root={election} />
               </TabPanel>
             </TabPanels>
             <Text textAlign='center' mx='auto' maxW='1150px' my={10}>
