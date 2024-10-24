@@ -1,6 +1,15 @@
-import { SubmitFormValidation } from '@vocdoni/chakra-components'
-import { useToast } from '@chakra-ui/react'
+import {
+  ElectionQuestionsForm,
+  ExtendedSubmitHandler,
+  FormFieldValues,
+  Markdown,
+  SubmitFormValidation,
+  useQuestionsForm,
+} from '@vocdoni/chakra-components'
+import { Checkbox, useMultiStyleConfig, useToast, chakra, Stack } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
+import { useEffect, useMemo } from 'react'
+import { useFormContext } from 'react-hook-form'
 
 /**
  * File to store paritary erc project specific code
@@ -36,4 +45,91 @@ export const sameLengthValidator: SubmitFormValidation = (answers) => {
     throw new Error('No fields found')
   }
   return rest.every((ballot) => ballot[0].length === first[0].length)
+}
+
+const BlankVoteTitle = 'Vot en blanc'
+type BlankChoiceStore = Record<string, string>
+
+/**
+ * Implements specific logic for blank option.
+ */
+export const ParitaryErcQuestionsForm = () => {
+  const { elections, voteAll, isDisabled, setIsDisabled, isAbleToVote } = useQuestionsForm()
+
+  // Search which index contain blanc options (preventing unordered choices)
+  const blankOptions = useMemo(() => {
+    const blankOptions: BlankChoiceStore = {}
+    // Hardcode to check blankOption only when the number of elections is 2
+    if (!elections || (elections && Object.keys(elections).length !== 2)) return blankOptions
+    for (const { election } of Object.values(elections)) {
+      for (const question of election.questions) {
+        const blankChoice = question.choices.find((option) => option.title.default === BlankVoteTitle)
+        if (blankChoice) {
+          blankOptions[election.id] = blankChoice.value.toString()
+        }
+      }
+    }
+    return blankOptions
+  }, [elections])
+
+  const disableForm = () => {
+    setIsDisabled((prevState) => !prevState)
+  }
+
+  const onSubmit: ExtendedSubmitHandler<FormFieldValues> = (onSubmit, ...params) => {
+    if (!isAbleToVote) return
+    // If is disabled it will create a ballot with only blank options
+    if (isDisabled) {
+      const blankVotes = Object.entries(blankOptions).reduce((acc, [eId, option]) => {
+        acc[eId] = [[option]]
+        return acc
+      }, {} as FormFieldValues)
+      return voteAll(blankVotes)
+    }
+    return onSubmit(...params)
+  }
+
+  // Hide the en blanc options using display none
+  useEffect(() => {
+    // Find the element with the specific text content
+    const blankVoteElements = Array.from(document.querySelectorAll('span')).filter(
+      (el) => el.textContent === BlankVoteTitle
+    )
+    if (blankVoteElements) {
+      // Hide the element
+      for (const element of blankVoteElements) {
+        element.style.display = 'none'
+      }
+    }
+  }, [elections])
+  const styles = useMultiStyleConfig('ElectionQuestions')
+
+  return (
+    <>
+      <ElectionQuestionsForm onSubmit={onSubmit} />
+      <chakra.div __css={styles.elections}>
+        <chakra.div __css={styles.wrapper}>
+          <div></div>
+          <chakra.div __css={styles.question}>
+            <chakra.div __css={styles.header}>
+              <chakra.label __css={styles.title}>{BlankVoteTitle}</chakra.label>
+            </chakra.div>
+            <chakra.div __css={styles.body}>
+              <chakra.div __css={styles.description}>
+                <Markdown>
+                  Si vols votar en blanc, trobaràs l'opció al final del formulari, si es tria aquesta opció, no es
+                  tindran en compte les opcions previament seleccionades
+                </Markdown>
+              </chakra.div>
+              <Stack sx={styles.stack}>
+                <Checkbox checked={isDisabled} onChange={disableForm} sx={styles.checkbox} isDisabled={!isAbleToVote}>
+                  Vota en blanc a les dos llistes
+                </Checkbox>
+              </Stack>
+            </chakra.div>
+          </chakra.div>
+        </chakra.div>
+      </chakra.div>
+    </>
+  )
 }

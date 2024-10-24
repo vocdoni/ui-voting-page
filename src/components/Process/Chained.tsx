@@ -2,7 +2,6 @@ import { Box, Progress, useBreakpointValue } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import {
   ElectionQuestions,
-  ElectionQuestionsForm,
   ElectionResults,
   QuestionsFormProvider,
   SpreadsheetAccess,
@@ -14,7 +13,7 @@ import { Trans } from 'react-i18next'
 import { VoteButton } from '~components/Process/Aside'
 import BlindCSPConnect from '~components/Process/BlindCSPConnect'
 import { ChainedProvider, useChainedProcesses } from './ChainedContext'
-import { useFormValidation } from '~components/Process/ParitaryErc'
+import { ParitaryErcQuestionsForm, useFormValidation } from '~components/Process/ParitaryErc'
 import { SuccessVoteModal } from '~components/Process/SuccessVoteModal'
 import VotingVoteModal from '~components/Process/VotingVoteModal'
 import { ConfirmVoteModal } from '~components/Process/ConfirmVoteModal'
@@ -108,7 +107,7 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
         confirmContents={(elections, answers) => <ConfirmVoteModal elections={elections} answers={answers} />}
         validate={formValidation}
       >
-        <ElectionQuestionsForm />
+        <ParitaryErcQuestionsForm />
         <VoteButtonContainer>
           <VoteButton />
         </VoteButtonContainer>
