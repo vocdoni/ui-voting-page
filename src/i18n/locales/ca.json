@@ -78,7 +78,9 @@
       "button_update": "Torna a enviar el vot",
       "confirm": "Confirma les teves seleccions:",
       "sign": "Signa abans de votar",
-      "voted_description": "Per verificar el teu vot, pots clicar sobre el teu codi identificador únic: {{ id }}",
+      "not_able_to_vote": "No pots votar en aquest procés",
+      "voted_description": "Per verificar el teu vot, pots utilitzar aquesta identificació única: {{ id }}",
+      "voted_description_multielection": "Per verificar el teu vot, pots utilitzar aquestes identificacions úniques: {{ ids }}",
       "voted_title": "El teu vot s'ha registrat amb èxit!"
     }
   },

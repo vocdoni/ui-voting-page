@@ -1,4 +1,4 @@
-import { Box, Button, Card, Flex, FlexProps, Link, Text } from '@chakra-ui/react'
+import { Box, Button, ButtonProps, Card, Flex, FlexProps, Link, Text } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { environment, SpreadsheetAccess, VoteButton as CVoteButton } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
@@ -273,7 +273,7 @@ export const VoteButton = (props: VoteButtonProps) => {
           mb={4}
           sx={{
             '&::disabled': {
-              opacity: '0.8',
+              display: 'none',
             },
           }}
         />
