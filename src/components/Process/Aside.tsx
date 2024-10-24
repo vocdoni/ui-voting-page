@@ -266,19 +266,17 @@ export const VoteButton = (props: VoteButtonProps) => {
         </ConnectButton.Custom>
       )}
       {isAbleToVote && (
-        <>
-          <CVoteButton
-            w='60%'
-            fontSize='lg'
-            height='50px'
-            mb={4}
-            sx={{
-              '&::disabled': {
-                opacity: '0.8',
-              },
-            }}
-          />
-        </>
+        <CVoteButton
+          w='60%'
+          fontSize='lg'
+          height='50px'
+          mb={4}
+          sx={{
+            '&::disabled': {
+              opacity: '0.8',
+            },
+          }}
+        />
       )}
     </Flex>
   )

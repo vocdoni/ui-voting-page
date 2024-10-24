@@ -13,7 +13,7 @@ const baseStyle = definePartsStyle({
     pr: 2,
   },
   text: {
-    color: 'primary.main',
+    color: 'process.questions.description',
     opacity: '0.7',
   },
 })

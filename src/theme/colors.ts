@@ -146,7 +146,7 @@ export const colors = {
         color: colorsBase.black,
       },
       description: colorsBase.gray.dark,
-      title: colorsBase.primary.main,
+      title: colorsBase.black,
     },
     no_description: colorsBase.gray.dark,
     results: {
