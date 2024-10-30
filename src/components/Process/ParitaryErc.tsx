@@ -6,10 +6,9 @@ import {
   SubmitFormValidation,
   useQuestionsForm,
 } from '@vocdoni/chakra-components'
-import { Checkbox, useMultiStyleConfig, useToast, chakra, Stack } from '@chakra-ui/react'
+import { chakra, Checkbox, Stack, useMultiStyleConfig, useToast } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { useEffect, useMemo } from 'react'
-import { useFormContext } from 'react-hook-form'
 
 /**
  * File to store paritary erc project specific code
@@ -106,7 +105,15 @@ export const ParitaryErcQuestionsForm = () => {
 
   return (
     <>
-      <ElectionQuestionsForm onSubmit={onSubmit} />
+      <ElectionQuestionsForm
+        onSubmit={onSubmit}
+        sx={{
+          '& .chakra-stack': {
+            display: { base: 'flex', md: 'grid' },
+            gridTemplateColumns: '1fr 1fr',
+          },
+        }}
+      />
       <chakra.div __css={styles.elections}>
         <chakra.div __css={styles.wrapper}>
           <div></div>
