@@ -52,3 +52,50 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: eba70567-ca33-4504-9603-0ddc8c4437c6
         timeout-minutes: 1
+
+  build-dev:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install
+        run: yarn
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Build voting page dev
+        run: yarn build
+        env:
+          VOCDONI_ENVIRONMENT: dev
+          PROCESS_IDS: '["b31dff61814d8bd340fc16a71ae591b88418c42e799705b98073020000000054"]'
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v2.0
+        with:
+          publish-dir: './dist'
+          # keep as a non existant branch, because we don't want to publish this
+          production-branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: 'Vocdoni DEV Deploy from GitHub Actions'
+          enable-pull-request-comment: true
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: eba70567-ca33-4504-9603-0ddc8c4437c6
+        timeout-minutes: 1
