@@ -8,6 +8,7 @@ import { VocdoniEnvironment } from '~constants'
 import { translations } from '~i18n/components'
 import { clientToSigner } from '~util/wagmi-adapters'
 import { RoutesProvider } from './router'
+import { ExternalProvider, JsonRpcFetchFunc } from '@ethersproject/providers'
 
 export const App = () => {
   const { data } = useWalletClient()
@@ -15,7 +16,11 @@ export const App = () => {
 
   let signer: Signer = {} as Signer
   if (data) {
-    signer = clientToSigner(data)
+    signer = clientToSigner({
+      transport: data.transport as ExternalProvider | JsonRpcFetchFunc,
+      chain: data.chain,
+      account: data.account,
+    })
   }
 
   return (
