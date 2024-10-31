@@ -91,7 +91,7 @@ export const ParitaryErcQuestionsForm = () => {
   // Hide the en blanc options using display none
   useEffect(() => {
     // Find the element with the specific text content
-    const blankVoteElements = Array.from(document.querySelectorAll('span')).filter(
+    const blankVoteElements = Array.from(document.querySelectorAll('label')).filter(
       (el) => el.textContent === BlankVoteTitle
     )
     if (blankVoteElements) {
