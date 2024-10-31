@@ -1,4 +1,4 @@
-import { Box, Button, ButtonProps, Card, Flex, FlexProps, Link, Text } from '@chakra-ui/react'
+import { Box, Button, Card, Flex, FlexProps, Link, Text } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { environment, SpreadsheetAccess, VoteButton as CVoteButton } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
@@ -217,8 +217,6 @@ export const VoteButton = (props: VoteButtonProps) => {
   ) {
     return null
   }
-
-  const isWeighted = election?.census.weight !== election?.census.size
 
   const isBlindCsp = census?.type === 'csp' && election?.meta.csp?.service === 'vocdoni-blind-csp'
 
