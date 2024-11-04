@@ -70,12 +70,13 @@ const baseStyle = definePartsStyle({
   },
 
   wrapper: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 10,
+    width: 'full',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 10,
 
     '& > div:first-of-type': {
-        display: 'none',
+      display: 'none',
     },
   },
 
@@ -89,6 +90,12 @@ const baseStyle = definePartsStyle({
       flexDirection: 'column',
       overflow: 'hidden',
     },
+  },
+  // Multiquestions wrapper
+  elections: {
+    display: 'flex',
+    flexDir: { base: 'column', sm: 'row' },
+    gap: 4,
   },
 
   title: {

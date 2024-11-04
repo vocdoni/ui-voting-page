@@ -4,6 +4,7 @@ import { questionTypeBadgeAnatomy } from '@vocdoni/chakra-components'
 const { defineMultiStyleConfig, definePartsStyle } = createMultiStyleConfigHelpers(questionTypeBadgeAnatomy)
 
 const baseStyle = definePartsStyle({
+  display: 'none',
   wrapper: {
     display: 'flex',
     justifyContent: 'center',

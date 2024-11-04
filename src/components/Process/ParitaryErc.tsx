@@ -6,7 +6,7 @@ import {
   SubmitFormValidation,
   useQuestionsForm,
 } from '@vocdoni/chakra-components'
-import { chakra, Checkbox, Stack, useMultiStyleConfig, useToast } from '@chakra-ui/react'
+import { chakra, Checkbox, Flex, Stack, useMultiStyleConfig, useToast } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { useEffect, useMemo } from 'react'
 
@@ -104,25 +104,29 @@ export const ParitaryErcQuestionsForm = () => {
   const styles = useMultiStyleConfig('ElectionQuestions')
 
   return (
-    <>
-      <ElectionQuestionsForm
-        onSubmit={onSubmit}
+    <Flex direction={'column'} gap={6}>
+      <ElectionQuestionsForm onSubmit={onSubmit} />
+
+      <chakra.div
+        __css={{ ...styles.elections, mt: 8, marginTop: 8 }}
         sx={{
-          '& .chakra-stack': {
-            display: { base: 'flex', md: 'grid' },
-            gridTemplateColumns: '1fr 1fr',
-          },
+          mt: 24,
+          marginTop: 24,
         }}
-      />
-      <chakra.div __css={styles.elections}>
+      >
         <chakra.div __css={styles.wrapper}>
-          <div></div>
+          <div />
           <chakra.div __css={styles.question}>
             <chakra.div __css={styles.header}>
-              <chakra.label __css={styles.title}>{BlankVoteTitle}</chakra.label>
+              <chakra.label __css={styles.title}>{`${BlankVoteTitle} `}</chakra.label>
             </chakra.div>
             <chakra.div __css={styles.body}>
-              <chakra.div __css={styles.description}>
+              <chakra.div
+                __css={styles.description}
+                sx={{
+                  mb: 2,
+                }}
+              >
                 <Markdown>
                   Si vols votar en blanc, trobaràs l'opció al final del formulari, si es tria aquesta opció, no es
                   tindran en compte les opcions previament seleccionades
@@ -137,6 +141,6 @@ export const ParitaryErcQuestionsForm = () => {
           </chakra.div>
         </chakra.div>
       </chakra.div>
-    </>
+    </Flex>
   )
 }
