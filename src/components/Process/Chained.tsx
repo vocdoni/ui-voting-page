@@ -1,4 +1,4 @@
-import { Box, Progress, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Flex, Progress, useBreakpointValue } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import {
   ElectionQuestions,
@@ -108,10 +108,12 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
         confirmContents={(elections, answers) => <ConfirmVoteModal elections={elections} answers={answers} />}
         validate={formValidation}
       >
-        <ParitaryErcQuestionsForm />
-        <VoteButtonContainer>
-          <VoteButton />
-        </VoteButtonContainer>
+        <Flex direction={'column'} gap={{ base: 16, md: 24 }}>
+          <ParitaryErcQuestionsForm />
+          <VoteButtonContainer>
+            <VoteButton />
+          </VoteButtonContainer>
+        </Flex>
       </QuestionsFormProvider>
     )
   }

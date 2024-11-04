@@ -273,6 +273,7 @@ export const VoteButton = (props: VoteButtonProps) => {
             '&::disabled': {
               display: 'none',
             },
+            color: 'black',
           }}
         />
       )}

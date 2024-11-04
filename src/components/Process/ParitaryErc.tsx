@@ -6,7 +6,7 @@ import {
   SubmitFormValidation,
   useQuestionsForm,
 } from '@vocdoni/chakra-components'
-import { chakra, Checkbox, Flex, Stack, useMultiStyleConfig, useToast } from '@chakra-ui/react'
+import { Box, chakra, Checkbox, Stack, useMultiStyleConfig, useToast } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { useEffect, useMemo } from 'react'
 
@@ -104,16 +104,10 @@ export const ParitaryErcQuestionsForm = () => {
   const styles = useMultiStyleConfig('ElectionQuestions')
 
   return (
-    <Flex direction={'column'} gap={6}>
+    <>
       <ElectionQuestionsForm onSubmit={onSubmit} />
 
-      <chakra.div
-        __css={{ ...styles.elections, mt: 8, marginTop: 8 }}
-        sx={{
-          mt: 24,
-          marginTop: 24,
-        }}
-      >
+      <chakra.div>
         <chakra.div __css={styles.wrapper}>
           <div />
           <chakra.div __css={styles.question}>
@@ -134,13 +128,15 @@ export const ParitaryErcQuestionsForm = () => {
               </chakra.div>
               <Stack sx={styles.stack}>
                 <Checkbox checked={isDisabled} onChange={disableForm} sx={styles.checkbox} isDisabled={!isAbleToVote}>
-                  Vota en blanc a les dos llistes
+                  <Box py={4} pl={4}>
+                    Vota en blanc a les dos llistes
+                  </Box>
                 </Checkbox>
               </Stack>
             </chakra.div>
           </chakra.div>
         </chakra.div>
       </chakra.div>
-    </Flex>
+    </>
   )
 }
