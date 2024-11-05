@@ -6,7 +6,7 @@ import {
   SubmitFormValidation,
   useQuestionsForm,
 } from '@vocdoni/chakra-components'
-import { Box, chakra, Checkbox, Stack, useMultiStyleConfig, useToast } from '@chakra-ui/react'
+import { Box, chakra, Checkbox, Flex, Spinner, Stack, useMultiStyleConfig, useToast } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { useEffect, useMemo } from 'react'
 
@@ -53,7 +53,7 @@ type BlankChoiceStore = Record<string, string>
  * Implements specific logic for blank option.
  */
 export const ParitaryErcQuestionsForm = () => {
-  const { elections, voteAll, isDisabled, setIsDisabled, isAbleToVote } = useQuestionsForm()
+  const { elections, voteAll, isDisabled, setIsDisabled, isAbleToVote, loaded } = useQuestionsForm()
 
   // Search which index contain blanc options (preventing unordered choices)
   const blankOptions = useMemo(() => {
@@ -105,38 +105,44 @@ export const ParitaryErcQuestionsForm = () => {
 
   return (
     <>
+      {!loaded && (
+        <Flex align='center' justify='center' width={'full'}>
+          <Spinner size='sm' />
+        </Flex>
+      )}
       <ElectionQuestionsForm onSubmit={onSubmit} />
-
-      <chakra.div>
-        <chakra.div __css={styles.wrapper}>
-          <div />
-          <chakra.div __css={styles.question}>
-            <chakra.div __css={styles.header}>
-              <chakra.label __css={styles.title}>{`${BlankVoteTitle} `}</chakra.label>
-            </chakra.div>
-            <chakra.div __css={styles.body}>
-              <chakra.div
-                __css={styles.description}
-                sx={{
-                  mb: 2,
-                }}
-              >
-                <Markdown>
-                  Si vols votar en blanc, trobaràs l'opció al final del formulari, si es tria aquesta opció, no es
-                  tindran en compte les opcions previament seleccionades
-                </Markdown>
+      {loaded && (
+        <chakra.div>
+          <chakra.div __css={styles.wrapper}>
+            <div />
+            <chakra.div __css={styles.question}>
+              <chakra.div __css={styles.header}>
+                <chakra.label __css={styles.title}>{`${BlankVoteTitle} `}</chakra.label>
               </chakra.div>
-              <Stack sx={styles.stack}>
-                <Checkbox checked={isDisabled} onChange={disableForm} sx={styles.checkbox} isDisabled={!isAbleToVote}>
-                  <Box py={4} pl={4}>
-                    Vota en blanc a les dos llistes
-                  </Box>
-                </Checkbox>
-              </Stack>
+              <chakra.div __css={styles.body}>
+                <chakra.div
+                  __css={styles.description}
+                  sx={{
+                    mb: 2,
+                  }}
+                >
+                  <Markdown>
+                    Si vols votar en blanc, trobaràs l'opció al final del formulari, si es tria aquesta opció, no es
+                    tindran en compte les opcions previament seleccionades
+                  </Markdown>
+                </chakra.div>
+                <Stack sx={styles.stack}>
+                  <Checkbox checked={isDisabled} onChange={disableForm} sx={styles.checkbox} isDisabled={!isAbleToVote}>
+                    <Box py={4} pl={4}>
+                      Vota en blanc a les dos llistes
+                    </Box>
+                  </Checkbox>
+                </Stack>
+              </chakra.div>
             </chakra.div>
           </chakra.div>
         </chakra.div>
-      </chakra.div>
+      )}
     </>
   )
 }
