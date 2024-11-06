@@ -2795,15 +2795,15 @@
     "@types/babel__core" "^7.20.5"
     react-refresh "^0.14.2"
 
-"@vocdoni/chakra-components@./vocdoni-chakra-components-v0.9.6-6.tgz":
-  version "0.9.6-6"
-  resolved "./vocdoni-chakra-components-v0.9.6-6.tgz#e4f511dd8d19ccd963d0c5cc482bb1d0f1eda885"
-  dependencies:
-    "@vocdoni/react-providers" "~0.5.1"
-
 "@vocdoni/chakra-components@./vocdoni-chakra-components-v0.9.6-7.tgz":
   version "0.9.6-7"
   resolved "./vocdoni-chakra-components-v0.9.6-7.tgz#a7e23a76739f865b573c0e643aa1f3fb9a528e87"
+  dependencies:
+    "@vocdoni/react-providers" "~0.5.1"
+
+"@vocdoni/chakra-components@./vocdoni-chakra-components-v0.9.6-8.tgz":
+  version "0.9.6-8"
+  resolved "./vocdoni-chakra-components-v0.9.6-8.tgz#26abe5d00ce26bdc96a72363ea4ffb53a7f22863"
   dependencies:
     "@vocdoni/react-providers" "~0.5.1"
 
