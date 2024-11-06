@@ -73,6 +73,7 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
       // fetch votes info
       const next = await getNextProcessInFlow(client, voted, meta)
 
+      if (typeof next === 'undefined') return // If cannot found next process, return
       if (typeof processes[next] === 'undefined') {
         const election = await client.fetchElection(next)
         setProcess(next, election)
