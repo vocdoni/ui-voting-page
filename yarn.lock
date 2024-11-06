@@ -2801,6 +2801,12 @@
   dependencies:
     "@vocdoni/react-providers" "~0.5.1"
 
+"@vocdoni/chakra-components@./vocdoni-chakra-components-v0.9.6-7.tgz":
+  version "0.9.6-7"
+  resolved "./vocdoni-chakra-components-v0.9.6-7.tgz#a7e23a76739f865b573c0e643aa1f3fb9a528e87"
+  dependencies:
+    "@vocdoni/react-providers" "~0.5.1"
+
 "@vocdoni/proto@1.15.9":
   version "1.15.9"
   resolved "https://registry.yarnpkg.com/@vocdoni/proto/-/proto-1.15.9.tgz#567c08f343d42cc2390c963bf62b41bd845d9a73"
