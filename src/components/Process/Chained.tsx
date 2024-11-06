@@ -5,6 +5,7 @@ import {
   ElectionQuestionsForm,
   ElectionResults,
   QuestionsFormProvider,
+  RenderWith,
   SpreadsheetAccess,
 } from '@vocdoni/chakra-components'
 import { ElectionProvider, useElection } from '@vocdoni/react-providers'
@@ -367,7 +368,3 @@ export type FlowNode =
       renderWith: RenderWith[]
       default?: string // Default is optional for renderWith elections
     }
-
-export type RenderWith = {
-  id: string
-}
