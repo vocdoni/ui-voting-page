@@ -53,7 +53,7 @@ type BlankChoiceStore = Record<string, string>
  * Implements specific logic for blank option.
  */
 export const ParitaryErcQuestionsForm = () => {
-  const { elections, voteAll, isDisabled, setIsDisabled, isAbleToVote, loaded } = useQuestionsForm()
+  const { elections, voteAll, isDisabled, setIsDisabled, isAbleToVote, loaded, voted } = useQuestionsForm()
 
   // Search which index contain blanc options (preventing unordered choices)
   const blankOptions = useMemo(() => {
@@ -111,7 +111,7 @@ export const ParitaryErcQuestionsForm = () => {
         </Flex>
       )}
       <ElectionQuestionsForm onSubmit={onSubmit} />
-      {loaded && (
+      {loaded && !voted && (
         <chakra.div>
           <chakra.div __css={styles.wrapper}>
             <div />
