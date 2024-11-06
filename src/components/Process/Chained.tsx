@@ -4,8 +4,8 @@ import {
   ElectionQuestions,
   ElectionQuestionsForm,
   ElectionResults,
-  SpreadsheetAccess,
   QuestionsFormProvider,
+  SpreadsheetAccess,
 } from '@vocdoni/chakra-components'
 import { ElectionProvider, useElection } from '@vocdoni/react-providers'
 import { InvalidElection, IVotePackage, PublishedElection, VocdoniSDKClient } from '@vocdoni/sdk'
@@ -71,6 +71,7 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
       // fetch votes info
       const next = await getNextProcessInFlow(client, voted, meta)
 
+      if (typeof next === 'undefined') return // If cannot found next process, return
       if (typeof processes[next] === 'undefined') {
         const election = await client.fetchElection(next)
         setProcess(next, election)
