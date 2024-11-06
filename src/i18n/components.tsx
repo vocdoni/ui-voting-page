@@ -35,6 +35,9 @@ export const translations = (t: TFunction<string, string>) => ({
     wrong_data_title: t('cc.errors.wrong_data_title').toString(),
     wrong_data_description: t('cc.errors.wrong_data_description').toString(),
   },
+  question_types: {
+    multichoice_desc: t('cc.question_types.multichoice_desc').toString(),
+  },
   // results component
   results: {
     date_format: t('cc.results.date_format').toString(),

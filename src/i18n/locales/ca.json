@@ -42,6 +42,9 @@
       "wrong_data_description": "Les dades especificades no són correctes",
       "wrong_data_title": "Dades incorrectes"
     },
+    "question_types" :{
+      "multichoice_desc": "Selecciona fins a {{maxcount}} opcions"
+    },
     "results": {
       "date_format": "PPpp",
       "secret_until_the_end": "Els resultats provisionals seran accessibles quan el procés finalitzi.",

@@ -89,28 +89,36 @@ const ProcessAside = () => {
             <Flex className='brand-theme' direction='column' justifyContent='center' alignItems='center' gap={2}>
               <Flex direction={'row'} justifyContent='center' alignItems='center' gap={2}>
                 <Trans
-                  i18nKey='aside.votes_weight'
+                  i18nKey='aside.votes'
                   components={{
-                    span: <Text as='span' fontWeight='bold' fontSize='xl3' textAlign='center' lineHeight={1} />,
+                    span: <Text as='span' fontWeight='bold' fontSize='xl3' textAlign='center' lineHeight={1} mr={2} />,
                     text: <Text fontSize='xl' textAlign='center' lineHeight={1.3} />,
                   }}
-                  count={totalWeight}
+                  count={election?.voteCount}
                 />
+                {/*<Trans*/}
+                {/*  i18nKey='aside.votes_weight'*/}
+                {/*  components={{*/}
+                {/*    span: <Text as='span' fontWeight='bold' fontSize='xl3' textAlign='center' lineHeight={1} />,*/}
+                {/*    text: <Text fontSize='xl' textAlign='center' lineHeight={1.3} />,*/}
+                {/*  }}*/}
+                {/*  count={totalWeight}*/}
+                {/*/>*/}
               </Flex>
-              {showVoters && votersCount !== totalWeight && (
-                <Flex direction={'row'} justifyContent='center' alignItems='center'>
-                  {'('}
-                  <Trans
-                    i18nKey='aside.votes'
-                    components={{
-                      span: <Text as='span' fontWeight='bold' fontSize='md' textAlign='center' lineHeight={1} mr={2} />,
-                      text: <Text fontSize='md' textAlign='center' lineHeight={1.3} />,
-                    }}
-                    count={election?.voteCount}
-                  />
-                  {')'}
-                </Flex>
-              )}
+              {/*{showVoters && votersCount !== totalWeight && (*/}
+              {/*  <Flex direction={'row'} justifyContent='center' alignItems='center'>*/}
+              {/*    {'('}*/}
+              {/*    <Trans*/}
+              {/*      i18nKey='aside.votes'*/}
+              {/*      components={{*/}
+              {/*        span: <Text as='span' fontWeight='bold' fontSize='md' textAlign='center' lineHeight={1} mr={2} />,*/}
+              {/*        text: <Text fontSize='md' textAlign='center' lineHeight={1.3} />,*/}
+              {/*      }}*/}
+              {/*      count={election?.voteCount}*/}
+              {/*    />*/}
+              {/*    {')'}*/}
+              {/*  </Flex>*/}
+              {/*)}*/}
             </Flex>
           )}
         </Flex>
