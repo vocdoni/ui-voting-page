@@ -1,8 +1,8 @@
+import successImg from '/assets/spreadsheet-confirm-modal.png'
 import {
   Box,
   Button,
   Link,
-  ListItem,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -11,7 +11,6 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-  UnorderedList,
   useDisclosure,
 } from '@chakra-ui/react'
 import { environment } from '@vocdoni/chakra-components'
@@ -19,8 +18,6 @@ import { useClient, useElection } from '@vocdoni/react-providers'
 import { InvalidElection } from '@vocdoni/sdk'
 import { useEffect, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
-import { FacebookShare, RedditShare, TelegramShare, TwitterShare } from '~components/Share'
-import successImg from '/assets/spreadsheet-confirm-modal.png'
 
 export const SuccessVoteModal = () => {
   const { t } = useTranslation()
@@ -69,20 +66,20 @@ export const SuccessVoteModal = () => {
               p: <Text mb={2} />,
             }}
           />
-          <UnorderedList listStyleType='none' display='flex' justifyContent='center' gap={6} mt={6} mb={2} ml={0}>
-            <ListItem>
-              <TwitterShare url={url} caption={caption} />
-            </ListItem>
-            <ListItem>
-              <FacebookShare url={url} caption={caption} />
-            </ListItem>
-            <ListItem>
-              <TelegramShare url={url} caption={caption} />
-            </ListItem>
-            <ListItem>
-              <RedditShare url={url} caption={caption} />
-            </ListItem>
-          </UnorderedList>
+          {/*<UnorderedList listStyleType='none' display='flex' justifyContent='center' gap={6} mt={6} mb={2} ml={0}>*/}
+          {/*  <ListItem>*/}
+          {/*    <TwitterShare url={url} caption={caption} />*/}
+          {/*  </ListItem>*/}
+          {/*  <ListItem>*/}
+          {/*    <FacebookShare url={url} caption={caption} />*/}
+          {/*  </ListItem>*/}
+          {/*  <ListItem>*/}
+          {/*    <TelegramShare url={url} caption={caption} />*/}
+          {/*  </ListItem>*/}
+          {/*  <ListItem>*/}
+          {/*    <RedditShare url={url} caption={caption} />*/}
+          {/*  </ListItem>*/}
+          {/*</UnorderedList>*/}
         </ModalBody>
 
         <ModalFooter mt={4}>
