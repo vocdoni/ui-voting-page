@@ -1,6 +1,6 @@
+import checkIcon from '/assets/check-icon.png'
 import { createMultiStyleConfigHelpers } from '@chakra-ui/react'
 import { questionsAnatomy } from '@vocdoni/chakra-components'
-import checkIcon from '/assets/check-icon.png'
 
 const { defineMultiStyleConfig, definePartsStyle } = createMultiStyleConfigHelpers(questionsAnatomy)
 
@@ -96,6 +96,7 @@ const baseStyle = definePartsStyle({
     display: 'flex',
     flexDir: { base: 'column', sm: 'row' },
     gap: 4,
+    pb: 14,
   },
 
   title: {
@@ -199,6 +200,7 @@ const baseStyle = definePartsStyle({
   },
 
   error: {
+    fontSize: 'lg',
     display: 'flex',
     justifyContent: 'center',
   },
