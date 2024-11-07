@@ -1,3 +1,4 @@
+import { Box, chakra, Checkbox, Flex, Spinner, Stack, useMultiStyleConfig, useToast } from '@chakra-ui/react'
 import {
   ElectionQuestionsForm,
   ExtendedSubmitHandler,
@@ -6,9 +7,10 @@ import {
   SubmitFormValidation,
   useQuestionsForm,
 } from '@vocdoni/chakra-components'
-import { Box, chakra, Checkbox, Flex, Spinner, Stack, useMultiStyleConfig, useToast } from '@chakra-ui/react'
-import { useTranslation } from 'react-i18next'
+import { useElection } from '@vocdoni/react-providers'
+import { ElectionResultsTypeNames, PublishedElection } from '@vocdoni/sdk'
 import { useEffect, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 
 /**
  * File to store paritary erc project specific code
@@ -18,9 +20,19 @@ export const useFormValidation = () => {
   const { t } = useTranslation()
   const toast = useToast()
 
+  const { election } = useElection()
+
   const formValidation: SubmitFormValidation = (values) => {
+    if (!(election instanceof PublishedElection)) return null
+    if (!(election && election.resultsType.name === ElectionResultsTypeNames.MULTIPLE_CHOICE)) {
+      return null
+    }
+
     const title = t('paritary_errors.title')
-    const description = t('paritary_errors.description')
+    const description = t('paritary_errors.description', {
+      max: election.resultsType?.properties?.numChoices?.max,
+      min: election.resultsType?.properties?.numChoices?.min,
+    })
     if (!sameLengthValidator(values)) {
       toast({
         status: 'error',

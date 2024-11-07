@@ -95,7 +95,7 @@
   },
   "paritary_errors": {
     "title": "La votación debe ser paritaria.",
-    "description": "Selecciona el mismo número de opciones de la primera lista y de la segunda. Puedes votar un mínimo de 1 opción y un máximo de 15 por lista."
+    "description": "Selecciona el mismo número de opciones de la primera lista y de la segunda. Puedes votar un mínimo de {{ min }} opción y un máximo de {{ max }} por lista."
   },
   "footer": {
     "company": "Empresa",
