@@ -1,16 +1,27 @@
-import { Box, chakra, Checkbox, Flex, Spinner, Stack, useMultiStyleConfig, useToast } from '@chakra-ui/react'
+import {
+  Box,
+  chakra,
+  Checkbox,
+  FormControl,
+  FormErrorMessage,
+  Flex,
+  Spinner,
+  Stack,
+  useMultiStyleConfig,
+  useToast,
+} from '@chakra-ui/react'
 import {
   ElectionQuestionsForm,
   ExtendedSubmitHandler,
   FormFieldValues,
   Markdown,
-  SubmitFormValidation,
   useQuestionsForm,
 } from '@vocdoni/chakra-components'
 import { useElection } from '@vocdoni/react-providers'
 import { ElectionResultsTypeNames, PublishedElection } from '@vocdoni/sdk'
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { ValidateResult } from 'react-hook-form'
 
 /**
  * File to store paritary erc project specific code
@@ -19,21 +30,24 @@ import { useTranslation } from 'react-i18next'
 export const useFormValidation = () => {
   const { t } = useTranslation()
   const toast = useToast()
+  const { fmethods } = useQuestionsForm()
+
+  const formData = fmethods.watch()
 
   const { election } = useElection()
 
-  const formValidation: SubmitFormValidation = (values) => {
+  const formValidation: () => ValidateResult | Promise<ValidateResult> = () => {
     if (!(election instanceof PublishedElection)) return null
     if (!(election && election.resultsType.name === ElectionResultsTypeNames.MULTIPLE_CHOICE)) {
       return null
     }
 
-    const title = t('paritary_errors.title')
-    const description = t('paritary_errors.description', {
-      max: election.resultsType?.properties?.numChoices?.max,
-      min: election.resultsType?.properties?.numChoices?.min,
-    })
-    if (!sameLengthValidator(values)) {
+    if (!sameLengthValidator(formData)) {
+      const title = t('paritary_errors.title')
+      const description = t('paritary_errors.description', {
+        max: election.resultsType?.properties?.numChoices?.max,
+        min: election.resultsType?.properties?.numChoices?.min,
+      })
       toast({
         status: 'error',
         title: title,
@@ -50,7 +64,7 @@ export const useFormValidation = () => {
  * Check all values responses have the same length
  * Won't work for multiquestions elections.
  */
-export const sameLengthValidator: SubmitFormValidation = (answers) => {
+export const sameLengthValidator: (values: FormFieldValues) => ValidateResult | Promise<ValidateResult> = (answers) => {
   const [first, ...rest] = Object.values(answers)
   if (!first) {
     throw new Error('No fields found')
@@ -66,6 +80,8 @@ type BlankChoiceStore = Record<string, string>
  */
 export const ParitaryErcQuestionsForm = () => {
   const { elections, voteAll, isDisabled, setIsDisabled, isAbleToVote, loaded, voted } = useQuestionsForm()
+  const { formValidation } = useFormValidation()
+  const [globalError, setGlobalError] = useState('')
 
   // Search which index contain blanc options (preventing unordered choices)
   const blankOptions = useMemo(() => {
@@ -84,20 +100,33 @@ export const ParitaryErcQuestionsForm = () => {
   }, [elections])
 
   const disableForm = () => {
-    setIsDisabled((prevState) => !prevState)
+    setIsDisabled((prevState) => {
+      if (!prevState) setGlobalError('')
+      return !prevState
+    })
   }
 
-  const onSubmit: ExtendedSubmitHandler<FormFieldValues> = (onSubmit, ...params) => {
+  const onSubmit: ExtendedSubmitHandler<FormFieldValues> = (submitHandler, ...params) => {
     if (!isAbleToVote) return
+    let selectedOpts = params[0]
     // If is disabled it will create a ballot with only blank options
     if (isDisabled) {
-      const blankVotes = Object.entries(blankOptions).reduce((acc, [eId, option]) => {
+      selectedOpts = Object.entries(blankOptions).reduce((acc, [eId, option]) => {
         acc[eId] = [[option]]
         return acc
       }, {} as FormFieldValues)
-      return voteAll(blankVotes)
+      // return voteAll(blankVotes)
     }
-    return onSubmit(...params)
+    // Run custom validation only if blank votes are not selected
+    if (!isDisabled && formValidation) {
+      const error = formValidation()
+      if (typeof error === 'string' || (typeof error === 'boolean' && !error)) {
+        setGlobalError(error.toString())
+        return
+      }
+    }
+    setGlobalError('')
+    return submitHandler(selectedOpts)
   }
 
   // Hide the en blanc options using display none
@@ -122,7 +151,13 @@ export const ParitaryErcQuestionsForm = () => {
           <Spinner size='sm' />
         </Flex>
       )}
-      <ElectionQuestionsForm onSubmit={onSubmit} />
+      <Box>
+        <ElectionQuestionsForm onSubmit={onSubmit} />
+        <FormControl isInvalid={!!globalError}>
+          <FormErrorMessage sx={styles.error}>{globalError}</FormErrorMessage>
+        </FormControl>
+      </Box>
+
       {loaded && !voted && (
         <chakra.div>
           <chakra.div __css={styles.wrapper}>

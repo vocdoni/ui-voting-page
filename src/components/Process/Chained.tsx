@@ -49,7 +49,6 @@ const VoteButtonContainer = ({ children }: PropsWithChildren) => {
 const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
   const { election, voted, setClient, clearClient } = useElection()
   const { processes, client, current, setProcess, setCurrent } = useChainedProcesses()
-  const { formValidation } = useFormValidation()
 
   // clear session of local context when login out
   useEffect(() => {
@@ -107,7 +106,6 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
       <QuestionsFormProvider
         renderWith={renderWith}
         confirmContents={(elections, answers) => <ConfirmVoteModal elections={elections} answers={answers} />}
-        validate={formValidation}
       >
         <Flex direction={'column'} gap={{ base: 16, md: 24 }}>
           <ParitaryErcQuestionsForm />
