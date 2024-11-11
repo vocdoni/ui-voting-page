@@ -226,6 +226,7 @@ export const VoteButton = (props: VoteButtonProps) => {
     return null
   }
 
+  const isWeighted = Number(election?.census.weight) !== election?.census.size
   const isBlindCsp = census?.type === 'csp' && election?.meta.csp?.service === 'vocdoni-blind-csp'
 
   return (
