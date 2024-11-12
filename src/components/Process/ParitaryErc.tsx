@@ -21,7 +21,7 @@ import { useElection } from '@vocdoni/react-providers'
 import { ElectionResultsTypeNames, PublishedElection } from '@vocdoni/sdk'
 import { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ValidateResult } from 'react-hook-form'
+import { FieldValues, SubmitErrorHandler, ValidateResult } from 'react-hook-form'
 
 /**
  * File to store paritary erc project specific code
@@ -79,9 +79,12 @@ type BlankChoiceStore = Record<string, string>
  * Implements specific logic for blank option.
  */
 export const ParitaryErcQuestionsForm = () => {
-  const { elections, voteAll, isDisabled, setIsDisabled, isAbleToVote, loaded, voted } = useQuestionsForm()
+  const { t } = useTranslation()
+  const toast = useToast()
+  const { elections, isDisabled, setIsDisabled, isAbleToVote, loaded, voted } = useQuestionsForm()
   const { formValidation } = useFormValidation()
   const [globalError, setGlobalError] = useState('')
+  const styles = useMultiStyleConfig('ElectionQuestions')
 
   // Search which index contain blanc options (preventing unordered choices)
   const blankOptions = useMemo(() => {
@@ -129,6 +132,22 @@ export const ParitaryErcQuestionsForm = () => {
     return submitHandler(selectedOpts)
   }
 
+  const onInvalid: SubmitErrorHandler<FieldValues> = (errors) => {
+    for (const eErrors of Object.values(errors)) {
+      // @ts-ignore
+      for (const error of eErrors) {
+        if (error.message) {
+          toast({
+            status: 'error',
+            title: t('cc.validation.required'),
+            description: error.message,
+          })
+          return
+        }
+      }
+    }
+  }
+
   // Hide the en blanc options using display none
   useEffect(() => {
     // Find the element with the specific text content
@@ -142,7 +161,6 @@ export const ParitaryErcQuestionsForm = () => {
       }
     }
   }, [elections])
-  const styles = useMultiStyleConfig('ElectionQuestions')
 
   return (
     <>
@@ -152,7 +170,7 @@ export const ParitaryErcQuestionsForm = () => {
         </Flex>
       )}
       <Box>
-        <ElectionQuestionsForm onSubmit={onSubmit} />
+        <ElectionQuestionsForm onInvalid={onInvalid} onSubmit={onSubmit} />
         <FormControl isInvalid={!!globalError}>
           <FormErrorMessage sx={styles.error}>{globalError}</FormErrorMessage>
         </FormControl>
