@@ -73,7 +73,9 @@
     "validation": {
       "choices_count": "Has de seleccionar {{ count }} opcions",
       "min_length": "Aquest camp ha de tenir com a mínim {{ min }} caràcters",
-      "required": "Aquest camp és obligatori"
+      "required": "Aquest camp és obligatori",
+      "min_choices_count": "Selecciona un mínim de {{ count }} opcions",
+      "at_least_one": "Has de seleccionar almenys una opció"
     },
     "vote": {
       "abstain": "Abstenció",
