@@ -66,5 +66,7 @@ export const translations = (t: TFunction<string, string>) => ({
     choices_count: t('cc.validation.choices_count').toString(),
     required: t('cc.validation.required').toString(),
     min_length: t('cc.validation.min_length').toString(),
+    min_choices_count: t('cc.validation.min_choices_count').toString(),
+    at_least_one: t('cc.validation.at_least_one').toString(),
   },
 })

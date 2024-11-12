@@ -70,7 +70,9 @@
     "validation": {
       "choices_count": "Debes seleccionar {{ count }} opciones",
       "min_length": "Este campo debe tener al menos {{ min }} caracteres",
-      "required": "Este campo es obligatorio"
+      "required": "Este campo es obligatorio",
+      "min_choices_count": "Selecciona un minimo de {{ count }} opciones",
+      "at_least_one": "Tienes q seleccionar al menos una opción"
     },
     "vote": {
       "abstain": "Abstenerse",
