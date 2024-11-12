@@ -12,15 +12,13 @@ import {
   ModalOverlay,
   Text,
   UnorderedList,
-  ListItem,
   useDisclosure,
 } from '@chakra-ui/react'
 import { environment, useQuestionsForm } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
 import { InvalidElection } from '@vocdoni/sdk'
-import { useEffect, useState, PropsWithChildren } from 'react'
+import { PropsWithChildren, useEffect, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
-import { FacebookShare, RedditShare, TelegramShare, TwitterShare } from '~components/Share'
 import successImg from '/assets/spreadsheet-confirm-modal.png'
 import { ShareButtonProps } from '~components/Share/ShareButton'
 
@@ -95,7 +93,7 @@ export const MultiElectionSuccessVoteModal = () => {
     .map(({ voted, election }) => {
       return {
         verify: environment.verifyVote(env, voted),
-        text: election.title.default,
+        text: election.questions[0].title.default,
       }
     })
 
