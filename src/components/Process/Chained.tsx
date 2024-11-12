@@ -48,7 +48,7 @@ const VoteButtonContainer = ({ children }: PropsWithChildren) => {
 
 const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
   const { election, voted, setClient, clearClient } = useElection()
-  const { processes, client, current, setProcess, setCurrent } = useChainedProcesses()
+  const { processes, client, current, setProcess, setCurrent, root } = useChainedProcesses()
 
   // clear session of local context when login out
   useEffect(() => {
@@ -58,7 +58,9 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
 
   // ensure the client is set to the root one
   useEffect(() => {
-    setClient(client)
+    if (election.id !== root.id) {
+      setClient(client)
+    }
   }, [client, election])
 
   // fetch current process and process flow logic
@@ -185,9 +187,13 @@ const ChainedProcessesWrapper = () => {
 
   return (
     <Box className='md-sizes' mb='100px' pt='25px'>
-      <ElectionProvider key={current} election={processes[current]} ConnectButton={ConnectButton} fetchCensus>
+      {current === election.id ? (
         <ChainedProcessesInner connected={connected} />
-      </ElectionProvider>
+      ) : (
+        <ElectionProvider key={current} election={processes[current]} ConnectButton={ConnectButton} fetchCensus>
+          <ChainedProcessesInner connected={connected} />
+        </ElectionProvider>
+      )}
       <VoteButtonContainer>
         {!connected && election.get('census.type') === 'spreadsheet' && <SpreadsheetAccess />}
         {isBlindCsp && !connected && <BlindCSPConnect />}
