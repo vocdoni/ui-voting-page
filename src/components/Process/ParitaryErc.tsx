@@ -18,7 +18,7 @@ import {
   useQuestionsForm,
 } from '@vocdoni/chakra-components'
 import { useElection } from '@vocdoni/react-providers'
-import { ElectionResultsTypeNames, PublishedElection } from '@vocdoni/sdk'
+import { ElectionResultsTypeNames, ElectionStatus, PublishedElection } from '@vocdoni/sdk'
 import { useEffect, useMemo, useState } from 'react'
 import { FieldValues, SubmitErrorHandler, ValidateResult } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -82,7 +82,7 @@ type BlankChoiceStore = Record<string, string>
 export const ParitaryErcQuestionsForm = () => {
   const { t } = useTranslation()
   const toast = useToast()
-  const { elections, isDisabled, setIsDisabled, isAbleToVote, loaded, voted } = useQuestionsForm()
+  const { elections, isDisabled, setIsDisabled, isAbleToVote, loaded, voted, voting } = useQuestionsForm()
   const { formValidation } = useFormValidation()
   const [globalError, setGlobalError] = useState('')
   const styles = useMultiStyleConfig('ElectionQuestions')
@@ -164,6 +164,11 @@ export const ParitaryErcQuestionsForm = () => {
     }
   }, [elections])
 
+  const blankVoteDisabled =
+    (Object.keys(elections).length > 0 && elections[0]?.election?.status !== ElectionStatus.ONGOING) ||
+    !isAbleToVote ||
+    voting
+
   return (
     <>
       {!loaded && (
@@ -199,7 +204,12 @@ export const ParitaryErcQuestionsForm = () => {
                   </Markdown>
                 </chakra.div>
                 <Stack sx={styles.stack}>
-                  <Checkbox checked={isDisabled} onChange={disableForm} sx={styles.checkbox} isDisabled={!isAbleToVote}>
+                  <Checkbox
+                    checked={isDisabled}
+                    onChange={disableForm}
+                    sx={styles.checkbox}
+                    isDisabled={blankVoteDisabled}
+                  >
                     <Box py={4} pl={4}>
                       Vota en blanc a les dos llistes
                     </Box>
