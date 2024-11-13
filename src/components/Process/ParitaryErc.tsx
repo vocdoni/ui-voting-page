@@ -2,9 +2,9 @@ import {
   Box,
   chakra,
   Checkbox,
+  Flex,
   FormControl,
   FormErrorMessage,
-  Flex,
   Spinner,
   Stack,
   useMultiStyleConfig,
@@ -20,8 +20,8 @@ import {
 import { useElection } from '@vocdoni/react-providers'
 import { ElectionResultsTypeNames, PublishedElection } from '@vocdoni/sdk'
 import { useEffect, useMemo, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import { FieldValues, SubmitErrorHandler, ValidateResult } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 
 /**
  * File to store paritary erc project specific code
@@ -52,6 +52,7 @@ export const useFormValidation = () => {
         status: 'error',
         title: title,
         description: description,
+        isClosable: true,
       })
       return description
     }
@@ -141,6 +142,7 @@ export const ParitaryErcQuestionsForm = () => {
             status: 'error',
             title: t('cc.validation.required'),
             description: error.message,
+            isClosable: true,
           })
           return
         }
