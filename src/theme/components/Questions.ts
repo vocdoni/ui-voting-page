@@ -32,6 +32,8 @@ const baseStyle = definePartsStyle({
   alertTitle: {
     fontSize: 'lg',
     mb: 3,
+    whiteSpace: 'normal',
+    overflowWrap: 'break-word',
   },
 
   alertDescription: {

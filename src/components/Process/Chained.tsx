@@ -33,14 +33,14 @@ const VoteButtonContainer = ({ children }: PropsWithChildren) => {
         left={0}
         bgColor='process.aside.aside_footer_mbl_border'
         pt={1}
-        display={{ base: 'block', lg2: 'none' }}
+        display={isBreakPoint ? 'block' : 'none'}
       >
         {children}
       </Box>
     )
   }
   return (
-    <Box position='sticky' bottom={0} left={0} pb={1} pt={1} display={{ base: 'none', lg2: 'block' }}>
+    <Box position='sticky' bottom={0} left={0} pb={1} pt={1} display={isBreakPoint ? 'none' : 'block'}>
       {children}
     </Box>
   )
@@ -197,8 +197,10 @@ const ChainedProcessesWrapper = () => {
         </ElectionProvider>
       )}
       <VoteButtonContainer>
-        {!connected && election.get('census.type') === 'spreadsheet' && <SpreadsheetAccess />}
-        {isBlindCsp && !connected && <BlindCSPConnect />}
+        <Flex justifyContent='center' alignItems='center' direction={'column'} py={3} px={{ base: 3, lg2: 0 }}>
+          {!connected && election.get('census.type') === 'spreadsheet' && <SpreadsheetAccess />}
+          {isBlindCsp && !connected && <BlindCSPConnect />}
+        </Flex>
       </VoteButtonContainer>
     </Box>
   )

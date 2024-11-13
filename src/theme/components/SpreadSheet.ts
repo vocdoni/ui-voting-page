@@ -5,9 +5,12 @@ const { defineMultiStyleConfig, definePartsStyle } = createMultiStyleConfigHelpe
 
 const baseStyle = definePartsStyle({
   button: {
-    w: '100%',
+    w: '60%',
     borderRadius: 30,
     color: 'process.spreadsheet.color',
+    mb: 4,
+    py: 3,
+    height: '50px',
   },
 
   disconnect: {
