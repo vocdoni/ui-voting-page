@@ -1,6 +1,6 @@
+import checkIcon from '/assets/check-icon.png'
 import { createMultiStyleConfigHelpers } from '@chakra-ui/react'
 import { questionsAnatomy } from '@vocdoni/chakra-components'
-import checkIcon from '/assets/check-icon.png'
 
 const { defineMultiStyleConfig, definePartsStyle } = createMultiStyleConfigHelpers(questionsAnatomy)
 
@@ -32,6 +32,8 @@ const baseStyle = definePartsStyle({
   alertTitle: {
     fontSize: 'lg',
     mb: 3,
+    whiteSpace: 'normal',
+    overflowWrap: 'break-word',
   },
 
   alertDescription: {
