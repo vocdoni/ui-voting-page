@@ -95,6 +95,11 @@
   "error": {
     "election_is_invalid": "Invalid election"
   },
+  "paritary_erc": {
+    "blank_vote_title": "Voto en blanco",
+    "blank_vote_description": "Si deseas votar en blanco, encontrarás la opción al final del formulario. Si se elige esta opción, no se\n                    tendrán en cuenta las opciones previamente seleccionadas",
+    "blank_vote_option": "Vota en blanco en ambas listas"
+  },
   "paritary_errors": {
     "title": "La votación debe ser paritaria.",
     "description": "Selecciona el mismo número de opciones de la primera lista y de la segunda. Puedes votar un mínimo de {{ min }} opción y un máximo de {{ max }} por lista."

@@ -99,6 +99,11 @@
     "title": "La votació ha de ser paritària. ",
     "description": "Selecciona el mateix número d’opcions de la primera llista i de la segona. Pots votar un mínim d’{{ min }} opció i un màxim de {{ max }} per llista."
   },
+  "paritary_erc": {
+    "blank_vote_title": "Vot en blanc ",
+    "blank_vote_description": "Si vols votar en blanc, trobaràs l'opció al final del formulari, si es tria aquesta opció, no es\n                    tindran en compte les opcions previament seleccionades",
+    "blank_vote_option": "Vota en blanc a les dos llistes"
+  },
   "footer": {
     "company": "Empresa",
     "demo": "Tipus de Votació",

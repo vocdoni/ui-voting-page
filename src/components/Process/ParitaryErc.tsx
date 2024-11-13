@@ -21,7 +21,7 @@ import { useElection } from '@vocdoni/react-providers'
 import { ElectionResultsTypeNames, ElectionStatus, PublishedElection } from '@vocdoni/sdk'
 import { useEffect, useMemo, useState } from 'react'
 import { FieldValues, SubmitErrorHandler, ValidateResult } from 'react-hook-form'
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 
 /**
  * File to store paritary erc project specific code
@@ -189,7 +189,9 @@ export const ParitaryErcQuestionsForm = () => {
             <div />
             <chakra.div __css={styles.question}>
               <chakra.div __css={styles.header}>
-                <chakra.label __css={styles.title}>{`${BlankVoteTitle} `}</chakra.label>
+                <chakra.label __css={styles.title}>
+                  <Trans i18nKey={'paritary_erc.blank_vote_title'}>{`${BlankVoteTitle} `}</Trans>
+                </chakra.label>
               </chakra.div>
               <chakra.div __css={styles.body}>
                 <chakra.div
@@ -199,8 +201,10 @@ export const ParitaryErcQuestionsForm = () => {
                   }}
                 >
                   <Markdown>
-                    Si vols votar en blanc, trobaràs l'opció al final del formulari, si es tria aquesta opció, no es
-                    tindran en compte les opcions previament seleccionades
+                    {t('paritary_erc.blank_vote_description', {
+                      defaultValue:
+                        "Si vols votar en blanc, trobaràs l'opció al final del formulari, si es tria aquesta opció, no es tindran en compte les opcions previament seleccionades",
+                    })}
                   </Markdown>
                 </chakra.div>
                 <Stack sx={styles.stack}>
@@ -211,7 +215,7 @@ export const ParitaryErcQuestionsForm = () => {
                     isDisabled={blankVoteDisabled}
                   >
                     <Box py={4} pl={4}>
-                      Vota en blanc a les dos llistes
+                      <Trans i18nKey={'paritary_erc.blank_vote_option'}>Vota en blanc a les dos llistes</Trans>
                     </Box>
                   </Checkbox>
                 </Stack>
