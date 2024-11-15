@@ -165,7 +165,7 @@ export const ParitaryErcQuestionsForm = () => {
   }, [elections])
 
   const blankVoteDisabled =
-    (Object.keys(elections).length > 0 && elections[0]?.election?.status !== ElectionStatus.ONGOING) ||
+    (Object.keys(elections).length > 0 && Object.values(elections)[0]?.election?.status !== ElectionStatus.ONGOING) ||
     !isAbleToVote ||
     voting
 
