@@ -100,7 +100,7 @@ type BlankChoiceStore = Record<string, string>
  */
 export const ParitaryErcQuestionsForm = () => {
   const { t } = useTranslation()
-  const { elections, isDisabled, setIsDisabled, isAbleToVote, loaded, voted, voting } = useQuestionsForm()
+  const { elections, isDisabled, setIsDisabled, isAbleToVote, loaded, voted, voting, fmethods } = useQuestionsForm()
   const { formValidation, onInvalid } = useFormValidation()
   const [globalError, setGlobalError] = useState('')
   const styles = useMultiStyleConfig('ElectionQuestions')
@@ -123,7 +123,10 @@ export const ParitaryErcQuestionsForm = () => {
 
   const disableForm = () => {
     setIsDisabled((prevState) => {
-      if (!prevState) setGlobalError('')
+      if (!prevState) {
+        setGlobalError('')
+        fmethods.clearErrors()
+      }
       return !prevState
     })
   }
