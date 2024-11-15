@@ -52,6 +52,7 @@ export const useFormValidation = () => {
       title: title,
       description: description,
       isClosable: true,
+      duration: 8000,
     })
     return { title, description }
   }
