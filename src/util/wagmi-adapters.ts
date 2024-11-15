@@ -1,9 +1,16 @@
 import { providers } from 'ethers'
 import { useMemo } from 'react'
-import type { Account, Chain, Client, Transport } from 'viem'
+import type { Account, Chain } from 'viem'
 import { Config, useConnectorClient } from 'wagmi'
+import { ExternalProvider, JsonRpcFetchFunc } from '@ethersproject/providers'
 
-export function clientToSigner(client: Client<Transport, Chain, Account>) {
+type CustomClient = {
+  transport: ExternalProvider | JsonRpcFetchFunc
+  chain: Chain
+  account: Account
+}
+
+export function clientToSigner(client: CustomClient) {
   const { account, chain, transport } = client
   const network = {
     chainId: chain.id,

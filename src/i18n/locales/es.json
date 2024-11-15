@@ -70,7 +70,9 @@
     "validation": {
       "choices_count": "Debes seleccionar {{ count }} opciones",
       "min_length": "Este campo debe tener al menos {{ min }} caracteres",
-      "required": "Este campo es obligatorio"
+      "required": "Este campo es obligatorio",
+      "min_choices_count": "Selecciona un minimo de {{ count }} opciones",
+      "at_least_one": "Tienes q seleccionar al menos una opción"
     },
     "vote": {
       "abstain": "Abstenerse",
@@ -78,7 +80,9 @@
       "button_update": "Reenviar voto",
       "confirm": "Confirma tus selecciones:",
       "sign": "Firma antes de votar",
+      "not_able_to_vote": "No puedes votar en este proceso",
       "voted_description": "Para verificar tu voto, puedes utilizar este identificador único: {{ id }}",
+      "voted_description_multielection": "Para verificar tu voto, puedes utilizar estos identificadores únicos:  {{ ids }}",
       "voted_title": "¡Tu voto se ha registrado con éxito!"
     }
   },
@@ -183,7 +187,9 @@
     "success_modal": {
       "btn": "Finalizar",
       "text": "<p>Tu voto ha sido emitido y almacenado de forma segura en la cadena de bloques de Vocdoni. <verify>Puedes comprobarlo aquí</verify>.</p><p>La democracia es importante, puedes compartirla con tu comunidad y amigos:</p>",
-      "title": "Voto emitido correctamente!"
+      "title": "Voto emitido correctamente!",
+      "multi_election_text": "<p>Tu voto ha sido emitido y almacenado de forma segura en la cadena de bloques de Vocdoni. Comprobantes de voto:</p>",
+      "multi_election_share": "<p>La democracia es importante, puedes compartirla con tu comunidad y amigos:</p>"
     },
     "total_census_size": "{{maxCensusSize}} votantes permitidos de {{censusSize}} totales en el censo",
     "total_census_size_tooltip": "El número máximo de votantes permitidos está limitado a {{maxCensusSize}} de un censo de {{censusSize}} ({{percent}}% del total). Solo los primeros {{maxCensusSize}} votantes pueden votar.",

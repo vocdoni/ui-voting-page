@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Flex,
   Link,
   ListItem,
   Modal,
@@ -14,13 +15,14 @@ import {
   UnorderedList,
   useDisclosure,
 } from '@chakra-ui/react'
-import { environment } from '@vocdoni/chakra-components'
+import { environment, useQuestionsForm } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
 import { InvalidElection } from '@vocdoni/sdk'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, PropsWithChildren } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { FacebookShare, RedditShare, TelegramShare, TwitterShare } from '~components/Share'
 import successImg from '/assets/spreadsheet-success-modal.jpg'
+import { ShareButtonProps } from '~components/Share/ShareButton'
 
 export const SuccessVoteModal = () => {
   const { t } = useTranslation()
@@ -49,6 +51,92 @@ export const SuccessVoteModal = () => {
   const caption = t('process.share_caption', { title: election?.title.default })
 
   return (
+    <ModalComponent isOpen={isOpen} onClose={onClose} url={url} caption={caption}>
+      <Trans
+        i18nKey='process.success_modal.text'
+        components={{
+          verify: <Link href={verify} target='_blank' />,
+          p: <Text mb={2} />,
+        }}
+      />
+    </ModalComponent>
+  )
+}
+
+export const MultiElectionSuccessVoteModal = () => {
+  const { t } = useTranslation()
+  const [votes, setVotes] = useState<string[]>([])
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { election } = useElection()
+  const { env } = useClient()
+  const { voted, elections, loaded, isAbleToVote } = useQuestionsForm()
+
+  useEffect(() => {
+    const _votes = Object.values(elections)
+      .filter(({ voted }) => voted)
+      .map(({ voted }) => voted)
+    if (!isAbleToVote && votes.length) {
+      setVotes([])
+    }
+    if (!votes && loaded) {
+      setVotes(_votes)
+    }
+    if (isAbleToVote && _votes?.length > votes.length) {
+      setVotes(_votes)
+      onOpen()
+    }
+  }, [elections, loaded, votes, isAbleToVote])
+
+  if (!loaded || !voted || !elections || election instanceof InvalidElection) return null
+
+  const verifiers = Object.values(elections)
+    ?.filter(({ voted }) => voted)
+    .map(({ voted, election }) => {
+      return {
+        verify: environment.verifyVote(env, voted),
+        text: election.title.default,
+      }
+    })
+
+  const url = encodeURIComponent(document.location.href)
+  const caption = t('process.share_caption', { title: election?.title.default })
+
+  return (
+    <ModalComponent isOpen={isOpen} onClose={onClose} url={url} caption={caption}>
+      <Trans
+        i18nKey='process.success_modal.multi_election_text'
+        components={{
+          p: <Text mb={2} />,
+        }}
+      />
+      <Flex direction={'column'} mb={2}>
+        {verifiers.map(({ verify, text }) => (
+          <UnorderedList>
+            <Link href={verify} target='_blank'>
+              {text}
+            </Link>
+          </UnorderedList>
+        ))}
+      </Flex>
+      <Trans
+        i18nKey='process.success_modal.multi_election_share'
+        components={{
+          p: <Text mb={2} />,
+        }}
+      />
+    </ModalComponent>
+  )
+}
+
+const ModalComponent = ({
+  isOpen,
+  onClose,
+  children,
+  ...shareBtnProps
+}: { isOpen: boolean; onClose: () => void; url: string; caption: string } & ShareButtonProps & PropsWithChildren) => {
+  const { t } = useTranslation()
+  return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
@@ -58,25 +146,19 @@ export const SuccessVoteModal = () => {
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <Trans
-            i18nKey='process.success_modal.text'
-            components={{
-              verify: <Link href={verify} target='_blank' />,
-              p: <Text mb={2} />,
-            }}
-          />
+          {children}
           <UnorderedList listStyleType='none' display='flex' justifyContent='center' gap={6} mt={6} mb={2} ml={0}>
             <ListItem>
-              <TwitterShare url={url} caption={caption} />
+              <TwitterShare {...shareBtnProps} />
             </ListItem>
             <ListItem>
-              <FacebookShare url={url} caption={caption} />
+              <FacebookShare {...shareBtnProps} />
             </ListItem>
             <ListItem>
-              <TelegramShare url={url} caption={caption} />
+              <TelegramShare {...shareBtnProps} />
             </ListItem>
             <ListItem>
-              <RedditShare url={url} caption={caption} />
+              <RedditShare {...shareBtnProps} />
             </ListItem>
           </UnorderedList>
         </ModalBody>

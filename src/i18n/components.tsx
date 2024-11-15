@@ -26,7 +26,9 @@ export const translations = (t: TFunction<string, string>) => ({
     confirm: t('cc.vote.confirm').toString(),
     sign: t('cc.vote.sign').toString(),
     voted_description: t('cc.vote.voted_description').toString(),
+    voted_description_multielection: t('cc.vote.voted_description_multielection').toString(),
     voted_title: t('cc.vote.voted_title').toString(),
+    not_able_to_vote: t('cc.vote.not_able_to_vote').toString(),
   },
   empty: t('cc.empty').toString(),
   errors: {
@@ -64,5 +66,7 @@ export const translations = (t: TFunction<string, string>) => ({
     choices_count: t('cc.validation.choices_count').toString(),
     required: t('cc.validation.required').toString(),
     min_length: t('cc.validation.min_length').toString(),
+    min_choices_count: t('cc.validation.min_choices_count').toString(),
+    at_least_one: t('cc.validation.at_least_one').toString(),
   },
 })

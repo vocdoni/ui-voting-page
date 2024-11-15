@@ -25,14 +25,16 @@ const ProcessAside = () => {
   } = useElection()
   const { isConnected } = useAccount()
   const { env, clear } = useClient()
-
   if (!election || !(election instanceof PublishedElection)) return null
 
   const census: CensusMeta = dotobject(election?.meta || {}, 'census')
+
+  const isMultiProcess = !!election.get('multiprocess')
   const renderVoteMenu =
-    voted ||
-    (voting && election?.electionType.anonymous) ||
-    (hasOverwriteEnabled(election) && isInCensus && votesLeft > 0 && voted)
+    !isMultiProcess &&
+    (voted ||
+      (voting && election?.electionType.anonymous) ||
+      (hasOverwriteEnabled(election) && isInCensus && votesLeft > 0 && voted))
 
   const showVoters =
     election?.status !== ElectionStatus.CANCELED &&
@@ -197,7 +199,8 @@ const ProcessAside = () => {
   )
 }
 
-export const VoteButton = ({ ...props }: FlexProps) => {
+type VoteButtonProps = FlexProps
+export const VoteButton = (props: VoteButtonProps) => {
   const { t } = useTranslation()
   const { election, connected, isAbleToVote, isInCensus } = useElection()
   const { isConnected } = useAccount()
@@ -215,8 +218,7 @@ export const VoteButton = ({ ...props }: FlexProps) => {
     return null
   }
 
-  const isWeighted = election?.census.weight !== election?.census.size
-
+  const isWeighted = Number(election?.census.weight) !== election?.census.size
   const isBlindCsp = census?.type === 'csp' && election?.meta.csp?.service === 'vocdoni-blind-csp'
 
   return (
@@ -271,7 +273,8 @@ export const VoteButton = ({ ...props }: FlexProps) => {
             mb={4}
             sx={{
               '&::disabled': {
-                opacity: '0.8',
+                // opacity: '0.8',
+                display: 'none',
               },
             }}
           />

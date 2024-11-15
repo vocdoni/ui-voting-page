@@ -25,6 +25,7 @@ import {
 export const config = getDefaultConfig({
   appName: 'Vocdoni Voting Page',
   projectId: 'b78ba61f132db687dc6ec6d61b7e34d5',
+  // @ts-ignore
   chains: [
     arbitrum,
     avalanche,

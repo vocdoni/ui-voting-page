@@ -5,14 +5,16 @@ const { defineMultiStyleConfig, definePartsStyle } = createMultiStyleConfigHelpe
 
 const baseStyle = definePartsStyle({
   button: {
-    w: '100%',
+    w: '60%',
     borderRadius: 30,
     fontSize: { base: 'lg', xl: 'md' },
     bgColor: 'process.aside.vote_btn_bg',
-
     _hover: {
       bgColor: 'process.aside.vote_btn_bg',
     },
+    mb: 4,
+    py: 3,
+    height: '50px',
   },
 
   disconnect: {

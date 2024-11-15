@@ -1,6 +1,6 @@
+import checkIcon from '/assets/check-icon.png'
 import { createMultiStyleConfigHelpers } from '@chakra-ui/react'
 import { questionsAnatomy } from '@vocdoni/chakra-components'
-import checkIcon from '/assets/check-icon.png'
 
 const { defineMultiStyleConfig, definePartsStyle } = createMultiStyleConfigHelpers(questionsAnatomy)
 
@@ -32,12 +32,22 @@ const baseStyle = definePartsStyle({
   alertTitle: {
     fontSize: 'lg',
     mb: 3,
+    whiteSpace: 'normal',
+    overflowWrap: 'break-word',
   },
 
   alertDescription: {
     display: 'flex',
     gap: 2,
     flexDirection: { base: 'column', lg2: 'row' },
+    justifyContent: 'center',
+    alignItems: { md: 'center' },
+    whiteSpace: { base: 'pre-wrap', lg2: 'nowrap' },
+  },
+  alertDescriptionWrapper: {
+    display: 'flex',
+    gap: 2,
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: { md: 'center' },
     whiteSpace: { base: 'pre-wrap', lg2: 'nowrap' },
@@ -62,11 +72,9 @@ const baseStyle = definePartsStyle({
   },
 
   wrapper: {
-    '& > form': {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 10,
-    },
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 10,
   },
 
   question: {
