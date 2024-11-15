@@ -74,7 +74,7 @@
       "choices_count": "Has de seleccionar {{ count }} opcions",
       "min_length": "Aquest camp ha de tenir com a mínim {{ min }} caràcters",
       "required": "Aquest camp és obligatori",
-      "min_choices_count": "Selecciona un mínim de {{ count }} opcions",
+      "min_choices_count": "Selecciona un mínim d'una opció",
       "at_least_one": "Has de seleccionar almenys una opció"
     },
     "vote": {
@@ -102,7 +102,7 @@
   "paritary_erc": {
     "blank_vote_title": "Vot en blanc ",
     "blank_vote_description": "Si vols votar en blanc, trobaràs l'opció al final del formulari, si es tria aquesta opció, no es\n                    tindran en compte les opcions previament seleccionades",
-    "blank_vote_option": "Vota en blanc a les dos llistes"
+    "blank_vote_option": "Vota en blanc"
   },
   "footer": {
     "company": "Empresa",

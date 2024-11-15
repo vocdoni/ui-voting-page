@@ -36,29 +36,47 @@ export const useFormValidation = () => {
 
   const { election } = useElection()
 
-  const formValidation: () => ValidateResult | Promise<ValidateResult> = () => {
+  const paritaryError = () => {
     if (!(election instanceof PublishedElection)) return null
     if (!(election && election.resultsType.name === ElectionResultsTypeNames.MULTIPLE_CHOICE)) {
       return null
     }
+    const title = t('paritary_errors.title')
+    const description = t('paritary_errors.description', {
+      max: election.resultsType?.properties?.numChoices?.max,
+      min: election.resultsType?.properties?.numChoices?.min,
+    })
 
+    toast({
+      status: 'error',
+      title: title,
+      description: description,
+      isClosable: true,
+    })
+    return { title, description }
+  }
+
+  const formValidation: () => ValidateResult | Promise<ValidateResult> = () => {
     if (!sameLengthValidator(formData)) {
-      const title = t('paritary_errors.title')
-      const description = t('paritary_errors.description', {
-        max: election.resultsType?.properties?.numChoices?.max,
-        min: election.resultsType?.properties?.numChoices?.min,
-      })
-      toast({
-        status: 'error',
-        title: title,
-        description: description,
-        isClosable: true,
-      })
+      const { description } = paritaryError()
       return description
     }
     return true
   }
-  return { formValidation }
+
+  const onInvalid: SubmitErrorHandler<FieldValues> = (errors) => {
+    for (const eErrors of Object.values(errors)) {
+      // @ts-ignore
+      for (const error of eErrors) {
+        if (error.message) {
+          paritaryError()
+          return
+        }
+      }
+    }
+  }
+
+  return { formValidation, onInvalid }
 }
 
 /**
@@ -81,9 +99,8 @@ type BlankChoiceStore = Record<string, string>
  */
 export const ParitaryErcQuestionsForm = () => {
   const { t } = useTranslation()
-  const toast = useToast()
   const { elections, isDisabled, setIsDisabled, isAbleToVote, loaded, voted, voting } = useQuestionsForm()
-  const { formValidation } = useFormValidation()
+  const { formValidation, onInvalid } = useFormValidation()
   const [globalError, setGlobalError] = useState('')
   const styles = useMultiStyleConfig('ElectionQuestions')
 
@@ -131,23 +148,6 @@ export const ParitaryErcQuestionsForm = () => {
     }
     setGlobalError('')
     return submitHandler(selectedOpts)
-  }
-
-  const onInvalid: SubmitErrorHandler<FieldValues> = (errors) => {
-    for (const eErrors of Object.values(errors)) {
-      // @ts-ignore
-      for (const error of eErrors) {
-        if (error.message) {
-          toast({
-            status: 'error',
-            title: t('cc.validation.required'),
-            description: error.message,
-            isClosable: true,
-          })
-          return
-        }
-      }
-    }
   }
 
   // Hide the en blanc options using display none
@@ -215,7 +215,7 @@ export const ParitaryErcQuestionsForm = () => {
                     isDisabled={blankVoteDisabled}
                   >
                     <Box py={4} pl={4}>
-                      <Trans i18nKey={'paritary_erc.blank_vote_option'}>Vota en blanc a les dos llistes</Trans>
+                      <Trans i18nKey={'paritary_erc.blank_vote_option'}>Vota en blanc</Trans>
                     </Box>
                   </Checkbox>
                 </Stack>
