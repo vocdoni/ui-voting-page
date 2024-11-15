@@ -206,14 +206,16 @@ const ChainedProcessesWrapper = () => {
 
 const ChainedResultsWrapper = () => {
   // note election context refers to the root election here, ALWAYS
-  const { election, client } = useElection()
+  const { election, client, voted } = useElection()
   const { processes, setProcess } = useChainedProcesses()
   const [loaded, setLoaded] = useState<boolean>(false)
   const [loading, setLoading] = useState<boolean>(false)
   const [sorted, setSorted] = useState<string[]>([])
 
+  // Get elections information
   useEffect(() => {
     if (!election || election instanceof InvalidElection || loading || loaded) return
+
     setLoading(true)
     ;(async () => {
       try {
@@ -230,6 +232,16 @@ const ChainedResultsWrapper = () => {
       }
     })()
   }, [election])
+
+  // Reset loaded state when root election voted changes.
+  // On renderWith elections this will update all the render elections.
+  // However, this fix won't work on chained processes since we should check voted state for all processes to update
+  // results on real time.
+  useEffect(() => {
+    if (voted) {
+      setLoaded(false)
+    }
+  }, [voted])
 
   if (!loaded) {
     return <Progress w='full' size='xs' isIndeterminate />
