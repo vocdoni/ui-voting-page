@@ -101,7 +101,7 @@
   },
   "paritary_erc": {
     "blank_vote_title": "Vot en blanc ",
-    "blank_vote_description": "Si vols votar en blanc, trobaràs l'opció al final del formulari, si es tria aquesta opció, no es\n                    tindran en compte les opcions previament seleccionades",
+    "blank_vote_description": "Si es tria aquesta opció, no es tindran en compte les opcions prèviament seleccionades.",
     "blank_vote_option": "Vota en blanc"
   },
   "footer": {

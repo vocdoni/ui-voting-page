@@ -97,7 +97,7 @@
   },
   "paritary_erc": {
     "blank_vote_title": "Voto en blanco ",
-    "blank_vote_description": "Si deseas votar en blanco, encontrarás la opción al final del formulario. Si se elige esta opción, no se\n                    tendrán en cuenta las opciones previamente seleccionadas",
+    "blank_vote_description": "Si se elige esta opción, no se tendrán en cuenta las opciones previamente seleccionadas.",
     "blank_vote_option": "Vota en blanco"
   },
   "paritary_errors": {

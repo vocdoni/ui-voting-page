@@ -207,7 +207,7 @@ export const ParitaryErcQuestionsForm = () => {
                   <Markdown>
                     {t('paritary_erc.blank_vote_description', {
                       defaultValue:
-                        "Si vols votar en blanc, trobaràs l'opció al final del formulari, si es tria aquesta opció, no es tindran en compte les opcions previament seleccionades",
+                        'Si es tria aquesta opció, no es tindran en compte les opcions prèviament seleccionades.',
                     })}
                   </Markdown>
                 </chakra.div>
