@@ -1,6 +1,6 @@
 import { Box, Button, Card, Flex, FlexProps, Link, Text } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { environment, SpreadsheetAccess, VoteButton as CVoteButton } from '@vocdoni/chakra-components'
+import { VoteButton as CVoteButton, environment, SpreadsheetAccess } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
 import { dotobject, ElectionStatus, formatUnits, PublishedElection } from '@vocdoni/sdk'
 import { TFunction } from 'i18next'
@@ -196,6 +196,7 @@ const ProcessAside = () => {
               onClick={() => {
                 disconnect()
                 clear()
+                window.location.reload()
               }}
             >
               {t('cc.spreadsheet.logout')}
