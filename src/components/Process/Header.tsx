@@ -151,14 +151,14 @@ const ProcessHeader = () => {
                 <Text>{t('process.people_in_census', { count: election?.maxCensusSize })}</Text>
               ))}
           </Box>
-          {election instanceof PublishedElection && election?.meta?.census && (
+          {/* {election instanceof PublishedElection && election?.meta?.census && (
             <>
               <Box>
                 <Text fontWeight='bold'>{t('process.strategy')}</Text>
                 <Text>{strategy}</Text>
               </Box>
             </>
-          )}
+          )} */}
           {showOrgInformation && (
             <Box w={{ lg2: 'full' }}>
               <Text fontWeight='bold' mb={1}>
