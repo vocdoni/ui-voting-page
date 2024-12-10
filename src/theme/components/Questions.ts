@@ -1,6 +1,6 @@
-import checkIcon from '/assets/check-icon.png'
 import { createMultiStyleConfigHelpers } from '@chakra-ui/react'
 import { questionsAnatomy } from '@vocdoni/chakra-components'
+import checkIcon from '/assets/check-icon.png'
 
 const { defineMultiStyleConfig, definePartsStyle } = createMultiStyleConfigHelpers(questionsAnatomy)
 
@@ -127,7 +127,7 @@ const baseStyle = definePartsStyle({
       gap: 2,
       w: { lg2: '99%' },
       _hover: {
-        bgColor: '#eee',
+        bgColor: { base: 'transparent', lg2: '#eee' },
       },
 
       '& span:nth-of-type(1)': {
