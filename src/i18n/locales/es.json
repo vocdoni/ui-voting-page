@@ -82,23 +82,16 @@
   "copy": {
     "copied_title": "¡Copiado!"
   },
+  "error": {
+    "election_is_invalid": "Invalid election"
+  },
   "footer": {
+    "about_us": "Cuanto a",
     "company": "Empresa",
-    "demo": "Tipos de Votación",
-    "demo1": "Elección Simple",
-    "demo2": "Elección Múltiple",
-    "demo3": "Votación por Aprobación",
-    "demo4": "Votación por Clasificación",
-    "demo5": "Presupuestos Participativos",
-    "demo6": "Votación Ponderada",
+    "contact": "Contacta",
+    "developer_portal": "Portal del desarrollador",
     "footer_subtitle": "El Protocolo de Votación Global",
-    "terms_and_privacy": "<link1>Términos de uso</link1> y <link2>Política de privacidad</link2>",
-    "uses_cases": "Casos de Uso",
-    "uses_cases1": "Asambleas Generales de Accionistas (AGMs)",
-    "uses_cases2": "Elecciones",
-    "uses_cases3": "Presupuestos Participativos",
-    "uses_cases4": "Votación Digital",
-    "uses_cases5": "Encuesta Digital Cerrada"
+    "terms_and_privacy": "<link1>Términos de uso</link1> y <link2>Política de privacidad</link2>"
   },
   "link": {
     "discord": "Enlace al Discord de Vocdoni",

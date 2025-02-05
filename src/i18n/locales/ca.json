@@ -82,23 +82,16 @@
   "copy": {
     "copied_title": "Copiat!"
   },
+  "error": {
+    "election_is_invalid": "Invalid election"
+  },
   "footer": {
+    "about_us": "Quant a",
     "company": "Empresa",
-    "demo": "Tipus de Votació",
-    "demo1": "Elecció Simple",
-    "demo2": "Elecció Múltiple",
-    "demo3": "Votació per Aprovació",
-    "demo4": "Votació per Classificació",
-    "demo5": "Pressupostos Participatius",
-    "demo6": "Votació Ponderada",
+    "contact": "Contacte",
+    "developer_portal": "Portal del desenvolupador",
     "footer_subtitle": "El Protocol de Votació Global",
-    "terms_and_privacy": "<link1>Termes d'ús</link1> i <link2>Política de privacitat</link2>",
-    "uses_cases": "Casos d'Ús",
-    "uses_cases1": "Assemblees Generals d'Accionistes (AGMs)",
-    "uses_cases2": "Eleccions",
-    "uses_cases3": "Pressupostos Participatius",
-    "uses_cases4": "Votació Digital",
-    "uses_cases5": "Enquesta Digital Tancada"
+    "terms_and_privacy": "<link1>Termes d'ús</link1> i <link2>Política de privacitat</link2>"
   },
   "link": {
     "discord": "Enllaç al Discord de Vocdoni",

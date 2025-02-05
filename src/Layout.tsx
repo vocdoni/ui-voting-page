@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { ColorModeSwitcher } from '~components/ColorModeSwitcher'
 import { LanguagesMenu } from '~components/Layout/LanguagesList'
 import { VocdoniAppURL } from '~constants'
+import Footer from './theme/components/Footer'
 
 const Layout = () => (
   <Box>
@@ -15,6 +16,7 @@ const Layout = () => (
         <ColorModeSwitcher />
       </Stack>
       <Outlet />
+      <Footer />
     </Grid>
   </Box>
 )

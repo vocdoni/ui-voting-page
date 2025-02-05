@@ -1,36 +1,49 @@
-import { Box, Flex, Icon, Image, Link, Text } from '@chakra-ui/react'
+import { Box, Flex, Icon, Link, Text, useColorModeValue } from '@chakra-ui/react'
 import { Trans, useTranslation } from 'react-i18next'
 import { FaDiscord, FaGithub } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
-import vcdLogo from '/assets/logo-classic.svg'
+import VocdoniLogo from '~components/Layout/Logo'
 
 const Footer = () => {
   const { t } = useTranslation()
+  const invert = useColorModeValue('invert(0%)', 'invert(100%)')
 
   return (
     <>
       <Flex
-        className='site-wrapper'
-        py={{ base: '60px', md: '120px' }}
+        width='full'
+        m='0 auto'
+        maxW='1920px'
+        px={{
+          base: '10px',
+          sm: '20px',
+          md: '80px',
+        }}
+        pt='24px'
         flexDirection={{ base: 'column', xl: 'row' }}
         alignItems='start'
-        gap={{ base: '60px', lg: 0 }}
+        pb={{ base: '50px', xl: '24px' }}
       >
         <Box flex='1 1 33%'>
-          <Image src={vcdLogo} w='125px' mb='24px' />
-          <Text fontSize='16px' lineHeight='28px' mb='24px' color='gray'>
+          <VocdoniLogo maxW='120px' />
+          <Text fontSize='16px' lineHeight='28px'>
             {t('footer.footer_subtitle')}
           </Text>
         </Box>
         <Flex
           flex='1 1 67%'
           flexDirection={{ base: 'column', sm2: 'row' }}
-          justifyContent={{ sm2: 'space-between', lg: 'space-around' }}
+          justifyContent={{ sm2: 'space-between', lg: 'space-between' }}
           gap={{ base: '30px', sm2: 0 }}
           mt={1}
           ml={{ xl: 10 }}
         >
-          <Flex flexDirection={{ base: 'column', xl: 'row' }} gap={{ base: '40px', xl: '90px' }}>
+          <Flex
+            flexDirection={{ base: 'column', xl: 'row' }}
+            justifyContent='space-between'
+            gap={{ base: '40px', xl: '90px' }}
+            w='full'
+          >
             <Text fontWeight='bold' fontSize='18px' lineHeight='21px' mb='16px' display='none'>
               {t('footer.company')}
             </Text>
@@ -44,10 +57,10 @@ const Footer = () => {
               whiteSpace='nowrap'
               target='_blank'
             >
-              About Us
+              {t('footer.about_us')}
             </Link>
             <Link fontWeight='bold' variant='footer' href='https://www.vocdoni.io/contact' target='_blank'>
-              Contact
+              {t('footer.contact')}
             </Link>
             <Link fontWeight='bold' variant='footer' href='https://www.vocdoni.io/api' target='_blank'>
               SDK
@@ -59,94 +72,50 @@ const Footer = () => {
               whiteSpace='nowrap'
               target='_blank'
             >
-              Developer Portal
+              {t('footer.developer_portal')}
             </Link>
             <Link fontWeight='bold' variant='footer' href='https://blog.vocdoni.io' target='_blank'>
               Blog
             </Link>
           </Flex>
-          <Flex flexDirection='column' gap='10px' display='none'>
-            <Text fontWeight='bold' fontSize='18px' lineHeight='21px' mb='16px'>
-              {t('footer.uses_cases')}
-            </Text>
-            <Link variant='footer'>{t('footer.uses_cases1')}</Link>
-            <Link variant='footer'>{t('footer.uses_cases2')}</Link>
-            <Link variant='footer'>{t('footer.uses_cases3')}</Link>
-            <Link variant='footer'>{t('footer.uses_cases4')}</Link>
-            <Link variant='footer'>{t('footer.uses_cases5')}</Link>
-          </Flex>
-          <Flex flexDirection='column' gap='10px' display='none'>
-            <Text fontWeight='bold' fontSize='18px' lineHeight='21px' mb='16px'>
-              {t('footer.demo')}
-            </Text>
-            <Link variant='footer'>{t('footer.demo1')}</Link>
-            <Link variant='footer'>{t('footer.demo2')}</Link>
-            <Link variant='footer'>{t('footer.demo3')}</Link>
-            <Link variant='footer'>{t('footer.demo4')}</Link>
-            <Link variant='footer'>{t('footer.demo5')}</Link>
-            <Link variant='footer'>{t('footer.demo6')}</Link>
-          </Flex>
         </Flex>
       </Flex>
       <Flex
-        className='site-wrapper'
+        width='full'
+        m='0 auto'
+        maxW='1920px'
+        px={{
+          base: '10px',
+          sm: '20px',
+          md: '80px',
+        }}
         flexDirection={{ base: 'column', md: 'row' }}
         gap={{ base: '20px', md: '10px' }}
         justifyContent='space-between'
         alignItems='center'
-        py='24px'
+        py='12px'
         borderTop='1px solid rgb(229, 229, 229)'
       >
-        <Text as='span' color='gray' textAlign='center'>
+        <Text as='span' textAlign='center'>
           <Trans
             i18nKey='footer.terms_and_privacy'
             components={{
-              link1: <Link href='https://aragon.org/terms-and-conditions' target='_blank' />,
-              link2: <Link href='https://aragon.org/privacy-policy' target='_blank' />,
+              link1: <Link href='https://app.vocdoni.io/terms' color='gray' isExternal />,
+              link2: <Link href='https://app.vocdoni.io/privacy' color='gray' isExternal />,
             }}
           />
         </Text>
         <Flex gap='10px'>
-          <Link
-            href='https://twitter.com/vocdoni'
-            target='_blank'
-            display='flex'
-            justifyContent='center'
-            alignItems='center'
-            borderRadius='sm'
-            minW='30px'
-            h='30px'
-            border='1px solid gray'
-          >
-            <Icon aria-label={t('link.twitter').toString()} as={FaXTwitter} w={4} h={4} cursor='pointer' color='gray' />
+          <Link variant='icon' href='https://twitter.com/vocdoni' target='_blank'>
+            <Icon aria-label={t('link.twitter').toString()} as={FaXTwitter} />
           </Link>
 
-          <Link
-            href='https://chat.vocdoni.io/'
-            target='_blank'
-            display='flex'
-            justifyContent='center'
-            alignItems='center'
-            borderRadius='sm'
-            minW='30px'
-            h='30px'
-            border='1px solid gray'
-          >
-            <Icon aria-label={t('link.discord').toString()} as={FaDiscord} w={4} h={4} cursor='pointer' color='gray' />
+          <Link variant='icon' href='https://chat.vocdoni.io/' target='_blank'>
+            <Icon aria-label={t('link.discord').toString()} as={FaDiscord} />
           </Link>
 
-          <Link
-            href='https://github.com/vocdoni'
-            target='_blank'
-            display='flex'
-            justifyContent='center'
-            alignItems='center'
-            borderRadius='sm'
-            minW='30px'
-            h='30px'
-            border='1px solid gray'
-          >
-            <Icon aria-label={t('link.github').toString()} as={FaGithub} w={4} h={4} cursor='pointer' color='gray' />
+          <Link variant='icon' href='https://github.com/vocdoni' target='_blank'>
+            <Icon aria-label={t('link.github').toString()} as={FaGithub} />
           </Link>
         </Flex>
       </Flex>
