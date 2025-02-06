@@ -51,11 +51,11 @@ const Berga = () => (
         <strong>Seleccioneu</strong> una opció depenent de la teva edat
       </Text>
       <Flex gap={5} flexDirection={{ base: 'column', md: 'row' }}>
-        <ProcessLink id='6be21a5a9dc0d60812a70bb63b3693846873c371c2463472a4d3020800000006'>
+        <ProcessLink id='6be21a5a9dc0d60812a70bb63b3693846873c371c2463472a4d302080000000c'>
           <Text fontSize='18px'>Accedeix a la votació Juvenil</Text>
           <Text>12 - 15 anys</Text>
         </ProcessLink>
-        <ProcessLink id='6be21a5a9dc0d60812a70bb63b3693846873c371c2463472a4d3020000000007'>
+        <ProcessLink id='6be21a5a9dc0d60812a70bb63b3693846873c371c2463472a4d302000000000d'>
           <Text fontSize='18px'>Accedeix a la votació General</Text>
           <Text>+16 anys</Text>
         </ProcessLink>

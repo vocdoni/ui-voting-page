@@ -2,7 +2,7 @@ import { Box, Progress } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { ElectionQuestions, ElectionResults, SpreadsheetAccess } from '@vocdoni/chakra-components'
 import { ElectionProvider, useElection } from '@vocdoni/react-providers'
-import { ArchivedElection, InvalidElection, IVotePackage, PublishedElection, VocdoniSDKClient } from '@vocdoni/sdk'
+import { InvalidElection, IVotePackage, PublishedElection, VocdoniSDKClient } from '@vocdoni/sdk'
 import { useEffect, useState } from 'react'
 import { Trans } from 'react-i18next'
 import { VoteButton } from './Aside'
@@ -68,7 +68,7 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
 }
 
 type ChainedProcessesProps = {
-  root?: PublishedElection | ArchivedElection | InvalidElection
+  root?: PublishedElection | InvalidElection
 }
 
 export const ChainedProcesses = ({ root }: ChainedProcessesProps) => {

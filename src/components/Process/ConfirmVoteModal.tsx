@@ -79,6 +79,18 @@ export const ConfirmVoteModal = ({ election, answers }: { election: PublishedEle
 
 const ConfirmMultiquestion = ({ question, answers }: { question: IQuestion; answers: FieldValues }) => {
   const { t } = useTranslation()
+
+  // Add abstain option to choices if needed
+  const choices = [...question.choices]
+  if (answers[0].includes('-1')) {
+    choices[-1] = {
+      title: {
+        default: t('cc.vote.abstain'),
+      },
+      value: -1,
+    }
+  }
+
   return (
     <Text display='flex' flexDirection='column' gap={1}>
       <Trans
@@ -91,7 +103,7 @@ const ConfirmMultiquestion = ({ question, answers }: { question: IQuestion; answ
             answers[0].length === 0
               ? t('process.spreadsheet.confirm.blank_vote')
               : answers[0]
-                  .map((a: string) => question.choices[Number(a)].title.default)
+                  .map((a: string) => choices[Number(a)].title.default)
                   .map((a: string) => `- ${a}`)
                   .join('<br />'),
         }}
