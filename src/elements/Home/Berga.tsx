@@ -2,7 +2,7 @@ import { Box, Flex, Image, Link, Text } from '@chakra-ui/react'
 import { PropsWithChildren } from 'react'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import VocdoniLogo from '~components/Layout/Logo'
-import bergaImg from '/assets/berga/berga.jpg'
+import bergaImg from '/assets/berga/logo.png'
 
 const Berga = () => (
   <Flex flexDirection='column' gap={10} maxW='900px' mx='auto' p={5} minH='100vh'>

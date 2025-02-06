@@ -3,7 +3,6 @@ import { useConfirm } from '@vocdoni/chakra-components'
 import { ElectionResultsTypeNames, IQuestion, PublishedElection } from '@vocdoni/sdk'
 import { FieldValues } from 'react-hook-form'
 import { Trans, useTranslation } from 'react-i18next'
-import { IoWarningOutline } from 'react-icons/io5'
 import confirmImg from '/assets/spreadsheet-confirm-modal.jpg'
 
 export const ConfirmVoteModal = ({ election, answers }: { election: PublishedElection; answers: FieldValues }) => {
@@ -54,16 +53,6 @@ export const ConfirmVoteModal = ({ election, answers }: { election: PublishedEle
             </Box>
           ))}
         </Flex>
-        {canAbstain && answers[0].length < election.voteType.maxCount! && (
-          <Flex direction={'row'} py={2} gap={2} alignItems={'center'} color={'primary.main'}>
-            <IoWarningOutline />
-            <Text display='flex' flexDirection='column' gap={1}>
-              {t('process.spreadsheet.confirm.abstain_count', {
-                count: election.voteType.maxCount! - answers[0].length,
-              })}
-            </Text>
-          </Flex>
-        )}
       </ModalBody>
       <ModalFooter sx={styles.footer}>
         <Button onClick={cancel!} variant='ghost' sx={styles.cancel}>

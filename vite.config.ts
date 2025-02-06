@@ -27,7 +27,7 @@ export default defineConfig(({ mode }) => {
     define: {
       'import.meta.env.VOCDONI_ENVIRONMENT': `"${vocdoniEnvironment}"`,
       'import.meta.env.PROCESS_IDS': JSON.stringify(pids),
-      'import.meta.env.HOME': JSON.stringify(process.env.HOME || 'Home'),
+      'import.meta.env.CLIENT': JSON.stringify(process.env.CLIENT || 'default').toLowerCase(),
     },
     plugins: [tsconfigPaths(), react()],
   }

@@ -9,12 +9,12 @@ import { SuspenseLoader } from './SuspenseLoader'
 
 // Map of available home components
 const HomeComponents = {
-  Home: () => import('~elements/Home/Home'),
-  Berga: () => import('~elements/Home/Berga'),
+  home: () => import('~elements/Home/Home'),
+  berga: () => import('~elements/Home/Berga'),
 }
 
 // @ts-ignore
-const homeComponent = HomeComponents[import.meta.env.HOME] || HomeComponents.Home
+const homeComponent = HomeComponents[import.meta.env.CLIENT] || HomeComponents.home
 const Home = lazy(homeComponent)
 const Vote = lazy(() => import('~elements/Vote'))
 
