@@ -45,7 +45,13 @@
       "title": "Resultats per a \"{{ title }}\"",
       "votes": "Vots: {{ votes }} ({{ percent }})"
     },
-    "schedule": "Votació del {{ begin }} al {{ end }}",
+    "schedule": {
+      "created": "Creat {{ distance }}",
+      "ended": "Finalitzat {{ distance }}",
+      "from_begin_to_end": "Votació del {{ begin }} al {{ end }}",
+      "paused_end": "Finalitza {{ distance }}",
+      "paused_start": "Comença {{ distance }}"
+    },
     "spreadsheet": {
       "access_button": "Identifica't",
       "anon_sik_helper": "Això garanteix que el teu vot sigui anònim",

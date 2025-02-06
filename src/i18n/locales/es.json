@@ -45,7 +45,13 @@
       "title": "Resultados para \"{{ title }}\"",
       "votes": "Votos: {{ votes }} ({{ percent }})"
     },
-    "schedule": "Votación desde el {{ begin }} hasta {{ end }}",
+    "schedule": {
+      "created": "Creado {{ distance }}",
+      "ended": "Finalizado {{ distance }}",
+      "from_begin_to_end": "Votación del {{ begin }} al {{ end }}",
+      "paused_end": "Finaliza en {{ distance }}",
+      "paused_start": "Comienza en {{ distance }}"
+    },
     "spreadsheet": {
       "access_button": "Identificarse",
       "anon_sik_helper": "Esto garantiza que la votación sea anónima",
