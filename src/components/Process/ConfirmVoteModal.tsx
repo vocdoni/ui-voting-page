@@ -1,6 +1,6 @@
 import { Box, Button, Flex, ModalBody, ModalFooter, ModalHeader, Text, useMultiStyleConfig } from '@chakra-ui/react'
 import { useConfirm } from '@vocdoni/chakra-components'
-import { ElectionResultsTypeNames, PublishedElection } from '@vocdoni/sdk'
+import { ElectionResultsTypeNames, IQuestion, PublishedElection } from '@vocdoni/sdk'
 import { FieldValues } from 'react-hook-form'
 import { Trans, useTranslation } from 'react-i18next'
 import { IoWarningOutline } from 'react-icons/io5'
@@ -45,36 +45,9 @@ export const ConfirmVoteModal = ({ election, answers }: { election: PublishedEle
                   />
                 </Text>
                 {election.resultsType.name === ElectionResultsTypeNames.SINGLE_CHOICE_MULTIQUESTION ? (
-                  <Text display='flex' flexDirection='column' gap={1}>
-                    <Trans
-                      i18nKey='process.spreadsheet.confirm.option'
-                      components={{
-                        span: <Text as='span' fontWeight='bold' whiteSpace='nowrap' />,
-                      }}
-                      values={{
-                        answer: q.choices[Number(answers[i])].title.default,
-                        number: i + 1,
-                      }}
-                    />
-                  </Text>
+                  <ConfirmQuestion question={q} answers={answers} index={i} />
                 ) : (
-                  <Text display='flex' flexDirection='column' gap={1}>
-                    <Trans
-                      i18nKey='process.spreadsheet.confirm.options'
-                      components={{
-                        span: <Text as='span' fontWeight='bold' whiteSpace='nowrap' />,
-                      }}
-                      values={{
-                        answers:
-                          answers[0].length === 0
-                            ? t('process.spreadsheet.confirm.blank_vote')
-                            : answers[0]
-                                .map((a: string) => q.choices[Number(a)].title.default)
-                                .map((a: string) => `- ${a}`)
-                                .join('<br />'),
-                      }}
-                    />
-                  </Text>
+                  <ConfirmMultiquestion question={q} answers={answers} />
                 )}
               </Box>
               {i + 1 !== election.questions.length && <Box h='1px' bgColor='lightgray' />}
@@ -101,5 +74,53 @@ export const ConfirmVoteModal = ({ election, answers }: { election: PublishedEle
         </Button>
       </ModalFooter>
     </>
+  )
+}
+
+const ConfirmMultiquestion = ({ question, answers }: { question: IQuestion; answers: FieldValues }) => {
+  const { t } = useTranslation()
+  return (
+    <Text display='flex' flexDirection='column' gap={1}>
+      <Trans
+        i18nKey='process.spreadsheet.confirm.options'
+        components={{
+          span: <Text as='span' fontWeight='bold' whiteSpace='nowrap' />,
+        }}
+        values={{
+          answers:
+            answers[0].length === 0
+              ? t('process.spreadsheet.confirm.blank_vote')
+              : answers[0]
+                  .map((a: string) => question.choices[Number(a)].title.default)
+                  .map((a: string) => `- ${a}`)
+                  .join('<br />'),
+        }}
+      />
+    </Text>
+  )
+}
+
+const ConfirmQuestion = ({
+  question,
+  answers,
+  index,
+}: {
+  question: IQuestion
+  answers: FieldValues
+  index: number
+}) => {
+  return (
+    <Text display='flex' flexDirection='column' gap={1}>
+      <Trans
+        i18nKey='process.spreadsheet.confirm.option'
+        components={{
+          span: <Text as='span' fontWeight='bold' whiteSpace='nowrap' />,
+        }}
+        values={{
+          answer: question.choices[Number(answers[index])].title.default,
+          number: index + 1,
+        }}
+      />
+    </Text>
   )
 }
