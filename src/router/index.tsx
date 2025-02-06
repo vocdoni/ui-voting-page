@@ -15,7 +15,6 @@ const HomeComponents = {
 
 // @ts-ignore
 const homeComponent = HomeComponents[import.meta.env.HOME] || HomeComponents.Home
-/* @vite-ignore */
 const Home = lazy(homeComponent)
 const Vote = lazy(() => import('~elements/Vote'))
 
@@ -31,7 +30,7 @@ export const RoutesProvider = () => {
     ),
   }
 
-  if (ProcessIds.length <= 1) {
+  if (ProcessIds.length <= 1 && import.meta.env.HOME === 'Home') {
     home.element = (
       <SuspenseLoader>
         <Vote />
