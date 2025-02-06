@@ -15,7 +15,7 @@ const Berga = () => (
         Ajuntament de Berga
       </Text>
     </Box>
-    <Text>
+    <Box>
       <Text as='h3' fontWeight='bold'>
         Pressupost Participatiu de Berga 2025
       </Text>
@@ -31,8 +31,8 @@ const Berga = () => (
         tanca emmarcada dins l'àmbit de "Inversió" i el projecte de Art Urbà: els murs pel canvi dins l'àmbit de
         "Cultura".
       </Text>
-    </Text>
-    <Text>
+    </Box>
+    <Box>
       <Text as='h3' fontWeight='bold'>
         Pressupost Participatiu Juvenil
       </Text>
@@ -45,17 +45,17 @@ const Berga = () => (
         En la tercera edició (2024) va resultar guanyadora la organització d'activitats en oci nocturn: DJs, festa major
         jove, etc. Dues o tres nits de DJ's, disco mòbil o altres activitats musicals, en places de Berga.
       </Text>
-    </Text>
+    </Box>
     <Box>
       <Text alignSelf='start' mb={10}>
         <strong>Seleccioneu</strong> una opció depenent de la teva edat
       </Text>
       <Flex gap={5} flexDirection={{ base: 'column', md: 'row' }}>
-        <ProcessLink id='6be21a5a9dc0d60812a70bb63b3693846873c371c2463472a4d3020800000002'>
+        <ProcessLink id='6be21a5a9dc0d60812a70bb63b3693846873c371c2463472a4d3020800000006'>
           <Text fontSize='18px'>Accedeix a la votació Juvenil</Text>
           <Text>12 - 15 anys</Text>
         </ProcessLink>
-        <ProcessLink id='6be21a5a9dc0d60812a70bb63b3693846873c371c2463472a4d3020000000003'>
+        <ProcessLink id='6be21a5a9dc0d60812a70bb63b3693846873c371c2463472a4d3020000000007'>
           <Text fontSize='18px'>Accedeix a la votació General</Text>
           <Text>+16 anys</Text>
         </ProcessLink>
