@@ -39,6 +39,21 @@
       "wrong_data_description": "Les dades especificades no són correctes",
       "wrong_data_title": "Dades incorrectes"
     },
+    "loading": "Loading...",
+    "pagination": {
+      "total_results": "Showing a total of {{ count }} results"
+    },
+    "question_types": {
+      "approval_title": "Approval Voting",
+      "approval_tooltip": "Approval voting lets you vote for as many options as you like. The one with the most votes wins. It's a simple way to show your support for all the choices you approve of.",
+      "multichoice_cannot_abstain": "Massa opcions seleccionades",
+      "multichoice_desc": "Selecciona fins a {{maxcount}} opcions",
+      "multichoice_desc_abstain": " (o abstén-te)",
+      "multichoice_title": "Votació Multiopció {{ weighted }}",
+      "multichoice_tooltip": "La votació multiopció et permet votar fins a {{maxcount}} opcions (definit per l'organizador). La opció que resulti més votada serà la candidata.",
+      "singlechoice_title": "Única opció {{ weighted }}",
+      "weighted_voting": "Weighted Voting"
+    },
     "results": {
       "date_format": "PPpp",
       "secret_until_the_end": "Els resultats es faran públics quan el procés finalitzi el {{ endDate }}",
@@ -146,9 +161,6 @@
     "share_title": "Comparteix a {{ network }}",
     "spreadsheet": {
       "confirm": {
-        "abstain_count_one": "",
-        "abstain_count_many": "",
-        "abstain_count_other": "",
         "blank_vote": "",
         "description": "Abans de votar, reviseu que tot sigui correcte.",
         "option": "<strong>Opció {{ number }}:</strong> {{ answer }}",
