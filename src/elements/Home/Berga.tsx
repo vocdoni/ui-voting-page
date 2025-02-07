@@ -24,11 +24,11 @@ const Berga = () => (
         a quins projectes o activitats es destina una part del pressupost públic municipal.
         <br />
         <br />
-        L'Ajuntament de Berga promou per sisé any consecutiu el pressupost participatiu. Comptarà amb una partida de
-        45.000€, els quals es podran destinar tant a propostes d'inversió (màxim de 30.000 €) com de propostes culturals
-        (màxim de 10.000€). En la votació de l'any passat (2024) va resultar guanyadora la millora de l'entorn de la
-        residència Sant Bernabé amb la creació d'un espai de jardí tancat, net i controlat amb col·locació d'una tanca
-        emmarcada dins l'àmbit de "Inversió" i el projecte de Art Urbà: els murs pel canvi dins l'àmbit de "Cultura".
+        L'Ajuntament de Berga promou per sisè any consecutiu el pressupost participatiu. Comptarà amb una partida de
+        45.000 €, els quals es podran destinar tant a propostes d'inversió (màxim de 30.000 €) com a propostes culturals
+        (màxim de 10.000 €). En la votació de l'any passat (2024) van resultar guanyadores en l'àmbit d'inversió: la
+        millora de l'entorn de la residència Sant Bernabé i la proposta de millora i manteniment dels parcs infantils i
+        en l'àmbit de Cultura: el projecte de Art Urbà: Els murs pel canvi i la Mostra de Teatre Amateur del Berguedà.
       </Text>
     </Box>
     <Box>
@@ -36,13 +36,12 @@ const Berga = () => (
         Pressupost Participatiu Juvenil
       </Text>
       <Text>
-        El consistori promou per tercer any el pressupost participatiu adreçat a joves de 12 a 15 anys que s'organitzarà
-        a través dels centres educatius de la ciutat. Comptarà amb una partida de 5.000€ que es podran destinar tant a
+        El consistori promou per quart any el pressupost participatiu adreçat a joves de 12 a 15 anys que s'organitzarà
+        a través dels centres educatius de la ciutat. Comptarà amb una partida de 5.000 € que es podran destinar tant a
         propostes d'inversió com de programació cultural.
         <br />
         <br />
-        En la tercera edició (2024) va resultar guanyadora la organització d'activitats en oci nocturn: DJs, festa major
-        jove, etc. Dues o tres nits de DJ's, disco mòbil o altres activitats musicals, en places de Berga.
+        En la tercera edició (2024) va resultar guanyadora la organització d'activitats d'oci nocturn.
       </Text>
     </Box>
     <Box>
