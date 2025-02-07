@@ -25,11 +25,10 @@ const Berga = () => (
         <br />
         <br />
         L'Ajuntament de Berga promou per sisé any consecutiu el pressupost participatiu. Comptarà amb una partida de
-        XX.000€, els quals es podran destinar tant a propostes d'inversió (màxim de XX.000 €) com de programació
-        cultural (màxim de XX.000€). En la votació de l'any passat (2024) va resultar guanyadora la millora de l'entorn
-        de la residència Sant Bernabé amb la creació d'un espai de jardí tancat, net i controlat amb col·locació d'una
-        tanca emmarcada dins l'àmbit de "Inversió" i el projecte de Art Urbà: els murs pel canvi dins l'àmbit de
-        "Cultura".
+        45.000€, els quals es podran destinar tant a propostes d'inversió (màxim de 30.000 €) com de propostes culturals
+        (màxim de 10.000€). En la votació de l'any passat (2024) va resultar guanyadora la millora de l'entorn de la
+        residència Sant Bernabé amb la creació d'un espai de jardí tancat, net i controlat amb col·locació d'una tanca
+        emmarcada dins l'àmbit de "Inversió" i el projecte de Art Urbà: els murs pel canvi dins l'àmbit de "Cultura".
       </Text>
     </Box>
     <Box>
@@ -38,7 +37,7 @@ const Berga = () => (
       </Text>
       <Text>
         El consistori promou per tercer any el pressupost participatiu adreçat a joves de 12 a 15 anys que s'organitzarà
-        a través dels centres educatius de la ciutat. Comptarà amb una partida de X.000€ que es podran destinar tant a
+        a través dels centres educatius de la ciutat. Comptarà amb una partida de 5.000€ que es podran destinar tant a
         propostes d'inversió com de programació cultural.
         <br />
         <br />
@@ -47,6 +46,9 @@ const Berga = () => (
       </Text>
     </Box>
     <Box>
+      <Text textAlign='center' fontWeight='bold' mb={5}>
+        LA VOTACIÓ COMENÇARÀ EL DIJOUS 13 DE FEBRER A LES 9:30
+      </Text>
       <Text alignSelf='start' mb={10}>
         <strong>Seleccioneu</strong> una opció depenent de la teva edat
       </Text>
