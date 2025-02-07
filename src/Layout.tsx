@@ -1,6 +1,5 @@
 import { Button, Grid, Image, Link, Stack } from '@chakra-ui/react'
 import { Outlet, Link as RouterLink, useLocation } from 'react-router-dom'
-import { ColorModeSwitcher } from '~components/ColorModeSwitcher'
 import { LanguagesMenu } from '~components/Layout/LanguagesList'
 import { VocdoniAppURL } from '~constants'
 import Footer from './theme/components/Footer'
@@ -21,7 +20,6 @@ const Layout = () => {
             <Button colorScheme='pink'>Admin</Button>
           </Link>
           <LanguagesMenu />
-          <ColorModeSwitcher />
         </Stack>
       </Stack>
       <Outlet />
