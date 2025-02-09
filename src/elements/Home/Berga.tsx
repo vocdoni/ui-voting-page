@@ -4,6 +4,8 @@ import { Link as ReactRouterLink } from 'react-router-dom'
 import VocdoniLogo from '~components/Layout/Logo'
 import bergaImg from '/assets/berga/logo.png'
 
+const votingProcessIds: string[] = [];
+
 const Berga = () => (
   <Flex flexDirection='column' gap={10} maxW='900px' mx='auto' p={5} minH='100vh'>
     <Image src={bergaImg} width='300px' alt='ajuntament berga escut' mx='auto' />
@@ -45,22 +47,26 @@ const Berga = () => (
       </Text>
     </Box>
     <Box>
-      <Text textAlign='center' fontWeight='bold' mb={5}>
+      <Text textAlign='center' fontWeight='bold' mb={5} mt='30px' fontSize='20px'>
         LA VOTACIÓ COMENÇARÀ EL DIJOUS 13 DE FEBRER A LES 9:30
       </Text>
-      <Text alignSelf='start' mb={10}>
-        <strong>Seleccioneu</strong> una opció depenent de la teva edat
-      </Text>
-      <Flex gap={5} flexDirection={{ base: 'column', md: 'row' }}>
-        <ProcessLink id='b31dff61814dd60812a70bb63b3693846873c371c2463472a4d3020800000000'>
-          <Text fontSize='18px'>Accedeix a la votació Juvenil</Text>
-          <Text>12 - 15 anys</Text>
-        </ProcessLink>
-        <ProcessLink id='b31dff61814dd60812a70bb63b3693846873c371c2463472a4d3020000000001'>
-          <Text fontSize='18px'>Accedeix a la votació General</Text>
-          <Text>+16 anys</Text>
-        </ProcessLink>
-      </Flex>
+      {votingProcessIds.length > 0 && (
+        <Box>
+          <Text alignSelf='start' mb={10}>
+            <strong>Seleccioneu</strong> una opció depenent de la teva edat
+          </Text>
+          <Flex gap={5} flexDirection={{ base: 'column', md: 'row' }}>
+            <ProcessLink id={votingProcessIds[0]}>
+              <Text fontSize='18px'>Accedeix a la votació Juvenil</Text>
+              <Text>12 - 15 anys</Text>
+            </ProcessLink>
+            <ProcessLink id={votingProcessIds[1]}>
+              <Text fontSize='18px'>Accedeix a la votació General</Text>
+              <Text>+16 anys</Text>
+            </ProcessLink>
+          </Flex>
+        </Box>
+      )}
     </Box>
     <Text>
       Per poder accedir a la votació, us demanarem el vostre número de DNI (Document Nacional d'Identitat) i data de
