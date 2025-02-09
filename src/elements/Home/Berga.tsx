@@ -4,7 +4,7 @@ import { Link as ReactRouterLink } from 'react-router-dom'
 import VocdoniLogo from '~components/Layout/Logo'
 import bergaImg from '/assets/berga/logo.png'
 
-const votingProcessIds = [];
+const votingProcessIds: string[] = [];
 
 const Berga = () => (
   <Flex flexDirection='column' gap={10} maxW='900px' mx='auto' p={5} minH='100vh'>
