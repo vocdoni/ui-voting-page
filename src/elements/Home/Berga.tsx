@@ -1,7 +1,6 @@
 import { Box, Flex, Image, Link, Text } from '@chakra-ui/react'
 import { PropsWithChildren } from 'react'
 import { Link as ReactRouterLink } from 'react-router-dom'
-import VocdoniLogo from '~components/Layout/Logo'
 import bergaImg from '/assets/berga/logo.png'
 
 const votingProcessIds: string[] = import.meta.env.PROCESS_IDS
@@ -72,9 +71,6 @@ const Berga = () => (
       Per poder accedir a la votació, us demanarem el vostre número de DNI (Document Nacional d'Identitat) i data de
       naixement. Posteriorment, podreu seleccionar les vostres opcions i enviar el vot de forma segura.
     </Text>
-    <Flex as={Link} justifyContent='center' mt='auto' href='https://vocdoni.io' isExternal>
-      <VocdoniLogo maxW='200px' />
-    </Flex>
   </Flex>
 )
 
