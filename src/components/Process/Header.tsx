@@ -84,7 +84,7 @@ const ProcessHeader = () => {
                 <Text as='span' color='process.label' fontSize='sm'>
                   {t('process.schedule')}
                 </Text>
-                <ElectionSchedule textAlign='left' color='process.info_title' />
+                <ElectionSchedule textAlign='left' color='process.info_title' format='PPPp' />
               </Flex>
             </Flex>
             <Box display={{ base: 'none', xl: 'flex' }}>

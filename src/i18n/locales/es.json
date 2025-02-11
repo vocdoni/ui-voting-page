@@ -63,7 +63,7 @@
     "schedule": {
       "created": "Creado {{ distance }}",
       "ended": "Finalizado {{ distance }}",
-      "from_begin_to_end": "Votación del {{ begin }} al {{ end }}",
+      "from_begin_to_end": "Del {{ begin }} al {{ end }}",
       "paused_end": "Finaliza en {{ distance }}",
       "paused_start": "Comienza en {{ distance }}"
     },
