@@ -46,8 +46,8 @@ const Berga = () => (
       </Text>
     </Box>
     <Box>
-      <Text textAlign='center' fontWeight='bold' mb={5} mt='30px' fontSize='20px'>
-        LA VOTACIÓ COMENÇARÀ EL DIJOUS 13 DE FEBRER A LES 9:30
+      <Text textAlign='center' fontWeight='bold' mb={5} marginBottom='40px'>
+        LA VOTACIÓ COMENÇA EL DIJOUS 13 DE FEBRER A LES 9:30
       </Text>
       {votingProcessIds.length > 0 && (
         <Box>
