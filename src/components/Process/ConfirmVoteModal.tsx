@@ -10,9 +10,6 @@ export const ConfirmVoteModal = ({ election, answers }: { election: PublishedEle
   const styles = useMultiStyleConfig('ConfirmModal')
   const { cancel, proceed } = useConfirm()
 
-  const canAbstain =
-    election.resultsType.name === ElectionResultsTypeNames.MULTIPLE_CHOICE && election.resultsType.properties.canAbstain
-
   return (
     <>
       <ModalHeader>
