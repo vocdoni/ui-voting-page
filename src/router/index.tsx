@@ -11,6 +11,7 @@ import { SuspenseLoader } from './SuspenseLoader'
 const HomeComponents = {
   home: () => import('~elements/Home/Home'),
   berga: () => import('~elements/Home/Berga'),
+  pxll: () => import('~elements/Home/Pxll'),
 }
 
 // @ts-ignore
