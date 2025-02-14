@@ -30,7 +30,7 @@ export const RoutesProvider = () => {
     ),
   }
 
-  if (ProcessIds.length <= 1 && import.meta.env.HOME === 'Home') {
+  if (ProcessIds.length <= 1 && homeComponent === HomeComponents.home) {
     home.element = (
       <SuspenseLoader>
         <Vote />
