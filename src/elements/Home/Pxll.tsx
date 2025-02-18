@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Link, ListItem, OrderedList, Text } from '@chakra-ui/react'
+import { Box, Flex, Image, Link, ListItem, OrderedList, Text, UnorderedList } from '@chakra-ui/react'
 import { ElectionTitle, SpreadsheetAccess } from '@vocdoni/chakra-components'
 import { ElectionProvider, useElection } from '@vocdoni/react-providers'
 import { generatePath, Link as RouterLink } from 'react-router-dom'
@@ -18,7 +18,7 @@ const Pxll = () => {
           Associació Plataforma per la Llengua - Col·lectiu l'Esbarzer
         </Text>
       </Box>
-      <Box>
+      <Box gap={3} display='flex' flexDir='column'>
         <Text as='h3' fontWeight='bold'>
           Ordre del dia de l'Assemblea General Ordinària
         </Text>
@@ -33,18 +33,24 @@ const Pxll = () => {
           <ListItem>Ratificació de les incorporacions per substitució a l'Executiva 2024-2026.</ListItem>
           <ListItem>Torn obert de preguntes.</ListItem>
         </OrderedList>
-        <Text>
-          Enllaç a documentació externa:{' '}
-          <Link isExternal href='https://www.plataforma-llengua.cat/ago-2025-documentacio/'>
-            Documentació 🔗
-          </Link>
-        </Text>
-        <Text>
-          - Enllaç a plataforma de precs i preguntes:{' '}
-          <Link isExternal href='https://www.plataforma-llengua.cat/ago-2024-precs-i-preguntes/'>
-            Precs i Preguntes 🔗
-          </Link>
-        </Text>
+        <UnorderedList mt={5}>
+          <ListItem>
+            <Text>
+              Enllaç a documentació externa:{' '}
+              <Link isExternal href='https://www.plataforma-llengua.cat/ago-2025-documentacio/'>
+                Documentació 🔗
+              </Link>
+            </Text>
+          </ListItem>
+          <ListItem>
+            <Text>
+              Enllaç a plataforma de precs i preguntes:{' '}
+              <Link isExternal href='https://www.plataforma-llengua.cat/ago-2024-precs-i-preguntes/'>
+                Precs i Preguntes 🔗
+              </Link>
+            </Text>
+          </ListItem>
+        </UnorderedList>
       </Box>
       <SpreadsheetAccess hashPrivateKey />
       {connected && import.meta.env.PROCESS_IDS.map((id: string) => <ElectionButtonCard id={id} key={id} />)}
