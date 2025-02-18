@@ -60,7 +60,16 @@ const Pxll = () => {
 const ElectionButtonCard = ({ id }: { id: string }) => (
   <ElectionProvider id={id}>
     <Link as={RouterLink} to={generatePath('/:id', { id }) + `/${window.location.hash}`}>
-      <Box w='full' p={5} bg='white' color='black'>
+      <Box
+        w='full'
+        p={5}
+        bg='white'
+        color='black'
+        boxShadow='md'
+        borderRadius='lg'
+        _active={{ boxShadow: 'sm' }}
+        _hover={{ boxShadow: 'sm' }}
+      >
         <ElectionTitle fontSize='normal' m={0} />
       </Box>
     </Link>
