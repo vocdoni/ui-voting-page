@@ -31,11 +31,22 @@ jobs:
       - name: Lint
         run: yarn lint
 
-      - name: Build voting page stg
+      - name: Build voting page dev
         run: yarn build
         env:
-          VOCDONI_ENVIRONMENT: stg
-          PROCESS_IDS: '["4ae20a8eb4ca8bd340fc16a71ae591b88418c42e799705b98073020000000021"]'
+          VOCDONI_ENVIRONMENT: dev
+          CLIENT: pxll
+          PROCESS_IDS: >-
+            [
+              "6be21a5a9dc06a2ac066a5bc24c0a669c07f6570166c9241b4cf020000000017",
+              "6be21a5a9dc06a2ac066a5bc24c0a669c07f6570166c9241b4cf020000000016",
+              "6be21a5a9dc06a2ac066a5bc24c0a669c07f6570166c9241b4cf020000000015",
+              "6be21a5a9dc06a2ac066a5bc24c0a669c07f6570166c9241b4cf020000000014",
+              "6be21a5a9dc06a2ac066a5bc24c0a669c07f6570166c9241b4cf020000000013",
+              "6be21a5a9dc06a2ac066a5bc24c0a669c07f6570166c9241b4cf020000000012",
+              "6be21a5a9dc06a2ac066a5bc24c0a669c07f6570166c9241b4cf020000000011",
+              "6be21a5a9dc06a2ac066a5bc24c0a669c07f6570166c9241b4cf020000000010"
+            ]
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0
