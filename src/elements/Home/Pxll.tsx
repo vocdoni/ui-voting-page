@@ -8,7 +8,7 @@ import logo from '/assets/pxll/logo.png'
 const Pxll = () => {
   const { connected } = useElection()
   return (
-    <Flex flexDirection='column' gap={10} maxW='900px' mx='auto' p={5} minH='100vh'>
+    <Flex flexDirection='column' gap={10} maxW='900px' mx='auto' p={5} minH='100vh' w='full'>
       <Image src={logo} alt='logo plataforma per la llengua' mx='auto' />
       <Box>
         <Text as='h1' fontWeight='bold' fontSize='36px' textAlign='center'>
