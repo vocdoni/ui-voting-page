@@ -17,7 +17,7 @@ const Layout = () => {
         )}
         <Stack direction='row' alignItems='center' mb={3} alignSelf='start' ml='auto'>
           <Link href={VocdoniAppURL}>
-            <Button colorScheme='pink'>Admin</Button>
+            <Button variant='link'>Admin</Button>
           </Link>
           <LanguagesMenu />
         </Stack>
