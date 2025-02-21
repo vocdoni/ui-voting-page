@@ -12,6 +12,7 @@ const HomeComponents = {
   home: () => import('~elements/Home/Home'),
   berga: () => import('~elements/Home/Berga'),
   pxll: () => import('~elements/Home/Pxll'),
+  imaged: () => import('~elements/Home/Imaged'),
 }
 
 // @ts-ignore
