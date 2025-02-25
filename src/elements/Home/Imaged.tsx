@@ -1,13 +1,14 @@
 import { checkboxAnatomy } from '@chakra-ui/anatomy'
-import { createMultiStyleConfigHelpers, extendTheme, Text, ThemeProvider, VStack } from '@chakra-ui/react'
+import { createMultiStyleConfigHelpers, extendTheme, ThemeProvider, VStack } from '@chakra-ui/react'
 import {
   ElectionQuestions,
   questionChoiceAnatomy,
   questionsAnatomy,
   questionTipAnatomy,
   SpreadsheetAccess,
+  VoteButton,
 } from '@vocdoni/chakra-components'
-import { ElectionProvider } from '@vocdoni/react-providers'
+import { ElectionProvider, useElection } from '@vocdoni/react-providers'
 
 const { defineMultiStyleConfig: defineQuestionsThemeConfig, definePartsStyle: defineQuestionsPartStyle } =
   createMultiStyleConfigHelpers(questionsAnatomy)
@@ -107,10 +108,20 @@ const QuestionsTip = defineQuestionTipStyleConfig({
   }),
 })
 
+const Election = () => {
+  const { connected } = useElection()
+  return (
+    <>
+      <SpreadsheetAccess />
+      <ElectionQuestions w='full' />
+      {connected && <VoteButton />}
+    </>
+  )
+}
+
 const Imaged = () => {
   return (
     <VStack spacing={8} w='full' maxW='1024px' mx='auto'>
-      <Text>This would be the landing page for multiple processes:</Text>
       <ThemeProvider
         theme={extendTheme({
           components: {
@@ -122,8 +133,7 @@ const Imaged = () => {
         })}
       >
         <ElectionProvider id={import.meta.env.PROCESS_IDS[0]} fetchCensus autoUpdate>
-          <ElectionQuestions w='full' />
-          <SpreadsheetAccess />
+          <Election />
         </ElectionProvider>
       </ThemeProvider>
     </VStack>
