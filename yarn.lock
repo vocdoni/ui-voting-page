@@ -2795,10 +2795,10 @@
     "@types/babel__core" "^7.20.5"
     react-refresh "^0.14.2"
 
-"@vocdoni/chakra-components@~0.9.8":
-  version "0.9.10"
-  resolved "https://registry.yarnpkg.com/@vocdoni/chakra-components/-/chakra-components-0.9.10.tgz#df8618a0c66f7b7e7ea2c5ac9b3e0ae3ea0cab83"
-  integrity sha512-C827bzXlpDW1Rj33zOA2/cHz0+K/XImRarhfIvPpfvHPYKb5YLAFPz33bkZZ0tm+c761U15V1MT2cG5uTWLvLg==
+"@vocdoni/chakra-components@~0.9.12":
+  version "0.9.12"
+  resolved "https://registry.yarnpkg.com/@vocdoni/chakra-components/-/chakra-components-0.9.12.tgz#b9fc0916e3b6af7a9354bb96f5fbc631c04cd485"
+  integrity sha512-VJVYJ5fLTlHROOxe5VIJ4//Aq3O8hY1o13ITyCtHErpw91qRBSCViLFW3btED3uIZtLt8XZp54bg+v3+WJVx4g==
   dependencies:
     "@vocdoni/react-providers" "~0.5.5"
 

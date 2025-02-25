@@ -1,7 +1,12 @@
 import { checkboxAnatomy } from '@chakra-ui/anatomy'
 import { createMultiStyleConfigHelpers, extendTheme, Text, ThemeProvider, VStack } from '@chakra-ui/react'
-import { ElectionQuestions, questionsAnatomy, questionTipAnatomy, SpreadsheetAccess } from '@vocdoni/chakra-components'
-import { questionChoiceAnatomy } from '@vocdoni/chakra-components/src/theme/question-choice'
+import {
+  ElectionQuestions,
+  questionChoiceAnatomy,
+  questionsAnatomy,
+  questionTipAnatomy,
+  SpreadsheetAccess,
+} from '@vocdoni/chakra-components'
 import { ElectionProvider } from '@vocdoni/react-providers'
 
 const { defineMultiStyleConfig: defineQuestionsThemeConfig, definePartsStyle: defineQuestionsPartStyle } =
