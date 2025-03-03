@@ -1,23 +1,11 @@
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AspectRatio,
-  Box,
-  Flex,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-} from '@chakra-ui/react'
+import { AspectRatio, Box, Flex, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react'
 import { useElection } from '@vocdoni/react-providers'
 import { ElectionStatus, PublishedElection } from '@vocdoni/sdk'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import ReactPlayer from 'react-player'
 import ProcessAside, { VoteButton } from './Aside'
-import { ChainedProcesses } from './Chained'
+import { ChainedProcesses, ChainedResults } from './Chained'
 import Header from './Header'
 import { SuccessVoteModal } from './SuccessVoteModal'
 
@@ -127,12 +115,7 @@ export const ProcessView = () => {
                 <ChainedProcesses root={election} />
               </TabPanel>
               <TabPanel mb={20}>
-                <Alert status='info'>
-                  <AlertIcon />
-                  <AlertDescription>
-                    Els resultats seràn visibles un cop verificats per part de l'Ajuntament de Berga.
-                  </AlertDescription>
-                </Alert>
+                <ChainedResults root={election} />
               </TabPanel>
             </TabPanels>
           </Tabs>
