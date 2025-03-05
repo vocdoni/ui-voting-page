@@ -10,7 +10,7 @@ const Layout = () => {
   return (
     <Grid p={3}>
       <Stack direction='row' mb={3} w='full' justifyContent='space-between'>
-        {pathname !== '/' && import.meta.env.CLIENT !== 'default' && (
+        {import.meta.env.CLIENT !== 'default' && (
           <Link as={RouterLink} to={`/${window.location.hash}`}>
             <Image src={`/assets/${import.meta.env.CLIENT.toLowerCase()}/logo.png`} alt='logo' maxW='250px' />
           </Link>
@@ -19,7 +19,7 @@ const Layout = () => {
           <Link href={VocdoniAppURL}>
             <Button variant='link'>Admin</Button>
           </Link>
-          <LanguagesMenu />
+          {import.meta.env.CLIENT !== 'pxll' && <LanguagesMenu />}
         </Stack>
       </Stack>
       <Outlet />

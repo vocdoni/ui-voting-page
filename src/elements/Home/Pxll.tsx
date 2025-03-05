@@ -16,7 +16,7 @@ import { generatePath, Link as RouterLink } from 'react-router-dom'
 
 import { useEffect, useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
-import logo from '/assets/pxll/logo.png'
+import logo from '/assets/pxll/assemblea.jpg'
 
 const Pxll = () => {
   const videoRef = useRef<HTMLDivElement>(null)
@@ -72,7 +72,11 @@ const Pxll = () => {
             <ListItem>
               <Text>
                 Enllaç a documentació externa:{' '}
-                <Link isExternal href='https://www.plataforma-llengua.cat/ago-2025-documentacio/'>
+                <Link
+                  isExternal
+                  href='https://www.plataforma-llengua.cat/documents-ago2025/
+'
+                >
                   Documentació 🔗
                 </Link>
               </Text>
@@ -129,7 +133,7 @@ const Pxll = () => {
 
 const ElectionButtonCard = ({ id }: { id: string }) => (
   <ElectionProvider id={id}>
-    <Link as={RouterLink} to={generatePath('/:id', { id }) + `/${window.location.hash}`}>
+    <Link as={RouterLink} to={generatePath('/:id', { id }) + `/${window.location.hash}`} isExternal>
       <Box
         w='full'
         p={5}
