@@ -15,11 +15,6 @@ const Layout = () => {
             <Image src={`/assets/${import.meta.env.CLIENT.toLowerCase()}/logo.png`} alt='logo' maxW='250px' />
           </Link>
         )}
-        {import.meta.env.CLIENT === 'imaged' && (
-          <Link as={RouterLink} to={`/${window.location.hash}`}>
-            <Image src={`/assets/${import.meta.env.CLIENT.toLowerCase()}/logo.jpg`} alt='logo' maxW='150px' />
-          </Link>
-        )}
         <Stack direction='row' alignItems='center' mb={3} alignSelf='start' ml='auto'>
           <Link href={VocdoniAppURL}>
             <Button variant='link'>Admin</Button>
