@@ -8,7 +8,7 @@ const Layout = () => {
   const { pathname } = useLocation()
 
   return (
-    <Grid p={3}>
+    <Grid p={3} minH='100vh'>
       <Stack direction='row' mb={3} w='full' justifyContent='space-between'>
         {pathname !== '/' && import.meta.env.CLIENT !== 'default' && (
           <Link as={RouterLink} to={`/${window.location.hash}`}>
