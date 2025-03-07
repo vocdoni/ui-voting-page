@@ -66,6 +66,9 @@ const baseStyle = definePartsStyle({
       display: 'flex',
       flexDirection: 'column',
       gap: 10,
+      '& > div:first-of-type': {
+        display: 'none',
+      },
     },
   },
 
