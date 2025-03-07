@@ -23,6 +23,7 @@ const Footer = () => {
         flexDirection={{ base: 'column', xl: 'row' }}
         alignItems='start'
         pb={{ base: '50px', xl: '24px' }}
+        mt='auto'
       >
         <Box flex='1 1 33%'>
           <VocdoniLogo maxW='120px' />

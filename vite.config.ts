@@ -33,6 +33,7 @@ export default defineConfig(({ mode }) => {
       'import.meta.env.VOCDONI_ENVIRONMENT': `"${vocdoniEnvironment}"`,
       'import.meta.env.PROCESS_IDS': JSON.stringify(pids),
       'import.meta.env.CLIENT': JSON.stringify(process.env.CLIENT || 'default').toLowerCase(),
+      'import.meta.env.STREAM_URL': JSON.stringify(process.env.STREAM_URL || ''),
     },
     plugins: [
       tsconfigPaths(),
