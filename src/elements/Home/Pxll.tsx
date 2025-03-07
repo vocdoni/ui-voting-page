@@ -42,7 +42,7 @@ const Pxll = () => {
   }, [])
 
   return (
-    <Flex flexDirection='column' gap={10} maxW='900px' mx='auto' p={5} minH='100vh' w='full' pb={20}>
+    <Flex flexDirection='column' gap={10} maxW='900px' mx='auto' p={5} minH='100vh' w='full' pb={20} mt='-128px'>
       <Image src={logo} alt='logo plataforma per la llengua' mx='auto' />
       <Box>
         <Text as='h1' fontWeight='bold' fontSize='36px' textAlign='center'>
