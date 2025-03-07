@@ -16,7 +16,7 @@ const Layout = () => {
           </Link>
         )}
         <Stack direction='row' alignItems='center' mb={3} alignSelf='start' ml='auto'>
-          <Link href={VocdoniAppURL}>
+          <Link href={VocdoniAppURL} isExternal>
             <Button variant='link'>Admin</Button>
           </Link>
           {import.meta.env.CLIENT !== 'pxll' && <LanguagesMenu />}
