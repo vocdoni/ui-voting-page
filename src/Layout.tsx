@@ -9,11 +9,11 @@ const Layout = () => {
 
   return (
     <Grid p={3} minH='100vh'>
-      <Stack direction='row' mb={3} w='full' justifyContent='space-between'>
+      <Stack direction='row' mb={3} w='full' justifyContent='space-between' alignItems={'center'}>
         <Link as={RouterLink} to={`/${window.location.hash}`}>
           <Image src={`/assets/imaged/logo.png`} alt='logo' maxW={'150px'} />
         </Link>
-        <Stack direction='row' alignItems='center' mb={3} alignSelf='start' ml='auto'>
+        <Stack direction='row' alignItems='center' mb={3} alignSelf='center' ml='auto'>
           <Button as={Link} variant='link' isExternal href={VocdoniAppURL}>
             Admin
           </Button>

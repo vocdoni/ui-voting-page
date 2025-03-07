@@ -239,10 +239,10 @@ const Imaged = () => {
         })}
       >
         <ElectionProvider id={import.meta.env.PROCESS_IDS[0]} fetchCensus autoUpdate>
-          <Heading as={'h1'} size={'lg'} mt='-60px'>
+          <Heading as={'h1'} size={'lg'} mt={{ lg: '-70px' }} textAlign={'center'}>
             Pressupostos Participatius 2025
           </Heading>
-          <Heading as={'h2'} size={'md'}>
+          <Heading as={'h2'} size={'md'} textAlign={'center'}>
             Ajuntament de Castelló d'Empúries
           </Heading>
           <Election />
