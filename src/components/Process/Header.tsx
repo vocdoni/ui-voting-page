@@ -88,11 +88,6 @@ const ProcessHeader = () => {
                 <ElectionSchedule textAlign='left' color='process.info_title' format='PPPp' />
               </Flex>
             </Flex>
-            {import.meta.env.CLIENT !== 'pxll' && (
-              <Box display={{ base: 'none', xl: 'flex' }}>
-                <ShareModalButton caption={t('share.election_share_text')} text={t('share.election_share_btn_text')} />
-              </Box>
-            )}
           </Flex>
           <Flex flexDirection='column'>
             {election instanceof PublishedElection && !election?.description?.default.length && (
