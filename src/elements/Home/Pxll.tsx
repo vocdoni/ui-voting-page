@@ -42,7 +42,17 @@ const Pxll = () => {
   }, [])
 
   return (
-    <Flex flexDirection='column' gap={10} maxW='900px' mx='auto' p={5} minH='100vh' w='full' pb={20} mt='-128px'>
+    <Flex
+      flexDirection='column'
+      gap={10}
+      maxW='900px'
+      mx='auto'
+      p={5}
+      minH='100vh'
+      w='full'
+      pb={20}
+      mt={{ lg2: '-128px' }}
+    >
       <Image src={logo} alt='logo plataforma per la llengua' mx='auto' />
       <Box>
         <Text as='h1' fontWeight='bold' fontSize='36px' textAlign='center'>
@@ -52,8 +62,8 @@ const Pxll = () => {
           Associació Plataforma per la Llengua - Col·lectiu l'Esbarzer
         </Text>
       </Box>
-      <Flex>
-        <Box gap={3} display='flex' flexDir='column'>
+      <Flex flexDirection={{ base: 'column', lg: 'row' }}>
+        <Box order={{ base: 2, lg: 1 }} gap={3} display='flex' flexDir='column'>
           <Text as='h3' fontWeight='bold'>
             Ordre del dia de l'Assemblea General Ordinària
           </Text>
@@ -92,7 +102,7 @@ const Pxll = () => {
           </UnorderedList>
         </Box>
         {connected && import.meta.env.STREAM_URL && (
-          <Box>
+          <Box order={{ base: 1, lg: 2 }} mb={{ base: 6, lg: 0 }} mx='auto'>
             <Box ref={videoRef} />
             <Box
               ml={videoTop ? 'auto' : 'none'}
@@ -100,7 +110,7 @@ const Pxll = () => {
               top={20}
               right={10}
               zIndex={100}
-              w={{ base: '100%', lg: '400px' }}
+              w={{ base: '400px', lg: '400px' }}
             >
               <AspectRatio ratio={16 / 9}>
                 <ReactPlayer url={import.meta.env.STREAM_URL} width='100%' height='100%' playing controls />
