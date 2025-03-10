@@ -34,14 +34,21 @@ const QuestionsTheme = defineQuestionsThemeConfig({
     },
     typeBadgeWrapper: {
       w: 'full',
-      display: 'flex',
-      justifyContent: 'end',
+      display: 'none',
+      justifyContent: 'center',
       alignItems: 'end',
+      mb: 2,
     },
     title: {
       fontWeight: 'bold',
       fontSize: 'xl',
       marginBottom: 1,
+      minW: '100%',
+      display: 'block',
+      textAlign: 'center',
+      mt: 2,
+      mb: 6,
+      // border: '1px solid red',
     },
     description: {
       marginBottom: 4,
@@ -63,7 +70,7 @@ const CheckboxTheme = defineCheckboxThemeConfig({
     container: {
       display: 'flex',
       flexDirection: 'column',
-      maxWidth: '250px',
+      maxWidth: '240px',
       background: '#fafafa',
       padding: 3,
       borderRadius: 'lg',
@@ -195,7 +202,6 @@ const ConfirmModalTheme = defineConfirmModalMultiStyleConfig({
     },
     footer: {
       justifyContent: 'center',
-      border: '1px solid red',
     },
   }),
 })
@@ -239,8 +245,8 @@ const Imaged = () => {
         })}
       >
         <ElectionProvider id={import.meta.env.PROCESS_IDS[0]} fetchCensus autoUpdate>
-          <Heading as={'h1'} size={'lg'} mt={{ lg: '-70px' }} textAlign={'center'}>
-            Pressupostos Participatius 2025
+          <Heading as={'h1'} size={'lg'} mt={{ lg: '-70px' }} mb={0} textAlign={'center'}>
+            Pressupost Participatiu 2025
           </Heading>
           <Heading as={'h2'} size={'md'} textAlign={'center'}>
             Ajuntament de Castelló d'Empúries
