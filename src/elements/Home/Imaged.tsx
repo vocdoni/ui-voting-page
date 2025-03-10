@@ -248,7 +248,7 @@ const Imaged = () => {
           <Heading as={'h1'} size={'lg'} mt={{ lg: '-70px' }} mb={0} textAlign={'center'}>
             Pressupost Participatiu 2025
           </Heading>
-          <Heading as={'h2'} size={'md'} textAlign={'center'}>
+          <Heading as={'h2'} size={'md'} mt={{ lg: '-10px' }} textAlign={'center'}>
             Ajuntament de Castelló d'Empúries
           </Heading>
           <Election />
