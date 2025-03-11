@@ -14,9 +14,9 @@ const Layout = () => {
           <Image src={`/assets/imaged/logo.png`} alt='logo' maxW={'150px'} />
         </Link>
         <Stack direction='row' alignItems='center' mb={3} alignSelf='start' ml='auto'>
-          <Link href={VocdoniAppURL}>
-            <Button variant='link'>Admin</Button>
-          </Link>
+          <Button as={Link} variant='link' isExternal href={VocdoniAppURL}>
+            Admin
+          </Button>
           <LanguagesMenu />
         </Stack>
       </Stack>
