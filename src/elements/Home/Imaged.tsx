@@ -221,7 +221,7 @@ const Election = () => {
   const { connected, voted } = useElection()
   return (
     <VStack minH={'70vh'}>
-      <Box>
+      <Box onClick={() => connected && window.location.reload()}>
         <SpreadsheetAccess />
       </Box>
       <ElectionQuestions w='full' />

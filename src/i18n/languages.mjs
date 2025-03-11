@@ -7,7 +7,6 @@
 */
 
 export const LanguagesSlice = {
-  es: 'Spanish',
   ca: 'Catalan',
 }
 
