@@ -1,5 +1,5 @@
 import { checkboxAnatomy } from '@chakra-ui/anatomy'
-import { createMultiStyleConfigHelpers, extendTheme, Heading, ThemeProvider, VStack } from '@chakra-ui/react'
+import { Box, createMultiStyleConfigHelpers, extendTheme, Heading, Text, ThemeProvider, VStack } from '@chakra-ui/react'
 import {
   confirmAnatomy,
   ElectionQuestions,
@@ -48,13 +48,25 @@ const QuestionsTheme = defineQuestionsThemeConfig({
       textAlign: 'center',
       mt: 2,
       mb: 6,
-      // border: '1px solid red',
     },
     description: {
       marginBottom: 4,
     },
     error: {
       width: 'full',
+    },
+    alert: {
+      my: '40px',
+      w: 'fit-content',
+      borderRadius: 'lg',
+      border: '1px solid #ccc',
+    },
+    alertLink: {
+      textDecoration: 'underline',
+
+      _hover: {
+        textDecoration: 'none',
+      },
     },
   }),
 })
@@ -206,12 +218,14 @@ const ConfirmModalTheme = defineConfirmModalMultiStyleConfig({
   }),
 })
 const Election = () => {
-  const { connected } = useElection()
+  const { connected, voted } = useElection()
   return (
-    <>
-      <SpreadsheetAccess />
+    <VStack minH={'70vh'}>
+      <Box>
+        <SpreadsheetAccess />
+      </Box>
       <ElectionQuestions w='full' />
-      {connected && (
+      {connected && !voted && (
         <VoteButton
           sx={{
             mb: '150px',
@@ -225,7 +239,10 @@ const Election = () => {
           }}
         />
       )}
-    </>
+      {connected && voted && (
+        <Text fontWeight={'bold'}>Els resultats es faran públics per part de l'Ajuntament després de la votació.</Text>
+      )}
+    </VStack>
   )
 }
 
