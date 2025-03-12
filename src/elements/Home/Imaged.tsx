@@ -1,5 +1,5 @@
 import { checkboxAnatomy } from '@chakra-ui/anatomy'
-import { createMultiStyleConfigHelpers, extendTheme, Heading, ThemeProvider, VStack } from '@chakra-ui/react'
+import { createMultiStyleConfigHelpers, extendTheme, Heading, Text, ThemeProvider, VStack } from '@chakra-ui/react'
 import {
   confirmAnatomy,
   ElectionQuestions,
@@ -34,20 +34,39 @@ const QuestionsTheme = defineQuestionsThemeConfig({
     },
     typeBadgeWrapper: {
       w: 'full',
-      display: 'flex',
-      justifyContent: 'end',
+      display: 'none',
+      justifyContent: 'center',
       alignItems: 'end',
+      mb: 2,
     },
     title: {
       fontWeight: 'bold',
       fontSize: 'xl',
       marginBottom: 1,
+      minW: '100%',
+      display: 'block',
+      textAlign: 'center',
+      mt: 2,
+      mb: 6,
     },
     description: {
       marginBottom: 4,
     },
     error: {
       width: 'full',
+    },
+    alert: {
+      my: '40px',
+      w: 'fit-content',
+      borderRadius: 'lg',
+      border: '1px solid #ccc',
+    },
+    alertLink: {
+      textDecoration: 'underline',
+
+      _hover: {
+        textDecoration: 'none',
+      },
     },
   }),
 })
@@ -63,7 +82,7 @@ const CheckboxTheme = defineCheckboxThemeConfig({
     container: {
       display: 'flex',
       flexDirection: 'column',
-      maxWidth: '250px',
+      maxWidth: '240px',
       background: '#fafafa',
       padding: 3,
       borderRadius: 'lg',
@@ -195,17 +214,16 @@ const ConfirmModalTheme = defineConfirmModalMultiStyleConfig({
     },
     footer: {
       justifyContent: 'center',
-      border: '1px solid red',
     },
   }),
 })
 const Election = () => {
-  const { connected } = useElection()
+  const { connected, voted } = useElection()
   return (
-    <>
+    <VStack minH={'70vh'}>
       <SpreadsheetAccess />
       <ElectionQuestions w='full' />
-      {connected && (
+      {connected && !voted && (
         <VoteButton
           sx={{
             mb: '150px',
@@ -219,7 +237,10 @@ const Election = () => {
           }}
         />
       )}
-    </>
+      {connected && voted && (
+        <Text fontWeight={'bold'}>Els resultats es faran públics per part de l'Ajuntament després de la votació.</Text>
+      )}
+    </VStack>
   )
 }
 
@@ -239,10 +260,10 @@ const Imaged = () => {
         })}
       >
         <ElectionProvider id={import.meta.env.PROCESS_IDS[0]} fetchCensus autoUpdate>
-          <Heading as={'h1'} size={'lg'} mt='-60px'>
-            Pressupostos Participatius 2025
+          <Heading as={'h1'} size={'lg'} mt={{ lg: '-70px' }} mb={0} textAlign={'center'}>
+            Pressupost Participatiu 2025
           </Heading>
-          <Heading as={'h2'} size={'md'}>
+          <Heading as={'h2'} size={'md'} mt={{ lg: '-10px' }} textAlign={'center'}>
             Ajuntament de Castelló d'Empúries
           </Heading>
           <Election />

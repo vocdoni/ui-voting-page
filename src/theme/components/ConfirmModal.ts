@@ -5,15 +5,11 @@ const { defineMultiStyleConfig, definePartsStyle } = createMultiStyleConfigHelpe
 
 const baseStyle = definePartsStyle({
   confirm: {
-    bgColor: 'process.confirm_vote.bg',
-    color: 'process.confirm_vote.color',
-    borderRadius: 'full',
-    px: 16,
+    bgColor: '#3f49d3',
+    color: 'white',
+    borderRadius: 'lg',
     _hover: {
-      bgColor: 'process.confirm_vote.hover',
-    },
-    _active: {
-      bgColor: 'process.confirm_vote.active',
+      bgColor: '#2a35c3',
     },
   },
   cancel: {

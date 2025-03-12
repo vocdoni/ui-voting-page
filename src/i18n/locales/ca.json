@@ -68,7 +68,7 @@
       "paused_start": "Comença {{ distance }}"
     },
     "spreadsheet": {
-      "access_button": "Identifica't",
+      "access_button": "Identificar-se",
       "anon_sik_helper": "Això garanteix que el teu vot sigui anònim",
       "anon_sik_label": "Defineix una contrasenya per al teu vot",
       "close": "Tanca",
