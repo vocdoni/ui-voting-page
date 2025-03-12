@@ -57,9 +57,15 @@ const QuestionsTheme = defineQuestionsThemeConfig({
     },
     alert: {
       my: '40px',
+      py: 5,
+      px: 10,
       w: 'fit-content',
       borderRadius: 'lg',
       border: '1px solid #ccc',
+    },
+    alertTitle: {
+      my: 3,
+      mr: 0,
     },
     alertLink: {
       textDecoration: 'underline',
@@ -152,6 +158,8 @@ const SpreasdsheetTheme = defineSpreadsheetAccessMultiStyleConfig({
       bgColor: '#3f49d3',
       color: 'white',
       px: '100px',
+      mt: 5,
+      mb: 10,
 
       _hover: {
         bgColor: '#2a35c3',
