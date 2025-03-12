@@ -1,5 +1,5 @@
 import { checkboxAnatomy } from '@chakra-ui/anatomy'
-import { Box, createMultiStyleConfigHelpers, extendTheme, Heading, Text, ThemeProvider, VStack } from '@chakra-ui/react'
+import { createMultiStyleConfigHelpers, extendTheme, Heading, Text, ThemeProvider, VStack } from '@chakra-ui/react'
 import {
   confirmAnatomy,
   ElectionQuestions,
@@ -221,9 +221,7 @@ const Election = () => {
   const { connected, voted } = useElection()
   return (
     <VStack minH={'70vh'}>
-      <Box onClick={() => connected && window.location.reload()}>
-        <SpreadsheetAccess />
-      </Box>
+      <SpreadsheetAccess />
       <ElectionQuestions w='full' />
       {connected && !voted && (
         <VoteButton
