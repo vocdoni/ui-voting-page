@@ -69,13 +69,11 @@ const Pxll = () => {
           </Text>
           <OrderedList>
             <ListItem>Aprovació, si escau, de l'acta de l'anterior assemblea.</ListItem>
-            <ListItem>Aprovació, si escau, del Reglament electoral.</ListItem>
-            <ListItem>Aprovació, si escau, del Reglament de l'Assemblea General Ordinària 2025.</ListItem>
-            <ListItem>Aprovació, si escau, del projecte d'activitats 2024.</ListItem>
+            <ListItem>Aprovació, si escau, de la memòria d'activitats 2024.</ListItem>
             <ListItem>Aprovació, si escau, de l'estat de comptes 2024.</ListItem>
-            <ListItem>Aprovació, si escau, del Pla d'activitats 2025.</ListItem>
-            <ListItem>Aprovació, si escau, del Pressupost de l'entitat 2025.</ListItem>
-            <ListItem>Ratificació de les incorporacions per substitució a l'Executiva 2024-2026.</ListItem>
+            <ListItem>Aprovació, si escau, del pla d'activitats 2025.</ListItem>
+            <ListItem>Aprovació, si escau, del pressupost de l'entitat 2025.</ListItem>
+            <ListItem>Ratificació de les incorporacions per substitució a l'Executiva.</ListItem>
             <ListItem>Torn obert de preguntes.</ListItem>
           </OrderedList>
           <UnorderedList mt={5}>
