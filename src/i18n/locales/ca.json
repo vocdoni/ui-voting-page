@@ -96,7 +96,7 @@
       "button_update": "Torna a enviar el vot",
       "confirm": "Confirma les teves seleccions:",
       "sign": "Signa abans de votar",
-      "voted_description": "Per verificar el teu vot, pots utilitzar aquesta identificació única: {{ id }}",
+      "voted_description": "Si vols, pots utilitzar aquesta identificació única per comprovar-lo: {{ id }}",
       "voted_title": "El teu vot s'ha registrat amb èxit!"
     }
   },

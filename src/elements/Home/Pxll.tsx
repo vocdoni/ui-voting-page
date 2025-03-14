@@ -53,7 +53,7 @@ const Pxll = () => {
       pb={20}
       mt={{ lg2: '-128px' }}
     >
-      <Image src={logo} alt='logo plataforma per la llengua' mx='auto' />
+      <Image src={logo} alt='logo plataforma per la llengua' mx='auto' maxH='200px' />
       <Box>
         <Text as='h1' fontWeight='bold' fontSize='36px' textAlign='center'>
           Assemblea General Ordinària
@@ -65,7 +65,7 @@ const Pxll = () => {
       <Flex flexDirection={{ base: 'column', lg: 'row' }}>
         <Box order={{ base: 2, lg: 1 }} gap={3} display='flex' flexDir='column'>
           <Text as='h3' fontWeight='bold'>
-            Ordre del dia de l'Assemblea General Ordinària
+            Ordre del dia de l'Assemblea General Ordinària:
           </Text>
           <OrderedList>
             <ListItem>Aprovació, si escau, de l'acta de l'anterior assemblea.</ListItem>
@@ -92,7 +92,7 @@ const Pxll = () => {
             <ListItem>
               <Text>
                 Enllaç a plataforma de precs i preguntes:{' '}
-                <Link isExternal href='https://www.plataforma-llengua.cat/ago-2024-precs-i-preguntes/'>
+                <Link isExternal href='https://www.plataforma-llengua.cat/ago-2025-precs-i-preguntes/'>
                   Precs i Preguntes 🔗
                 </Link>
               </Text>
@@ -127,7 +127,12 @@ const Pxll = () => {
           ))}
         </Flex>
       )}
-      <SpreadsheetAccess hashPrivateKey />
+      { false && (
+        <SpreadsheetAccess hashPrivateKey />
+      )}
+      { true && (
+        <h1>La votació començarà el dissabte 22 de març.</h1>
+      )}
       {!connected && (
         <Text>
           Per poder accedir a la votació i veure el vídeo en temps real, heu de prémer sobre “Identificar-se”. Us
