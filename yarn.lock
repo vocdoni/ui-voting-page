@@ -2801,10 +2801,9 @@
   dependencies:
     "@vocdoni/react-providers" "~0.5.5"
 
-"@vocdoni/chakra-components@~0.9.12":
-  version "0.9.13"
-  resolved "https://registry.yarnpkg.com/@vocdoni/chakra-components/-/chakra-components-0.9.13.tgz#773f5309d6ad2fb3a9632adca36c5f5ac3db8fa2"
-  integrity sha512-7RTppg1wkGJczMv/Tk/2i2o37W7TEEhWyR5TYsQAN2Ce6ZvWjixfDZtId3bEO8wOqOCDNgkMhHv4gYoEZiHWvw==
+"@vocdoni/chakra-components@./vocdoni-chakra-components-v0.9.14-beta1.tgz":
+  version "0.9.14-beta1"
+  resolved "./vocdoni-chakra-components-v0.9.14-beta1.tgz#6bc69ff986a9356c67e20d310174454ba3bc5b70"
   dependencies:
     "@vocdoni/react-providers" "~0.5.5"
 
