@@ -127,7 +127,12 @@ const Pxll = () => {
           ))}
         </Flex>
       )}
-      <SpreadsheetAccess hashPrivateKey />
+      { false && (
+        <SpreadsheetAccess hashPrivateKey />
+      )}
+      { true && (
+        <h1>La votació començarà el dissabte 22 de març.</h1>
+      )}
       {!connected && (
         <Text>
           Per poder accedir a la votació i veure el vídeo en temps real, heu de prémer sobre “Identificar-se”. Us
