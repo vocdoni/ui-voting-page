@@ -177,10 +177,10 @@ const SpreasdsheetTheme = defineSpreadsheetAccessMultiStyleConfig({
       px: 10,
       py: 5,
       gap: 6,
-      '& form div div:first-of-type div::before': {
+      '& form div div:nth-child(2) div::before': {
         content: '"DNI: "',
       },
-      '& form div div:first-of-type div::after': {
+      '& form div div:nth-child(2) div::after': {
         content: '"NIE: Amb lletra, 0, número i lletra"',
         display: 'block',
       },
