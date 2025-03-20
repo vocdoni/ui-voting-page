@@ -12,7 +12,7 @@
     "translations": "i18next"
   },
   "dependencies": {
-    "@chakra-ui/react": "2.8.2",
+    "@chakra-ui/react": "^2.10.7",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@rainbow-me/rainbowkit": "^2.1.2",
