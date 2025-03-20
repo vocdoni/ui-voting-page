@@ -23,7 +23,8 @@ export default defineConfig(({ mode }) => {
   try {
     pids = JSON.parse(process.env.PROCESS_IDS)
   } catch (e) {
-    pids = ['4ae20a8eb4caa52f5588f7bb9f3c6d6b7cf003a5b03f4589edea100000000290']
+    console.error('PROCESS_IDS not defined or invalid (must be a stringified JSON array)')
+    pids = []
   }
 
   return {
