@@ -130,7 +130,7 @@ const Pxll = () => {
       <SpreadsheetAccess hashPrivateKey />
       {!connected && (
         <Text>
-          Per poder accedir a la votació i veure el vídeo en temps real, heu de prémer sobre “Identificar-se”. Us
+          Per poder accedir a la votació i veure el vídeo en temps real, heu de prémer sobre “Identifica't”. Us
           demanarem el vostre DNI/NIE i el codi de pas que heu rebut per correu electrònic. Posteriorment, podreu emetre
           el vostre vot de forma segura.
         </Text>
