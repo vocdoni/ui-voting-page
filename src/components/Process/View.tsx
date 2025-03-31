@@ -93,7 +93,7 @@ export const ProcessView = () => {
           </Box>
         )}
 
-        <Flex direction={{ base: 'column', lg2: 'row' }} alignItems='start' gap={{ lg2: 10 }} mt={20}>
+        <Flex direction={{ base: 'column', lg2: 'row' }} alignItems='start' gap={{ lg2: 10 }} mt={20} justifyContent='space-between'>
           <Tabs
             order={{ base: 2, lg2: 1 }}
             variant='process'

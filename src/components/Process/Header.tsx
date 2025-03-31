@@ -57,8 +57,8 @@ const ProcessHeader = () => {
           <Image src={election?.header} w='100%' h='auto' objectFit='cover' />
         </Box>
       )}
-      <Flex direction={{ base: 'column', lg2: 'row' }} mb={7} gap={10}>
-        <Box flex={{ lg2: '1 1 80%' }}>
+      <Flex direction={{ base: 'column', lg2: 'row' }} mt={3} mb={7} gap={10}>
+        <Box flex={{ lg2: '1 1 100%' }}>
           <ElectionTitle fontSize={{ base: '32px', md: '34px' }} textAlign='left' my={5} />
           <Flex flexDirection={{ base: 'column', xl: 'row' }} mb={4} justifyContent='space-between'>
             <Flex gap={4} flexDirection={{ base: 'column', xl: 'row' }} alignItems={{ base: 'start', xl: 'center' }}>
@@ -69,12 +69,6 @@ const ProcessHeader = () => {
                   </Text>
                   <ElectionStatusBadge />
                 </Flex>
-                <Box display={{ base: 'flex', xl: 'none' }}>
-                  <ShareModalButton
-                    caption={t('share.election_share_text')}
-                    text={t('share.election_share_btn_text')}
-                  />
-                </Box>
               </Flex>
               <Flex
                 flexDirection={{ base: 'column', xl: 'row' }}
@@ -87,9 +81,6 @@ const ProcessHeader = () => {
                 <ElectionSchedule textAlign='left' color='process.info_title' format='PPPp' />
               </Flex>
             </Flex>
-            <Box display={{ base: 'none', xl: 'flex' }}>
-              <ShareModalButton caption={t('share.election_share_text')} text={t('share.election_share_btn_text')} />
-            </Box>
           </Flex>
           <Flex flexDirection='column'>
             {election instanceof PublishedElection && !election?.description?.default.length && (
@@ -106,120 +97,123 @@ const ProcessHeader = () => {
           </Flex>
         </Box>
 
-        <Flex
-          flex={{ lg2: '1 1 20%' }}
-          position='relative'
-          flexDirection={{ base: 'row', lg2: 'column' }}
-          alignItems='start'
-          flexWrap='wrap'
-          justifyContent='start'
-          gap={{ base: 4, sm: 6, md: 8, lg: 4 }}
-          fontSize='sm'
-          opacity={0.85}
-          _hover={{
-            opacity: 1,
-          }}
-        >
-          <Box flexDir='row' display='flex' justifyContent='space-between' w={{ lg2: 'full' }}>
-            {election instanceof PublishedElection && election?.status !== ElectionStatus.CANCELED ? (
-              <ProcessDate />
-            ) : (
-              <Text color='process.canceled' fontWeight='bold'>
-                {t('process.status.canceled')}
-              </Text>
-            )}
-            <ActionsMenu />
-          </Box>
-          {election instanceof PublishedElection && election?.electionType.anonymous && (
-            <Box>
-              <Text fontWeight='bold'>{t('process.is_anonymous.title')}</Text>
-              <Text>{t('process.is_anonymous.description')}</Text>
+        { false && (
+          <Flex
+            flex={{ lg2: '1 1 20%' }}
+            position='relative'
+            flexDirection={{ base: 'row', lg2: 'column' }}
+            alignItems='start'
+            flexWrap='wrap'
+            justifyContent='start'
+            gap={{ base: 4, sm: 6, md: 8, lg: 4 }}
+            fontSize='sm'
+            opacity={0.85}
+            _hover={{
+              opacity: 1,
+            }}
+          >
+            <Box flexDir='row' display='flex' justifyContent='space-between' w={{ lg2: 'full' }}>
+              {election instanceof PublishedElection && election?.status !== ElectionStatus.CANCELED ? (
+                <ProcessDate />
+              ) : (
+                <Text color='process.canceled' fontWeight='bold'>
+                  {t('process.status.canceled')}
+                </Text>
+              )}
+              <ActionsMenu />
             </Box>
-          )}
-          <Box cursor='help'>
-            <Text fontWeight='bold'>
-              {t('process.census')}{' '}
-              {showTotalCensusSize && <Icon as={FaInfoCircle} color='process_create.alert_info.color' ml={1} />}
-            </Text>
-            {election instanceof PublishedElection &&
-              (showTotalCensusSize ? (
-                <Tooltip
-                  hasArrow
-                  bg='primary.600'
-                  color='white'
-                  placement='top'
-                  label={t('process.total_census_size_tooltip', {
-                    censusSize: censusInfo?.size,
-                    maxCensusSize: election?.maxCensusSize,
-                    percent:
-                      censusInfo?.size && election?.maxCensusSize
-                        ? Math.round((election?.maxCensusSize / censusInfo?.size) * 100)
-                        : 0,
-                  })}
-                >
-                  <Text>
-                    {t('process.total_census_size', {
+            {election instanceof PublishedElection && election?.electionType.anonymous && (
+              <Box>
+                <Text fontWeight='bold'>{t('process.is_anonymous.title')}</Text>
+                <Text>{t('process.is_anonymous.description')}</Text>
+              </Box>
+            )}
+            <Box cursor='help'>
+              <Text fontWeight='bold'>
+                {t('process.census')}{' '}
+                {showTotalCensusSize && <Icon as={FaInfoCircle} color='process_create.alert_info.color' ml={1} />}
+              </Text>
+              {election instanceof PublishedElection &&
+                (showTotalCensusSize ? (
+                  <Tooltip
+                    hasArrow
+                    bg='primary.600'
+                    color='white'
+                    placement='top'
+                    label={t('process.total_census_size_tooltip', {
                       censusSize: censusInfo?.size,
                       maxCensusSize: election?.maxCensusSize,
+                      percent:
+                        censusInfo?.size && election?.maxCensusSize
+                          ? Math.round((election?.maxCensusSize / censusInfo?.size) * 100)
+                          : 0,
                     })}
-                  </Text>
-                </Tooltip>
-              ) : (
-                <Text>{t('process.people_in_census', { count: election?.maxCensusSize })}</Text>
-              ))}
-          </Box>
-          {election instanceof PublishedElection && election?.meta?.census && (
-            <>
-              <Box>
-                <Text fontWeight='bold'>{t('process.strategy')}</Text>
-                <Text>{strategy}</Text>
-              </Box>
-            </>
-          )}
-          {showOrgInformation && (
-            <Box w={{ lg2: 'full' }}>
-              <Text fontWeight='bold' mb={1}>
-                {t('process.created_by')}
-              </Text>
-              <CreatedBy
-                sx={{
-                  '& p': {
-                    minW: 0,
-                    display: 'flex',
-                    justifyContent: 'start',
-                    alignItems: 'center',
-                    flexWrap: 'wrap',
-                  },
-                  '& p strong': {
-                    maxW: { base: '100%', md: '220px', md2: '250px' },
-                    isTruncated: true,
-                    mr: 1,
-                    color: 'process.created_by',
-                  },
-                }}
-              />
+                  >
+                    <Text>
+                      {t('process.total_census_size', {
+                        censusSize: censusInfo?.size,
+                        maxCensusSize: election?.maxCensusSize,
+                      })}
+                    </Text>
+                  </Tooltip>
+                ) : (
+                  <Text>{t('process.people_in_census', { count: election?.maxCensusSize })}</Text>
+                ))}
             </Box>
-          )}
-          {election instanceof PublishedElection &&
-            election?.status === ElectionStatus.PAUSED &&
-            election?.organizationId !== account?.address && (
-              <Flex
-                color='process.paused'
-                gap={2}
-                alignItems='center'
-                border='1px solid'
-                borderColor='process.paused'
-                borderRadius='lg'
-                p={2}
-              >
-                <Icon as={IoWarningOutline} />
+            {election instanceof PublishedElection && election?.meta?.census && (
+              <>
                 <Box>
-                  <Text>{t('process.status.paused')}</Text>
-                  <Text>{t('process.status.paused_description')}</Text>
+                  <Text fontWeight='bold'>{t('process.strategy')}</Text>
+                  <Text>{strategy}</Text>
                 </Box>
-              </Flex>
+              </>
             )}
-        </Flex>
+            {showOrgInformation && (
+              <Box w={{ lg2: 'full' }}>
+                <Text fontWeight='bold' mb={1}>
+                  {t('process.created_by')}
+                </Text>
+                <CreatedBy
+                  sx={{
+                    '& p': {
+                      minW: 0,
+                      display: 'flex',
+                      justifyContent: 'start',
+                      alignItems: 'center',
+                      flexWrap: 'wrap',
+                    },
+                    '& p strong': {
+                      maxW: { base: '100%', md: '220px', md2: '250px' },
+                      isTruncated: true,
+                      mr: 1,
+                      color: 'process.created_by',
+                    },
+                  }}
+                />
+              </Box>
+            )}
+            {election instanceof PublishedElection &&
+              election?.status === ElectionStatus.PAUSED &&
+              election?.organizationId !== account?.address && (
+                <Flex
+                  color='process.paused'
+                  gap={2}
+                  alignItems='center'
+                  border='1px solid'
+                  borderColor='process.paused'
+                  borderRadius='lg'
+                  p={2}
+                >
+                  <Icon as={IoWarningOutline} />
+                  <Box>
+                    <Text>{t('process.status.paused')}</Text>
+                    <Text>{t('process.status.paused_description')}</Text>
+                  </Box>
+                </Flex>
+              )}
+          </Flex>
+        )}
+
       </Flex>
     </Box>
   )
