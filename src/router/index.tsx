@@ -7,7 +7,17 @@ import RouteError from '~elements/RouteError'
 import Layout from '~src/Layout'
 import { SuspenseLoader } from './SuspenseLoader'
 
-const Home = lazy(() => import('~elements/Home'))
+// Map of available home components
+const HomeComponents = {
+  home: () => import('~elements/Home/Home'),
+  berga: () => import('~elements/Home/Berga'),
+  pxll: () => import('~elements/Home/Pxll'),
+  imaged: () => import('~elements/Home/Imaged'),
+}
+
+// @ts-ignore
+const homeComponent = HomeComponents[import.meta.env.CLIENT] || HomeComponents.home
+const Home = lazy(homeComponent)
 const Vote = lazy(() => import('~elements/Vote'))
 
 export const RoutesProvider = () => {
@@ -22,7 +32,7 @@ export const RoutesProvider = () => {
     ),
   }
 
-  if (ProcessIds.length <= 1) {
+  if (ProcessIds.length <= 1 && homeComponent === HomeComponents.home) {
     home.element = (
       <SuspenseLoader>
         <Vote />

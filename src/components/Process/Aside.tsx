@@ -199,7 +199,13 @@ const ProcessAside = () => {
 
 export const VoteButton = ({ ...props }: FlexProps) => {
   const { t } = useTranslation()
-  const { election, connected, isAbleToVote, isInCensus } = useElection()
+  const {
+    election,
+    connected,
+    isAbleToVote,
+    isInCensus,
+    loading: { voting },
+  } = useElection()
   const { isConnected } = useAccount()
 
   if (!(election instanceof PublishedElection)) {
@@ -270,6 +276,7 @@ export const VoteButton = ({ ...props }: FlexProps) => {
                 opacity: '0.8',
               },
             }}
+            isLoading={voting}
           />
         </>
       )}

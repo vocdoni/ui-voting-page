@@ -1,5 +1,5 @@
 import { Box, Flex, Icon, Image, Text, Tooltip } from '@chakra-ui/react'
-import { ElectionDescription, ElectionStatusBadge, ElectionTitle } from '@vocdoni/chakra-components'
+import { ElectionDescription, ElectionSchedule, ElectionStatusBadge, ElectionTitle } from '@vocdoni/chakra-components'
 import { useClient, useElection, useOrganization } from '@vocdoni/react-providers'
 import { CensusType, ElectionStatus, InvalidElection, PublishedElection, Strategy } from '@vocdoni/sdk'
 import { ReactNode, useEffect, useState } from 'react'
@@ -69,9 +69,7 @@ const ProcessHeader = () => {
                 <Text as='span' color='process.label' fontSize='sm'>
                   {t('process.schedule')}
                 </Text>
-                <Text color='process.info_title'>
-                  {formatDate((election as any).startDate, (election as any).endDate)}
-                </Text>
+                <ElectionSchedule textAlign='left' color='process.info_title' format='PPPp' />
               </Flex>
             </Flex>
           </Flex>

@@ -39,13 +39,34 @@
       "wrong_data_description": "Les dades especificades no són correctes",
       "wrong_data_title": "Dades incorrectes"
     },
+    "loading": "Loading...",
+    "pagination": {
+      "total_results": "Showing a total of {{ count }} results"
+    },
+    "question_types": {
+      "approval_title": "Approval Voting",
+      "approval_tooltip": "Approval voting lets you vote for as many options as you like. The one with the most votes wins. It's a simple way to show your support for all the choices you approve of.",
+      "multichoice_cannot_abstain": "Massa opcions seleccionades",
+      "multichoice_desc": "Selecciona fins a {{maxcount}} opcions",
+      "multichoice_desc_abstain": " (o abstén-te)",
+      "multichoice_title": "Votació Multiopció {{ weighted }}",
+      "multichoice_tooltip": "La votació multiopció et permet votar fins a {{maxcount}} opcions (definit per l'organizador). La opció que resulti més votada serà la candidata.",
+      "singlechoice_title": "Única opció {{ weighted }}",
+      "weighted_voting": "Weighted Voting"
+    },
     "results": {
       "date_format": "PPpp",
       "secret_until_the_end": "Els resultats provisionals seran accessibles quan el procés finalitzi.",
       "title": "{{ title }}",
       "votes": "Vots: {{ votes }} ({{ percent }})"
     },
-    "schedule": "Votació del {{ begin }} al {{ end }}",
+    "schedule": {
+      "created": "Creat {{ distance }}",
+      "ended": "Finalitzat {{ distance }}",
+      "from_begin_to_end": "Del {{ begin }} al {{ end }}",
+      "paused_end": "Finalitza {{ distance }}",
+      "paused_start": "Comença {{ distance }}"
+    },
     "spreadsheet": {
       "access_button": "Identifica't",
       "anon_sik_helper": "Això garanteix que el teu vot sigui anònim",
@@ -86,22 +107,12 @@
     "election_is_invalid": "Invalid election"
   },
   "footer": {
+    "about_us": "Quant a",
     "company": "Empresa",
-    "demo": "Tipus de Votació",
-    "demo1": "Elecció Simple",
-    "demo2": "Elecció Múltiple",
-    "demo3": "Votació per Aprovació",
-    "demo4": "Votació per Classificació",
-    "demo5": "Pressupostos Participatius",
-    "demo6": "Votació Ponderada",
+    "contact": "Contacte",
+    "developer_portal": "Portal del desenvolupador",
     "footer_subtitle": "El Protocol de Votació Global",
-    "terms_and_privacy": "<link1>Termes d'ús</link1> i <link2>Política de privacitat</link2>",
-    "uses_cases": "Casos d'Ús",
-    "uses_cases1": "Assemblees Generals d'Accionistes (AGMs)",
-    "uses_cases2": "Eleccions",
-    "uses_cases3": "Pressupostos Participatius",
-    "uses_cases4": "Votació Digital",
-    "uses_cases5": "Enquesta Digital Tancada"
+    "terms_and_privacy": "<link1>Termes d'ús</link1> i <link2>Política de privacitat</link2>"
   },
   "link": {
     "discord": "Enllaç al Discord de Vocdoni",
@@ -151,9 +162,6 @@
     "share_title": "Comparteix a {{ network }}",
     "spreadsheet": {
       "confirm": {
-        "abstain_count_one": "",
-        "abstain_count_many": "",
-        "abstain_count_other": "",
         "blank_vote": "",
         "description": "Aquesta és la teva selecció. Si vols modificar-la pots tancar aquest missatge i seleccionar l’opció que consideris.",
         "disclaimer": "Si us plau, revisa el teu vot abans d'enviar-lo, ja que no es podrà modificar",

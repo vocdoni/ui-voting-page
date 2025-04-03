@@ -1,17 +1,8 @@
-import {
-  As,
-  Icon,
-  IconButton,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-  MenuListProps,
-} from '@chakra-ui/react'
+import { Icon, IconButton, Menu, MenuButton, MenuDivider, MenuItem, MenuList, MenuListProps } from '@chakra-ui/react'
 import { ActionCancel, ActionContinue, ActionEnd, ActionPause, ActionsProvider } from '@vocdoni/chakra-components'
 import { useActions, useClient, useElection } from '@vocdoni/react-providers'
 import { ElectionStatus, PublishedElection } from '@vocdoni/sdk'
+import { ElementType } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FaCog } from 'react-icons/fa'
 import { RiCloseCircleLine, RiPauseCircleLine, RiPlayCircleLine, RiStopCircleLine } from 'react-icons/ri'
@@ -131,6 +122,6 @@ const ActionsMenuList = (props: MenuListProps) => {
   )
 }
 
-const ActionIcon = ({ icon }: { icon: As }) => {
+const ActionIcon = ({ icon }: { icon: ElementType }) => {
   return <Icon as={icon} w={6} h={6} />
 }
