@@ -25,7 +25,7 @@ const Footer = () => {
         pb={{ base: '50px', xl: '24px' }}
         mt='auto'
       >
-        <Box flex='1 1 33%'>
+        <Box flex='1 1 33%' mt='80px'>
           <VocdoniLogo maxW='120px' />
           <Text fontSize='16px' lineHeight='28px'>
             {t('footer.footer_subtitle')}
@@ -38,6 +38,7 @@ const Footer = () => {
           gap={{ base: '30px', sm2: 0 }}
           mt={1}
           ml={{ xl: 10 }}
+          display='none'
         >
           <Flex
             flexDirection={{ base: 'column', xl: 'row' }}
