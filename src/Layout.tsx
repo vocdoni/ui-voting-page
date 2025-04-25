@@ -16,9 +16,6 @@ const Layout = () => {
           </Link>
         )}
         <Stack direction='row' alignItems='center' mb={3} alignSelf='start' ml='auto'>
-          <Button as={Link} variant='link' isExternal href={VocdoniAppURL}>
-            Admin
-          </Button>
           <LanguagesMenu />
         </Stack>
       </Stack>
