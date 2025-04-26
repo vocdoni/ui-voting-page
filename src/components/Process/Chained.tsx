@@ -58,7 +58,7 @@ const ChainedProcessesInner = ({ connected }: ChainedProcessesInnerProps) => {
   return (
     <Box className='md-sizes' mb='100px' pt='25px'>
       <ElectionQuestions />
-      <Box position='sticky' bottom={0} left={0} pb={1} pt={1} display={{ base: 'none', lg2: 'block' }}>
+      <Box position='sticky' bottom={0} left={0} pb={1} pt={1} display={{ base: 'block', lg2: 'block' }}>
         <VoteButton />
       </Box>
 
