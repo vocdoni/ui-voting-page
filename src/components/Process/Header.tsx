@@ -10,7 +10,6 @@ import { useReadMoreMarkdown } from '~components/Layout/use-read-more'
 import { ActionsMenu } from './ActionsMenu'
 import { StampIcon } from './Census/StampIcon'
 import { CreatedBy } from './CreatedBy'
-import ercHeader from '/assets/esquerra_logo.png'
 
 type CensusInfo = { size: number; weight: bigint; type: CensusType }
 
@@ -53,14 +52,13 @@ const ProcessHeader = () => {
 
   return (
     <Box mb={10}>
-      <Image src={ercHeader} maxW={{ base: '250px', lg: '400px' }} mb={{ base: '10px', lg: '32px' }} />
       <Flex direction={{ base: 'column', lg2: 'row' }} mb={7} gap={10}>
         <Box flex={{ lg2: '1 1 80%' }}>
           <ElectionTitle fontSize={{ base: '32px', md: '34px' }} textAlign='left' my={5} />
           <Flex flexDirection={{ base: 'column', xl: 'row' }} mb={4} justifyContent='space-between'>
             <Flex gap={4} flexDirection={{ base: 'column', xl: 'row' }} alignItems={{ base: 'start', xl: 'center' }}>
               <Flex gap={3} alignItems='center'>
-                <Text as='span' color='process.label' fontSize='sm'>
+                <Text as='span' color='black' fontSize='sm'>
                   {t('process.state')}
                 </Text>
                 <ElectionStatusBadge />

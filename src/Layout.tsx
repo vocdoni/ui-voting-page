@@ -10,11 +10,9 @@ const Layout = () => {
   return (
     <Grid p={3} minH='100vh'>
       <Stack direction='row' mb={3} w='full' justifyContent='space-between'>
-        {pathname !== '/' && import.meta.env.CLIENT !== 'default' && (
-          <Link as={RouterLink} to={`/${window.location.hash}`}>
-            <Image src={`/assets/${import.meta.env.CLIENT.toLowerCase()}/logo.png`} alt='logo' maxW='250px' />
-          </Link>
-        )}
+        <Link as={RouterLink} to={`/${window.location.hash}`} mb={3}>
+          <Image src={`/assets/${import.meta.env.CLIENT.toLowerCase()}/logo.png`} alt='logo' maxW='250px' />
+        </Link>
         <Stack direction='row' alignItems='center' mb={3} alignSelf='start' ml='auto'>
           <LanguagesMenu />
         </Stack>

@@ -7,7 +7,7 @@ const baseStyle = definePartsStyle({
   button: {
     w: '100%',
     borderRadius: 30,
-    color: 'process.spreadsheet.color',
+    color: 'white',
   },
 
   disconnect: {

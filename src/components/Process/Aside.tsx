@@ -57,7 +57,7 @@ const ProcessAside = () => {
     <>
       <Card variant='aside'>
         <Flex alignItems='center' gap={5} flexWrap='wrap' justifyContent='center'>
-          <Text textAlign='center' fontSize='xl' textTransform='uppercase'>
+          <Text textAlign='center' fontSize='xl' textTransform='uppercase' color='white'>
             {election?.electionType.anonymous && voting
               ? t('aside.submitting')
               : getStatusText(t, election?.status).toUpperCase()}
@@ -71,6 +71,7 @@ const ProcessAside = () => {
               justifyContent='center'
               alignItems='center'
               gap={2}
+              color='white'
             >
               <Trans
                 i18nKey='aside.votes'
@@ -85,7 +86,7 @@ const ProcessAside = () => {
 
           {showVotes && (
             <Flex className='brand-theme' direction='column' justifyContent='center' alignItems='center' gap={2}>
-              <Flex direction={'row'} justifyContent='center' alignItems='center' gap={2}>
+              <Flex direction={'row'} justifyContent='center' alignItems='center' gap={2} color='white'>
                 <Trans
                   i18nKey='aside.votes_weight'
                   components={{
@@ -96,7 +97,7 @@ const ProcessAside = () => {
                 />
               </Flex>
               {showVoters && votersCount !== totalWeight && (
-                <Flex direction={'row'} justifyContent='center' alignItems='center'>
+                <Flex direction={'row'} justifyContent='center' alignItems='center' color='white'>
                   {'('}
                   <Trans
                     i18nKey='aside.votes'
@@ -227,7 +228,7 @@ export const VoteButton = ({ ...props }: FlexProps) => {
       justifyContent='center'
       alignItems='center'
       background='transparent'
-      color='process.aside.color'
+      color='white'
       py={3}
       px={{ base: 3, lg2: 0 }}
       {...props}
@@ -249,11 +250,12 @@ export const VoteButton = ({ ...props }: FlexProps) => {
                   },
                 })}
                 w='full'
+                color='white'
               >
                 {(() => {
                   if (!connected) {
                     return (
-                      <Button onClick={openConnectModal} w='full'>
+                      <Button onClick={openConnectModal} w='full' color='white'>
                         {t('menu.connect').toString()}
                       </Button>
                     )
@@ -270,7 +272,7 @@ export const VoteButton = ({ ...props }: FlexProps) => {
             w='100%'
             mt='60px !important'
             fontSize='lg'
-            color='process.spreadsheet.color'
+            color='white'
             sx={{
               '&::disabled': {
                 opacity: '0.8',
