@@ -82,7 +82,7 @@ const baseStyle = definePartsStyle({
       display: 'flex',
       flexDirection: 'column',
       overflow: 'hidden',
-    },
+    }
   },
 
   title: {
@@ -162,7 +162,7 @@ const baseStyle = definePartsStyle({
       },
 
       '& input:checked ~ span:nth-of-type(2)': {
-        color: 'process.questions.question_selected.color',
+        color: 'white',
         bgColor: 'process.questions.question_selected.bg',
         w: '100%',
       },
