@@ -14,9 +14,9 @@ export const colorsBase = {
   },
   green: '#48BB78',
   primary: {
-    main: '#24656e',
-    dark: '#175b64',
-    dark2: '#2c545a',
+    main: '#e38351',
+    dark: '#f88f58',
+    dark2: '#e38351',
   },
   red: '#E53E3E',
   white: {

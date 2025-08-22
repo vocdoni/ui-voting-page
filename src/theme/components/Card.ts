@@ -212,7 +212,7 @@ const aside = definePartsStyle({
     mt: { md: 7 },
     mb: { base: 7, md: 0 },
     color: 'process.aside.color',
-    background: 'process.aside.bg',
+    background: '#e38351',
     boxShadow: 'var(--box-shadow-banner)',
     borderRadius: 'lg',
   },
