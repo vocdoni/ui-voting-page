@@ -49,6 +49,7 @@ export const components = {
   Link,
   Modal,
   ElectionQuestions,
+  ElectionQuestion: ElectionQuestions, // alias for backward compatibility,
   QuestionsConfirmation,
   QuestionsTip,
   QuestionsTypeBadge,
