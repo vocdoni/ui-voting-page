@@ -67,6 +67,10 @@ const baseStyle = definePartsStyle({
       flexDirection: 'column',
       gap: 10,
     },
+    "& > div > label": {
+      color: "red",
+      fontSize: "20px",
+    },
   },
 
   question: {
@@ -79,6 +83,11 @@ const baseStyle = definePartsStyle({
       flexDirection: 'column',
       overflow: 'hidden',
     },
+
+    "& > div > label": {
+      color: "red",
+      fontSize: "20px",
+    },
   },
 
   title: {
@@ -87,7 +96,13 @@ const baseStyle = definePartsStyle({
     fontSize: 'xl2',
     lineHeight: 1.3,
     color: 'process.questions.title',
-    mb: 5,
+    mb: 0,
+    mt: '30px !important',
+
+    "& > div > label": {
+      color: "red",
+      fontSize: "20px",
+    },
   },
 
   description: {
@@ -95,7 +110,7 @@ const baseStyle = definePartsStyle({
     color: 'process.questions.description',
     textAlign: 'start',
     fontSize: 'xl',
-    mb: '50px',
+    mb: '20px',
   },
 
   stack: {

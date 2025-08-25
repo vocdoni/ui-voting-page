@@ -158,6 +158,7 @@ const ProcessAside = () => {
           </Flex>
         )}
       </Card>
+
       {(connected || isConnected) && (
         <Box
           alignSelf='center'
