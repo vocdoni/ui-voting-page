@@ -34,11 +34,21 @@ export const ProcessView = () => {
         if (!shouldRender || connected) return
         if (privkey) {
           const privKeyWallet = new Wallet(privkey)
-          let newClient = new VocdoniSDKClient({
-            env,
-            wallet: privKeyWallet,
-            electionId: election?.id,
-          })
+          let newClient
+          if (env === 'dev') {
+            newClient = new VocdoniSDKClient({
+              env,
+              wallet: privKeyWallet,
+              electionId: election?.id,
+              api_url: 'https://one-dev.vocdoni.net',
+            })
+          } else {
+            newClient = new VocdoniSDKClient({
+              env,
+              wallet: privKeyWallet,
+              electionId: election?.id,
+            })
+          }
           let clientAddress =
             client.wallet && client.wallet instanceof Wallet ? await client.wallet?.getAddress() : null
           let electionClientAddress =
