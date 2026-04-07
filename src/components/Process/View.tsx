@@ -2,7 +2,7 @@ import { Link, Modal, ModalBody, ModalContent, ModalOverlay, Spinner, Text, VSta
 import { Wallet } from '@ethersproject/wallet'
 import { QuestionsFormProvider } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
-import { ArchivedElection, VocdoniSDKClient } from '@vocdoni/sdk'
+import { VocdoniSDKClient } from '@vocdoni/sdk'
 import { useEffect } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { ConfirmVoteModal } from './ConfirmVoteModal'
@@ -21,7 +21,7 @@ export const ProcessView = () => {
   } = useElection()
   const { env, setClient, client, setSigner } = useClient()
 
-  const shouldRender = !(election instanceof ArchivedElection)
+  const shouldRender = true
 
   const privkey = window.location.hash ? window.location.hash.split('#')[1] : ''
 
