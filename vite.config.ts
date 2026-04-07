@@ -18,7 +18,7 @@ export default defineConfig(({ mode }) => {
   try {
     pids = JSON.parse(process.env.PROCESS_IDS)
   } catch (e) {
-    pids = ['4ae20a8eb4caa52f5588f7bb9f3c6d6b7cf003a5b03f4589edea100000000290']
+    pids = ['6be21a5a9dc024d3a8c1c4d403de7a56b56f925413109f414d51020400000007']
   }
 
   return {
