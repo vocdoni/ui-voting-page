@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@chakra-ui/react'
+import { Box, Flex, Image, Text } from '@chakra-ui/react'
 import { ElectionStatusBadge } from '@vocdoni/chakra-components'
 import { useElection } from '@vocdoni/react-providers'
 import { InvalidElection, PublishedElection, Strategy } from '@vocdoni/sdk'
@@ -6,6 +6,7 @@ import { ReactNode, useEffect, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { StampIcon } from './Census/StampIcon'
 import omniumHeader from '/assets/omnium-header.png'
+import omniumLogo from '/assets/omnium-logo.png'
 
 const ProcessHeader = () => {
   const { t } = useTranslation()
@@ -37,6 +38,7 @@ const ProcessHeader = () => {
 
   return (
     <Box mb={10} mt={3}>
+      <Image src={omniumLogo} alt='Omnium' h={{ base: '48px', md: '56px' }} w='auto' mb={{ base: 4, md: 6 }} />
       <Box
         bgImage={omniumHeader}
         w='100%'
@@ -44,6 +46,10 @@ const ProcessHeader = () => {
         bgPosition='center'
         bgSize='cover'
         bgRepeat='no-repeat'
+        borderTopLeftRadius='24px'
+        borderTopRightRadius='24px'
+        borderBottomLeftRadius={0}
+        borderBottomRightRadius={0}
         mb={{ base: 5, lg2: 8 }}
       />
 
