@@ -7,6 +7,7 @@ import { Checkbox } from './Checkbox'
 import { ConfirmModal } from './ConfirmModal'
 import { Link } from './Link'
 import { Modal } from './Modal'
+import { ElectionQuestion } from './Question'
 import { ElectionQuestions } from './Questions'
 import { QuestionsConfirmation } from './QuestionsConfirmation'
 import { QuestionsTip } from './QuestionsTip'
@@ -16,6 +17,7 @@ import { ElectionResults } from './Results'
 import { SpreadsheetAccess } from './SpreadSheet'
 import { Tabs } from './Tabs'
 import { Textarea } from './Textarea'
+import { Voted } from './Voted'
 
 export {
   Alert,
@@ -25,6 +27,7 @@ export {
   Card,
   Checkbox,
   ConfirmModal,
+  ElectionQuestion,
   ElectionQuestions,
   ElectionResults,
   Link,
@@ -36,6 +39,7 @@ export {
   SpreadsheetAccess,
   Tabs,
   Textarea,
+  Voted,
 }
 
 export const components = {
@@ -48,6 +52,7 @@ export const components = {
   ConfirmModal,
   Link,
   Modal,
+  ElectionQuestion,
   ElectionQuestions,
   QuestionsConfirmation,
   QuestionsTip,
@@ -57,4 +62,5 @@ export const components = {
   SpreadsheetAccess,
   Tabs,
   Textarea,
+  Voted,
 }
