@@ -46,7 +46,13 @@ export const Questions = () => {
   if (!election || election instanceof InvalidElection) return null
   return (
     <>
-      <Box ref={electionRef} className='md-sizes' mb={voted ? '40px' : '100px'} pt='25px'>
+      <Box
+        ref={electionRef}
+        className='md-sizes'
+        mb={voted ? '40px' : '100px'}
+        pb={isAbleToVote ? { base: '110px', md: '130px' } : 0}
+        pt='25px'
+      >
         {!voted && (
           <>
             <Flex ml='auto' justifyContent='end' flexDirection={{ base: 'column', sm: 'row' }} gap={3} mb={10}>
@@ -94,31 +100,23 @@ export const Questions = () => {
             setFormErrors({})
             if (connected) setShowUndoBtn(true)
           }}
-          position='relative'
         >
           <ElectionQuestionsForm
             onInvalid={(args) => {
               setFormErrors(args)
             }}
           />
-          {voted && (
-            <Button
-              as='a'
-              href='https://form.jotform.com/241163398249362'
-              target='_blank'
-              position='absolute'
-              bottom='30px'
-              left='50%'
-              transform='translateX(-50%)'
-            >
+        </Box>
+        {voted && (
+          <Flex justifyContent='center' mt={6}>
+            <Button as='a' href='https://form.jotform.com/241163398249362' target='_blank'>
               Inscriu-te aqui
             </Button>
-          )}
-        </Box>
+          </Flex>
+        )}
 
         {!!Object.values(formErrors).length && (
           <Text mt={10} textAlign='center' color='error'>
-            .
             {t('process.helper_error', {
               count: election.questions.length - Object.values(formErrors).length,
               count2: election.questions.length,
@@ -132,8 +130,18 @@ export const Questions = () => {
         )}
       </Box>
 
-      <Box onClick={() => setFormErrors({})}>
-        <VoteButton />
+      <Box
+        position='fixed'
+        bottom={{ base: 4, md: 6 }}
+        left={0}
+        w='100%'
+        zIndex={30}
+        px={{ base: 4, md: 6 }}
+        pointerEvents='none'
+      >
+        <Box maxW='site-width' mx='auto' onClick={() => setFormErrors({})} pointerEvents='auto'>
+          <VoteButton py={0} px={0} />
+        </Box>
       </Box>
     </>
   )
