@@ -27,24 +27,26 @@ export const ConfirmVoteModal = ({ election, answers }: { election: PublishedEle
           flexDirection='column'
           maxH='500px'
           overflowY='scroll'
-          boxShadow='rgba(128, 128, 128, 0.42) 1px 1px 1px 1px'
-          px={2}
-          borderRadius='lg'
+          border='1px solid'
+          borderColor='gray.200'
+          boxShadow='0px 6px 18px rgba(15, 23, 42, 0.08)'
+          px={{ base: 3, md: 5 }}
+          py={3}
+          borderRadius='xl'
+          bg='white'
         >
           {election.questions.map((q, i) => (
-            <Box key={i} mb={2} mt={i === 0 ? 4 : 0}>
-              <Text display='flex' flexDirection='column' gap={1} mb={1}>
-                <Trans
-                  i18nKey='process.spreadsheet.confirm.question'
-                  components={{
-                    span: <Text as='span' fontWeight='bold' whiteSpace='nowrap' />,
-                  }}
-                  values={{
-                    question: q.title.default,
-                    answer: q.choices[Number(answers[i])].title.default,
-                    number: i + 1,
-                  }}
-                />
+            <Box
+              key={i}
+              py={3}
+              borderBottom={i === election.questions.length - 1 ? 'none' : '1px solid'}
+              borderColor='gray.100'
+            >
+              <Text fontSize='sm' fontWeight='bold' color='gray.700' mb={1}>
+                {q.title.default}
+              </Text>
+              <Text color='gray.900'>
+                {q.choices[Number(answers[i])].title.default}
               </Text>
             </Box>
           ))}
