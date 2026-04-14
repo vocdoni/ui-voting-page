@@ -52,6 +52,8 @@
       "anon_sik_label": "Define una contraseña para tu voto",
       "close": "Cerrar",
       "logout": "⎋",
+      "no_private_key_help_prefix": "Si no has recibido el enlace personalizado de voto en tu correo electrónico,",
+      "no_private_key_help_link": "rellena este formulario",
       "modal_title": "Autenticación"
     },
     "statuses": {
@@ -154,7 +156,8 @@
         "description": "Confrima tu voto",
         "header": "",
         "question": "<strong>Pregunta {{ number }}:</strong> {{ answer }}"
-      }
+      },
+      "no_private_key_help": "Si no has recibido el enlace personalizado de voto en tu correo electrónico, <formLink>rellena este formulario</formLink>."
     },
     "status": {
       "active": "Votación en curso",
