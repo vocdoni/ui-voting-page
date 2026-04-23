@@ -77,7 +77,7 @@
       "button_update": "Torna a enviar el vot",
       "confirm": "Confirma les teves seleccions:",
       "sign": "Signa abans de votar",
-      "voted_description": "Els resultats electorals es publicaran el 28 de juny durant l’Assemblea General que se celebrarà a Valls. Vols venir-hi?",
+      "voted_description": "Els resultats electorals es publicaran el 30 de Maig durant l’Assemblea General que se celebrarà a Barcelona (Casino de l’Aliança del Poblenou). Vols venir-hi?",
       "voted_title": "El teu vot ha estat registrat correctament"
     }
   },
@@ -137,15 +137,15 @@
       "one_of_them": "(Almenys un d'ells)"
     },
     "helper": "Un cop completat, prem “Finalitzar la votació” i confirma l’elecció.",
-    "helper_candidates": "Tria individualment els candidats que vols votar, o bé, vota en blanc:",
-    "helper_error_one": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
-    "helper_error_many": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
-    "helper_error_other": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
+    "helper_candidates": "Tria individualment els candidats que vols votar (pots marcar-los tots), o bé, vota en blanc:",
+    "helper_error_one": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}.",
+    "helper_error_many": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}.",
+    "helper_error_other": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}.",
     "is_invalid": "Aquest procés té dades no vàlides i per tant no pot carregar-se",
-    "mark_all": "Seleccionar tota la llista Òmnium 26",
+    "mark_all": "Selecciona tota la llista Òmnium 26",
     "omnium_link": {
-      "assembly": "Inscriu-te a l'Assemblea General a Valls <customLink>aquí</customLink>",
-      "you_know": "Ajuda'ns a conèixer-te millor! <customLink>Respon aquestes preguntes</customLink>"
+      "assembly": "Inscriu-te aquí.",
+      "you_know": "Si tens 2 minuts més, ajuda’ns a millorar <customLink>Respon aquestes preguntes</customLink>"
     },
     "share_title": "Comparteix a {{ network }}",
     "spreadsheet": {
@@ -153,7 +153,7 @@
         "abstain_count_one": "",
         "abstain_count_many": "",
         "abstain_count_other": "",
-        "description": "Estas a un pas de finalitzar la teva votació. Aquestes són les opcions que has triat:",
+        "description": "Estàs a un pas de finalitzar la teva votació. Aquestes són les opcions que has triat:",
         "header": "Confirma el teu vot",
         "question": "<strong><span>{{ question }}</span>:</strong> {{ answer }}"
       },

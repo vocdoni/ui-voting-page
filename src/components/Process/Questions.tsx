@@ -65,7 +65,7 @@ export const Questions = () => {
                   election.questions.forEach((_, i) => setValue(i.toString(), '0'))
                 }}
               >
-                <Trans i18nKey='process.mark_all'>Seleccionar tota la llista Òmnium 26</Trans>
+                <Trans i18nKey='process.mark_all'>Selecciona tota la llista Òmnium 26</Trans>
               </Button>
               {showUndoBtn && isAbleToVote && (
                 <Button
@@ -90,7 +90,7 @@ export const Questions = () => {
             <Text mb={10}>
               {' '}
               <Trans i18nKey='process.helper_candidates'>
-                Tria individualment els candidats que vols votar, o bé, vota en blanc:
+                Tria individualment els candidats que vols votar (pots marcar-los tots), o bé, vota en blanc:
               </Trans>
             </Text>
           </>
@@ -109,8 +109,8 @@ export const Questions = () => {
         </Box>
         {voted && (
           <Flex justifyContent='center' mt={6}>
-            <Button as='a' href='https://form.jotform.com/241163398249362' target='_blank'>
-              Inscriu-te aqui
+            <Button as='a' href='https://form.jotform.com/241433006383347' target='_blank'>
+              Inscriu-te aquí.
             </Button>
           </Flex>
         )}
