@@ -109,7 +109,7 @@ export const Questions = () => {
         </Box>
         {voted && (
           <Flex justifyContent='center' mt={6}>
-            <Button as='a' href='https://form.jotform.com/241433006383347' target='_blank'>
+            <Button as='a' href='https://form.jotform.com/260961421326352' target='_blank'>
               Inscriu-te aquí.
             </Button>
           </Flex>

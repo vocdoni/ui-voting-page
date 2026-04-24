@@ -87,7 +87,7 @@ export const ProcessView = () => {
             components={{
               customLink: (
                 <Link
-                  href='https://form.jotform.com/260961421326352'
+                  href='https://form.jotform.com/241433006383347'
                   target='_blank'
                   color='#FF6320'
                   textDecoration='underline'
