@@ -142,7 +142,7 @@
     "helper_error_many": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}.",
     "helper_error_other": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}.",
     "is_invalid": "Aquest procés té dades no vàlides i per tant no pot carregar-se",
-    "mark_all": "Selecciona tota la llista Òmnium 26",
+    "mark_all": "Selecciona tota la llista",
     "omnium_link": {
       "assembly": "Inscriu-te aquí.",
       "you_know": "Si tens 2 minuts més, ajuda’ns a millorar <customLink>Respon aquestes preguntes</customLink>"
