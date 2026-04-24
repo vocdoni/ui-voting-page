@@ -48,7 +48,7 @@ export const SuccessVoteModal = () => {
           <Text textAlign='center' mb={5}>
             {t('process.success_modal.text')}
           </Text>
-          <Button as='a' href='https://form.jotform.com/241433006383347' target='_blank' mx='auto'>
+          <Button as='a' href='https://form.jotform.com/260961421326352' target='_blank' mx='auto'>
             Respon aquestes preguntes
           </Button>
         </ModalBody>
