@@ -1,10 +1,10 @@
-import { Link, Modal, ModalBody, ModalContent, ModalOverlay, Spinner, Text, VStack } from '@chakra-ui/react'
+import { Modal, ModalBody, ModalContent, ModalOverlay, Spinner, Text, VStack } from '@chakra-ui/react'
 import { Wallet } from '@ethersproject/wallet'
 import { QuestionsFormProvider } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
 import { VocdoniSDKClient } from '@vocdoni/sdk'
 import { useEffect } from 'react'
-import { Trans, useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 import { ConfirmVoteModal } from './ConfirmVoteModal'
 import Header from './Header'
 import { Questions } from './Questions'
@@ -16,7 +16,6 @@ export const ProcessView = () => {
     election,
     client: electionClient,
     setClient: setElectionClient,
-    voted,
     loading: { voting },
   } = useElection()
   const { env, setClient, client, setSigner } = useClient()
@@ -80,24 +79,6 @@ export const ProcessView = () => {
       >
         <Questions />
       </QuestionsFormProvider>
-      {voted && (
-        <Text textAlign='center' mb={20}>
-          <Trans
-            i18nKey='process.omnium_link.you_know'
-            components={{
-              customLink: (
-                <Link
-                  href='https://form.jotform.com/241433006383347'
-                  target='_blank'
-                  color='#FF6320'
-                  textDecoration='underline'
-                  _hover={{ textDecoration: 'none' }}
-                />
-              ),
-            }}
-          />
-        </Text>
-      )}
       <VotingVoteModal />
       <SuccessVoteModal />
     </>

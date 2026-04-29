@@ -1,8 +1,6 @@
 import {
-  Button,
   Image,
   Modal,
-  ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalHeader,
@@ -44,14 +42,6 @@ export const SuccessVoteModal = () => {
           <Text>{t('process.success_modal.title')}</Text>
         </ModalHeader>
         <ModalCloseButton />
-        <ModalBody>
-          <Text textAlign='center' mb={5}>
-            {t('process.success_modal.text')}
-          </Text>
-          <Button as='a' href='https://form.jotform.com/241433006383347' target='_blank' mx='auto'>
-            Respon aquestes preguntes
-          </Button>
-        </ModalBody>
       </ModalContent>
     </Modal>
   )
