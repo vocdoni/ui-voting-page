@@ -65,7 +65,7 @@ export const Questions = () => {
                   election.questions.forEach((_, i) => setValue(i.toString(), '0'))
                 }}
               >
-                <Trans i18nKey='process.mark_all'>Selecciona tota la llista Òmnium 26</Trans>
+                <Trans i18nKey='process.mark_all'>Selecciona tota la llista Òmnium 2030</Trans>
               </Button>
               {showUndoBtn && isAbleToVote && (
                 <Button
