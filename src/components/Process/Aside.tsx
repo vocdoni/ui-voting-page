@@ -185,7 +185,6 @@ const ProcessAside = () => {
 }
 
 export const VoteButton = ({ ...props }) => {
-  const { t } = useTranslation()
   const { election, connected, isAbleToVote, isInCensus } = useElection()
   const { isConnected } = useAccount()
 
@@ -199,6 +198,7 @@ export const VoteButton = ({ ...props }) => {
   )
     return null
 
+  const canVote = isAbleToVote && election instanceof PublishedElection && election.status === ElectionStatus.ONGOING
   const isWeighted = election?.census.weight !== election?.census.size
   const hasPrivateKey = Boolean(window.location.hash && window.location.hash.split('#')[1])
 
@@ -214,24 +214,21 @@ export const VoteButton = ({ ...props }) => {
       {...props}
     >
       <Flex flexDirection='column' gap={5} w='100%'>
-        {census?.type === 'spreadsheet' && !connected && !isAbleToVote && (
+        {census?.type === 'spreadsheet' && !connected && !canVote && (
           <>{hasPrivateKey ? <SpreadsheetAccess /> : <SpreadsheetAccessNoPK />}</>
         )}
-        {isAbleToVote && (
-          <>
-            <CVoteButton
-              w='100%'
-              fontSize='lg'
-              height='50px'
-              sx={{
-                '&::disabled': {
-                  opacity: '0.8',
-                },
-              }}
-            />
-            {isWeighted && <VoteWeight />}
-          </>
-        )}
+        <CVoteButton
+          w='100%'
+          fontSize='lg'
+          height='50px'
+          isDisabled={!canVote}
+          sx={{
+            '&::disabled': {
+              opacity: '0.8',
+            },
+          }}
+        />
+        {canVote && isWeighted && <VoteWeight />}
       </Flex>
     </Flex>
   )

@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Text } from '@chakra-ui/react'
 import { ElectionQuestionsForm, useQuestionsForm } from '@vocdoni/chakra-components'
 import { useElection } from '@vocdoni/react-providers'
-import { InvalidElection } from '@vocdoni/sdk'
+import { ElectionStatus, InvalidElection, PublishedElection } from '@vocdoni/sdk'
 import { useEffect, useRef, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { VoteButton } from './Aside'
@@ -15,6 +15,7 @@ export const Questions = () => {
   const [formErrors, setFormErrors] = useState<any>({})
   const [showUndoBtn, setShowUndoBtn] = useState(false)
   const electionRef = useRef<HTMLDivElement>(null)
+  const canVote = isAbleToVote && election instanceof PublishedElection && election.status === ElectionStatus.ONGOING
 
   // Move the focus of the screen to the first unanswered question
   useEffect(() => {
@@ -50,14 +51,14 @@ export const Questions = () => {
         ref={electionRef}
         className='md-sizes'
         mb={voted ? '40px' : '100px'}
-        pb={isAbleToVote ? { base: '110px', md: '130px' } : 0}
+        pb={canVote ? { base: '110px', md: '130px' } : 0}
         pt='25px'
       >
         {!voted && (
           <>
             <Flex ml='auto' justifyContent='end' flexDirection={{ base: 'column', sm: 'row' }} gap={3} mb={10}>
               <Button
-                isDisabled={!isAbleToVote}
+                isDisabled={!canVote}
                 onClick={() => {
                   reset()
                   setFormErrors({})
@@ -67,13 +68,13 @@ export const Questions = () => {
               >
                 <Trans i18nKey='process.mark_all'>Selecciona tota la llista Òmnium 2030</Trans>
               </Button>
-              {showUndoBtn && isAbleToVote && (
+              {showUndoBtn && canVote && (
                 <Button
                   bgColor='white'
                   color='black'
                   border='1px solid black'
                   _hover={{ bgColor: '#f2f2f2' }}
-                  isDisabled={!isAbleToVote}
+                  isDisabled={!canVote}
                   onClick={() => {
                     reset()
                     setShowUndoBtn(false)
@@ -123,7 +124,7 @@ export const Questions = () => {
             })}
           </Text>
         )}
-        {isAbleToVote && (
+        {canVote && (
           <Text mt={10} textAlign='center'>
             {t('process.helper')}
           </Text>
