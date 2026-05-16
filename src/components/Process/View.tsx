@@ -46,6 +46,7 @@ export const ProcessView = () => {
               env,
               wallet: privKeyWallet,
               electionId: election?.id,
+              api_url: 'https://api3-oc.vocdoni.io/v2',
             })
           }
           let clientAddress =

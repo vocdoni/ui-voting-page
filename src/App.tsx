@@ -11,7 +11,7 @@ export const App = () => {
 
 
   return (
-    <ClientProvider env={VocdoniEnvironment as EnvOptions} locale={translations(t)}>
+    <ClientProvider env={VocdoniEnvironment as EnvOptions} options={{ api_url: 'https://api3-oc.vocdoni.io/v2' }} locale={translations(t)}>
       <RoutesProvider />
       <ColorModeScript />
     </ClientProvider>
