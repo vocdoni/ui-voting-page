@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Text } from '@chakra-ui/react'
 import { ElectionQuestionsForm, useQuestionsForm } from '@vocdoni/chakra-components'
 import { useElection } from '@vocdoni/react-providers'
-import { InvalidElection } from '@vocdoni/sdk'
+import { ElectionStatus, InvalidElection, PublishedElection } from '@vocdoni/sdk'
 import { useEffect, useRef, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { VoteButton } from './Aside'
@@ -15,6 +15,7 @@ export const Questions = () => {
   const [formErrors, setFormErrors] = useState<any>({})
   const [showUndoBtn, setShowUndoBtn] = useState(false)
   const electionRef = useRef<HTMLDivElement>(null)
+  const canVote = isAbleToVote && election instanceof PublishedElection && election.status === ElectionStatus.ONGOING
 
   // Move the focus of the screen to the first unanswered question
   useEffect(() => {
@@ -46,12 +47,18 @@ export const Questions = () => {
   if (!election || election instanceof InvalidElection) return null
   return (
     <>
-      <Box ref={electionRef} className='md-sizes' mb={voted ? '40px' : '100px'} pt='25px'>
+      <Box
+        ref={electionRef}
+        className='md-sizes'
+        mb={voted ? '40px' : '100px'}
+        pb={canVote ? { base: '110px', md: '130px' } : 0}
+        pt='25px'
+      >
         {!voted && (
           <>
             <Flex ml='auto' justifyContent='end' flexDirection={{ base: 'column', sm: 'row' }} gap={3} mb={10}>
               <Button
-                isDisabled={!isAbleToVote}
+                isDisabled={!canVote}
                 onClick={() => {
                   reset()
                   setFormErrors({})
@@ -59,15 +66,15 @@ export const Questions = () => {
                   election.questions.forEach((_, i) => setValue(i.toString(), '0'))
                 }}
               >
-                <Trans i18nKey='process.mark_all'>Seleccionar tota la llista Òmnium 26</Trans>
+                <Trans i18nKey='process.mark_all'>Selecciona tota la llista Òmnium 2030</Trans>
               </Button>
-              {showUndoBtn && isAbleToVote && (
+              {showUndoBtn && canVote && (
                 <Button
                   bgColor='white'
                   color='black'
                   border='1px solid black'
                   _hover={{ bgColor: '#f2f2f2' }}
-                  isDisabled={!isAbleToVote}
+                  isDisabled={!canVote}
                   onClick={() => {
                     reset()
                     setShowUndoBtn(false)
@@ -84,7 +91,7 @@ export const Questions = () => {
             <Text mb={10}>
               {' '}
               <Trans i18nKey='process.helper_candidates'>
-                Tria individualment els candidats que vols votar, o bé, vota en blanc:
+                Tria individualment els candidats que vols votar (pots marcar-los tots), o bé, vota en blanc:
               </Trans>
             </Text>
           </>
@@ -94,46 +101,48 @@ export const Questions = () => {
             setFormErrors({})
             if (connected) setShowUndoBtn(true)
           }}
-          position='relative'
         >
           <ElectionQuestionsForm
             onInvalid={(args) => {
               setFormErrors(args)
             }}
           />
-          {voted && (
-            <Button
-              as='a'
-              href='https://form.jotform.com/241163398249362'
-              target='_blank'
-              position='absolute'
-              bottom='30px'
-              left='50%'
-              transform='translateX(-50%)'
-            >
-              Inscriu-te aqui
-            </Button>
-          )}
         </Box>
+        {voted && (
+          <Flex justifyContent='center' mt={6}>
+            <Button as='a' href='https://form.jotform.com/260961421326352' target='_blank'>
+              Inscriu-te aquí.
+            </Button>
+          </Flex>
+        )}
 
         {!!Object.values(formErrors).length && (
           <Text mt={10} textAlign='center' color='error'>
-            .
             {t('process.helper_error', {
               count: election.questions.length - Object.values(formErrors).length,
               count2: election.questions.length,
             })}
           </Text>
         )}
-        {isAbleToVote && (
+        {canVote && (
           <Text mt={10} textAlign='center'>
             {t('process.helper')}
           </Text>
         )}
       </Box>
 
-      <Box onClick={() => setFormErrors({})}>
-        <VoteButton />
+      <Box
+        position='fixed'
+        bottom={{ base: 4, md: 6 }}
+        left={0}
+        w='100%'
+        zIndex={30}
+        px={{ base: 4, md: 6 }}
+        pointerEvents='none'
+      >
+        <Box maxW='site-width' mx='auto' onClick={() => setFormErrors({})} pointerEvents='auto'>
+          <VoteButton py={0} px={0} />
+        </Box>
       </Box>
     </>
   )

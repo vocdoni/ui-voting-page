@@ -52,6 +52,8 @@
       "anon_sik_label": "Defineix una contrasenya per al teu vot",
       "close": "Tanca",
       "logout": "⎋",
+      "no_private_key_help_prefix": "Si no has rebut l’enllaç personalitzat de vot al teu correu electrònic,",
+      "no_private_key_help_link": "omple aquest formulari",
       "modal_title": "Autenticació"
     },
     "statuses": {
@@ -75,7 +77,7 @@
       "button_update": "Torna a enviar el vot",
       "confirm": "Confirma les teves seleccions:",
       "sign": "Signa abans de votar",
-      "voted_description": "Els resultats electorals es publicaran el 28 de juny durant l’Assemblea General que se celebrarà a Valls. Vols venir-hi?",
+      "voted_description": "Els resultats electorals es publicaran el 30 de maig durant l’Assemblea General que se celebrarà a Barcelona (Casino de l’Aliança del Poblenou). Vols venir-hi?",
       "voted_title": "El teu vot ha estat registrat correctament"
     }
   },
@@ -127,7 +129,7 @@
     "days_to_end_one": "El procés acaba demà",
     "days_to_end_many": "El procés acaba en {{ count }} dies",
     "days_to_end_other": "El procés acaba en {{ count }} dies",
-    "description": "<h1>Et donem la benvinguda a la votació</h1> <p>La Junta Directiva d’Òmnium Cultural renova part dels seus membres cada dos anys. Enguany pertoca renovar la vicepresidència primera, la secretaria i les vocalies 10 a 19.També s’obren altres places per cobrir vacants, renúncies o noves creacions.</p> <p>Des de l’any 2018 ho fem de manera electrònica amb un sistema secret, personal i intransferible. La votació telemàtica es tancarà el 28 de juny a les 19h, coincidint amb la celebració de l’Assemblea General a Valls.</p> <p>Gràcies per participar-hi!</p>",
+    "description": "<h1>Et donem la benvinguda a la plataforma de votació de les eleccions a Junta Directiva.</h1> <p>La Junta Directiva d’Òmnium Cultural renova part dels seus membres cada dos anys. Enguany, pertoca renovar els càrrecs de presidència, vicepresidència segona, vicepresidència tercera, tresoreria i les vocalies 1 a 9, i 20 a 22. Hi ha, també, algunes vacants a cobrir, com són la vicepresidència primera, les vocalies 13, 18 i 19. En total, són 20 càrrecs que surten a elecció.</p> <p>Des de l’any 2018 ho fem de manera telemàtica, amb un sistema segur, personal i intransferible. La votació telemàtica es tancarà el 30 de maig a les 10.15 h, coincidint amb l'arrencada de l'Assemblea General que se celebrarà a Barcelona (al Casino de l'Aliança del Poblenou).</p> <p>Gràcies per participar-hi!</p>",
     "gitcoin": {
       "all_of_them": "(Tots ells)",
       "gps_score": "Gitcoin Passport Score: Puntuació mínima {{score}}",
@@ -135,26 +137,23 @@
       "one_of_them": "(Almenys un d'ells)"
     },
     "helper": "Un cop completat, prem “Finalitzar la votació” i confirma l’elecció.",
-    "helper_candidates": "Tria individualment els candidats que vols votar, o bé, vota en blanc:",
-    "helper_error_one": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
-    "helper_error_many": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
-    "helper_error_other": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}",
+    "helper_candidates": "Tria individualment els candidats que vols votar (pots marcar-los tots), o bé, vota en blanc:",
+    "helper_error_one": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}.",
+    "helper_error_many": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}.",
+    "helper_error_other": "Has de seleccionar totes les opcions per poder finalitzar el procés. N'has respost {{ count }} de {{ count2 }}.",
     "is_invalid": "Aquest procés té dades no vàlides i per tant no pot carregar-se",
-    "mark_all": "Seleccionar tota la llista Òmnium 26",
-    "omnium_link": {
-      "assembly": "Inscriu-te a l'Assemblea General a Valls <customLink>aquí</customLink>",
-      "you_know": "Ajuda'ns a conèixer-te millor! <customLink>Respon aquestes preguntes</customLink>"
-    },
+    "mark_all": "Selecciona tota la llista Òmnium 2030",
     "share_title": "Comparteix a {{ network }}",
     "spreadsheet": {
       "confirm": {
         "abstain_count_one": "",
         "abstain_count_many": "",
         "abstain_count_other": "",
-        "description": "Estas a un pas de finalitzar la teva votació. Aquestes són les opcions que has triat:",
+        "description": "Estàs a un pas de finalitzar la teva votació. Aquestes són les opcions que has triat:",
         "header": "Confirma el teu vot",
         "question": "<strong><span>{{ question }}</span>:</strong> {{ answer }}"
-      }
+      },
+      "no_private_key_help": "Si no has rebut l’enllaç personalitzat de vot al teu correu electrònic, <formLink>omple aquest formulari</formLink>."
     },
     "status": {
       "active": "Votació en curs",
@@ -164,7 +163,6 @@
       "upcoming": "Previst"
     },
     "success_modal": {
-      "text": "Si tens 2 minuts més, ajuda’ns a millorar ❤️",
       "title": "El teu vot ha estat registrat correctament. Moltes gràcies!"
     },
     "undo": "Deseleccionar",

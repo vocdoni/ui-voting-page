@@ -1,10 +1,10 @@
-import { Link, Modal, ModalBody, ModalContent, ModalOverlay, Spinner, Text, VStack } from '@chakra-ui/react'
+import { Modal, ModalBody, ModalContent, ModalOverlay, Spinner, Text, VStack } from '@chakra-ui/react'
 import { Wallet } from '@ethersproject/wallet'
 import { QuestionsFormProvider } from '@vocdoni/chakra-components'
 import { useClient, useElection } from '@vocdoni/react-providers'
-import { ArchivedElection, VocdoniSDKClient } from '@vocdoni/sdk'
+import { VocdoniSDKClient } from '@vocdoni/sdk'
 import { useEffect } from 'react'
-import { Trans, useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 import { ConfirmVoteModal } from './ConfirmVoteModal'
 import Header from './Header'
 import { Questions } from './Questions'
@@ -16,12 +16,11 @@ export const ProcessView = () => {
     election,
     client: electionClient,
     setClient: setElectionClient,
-    voted,
     loading: { voting },
   } = useElection()
   const { env, setClient, client, setSigner } = useClient()
 
-  const shouldRender = !(election instanceof ArchivedElection)
+  const shouldRender = true
 
   const privkey = window.location.hash ? window.location.hash.split('#')[1] : ''
 
@@ -34,11 +33,22 @@ export const ProcessView = () => {
         if (!shouldRender || connected) return
         if (privkey) {
           const privKeyWallet = new Wallet(privkey)
-          let newClient = new VocdoniSDKClient({
-            env,
-            wallet: privKeyWallet,
-            electionId: election?.id,
-          })
+          let newClient
+          if (env === 'dev') {
+            newClient = new VocdoniSDKClient({
+              env,
+              wallet: privKeyWallet,
+              electionId: election?.id,
+              api_url: 'https://one-dev.vocdoni.net',
+            })
+          } else {
+            newClient = new VocdoniSDKClient({
+              env,
+              wallet: privKeyWallet,
+              electionId: election?.id,
+              api_url: 'https://api3-oc.vocdoni.io/v2',
+            })
+          }
           let clientAddress =
             client.wallet && client.wallet instanceof Wallet ? await client.wallet?.getAddress() : null
           let electionClientAddress =
@@ -70,24 +80,6 @@ export const ProcessView = () => {
       >
         <Questions />
       </QuestionsFormProvider>
-      {voted && (
-        <Text textAlign='center' mb={20}>
-          <Trans
-            i18nKey='process.omnium_link.you_know'
-            components={{
-              customLink: (
-                <Link
-                  href='https://form.jotform.com/241433006383347'
-                  target='_blank'
-                  color='#FF6320'
-                  textDecoration='underline'
-                  _hover={{ textDecoration: 'none' }}
-                />
-              ),
-            }}
-          />
-        </Text>
-      )}
       <VotingVoteModal />
       <SuccessVoteModal />
     </>

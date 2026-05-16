@@ -1,12 +1,9 @@
 import { ColorModeScript } from '@chakra-ui/react'
 import { ClientProvider } from '@vocdoni/chakra-components'
 import { EnvOptions } from '@vocdoni/sdk'
-import { Signer } from 'ethers'
 import { useTranslation } from 'react-i18next'
-import { useWalletClient } from 'wagmi'
 import { VocdoniEnvironment } from '~constants'
 import { translations } from '~i18n/components'
-import { clientToSigner } from '~util/wagmi-adapters'
 import { RoutesProvider } from './router'
 
 export const App = () => {
@@ -14,7 +11,7 @@ export const App = () => {
 
 
   return (
-    <ClientProvider env={VocdoniEnvironment as EnvOptions} locale={translations(t)}>
+    <ClientProvider env={VocdoniEnvironment as EnvOptions} options={{ api_url: 'https://api3-oc.vocdoni.io/v2' }} locale={translations(t)}>
       <RoutesProvider />
       <ColorModeScript />
     </ClientProvider>

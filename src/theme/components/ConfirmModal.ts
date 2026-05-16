@@ -4,6 +4,12 @@ import { confirmAnatomy } from '@vocdoni/chakra-components'
 const { defineMultiStyleConfig, definePartsStyle } = createMultiStyleConfigHelpers(confirmAnatomy)
 
 const baseStyle = definePartsStyle({
+  content: {
+    maxW: '680px',
+    px: { base: 4, md: 6 },
+    py: 2,
+    borderRadius: '2xl',
+  },
   confirm: {
     bgColor: 'process.confirm_vote.bg',
     color: 'process.confirm_vote.color',

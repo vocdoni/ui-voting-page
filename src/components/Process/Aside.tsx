@@ -8,6 +8,7 @@ import { Trans, useTranslation } from 'react-i18next'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { useAccount } from 'wagmi'
 import { CensusMeta } from './Census/CensusType'
+import { SpreadsheetAccessNoPK } from './SpreadsheetAccessNoPK'
 
 const results = (result: number, decimals?: number) =>
   decimals ? parseInt(formatUnits(BigInt(result), decimals), 10) : result
@@ -184,7 +185,6 @@ const ProcessAside = () => {
 }
 
 export const VoteButton = ({ ...props }) => {
-  const { t } = useTranslation()
   const { election, connected, isAbleToVote, isInCensus } = useElection()
   const { isConnected } = useAccount()
 
@@ -198,7 +198,9 @@ export const VoteButton = ({ ...props }) => {
   )
     return null
 
+  const canVote = isAbleToVote && election instanceof PublishedElection && election.status === ElectionStatus.ONGOING
   const isWeighted = election?.census.weight !== election?.census.size
+  const hasPrivateKey = Boolean(window.location.hash && window.location.hash.split('#')[1])
 
   return (
     <Flex
@@ -212,22 +214,21 @@ export const VoteButton = ({ ...props }) => {
       {...props}
     >
       <Flex flexDirection='column' gap={5} w='100%'>
-        {census?.type === 'spreadsheet' && !connected && !isAbleToVote && <SpreadsheetAccess />}
-        {isAbleToVote && (
-          <>
-            <CVoteButton
-              w='100%'
-              fontSize='lg'
-              height='50px'
-              sx={{
-                '&::disabled': {
-                  opacity: '0.8',
-                },
-              }}
-            />
-            {isWeighted && <VoteWeight />}
-          </>
+        {census?.type === 'spreadsheet' && !connected && !canVote && (
+          <>{hasPrivateKey ? <SpreadsheetAccess /> : <SpreadsheetAccessNoPK />}</>
         )}
+        <CVoteButton
+          w='100%'
+          fontSize='lg'
+          height='50px'
+          isDisabled={!canVote}
+          sx={{
+            '&::disabled': {
+              opacity: '0.8',
+            },
+          }}
+        />
+        {canVote && isWeighted && <VoteWeight />}
       </Flex>
     </Flex>
   )
